@@ -8,6 +8,7 @@ import 'package:b17pdf/b17_krt_view_mxa/b17_mfw_tap_guard_view_qke.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_preview_file/flutter_preview_file.dart';
 import 'package:get/get.dart';
 
 class B17KqnRemoveDocumentPageVxe
@@ -55,7 +56,7 @@ class B17KqnRemoveDocumentPageVxe
   _listWidget(B17HqmRemoveDocumentControllerWze b17PqmcontrollerWze) =>
       Expanded(
         child: B17VnyMediaPaddingViewQsl(
-          b17QzpChildMwa: ListView.builder(
+          b17QzpChildMwa: ListView.separated(
             itemCount: b17PqmcontrollerWze.b17QxmFilesVza.length,
             itemBuilder: (context, index) {
               final b17QxmFileVza = b17PqmcontrollerWze.b17QxmFilesVza[index];
@@ -65,9 +66,23 @@ class B17KqnRemoveDocumentPageVxe
                 },
                 b17HnqChildVsa: Container(
                   width: double.infinity,
-                  height: 72.h,
+                  height: 68.h,
                   alignment: Alignment.centerLeft,
+                  margin: EdgeInsets.only(left: 16.w, right: 16.w),
                   padding: EdgeInsets.only(left: 16.w, right: 16.w),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.w),
+                    gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [
+                        _b17QxnFileBackgroundColorVza(
+                          b17QxmFileVza,
+                        ).withOpacity(0.1),
+                        Colors.transparent,
+                      ],
+                    ),
+                  ),
                   child: Row(
                     children: [
                       B17PzrAssetPictureViewXcu(
@@ -80,8 +95,8 @@ class B17KqnRemoveDocumentPageVxe
                       SizedBox(width: 12.w),
                       B17PzrAssetPictureViewXcu(
                         b17PqmcontrollerWze.b17KqnFileIconVze(b17QxmFileVza),
-                        b17DtvWidthQpl: 32.w,
-                        b17RnxHeightKse: 32.w,
+                        b17DtvWidthQpl: 40.w,
+                        b17RnxHeightKse: 40.w,
                       ),
                       SizedBox(width: 12.w),
                       Expanded(
@@ -97,9 +112,9 @@ class B17KqnRemoveDocumentPageVxe
                               b17FzrOverflowXke: TextOverflow.ellipsis,
                             ),
                             B17CxmLocalizedTextViewPra(
-                              "2026-01-06｜1.2M",
-                              b17RvxFontSizeQle: 12.sp,
-                              b17DtkColorZma: Color(0xff858C92),
+                              _b17PqmFileDetailWza(b17QxmFileVza),
+                              b17RvxFontSizeQle: 10.sp,
+                              b17DtkColorZma: Color(0xff9C9FAE),
                               b17HncFontWeightYsp: FontWeight.w500,
                               b17FzrOverflowXke: TextOverflow.ellipsis,
                             ),
@@ -111,9 +126,27 @@ class B17KqnRemoveDocumentPageVxe
                 ),
               );
             },
+            separatorBuilder: (BuildContext context, int index) => SizedBox(height: 6.h,),
           ),
         ),
       );
+
+  Color _b17QxnFileBackgroundColorVza(FileToolsFileInfo b17QxmFileVza) =>
+      switch (b17QxmFileVza.type) {
+        FileToolsDocumentType.word => const Color(0xff2C90FE),
+        FileToolsDocumentType.excel => const Color(0xff01C87C),
+        _ => const Color(0xffF85758),
+      };
+
+  String _b17PqmFileDetailWza(FileToolsFileInfo b17VqnFileTze) {
+    final DateTime b17HqmDateWza = DateTime.fromMillisecondsSinceEpoch(
+      b17VqnFileTze.updateTime ?? 0,
+    );
+    final String b17KqnDateTextVze =
+        '${b17HqmDateWza.year}-${b17HqmDateWza.month.toString().padLeft(2, '0')}-${b17HqmDateWza.day.toString().padLeft(2, '0')}';
+    final double b17PqmSizeXza = (b17VqnFileTze.size ?? 0) / 1024 / 1024;
+    return '$b17KqnDateTextVze｜${b17PqmSizeXza.toStringAsFixed(1)}M';
+  }
 
   _b17AgdBottomWidgetHkw(
     B17HqmRemoveDocumentControllerWze b17PqmcontrollerWze,
@@ -145,7 +178,7 @@ class B17KqnRemoveDocumentPageVxe
         height: 44.h,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Color(0xffF4411F),
+          color: Color(0xffD12629),
           borderRadius: BorderRadius.circular(22.w),
         ),
         child: B17CxmLocalizedTextViewPra(
@@ -174,34 +207,36 @@ class B17KqnRemoveDocumentPageVxe
         child: Row(
           children: [
             B17MfwTapGuardViewQke(
+              b17JkcOnPressedXwu: b17PqmcontrollerWze.b17PqmClickSelectAllWza,
+              b17HnqChildVsa: B17CxmLocalizedTextViewPra(
+                "Select All".tr,
+                b17RvxFontSizeQle: 14.sp,
+                b17DtkColorZma: Color(0xffD12629),
+                b17HncFontWeightYsp: FontWeight.bold,
+              ),
+            ),
+            Expanded(
+              child: Center(
+                child: B17CxmLocalizedTextViewPra(
+                  '{n} Selected'.tr.replaceAll(
+                    '{n}',
+                    b17PqmcontrollerWze.b17KqnSelectedPathsVze.length
+                        .toString(),
+                  ),
+                  b17RvxFontSizeQle: 16.sp,
+                  b17DtkColorZma: Color(0xff242C3C),
+                  b17HncFontWeightYsp: FontWeight.bold,
+                ),
+              ),
+            ),
+            B17MfwTapGuardViewQke(
               b17JkcOnPressedXwu: () {
                 B17FjeNavigationFuncIfj.b17PqnBackWithExitAdVze<void>();
               },
               b17HnqChildVsa: B17CxmLocalizedTextViewPra(
                 "Cancel".tr,
-                b17RvxFontSizeQle: 16.sp,
-                b17DtkColorZma: Color(0xff4B5156),
-                b17HncFontWeightYsp: FontWeight.w500,
-              ),
-            ),
-            SizedBox(width: 8.w),
-            Expanded(
-              child: B17CxmLocalizedTextViewPra(
-                '{n} Selected'.tr.replaceAll(
-                  '{n}',
-                  b17PqmcontrollerWze.b17KqnSelectedPathsVze.length.toString(),
-                ),
-                b17RvxFontSizeQle: 18.sp,
-                b17DtkColorZma: Color(0xff060E23),
-                b17HncFontWeightYsp: FontWeight.bold,
-              ),
-            ),
-            B17MfwTapGuardViewQke(
-              b17JkcOnPressedXwu: b17PqmcontrollerWze.b17PqmClickSelectAllWza,
-              b17HnqChildVsa: B17CxmLocalizedTextViewPra(
-                "Select All".tr,
-                b17RvxFontSizeQle: 16.sp,
-                b17DtkColorZma: Color(0xff067BF2),
+                b17RvxFontSizeQle: 14.sp,
+                b17DtkColorZma: Color(0xff9C9FAE),
                 b17HncFontWeightYsp: FontWeight.w500,
               ),
             ),
