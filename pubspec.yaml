@@ -1,4 +1,4 @@
-name: b16pdf
+name: b17pdf
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -98,11 +98,11 @@ flutter:
   assets:
    - assets/
    - assets/PDF_Demo.pdf
-   - assets/b16pdf_images_fjwnsd/
-   - assets/b16_pdf_lottie_fjiwjiw/
-   - assets/b16pdf_local_config/b16pdf_local_referrer/
-   - assets/b16pdf_local_config/b16pdf_local_ad/
-   - assets/b16pdf_local_config/b16pdf_local_ad_switch/
+   - assets/b17_fjw_pdf_images_nsd/
+   - assets/b17_fji_pdf_lottie_wji/
+   - assets/b17_rxv_pdf_local_config_lrr/b17_xfv_pdf_local_referrer_mor/
+   - assets/b17_rxv_pdf_local_config_lrr/b17_asd_pdf_local_ad_prt/
+   - assets/b17_rxv_pdf_local_config_lrr/b17_has_pdf_local_ad_switch_ctk/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

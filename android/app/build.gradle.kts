@@ -1,9 +1,9 @@
 import java.util.Properties
 
-val b16SigningProperties = Properties().apply {
-    val b16SigningFile = rootProject.file("key.properties")
-    if (b16SigningFile.exists()) {
-        b16SigningFile.inputStream().use(::load)
+val b17IkjSigningPropertiesRkw = Properties().apply {
+    val b17WnuSigningFileQaz = rootProject.file("key.properties")
+    if (b17WnuSigningFileQaz.exists()) {
+        b17WnuSigningFileQaz.inputStream().use(::load)
     }
 }
 
@@ -15,7 +15,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.b16pdf"
+    namespace = "com.example.b17pdf"
     compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
@@ -37,10 +37,10 @@ android {
 
     signingConfigs {
         create("release") {
-            keyAlias = b16SigningProperties.getProperty("keyAlias")
-            keyPassword = b16SigningProperties.getProperty("keyPassword")
-            storeFile = b16SigningProperties.getProperty("storeFile")?.let(::file)
-            storePassword = b16SigningProperties.getProperty("storePassword")
+            keyAlias = b17IkjSigningPropertiesRkw.getProperty("keyAlias")
+            keyPassword = b17IkjSigningPropertiesRkw.getProperty("keyPassword")
+            storeFile = b17IkjSigningPropertiesRkw.getProperty("storeFile")?.let(::file)
+            storePassword = b17IkjSigningPropertiesRkw.getProperty("storePassword")
             enableV1Signing = true
             enableV2Signing = true
         }
