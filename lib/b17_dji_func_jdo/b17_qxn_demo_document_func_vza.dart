@@ -13,7 +13,8 @@ class B17QxnDemoDocumentFuncVza {
   static const String _b17KqmDemoPdfAssetPathWze =
       'assets/b17_dmo_pdf_demo_document_doc.pdf';
   static const String _b17VqnDemoPdfFileNameTza = 'PDF_Demo.pdf';
-  static const String _b17PqnDemoDirectoryNameVze = 'b16_demo_files';
+  static const String _b17PqnDemoDirectoryNameVze =
+      'b17_pqn_demo_documents_vze';
 
   FileToolsFileInfo? _b17HqmDemoPdfInfoWza;
 

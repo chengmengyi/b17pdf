@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 
 class B17VqnUninstallControllerTza extends B17FjeBaseControllerSak {
   static const String b17QxnReasonBuilderIdVza =
-      'b16_unstall_reason_builder_qxnvza';
+      'b17_qxn_uninstall_reason_builder_vza';
 
   TextEditingController textEditingController = TextEditingController();
   int b17KqmSelectedReasonIndexWze = -1;

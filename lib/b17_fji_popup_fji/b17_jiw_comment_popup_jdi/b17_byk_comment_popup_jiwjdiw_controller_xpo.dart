@@ -12,7 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class B17JiwCommentPopupControllerJdi extends B17FjeBaseControllerSak {
   static const String b17KqnStarBuilderIdVze =
-      'b16_comment_star_builder_kqnvze';
+      'b17_kqn_comment_rating_builder_vze';
 
   int b17PqnStarCountVze = 0;
   bool _b17QxmClosingDialogVza = false;

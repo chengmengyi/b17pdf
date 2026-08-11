@@ -32,7 +32,7 @@ class _B17VqnDocumentsListSectionStateXre
           B17QxmDocumentsListSectionPageVza
         > {
   @override
-  String get b17VdsControllerTagYre => 'b16_files_${widget.type.name}';
+  String get b17VdsControllerTagYre => 'b17_files_${widget.type.name}';
 
   @override
   B17HqmDocumentsListSectionControllerWze b17NwzCreateControllerTpi() {
@@ -209,7 +209,7 @@ class _B17VqnDocumentsListSectionStateXre
   }) {
     b17PqnControllerVze.b17HqmPrepareNativeAdSlotWza(b17KqnListIndexVze);
     return VisibilityDetector(
-      key: ValueKey('b16_file_inline_ad_$b17KqnListIndexVze'),
+      key: ValueKey('b17_fia_document_inline_ad_${b17KqnListIndexVze}_vke'),
       onVisibilityChanged: (b17VqmInfoWza) =>
           b17PqnControllerVze.b17PqnUpdateNativeAdVisibilityVze(
             b17KqnListIndexVze,
@@ -223,7 +223,7 @@ class _B17VqnDocumentsListSectionStateXre
           child: b17PqnShowNativeAdVze
               ? KeyedSubtree(
                   key: ValueKey(
-                    'b16_file_native_${b17KqnListIndexVze}_${b17PqnControllerVze.b17QxnNativeAdRefreshKeyVza}',
+                    'b17_fna_document_native_ad_${b17KqnListIndexVze}_${b17PqnControllerVze.b17QxnNativeAdRefreshKeyVza}_vke',
                   ),
                   child: const _B17KqnDocumentsNativeAdContentVze(),
                 )
