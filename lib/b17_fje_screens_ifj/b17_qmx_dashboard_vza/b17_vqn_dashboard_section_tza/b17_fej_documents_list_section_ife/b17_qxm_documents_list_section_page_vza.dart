@@ -386,21 +386,21 @@ class _B17VqnDocumentsListSectionStateXre
     children: [
       B17PzrAssetPictureViewXcu(
         "b17_fje_secure_asset_ifj",
-        b17DtvWidthQpl: 80.w,
-        b17RnxHeightKse: 80.w,
+        b17DtvWidthQpl: 75.w,
+        b17RnxHeightKse: 75.w,
       ),
       SizedBox(height: 16.h),
       B17CxmLocalizedTextViewPra(
         "No permissions granted".tr,
-        b17RvxFontSizeQle: 20.sp,
-        b17DtkColorZma: Colors.black,
+        b17RvxFontSizeQle: 18.sp,
+        b17DtkColorZma: Color(0xff242C3C),
         b17HncFontWeightYsp: FontWeight.bold,
       ),
       SizedBox(height: 6.h),
       B17CxmLocalizedTextViewPra(
         "Permission is required to access all files".tr,
         b17RvxFontSizeQle: 14.sp,
-        b17DtkColorZma: Color(0xff4B5156),
+        b17DtkColorZma: Color(0xff555978),
       ),
       SizedBox(height: 40.h),
       B17MfwTapGuardViewQke(
@@ -408,17 +408,10 @@ class _B17VqnDocumentsListSectionStateXre
           b17VqncontrollerXre.b17LozClickRequestPermissionOsz();
         },
         b17HnqChildVsa: Container(
-          width: double.infinity,
-          height: 48.h,
-          alignment: Alignment.center,
-          margin: EdgeInsets.only(left: 24.w, right: 24.w),
+          padding: EdgeInsets.only(left: 36.w,right: 36.w,top: 8.h,bottom: 8.h),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24.w),
-            gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: [Color(0xffFF8E71), Color(0xffA77FF1)],
-            ),
+            color: Color(0xffD12629),
+            borderRadius: BorderRadius.circular(42.w),
           ),
           child: B17CxmLocalizedTextViewPra(
             "Go to settings".tr,

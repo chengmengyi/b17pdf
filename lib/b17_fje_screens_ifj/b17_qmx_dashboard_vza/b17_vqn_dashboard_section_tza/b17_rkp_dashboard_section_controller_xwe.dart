@@ -21,34 +21,35 @@ import 'package:flutter/material.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_local_notification_plugins/flutter_local_notification_plugins.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:get/get.dart';
 
 enum B17PeeDocumentTabTyFie {
-  all("All", "b17_ifj_all_documents_tab_selected_icon_asset_efe", "b17_fji_all_documents_tab_unselected_icon_asset_foe"),
-  pdf("PDF", "b17_wif_pdf_tab_selected_icon_asset_jiw", "b17_wif_pdf_tab_selected_icon_asset_jiw"),
-  word(
-    "Word",
-    "b17_fhi_word_tab_selected_icon_asset_fji",
-    "b17_fhi_word_tab_selected_icon_asset_fji",
-  ),
-  excel(
-    "Excel",
-    "b17_fji_excel_tab_selected_icon_asset_wji",
-    "b17_fji_excel_tab_selected_icon_asset_wji",
-  );
+  all("All"),
+  pdf("PDF"),
+  word("Word"),
+  excel("Excel");
 
   final String name;
-  final String iconSel;
-  final String iconUns;
-  const B17PeeDocumentTabTyFie(this.name, this.iconSel, this.iconUns);
+  const B17PeeDocumentTabTyFie(this.name);
 }
 
-class B17RkpDashboardSectionControllerXwe extends B17FjeBaseControllerSak {
+class B17RkpDashboardSectionControllerXwe extends B17FjeBaseControllerSak
+    with GetSingleTickerProviderStateMixin {
   TextEditingController textEditingController = TextEditingController();
-  PageController pageController = PageController();
+  late final TabController b17KqnTabControllerVze;
   int b17QmvSelectedTabIndexNza = 0;
   bool b17QxnShowAddWidgetVza =
       !B17QxnInsertWidgetCacheVza.b17KqmReadAddedWze();
   bool b17VqnRequestingStoragePermissionTza = false;
+
+  @override
+  void onInit() {
+    super.onInit();
+    b17KqnTabControllerVze = TabController(
+      length: B17PeeDocumentTabTyFie.values.length,
+      vsync: this,
+    )..addListener(b17HqmHandleTabChangedWza);
+  }
 
   @override
   void onReady() {
@@ -56,20 +57,19 @@ class B17RkpDashboardSectionControllerXwe extends B17FjeBaseControllerSak {
     b17HqmRequestStoragePermissionWza();
   }
 
-  clickTabItem(B17PeeDocumentTabTyFie type) {
+  void b17QxnHandleTabTapVza() {
     B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.file_filter_click,
     );
-    pageController.animateToPage(
-      type.index,
-      duration: const Duration(milliseconds: 100),
-      curve: Curves.easeInOut,
-    );
   }
 
-  void b17HqmPageChangedWza(int b17KqnIndexVze, BuildContext b17HqmContextWza) {
+  void b17HqmHandleTabChangedWza() {
+    final int b17KqnIndexVze = b17KqnTabControllerVze.index;
+    if (b17QmvSelectedTabIndexNza == b17KqnIndexVze) return;
     b17QmvSelectedTabIndexNza = b17KqnIndexVze;
     update();
+    final BuildContext? b17HqmContextWza = Get.context;
+    if (b17HqmContextWza == null) return;
     B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmShowCachedSceneAdVzr(
       b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_user_use,
       b17KqmAdPosIdVzr: B17JkwPosidKos.pr_up_int,
@@ -151,7 +151,9 @@ class B17RkpDashboardSectionControllerXwe extends B17FjeBaseControllerSak {
   @override
   void onClose() {
     textEditingController.dispose();
-    pageController.dispose();
+    b17KqnTabControllerVze
+      ..removeListener(b17HqmHandleTabChangedWza)
+      ..dispose();
     super.onClose();
   }
 }

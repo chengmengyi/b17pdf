@@ -1,25 +1,29 @@
 import 'package:extended_tabs/extended_tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class B17HjkTabViewJdo extends StatelessWidget {
   const B17HjkTabViewJdo({
     super.key,
-    this.apex09TabController,
-    this.apex09OnTap,
-    this.apex09SelectedColor = const Color(0xFFDA2929),
-    this.apex09UnselectedColor = const Color(0xFF8C8E9C),
-    this.apex09LabelStyle,
-    this.apex09UnselectedLabelStyle,
+    this.b17KqnTabControllerVze,
+    this.b17QxnSelectedIndexVza = 0,
+    this.b17PqmOnTapXze,
+    this.b17HqmSelectedColorWza = const Color(0xFF202326),
+    this.b17VqnUnselectedColorTza = const Color(0xFF6E7FA5),
+    this.b17KqmLabelStyleWze,
+    this.b17PqnUnselectedLabelStyleVze,
   });
 
-  final TabController? apex09TabController;
-  final ValueChanged<int>? apex09OnTap;
-  final Color apex09SelectedColor;
-  final Color apex09UnselectedColor;
-  final TextStyle? apex09LabelStyle;
-  final TextStyle? apex09UnselectedLabelStyle;
-  static const List<String> apex09TabTextList = <String>[
+  final TabController? b17KqnTabControllerVze;
+  final int b17QxnSelectedIndexVza;
+  final ValueChanged<int>? b17PqmOnTapXze;
+  final Color b17HqmSelectedColorWza;
+  final Color b17VqnUnselectedColorTza;
+  final TextStyle? b17KqmLabelStyleWze;
+  final TextStyle? b17PqnUnselectedLabelStyleVze;
+
+  static const List<String> b17VqmTabTextListXza = <String>[
     'All',
     'PDF',
     'Word',
@@ -27,86 +31,106 @@ class B17HjkTabViewJdo extends StatelessWidget {
   ];
 
   @override
-  Widget build(BuildContext context) {
-    return ExtendedTabBar(
-      controller: apex09TabController,
-      onTap: apex09OnTap,
+  Widget build(BuildContext b17QxmContextVza) {
+    final ExtendedTabBar b17KqnTabBarVze = ExtendedTabBar(
+      controller: b17KqnTabControllerVze,
+      onTap: b17PqmOnTapXze,
       isScrollable: true,
       indicatorSize: TabBarIndicatorSize.label,
-      indicator: _Apex09FixedWidthIndicator(
-        apex09IndicatorWidth: 16.w,
-        apex09IndicatorHeight: 2,
-        apex09IndicatorColor: const Color(0xFFDA2929),
+      indicator: _B17QxnFixedWidthIndicatorVza(
+        b17PqmIndicatorWidthVze: 16.w,
+        b17HqmIndicatorHeightWza: 2,
+        b17KqnIndicatorColorVze: const Color(0xFF242C3C),
       ),
       labelPadding: EdgeInsets.zero,
       dividerColor: Colors.transparent,
-      labelColor: apex09SelectedColor,
-      unselectedLabelColor: apex09UnselectedColor,
+      labelColor: b17HqmSelectedColorWza,
+      unselectedLabelColor: b17VqnUnselectedColorTza,
       labelStyle:
-          apex09LabelStyle ??
-          const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+          b17KqmLabelStyleWze ??
+          const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
       unselectedLabelStyle:
-          apex09UnselectedLabelStyle ??
+          b17PqnUnselectedLabelStyleVze ??
           const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-      tabs: apex09TabTextList
+      tabs: b17VqmTabTextListXza
           .map(
-            (String apex09TabText) => Tab(
+            (String b17QxnTabTextVza) => Tab(
               child: SizedBox(
                 width: 68.w,
-                child: Center(child: Text(apex09TabText.tr)),
+                child: Center(child: Text(b17QxnTabTextVza.tr)),
               ),
             ),
           )
           .toList(),
     );
+
+    if (b17KqnTabControllerVze != null) {
+      return b17KqnTabBarVze;
+    }
+    final int b17VqnSafeSelectedIndexTza = b17QxnSelectedIndexVza.clamp(
+      0,
+      b17VqmTabTextListXza.length - 1,
+    );
+    return DefaultTabController(
+      key: ValueKey<int>(b17VqnSafeSelectedIndexTza),
+      length: b17VqmTabTextListXza.length,
+      initialIndex: b17VqnSafeSelectedIndexTza,
+      child: b17KqnTabBarVze,
+    );
   }
 }
 
-class _Apex09FixedWidthIndicator extends Decoration {
-  const _Apex09FixedWidthIndicator({
-    required this.apex09IndicatorWidth,
-    required this.apex09IndicatorHeight,
-    required this.apex09IndicatorColor,
+class _B17QxnFixedWidthIndicatorVza extends Decoration {
+  const _B17QxnFixedWidthIndicatorVza({
+    required this.b17PqmIndicatorWidthVze,
+    required this.b17HqmIndicatorHeightWza,
+    required this.b17KqnIndicatorColorVze,
   });
 
-  final double apex09IndicatorWidth;
-  final double apex09IndicatorHeight;
-  final Color apex09IndicatorColor;
+  final double b17PqmIndicatorWidthVze;
+  final double b17HqmIndicatorHeightWza;
+  final Color b17KqnIndicatorColorVze;
 
   @override
   BoxPainter createBoxPainter([VoidCallback? onChanged]) {
-    return _Apex09FixedWidthIndicatorPainter(this);
+    return _B17VqnFixedWidthIndicatorPainterTza(this);
   }
 }
 
-class _Apex09FixedWidthIndicatorPainter extends BoxPainter {
-  _Apex09FixedWidthIndicatorPainter(this.apex09Decoration);
+class _B17VqnFixedWidthIndicatorPainterTza extends BoxPainter {
+  _B17VqnFixedWidthIndicatorPainterTza(this.b17QxnDecorationVza);
 
-  final _Apex09FixedWidthIndicator apex09Decoration;
+  final _B17QxnFixedWidthIndicatorVza b17QxnDecorationVza;
 
   @override
-  void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
-    final Size? apex09Size = configuration.size;
-    if (apex09Size == null) {
+  void paint(
+    Canvas b17KqnCanvasVze,
+    Offset b17PqnOffsetVze,
+    ImageConfiguration b17HqmConfigurationWza,
+  ) {
+    final Size? b17VqnSizeTza = b17HqmConfigurationWza.size;
+    if (b17VqnSizeTza == null) {
       return;
     }
-    final Paint apex09Paint = Paint()
-      ..color = apex09Decoration.apex09IndicatorColor
+    final Paint b17QxnPaintVza = Paint()
+      ..color = b17QxnDecorationVza.b17KqnIndicatorColorVze
       ..style = PaintingStyle.fill;
-    final double apex09Left =
-        offset.dx +
-        (apex09Size.width - apex09Decoration.apex09IndicatorWidth) / 2;
-    final double apex09Top =
-        offset.dy + apex09Size.height - apex09Decoration.apex09IndicatorHeight;
-    final RRect apex09RRect = RRect.fromRectAndRadius(
+    final double b17PqnLeftVze =
+        b17PqnOffsetVze.dx +
+        (b17VqnSizeTza.width - b17QxnDecorationVza.b17PqmIndicatorWidthVze) / 2;
+    final double b17HqmTopWza =
+        b17PqnOffsetVze.dy +
+        b17VqnSizeTza.height -
+        b17QxnDecorationVza.b17HqmIndicatorHeightWza;
+    final RRect b17KqnIndicatorRectVze = RRect.fromRectAndRadius(
       Rect.fromLTWH(
-        apex09Left,
-        apex09Top,
-        apex09Decoration.apex09IndicatorWidth,
-        apex09Decoration.apex09IndicatorHeight,
+        b17PqnLeftVze,
+        b17HqmTopWza,
+        b17QxnDecorationVza.b17PqmIndicatorWidthVze,
+        b17QxnDecorationVza.b17HqmIndicatorHeightWza,
       ),
-      Radius.circular(apex09Decoration.apex09IndicatorHeight / 2),
+      Radius.circular(b17QxnDecorationVza.b17HqmIndicatorHeightWza / 2),
     );
-    canvas.drawRRect(apex09RRect, apex09Paint);
+    b17KqnCanvasVze.drawRRect(b17KqnIndicatorRectVze, b17QxnPaintVza);
   }
 }
