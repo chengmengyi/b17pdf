@@ -1,12 +1,22 @@
+import java.util.Properties
+
+val b16SigningProperties = Properties().apply {
+    val b16SigningFile = rootProject.file("key.properties")
+    if (b16SigningFile.exists()) {
+        b16SigningFile.inputStream().use(::load)
+    }
+}
+
 plugins {
     id("com.android.application")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.example.b17pdf"
-    compileSdk = flutter.compileSdkVersion
+    namespace = "com.example.b16pdf"
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -16,20 +26,45 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.b17pdf"
+        applicationId = "com.test.boom"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        minSdk = 26
+        targetSdk = 36
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        create("release") {
+            keyAlias = b16SigningProperties.getProperty("keyAlias")
+            keyPassword = b16SigningProperties.getProperty("keyPassword")
+            storeFile = b16SigningProperties.getProperty("storeFile")?.let(::file)
+            storePassword = b16SigningProperties.getProperty("storePassword")
+            enableV1Signing = true
+            enableV2Signing = true
+        }
+    }
+
     buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+        getByName("debug") {
+            signingConfig = signingConfigs.getByName("release")
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
+            )
+        }
+
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("release")
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
+            )
         }
     }
 }
@@ -42,4 +77,18 @@ kotlin {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    implementation(platform("com.google.firebase:firebase-bom:32.1.1"))
+    // AdMob mediation adapters are declared in the app module on purpose.
+    // The Flutter plugin already brings Google Mobile Ads SDK 24.9.0 transitively.
+    implementation("com.google.ads.mediation:applovin:13.5.1.0")
+    implementation("com.google.ads.mediation:facebook:6.21.0.1")
+    implementation("com.google.ads.mediation:mintegral:17.0.91.0")
+    implementation("com.google.ads.mediation:pangle:7.9.1.1.0")
+    implementation("com.google.ads.mediation:vungle:7.7.1.0")
+    implementation("com.unity3d.ads:unity-ads:4.16.5")
+    implementation("com.google.ads.mediation:unity:4.17.0.0")
+    implementation("com.google.ads.mediation:ironsource:9.3.0.1")
 }
