@@ -46,7 +46,7 @@ class _B17KqmSwitchStateVza extends State<B17FeiSwitchViewFji> {
       ),
       trackColor: WidgetStatePropertyAll(
         b17PqnSwitchEnabledVxe
-            ? const Color(0xff0f83f8)
+            ? const Color(0xffD12629)
             : const Color(0xffc8cdd2),
       ),
     );

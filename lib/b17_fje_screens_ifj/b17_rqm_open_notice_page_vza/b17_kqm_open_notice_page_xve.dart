@@ -24,123 +24,105 @@ class B17KqmOpenNoticePageXve
     BuildContext b17VqmContextWza,
     B17HqvOpenNoticeControllerWze b17KqmControllerXve,
   ) {
-    return Stack(
-      alignment: Alignment.topCenter,
+    return Column(
       children: [
+        SizedBox(height: 120.h),
         B17PzrAssetPictureViewXcu(
-          'b17_fje_floating_access_top_background_asset_ifj',
-          b17DtvWidthQpl: double.infinity,
-          b17RnxHeightKse: 180.h,
+          "b17_fie_notice_top_pictures_asset_fjo",
+          b17DtvWidthQpl: 256.w,
+          b17RnxHeightKse: 208.h,
         ),
-        Column(
-          children: [
-            SizedBox(height: 100.h),
-            B17PzrAssetPictureViewXcu(
-              "b17_fie_notice_top_pictures_asset_fjo",
-              b17DtvWidthQpl: 145.w,
-              b17RnxHeightKse: 150.h,
-            ),
-            SizedBox(height: 60.h),
-            B17CxmLocalizedTextViewPra(
-              "This app has an update".tr,
-              b17RvxFontSizeQle: 24.sp,
-              b17DtkColorZma: Colors.black,
-              b17HncFontWeightYsp: FontWeight.bold,
-            ),
-            SizedBox(height: 10.h),
-            B17CxmLocalizedTextViewPra(
-              "Please upgrade to enjoy the latest functions.".tr,
-              b17RvxFontSizeQle: 14.sp,
-              b17DtkColorZma: Color(0xff4B5156),
-              b17HncFontWeightYsp: FontWeight.w500,
-            ),
-            SizedBox(height: 40.h),
-            Container(
+        Spacer(),
+        B17CxmLocalizedTextViewPra(
+          "This app has an update".tr,
+          b17RvxFontSizeQle: 20.sp,
+          b17DtkColorZma: Color(0xff242C3C),
+          b17HncFontWeightYsp: FontWeight.bold,
+        ),
+        SizedBox(height: 10.h),
+        B17CxmLocalizedTextViewPra(
+          "Please upgrade to enjoy the latest functions.".tr,
+          b17RvxFontSizeQle: 16.sp,
+          b17DtkColorZma: Color(0xff555978),
+          b17HncFontWeightYsp: FontWeight.w500,
+        ),
+        SizedBox(height: 20.h),
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.all(12.w),
+          margin: EdgeInsets.symmetric(horizontal: 30.w),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.w),
+            color: Color(0xffF3F3F4),
+          ),
+          child: Row(
+            children: [
+              B17PzrAssetPictureViewXcu(
+                'b17_fhu_logo_asset_efh',
+                b17DtvWidthQpl: 48.w,
+                b17RnxHeightKse: 48.w,
+              ),
+              SizedBox(width: 8.w),
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    B17CxmLocalizedTextViewPra(
+                      B17FjeDeviceInfoIfj.appName.tr,
+                      b17RvxFontSizeQle: 14.sp,
+                      b17DtkColorZma: Color(0xff242C3C),
+                      b17HncFontWeightYsp: FontWeight.bold,
+                      b17FzrOverflowXke: TextOverflow.ellipsis,
+                    ),
+                    B17CxmLocalizedTextViewPra(
+                      "All notifications".tr,
+                      b17RvxFontSizeQle: 12.sp,
+                      b17DtkColorZma: Color(0xff9C9FAE),
+                    ),
+                  ],
+                ),
+              ),
+              const B17FeiSwitchViewFji(),
+            ],
+          ),
+        ),
+        SizedBox(height: 30.h,),
+        B17HqvPulseViewZna(
+          b17PxnChildVta: B17MfwTapGuardViewQke(
+            b17JkcOnPressedXwu: () {
+              b17KqmControllerXve.b17HgrClickUpdateCla();
+            },
+            b17HnqChildVsa: Container(
               width: double.infinity,
-              padding: EdgeInsets.all(12.w),
-              margin: EdgeInsets.symmetric(horizontal: 40.w),
+              height: 46.h,
+              alignment: Alignment.center,
+              margin: EdgeInsets.symmetric(horizontal: 16.w),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12.w),
-                border: Border.all(
-                  width: 0.5.w,
-                  color: const Color(0xff000000).withValues(alpha: 0.1),
-                ),
-                color: Colors.white,
+                color: Color(0xffD12629),
+                borderRadius: BorderRadius.circular(42.w),
               ),
-              child: Row(
-                children: [
-                  B17PzrAssetPictureViewXcu(
-                    'b17_fhu_logo_asset_efh',
-                    b17DtvWidthQpl: 48.w,
-                    b17RnxHeightKse: 48.w,
-                  ),
-                  SizedBox(width: 8.w),
-                  Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        B17CxmLocalizedTextViewPra(
-                          B17FjeDeviceInfoIfj.appName.tr,
-                          b17RvxFontSizeQle: 16.sp,
-                          b17DtkColorZma: Colors.black,
-                          b17HncFontWeightYsp: FontWeight.bold,
-                          b17FzrOverflowXke: TextOverflow.ellipsis,
-                        ),
-                        B17CxmLocalizedTextViewPra(
-                          "All notifications".tr,
-                          b17RvxFontSizeQle: 12.sp,
-                          b17DtkColorZma: Color(0xff858C92),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const B17FeiSwitchViewFji(),
-                ],
-              ),
-            ),
-            Spacer(),
-            B17HqvPulseViewZna(
-              b17PxnChildVta: B17MfwTapGuardViewQke(
-                b17JkcOnPressedXwu: () {
-                  b17KqmControllerXve.b17HgrClickUpdateCla();
-                },
-                b17HnqChildVsa: Container(
-                  width: double.infinity,
-                  height: 48.h,
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.symmetric(horizontal: 16.w),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(24.w),
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Color(0xff06B3F2), Color(0xff002DF6)],
-                    ),
-                  ),
-                  child: B17CxmLocalizedTextViewPra(
-                    'Update now'.tr,
-                    b17RvxFontSizeQle: 18.sp,
-                    b17DtkColorZma: Colors.white,
-                    b17HncFontWeightYsp: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 20.h),
-            B17MfwTapGuardViewQke(
-              b17JkcOnPressedXwu: b17KqmControllerXve.b17RlsClickLaterJtt,
-              b17HnqChildVsa: B17CxmLocalizedTextViewPra(
-                'Later'.tr,
+              child: B17CxmLocalizedTextViewPra(
+                'Update now'.tr,
                 b17RvxFontSizeQle: 16.sp,
-                b17DtkColorZma: const Color(0xff4b5156),
-                b17FefDecorationJie: TextDecoration.underline,
+                b17DtkColorZma: Colors.white,
                 b17HncFontWeightYsp: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 36.h),
-          ],
+          ),
         ),
+        SizedBox(height: 20.h),
+        B17MfwTapGuardViewQke(
+          b17JkcOnPressedXwu: b17KqmControllerXve.b17RlsClickLaterJtt,
+          b17HnqChildVsa: B17CxmLocalizedTextViewPra(
+            'Later'.tr,
+            b17RvxFontSizeQle: 14.sp,
+            b17DtkColorZma: const Color(0xff555978),
+            b17FefDecorationJie: TextDecoration.underline,
+            b17HncFontWeightYsp: FontWeight.bold,
+          ),
+        ),
+        SizedBox(height: 25.h),
       ],
     );
   }

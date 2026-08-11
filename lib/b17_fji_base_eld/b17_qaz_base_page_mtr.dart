@@ -30,7 +30,7 @@ abstract class B17QazBasePageMtr<T extends B17FjeBaseControllerSak>
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.light,
-        systemNavigationBarColor: b17LxqNavigationBarColorVbi,
+        systemNavigationBarColor: Colors.white,
         systemNavigationBarIconBrightness: Brightness.dark,
         systemNavigationBarDividerColor: Colors.transparent,
       );
