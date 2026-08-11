@@ -14,20 +14,23 @@ import 'package:b17pdf/b17_fje_screens_ifj/b17_qxn_uninstall_vza/b17_kqm_uninsta
 import 'package:get/get.dart';
 
 abstract final class B17FjeNavigationAddressIfj {
-  static const String b17KfmLauncherRouteOqa = '/b16_launcher';
+  static const String b17KfmLauncherRouteOqa = '/b17_kfm_startup_oqa';
   static const String b17NqvOverlayPermissionRouteWza =
-      '/b16_open_overlay_permission';
-  static const String b17HqmNotificationRouteWza = '/b16_open_notification';
-  static const String b17VqmHomeRouteXza = '/b16_home';
-  static const String b17KqnDeleteFileRouteVze = '/b16_delete_file';
-  static const String b17HqmChooseLanguageRouteWza = '/b16_choose_language';
-  static const String b17QxmPreviewPdfRouteVza = '/b16_preview_pdf';
-  static const String b17VqnPreviewWordRouteTza = '/b16_preview_word';
-  static const String b17RqmPreviewExcelRouteWza = '/b16_preview_excel';
-  static const String b17KqmUnstallRouteWze = '/b16_unstall';
-  static const String b17VqnImagesResultRouteTza = '/b16_images_result';
-  static const String b17HqmProcessWaitingRouteWza = '/b16_process_waiting';
-  static const String b17PqnProcessResultRouteVze = '/b16_process_result';
+      '/b17_nqv_open_overlay_access_wza';
+  static const String b17HqmNotificationRouteWza = '/b17_hqm_open_notice_wza';
+  static const String b17VqmHomeRouteXza = '/b17_vqm_dashboard_xza';
+  static const String b17KqnDeleteFileRouteVze = '/b17_kqn_remove_document_vze';
+  static const String b17HqmChooseLanguageRouteWza =
+      '/b17_hqm_select_locale_wza';
+  static const String b17QxmPreviewPdfRouteVza = '/b17_qxm_viewer_pdf_vza';
+  static const String b17VqnPreviewWordRouteTza = '/b17_vqn_viewer_word_tza';
+  static const String b17RqmPreviewExcelRouteWza = '/b17_rqm_viewer_excel_wza';
+  static const String b17KqmUnstallRouteWze = '/b17_kqm_uninstall_wze';
+  static const String b17VqnImagesResultRouteTza =
+      '/b17_vqn_pictures_output_tza';
+  static const String b17HqmProcessWaitingRouteWza =
+      '/b17_hqm_task_progress_wza';
+  static const String b17PqnProcessResultRouteVze = '/b17_pqn_task_output_vze';
 
   static final List<GetPage<dynamic>> b17RxqPagesTma = [
     GetPage(name: b17KfmLauncherRouteOqa, page: B17FjeStartupPageIji.new),
