@@ -36,23 +36,17 @@ class B17KpnDashboardPageYra
     return GetBuilder<B17HqvDashboardControllerWze>(
       id: B17HqvDashboardControllerWze.b17PqmTabUpdateIdXve,
       builder: (B17HqvDashboardControllerWze b17VqmControllerXza) {
-        return Stack(
+        return Column(
           children: [
-            Container(
-              width: double.infinity,
-              height: double.infinity,
-              margin: EdgeInsets.only(bottom: 64.h),
+            Expanded(
               child: IndexedStack(
                 index: b17VqmControllerXza.b17KqmTabIndexWza,
                 children: b17VqmControllerXza.b17VqnPagesXre,
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: b17PqmBottomWidgetVze(
-                b17VqmControllerXza,
-                b17VqmContextWza,
-              ),
+            b17PqmBottomWidgetVze(
+              b17VqmControllerXza,
+              b17VqmContextWza,
             ),
           ],
         );
@@ -64,31 +58,30 @@ class B17KpnDashboardPageYra
     B17HqvDashboardControllerWze b17KqmControllerXva,
     BuildContext b17VqmcontextWza,
   ) {
-    return Stack(
-      alignment: Alignment.topCenter,
-      children: [
-        Container(
-          width: double.infinity,
-          height: 64.h,
-          margin: EdgeInsets.only(top: 15.w),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.2),
-                blurRadius: 5,
-                offset: const Offset(0, -0.5),
-              ),
-            ],
-          ),
-          child: Row(
+    return SizedBox(
+      width: double.infinity,
+      height: 92.h,
+      child: Stack(
+        alignment: Alignment.centerLeft,
+        children: [
+          B17PzrAssetPictureViewXcu("b17_hhk_home_bottom_bg_djw",b17DtvWidthQpl: double.infinity,b17RnxHeightKse: double.infinity,),
+          Row(
             children: [
               b17HqnItemWidgetVza(
                 B17XjoDashboardBottomTabTypeMyz.files,
                 b17KqmControllerXva,
                 b17VqmcontextWza,
               ),
-              SizedBox(width: 64.w),
+              B17MfwTapGuardViewQke(
+                b17JkcOnPressedXwu: () {
+                  B17KqmPicturesFuncWze.instance.b17BonToScanZjx();
+                },
+                b17HnqChildVsa: B17PzrAssetPictureViewXcu(
+                  'b17_fhe_main_capture_asset_ifi',
+                  b17DtvWidthQpl: 96.w,
+                  b17RnxHeightKse: 80.w,
+                ),
+              ),
               b17HqnItemWidgetVza(
                 B17XjoDashboardBottomTabTypeMyz.tools,
                 b17KqmControllerXva,
@@ -96,26 +89,8 @@ class B17KpnDashboardPageYra
               ),
             ],
           ),
-        ),
-        B17PzrAssetPictureViewXcu(
-          'b17_fjh_bottom_middle_background_asset_eif',
-          b17DtvWidthQpl: 80.w,
-          b17RnxHeightKse: 16.w,
-        ),
-        Container(
-          margin: EdgeInsets.only(top: 4.h),
-          child: B17MfwTapGuardViewQke(
-            b17JkcOnPressedXwu: () {
-              B17KqmPicturesFuncWze.instance.b17BonToScanZjx();
-            },
-            b17HnqChildVsa: B17PzrAssetPictureViewXcu(
-              'b17_fhe_main_capture_asset_ifi',
-              b17DtvWidthQpl: 64.w,
-              b17RnxHeightKse: 64.w,
-            ),
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -142,15 +117,16 @@ class B17KpnDashboardPageYra
                 b17PqmSelectedWza
                     ? b17VqmTypeXze.b17HqmIconSelectedWze
                     : b17VqmTypeXze.b17VqnIconUnselectedXra,
-                b17DtvWidthQpl: 28.w,
-                b17RnxHeightKse: 28.w,
+                b17DtvWidthQpl: 33.w,
+                b17RnxHeightKse: 33.w,
               ),
               B17CxmLocalizedTextViewPra(
                 b17VqmTypeXze.b17KqmTextVza.tr,
                 b17RvxFontSizeQle: 12.sp,
                 b17DtkColorZma: b17PqmSelectedWza
-                    ? const Color(0xfff4411f)
-                    : const Color(0xff858c92),
+                    ? const Color(0xff2897F3)
+                    : const Color(0xff9C9FAE),
+                b17HncFontWeightYsp: FontWeight.bold,
               ),
             ],
           ),

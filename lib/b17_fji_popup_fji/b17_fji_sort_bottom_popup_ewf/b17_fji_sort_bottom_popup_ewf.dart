@@ -49,19 +49,38 @@ class B17FjiSortBottomPopupEwf
           physics: NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
             var type = B17JffSortTypeRiq.values[index];
+            final bool b17KqnSelectedVze =
+                type == b17VqncontrollerXre.b17VqmSelectedTypeXza;
             return B17MfwTapGuardViewQke(
               b17JkcOnPressedXwu: () {
                 b17VqncontrollerXre.b17OteClickSortNcs(type);
               },
               b17HnqChildVsa: Container(
                 width: double.infinity,
-                height: 48.h,
+                height: 56.h,
                 alignment: Alignment.centerLeft,
+                margin: EdgeInsets.only(left: 16.w, right: 16.w),
                 padding: EdgeInsets.only(left: 16.w, right: 16.w),
+                decoration: BoxDecoration(
+                  color: b17KqnSelectedVze ? null : Colors.white,
+                  borderRadius: BorderRadius.circular(8.w),
+                  gradient: b17KqnSelectedVze
+                      ? LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            Color(0xffD12629).withOpacity(0.1),
+                            Colors.transparent,
+                          ],
+                        )
+                      : null,
+                ),
                 child: Row(
                   children: [
                     B17PzrAssetPictureViewXcu(
-                      type.b17KqnIconVxe,
+                      b17KqnSelectedVze
+                          ? type.b17KqnIconVxeSel
+                          : type.b17KqnIconVxe,
                       b17DtvWidthQpl: 24.w,
                       b17RnxHeightKse: 24.w,
                     ),
@@ -70,13 +89,15 @@ class B17FjiSortBottomPopupEwf
                       child: B17CxmLocalizedTextViewPra(
                         type.b17HqmTextWza.tr,
                         b17RvxFontSizeQle: 16.sp,
-                        b17DtkColorZma: Color(0xff4B4D56),
+                        b17DtkColorZma: b17KqnSelectedVze
+                            ? const Color(0xffD12629)
+                            : const Color(0xff242C3C),
                         b17HncFontWeightYsp: FontWeight.w500,
                         b17FzrOverflowXke: TextOverflow.ellipsis,
                       ),
                     ),
                     SizedBox(width: 8.w),
-                    if (type == b17VqncontrollerXre.b17VqmSelectedTypeXza)
+                    if (b17KqnSelectedVze)
                       B17PzrAssetPictureViewXcu(
                         "b17_fji_selection_sort_asset_efj",
                         b17DtvWidthQpl: 24.w,
@@ -96,11 +117,15 @@ class B17FjiSortBottomPopupEwf
     child: Stack(
       children: [
         Align(
-          child: B17CxmLocalizedTextViewPra(
-            "Sort By".tr,
-            b17RvxFontSizeQle: 20.sp,
-            b17DtkColorZma: Colors.black,
-            b17HncFontWeightYsp: FontWeight.bold,
+          alignment: Alignment.centerLeft,
+          child: Container(
+            margin: EdgeInsets.only(left: 16.w),
+            child: B17CxmLocalizedTextViewPra(
+              "Sort By".tr,
+              b17RvxFontSizeQle: 16.sp,
+              b17DtkColorZma: Colors.black,
+              b17HncFontWeightYsp: FontWeight.bold,
+            ),
           ),
         ),
         Align(

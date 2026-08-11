@@ -81,15 +81,15 @@ class _B17VqnDocumentsListSectionStateXre
           mainAxisSize: MainAxisSize.min,
           children: [
             B17PzrAssetPictureViewXcu(
-              b17VqncontrollerXre.b17PqnSortTypeVza.b17KqnIconVxe,
-              b17DtvWidthQpl: 20.w,
-              b17RnxHeightKse: 20.w,
+              "b17_jij_sort_icon_jiw",
+              b17DtvWidthQpl: 22.w,
+              b17RnxHeightKse: 22.w,
             ),
             SizedBox(width: 4.w),
             B17CxmLocalizedTextViewPra(
               "Sort".tr,
-              b17RvxFontSizeQle: 14.sp,
-              b17DtkColorZma: Color(0xff858C92),
+              b17RvxFontSizeQle: 12.sp,
+              b17DtkColorZma: Color(0xff555978),
               b17HncFontWeightYsp: FontWeight.w500,
             ),
           ],
@@ -105,14 +105,14 @@ class _B17VqnDocumentsListSectionStateXre
           children: [
             B17PzrAssetPictureViewXcu(
               "b17_fje_selection_asset_ifj",
-              b17DtvWidthQpl: 20.w,
-              b17RnxHeightKse: 20.w,
+              b17DtvWidthQpl: 22.w,
+              b17RnxHeightKse: 22.w,
             ),
             SizedBox(width: 4.w),
             B17CxmLocalizedTextViewPra(
               "Select".tr,
-              b17RvxFontSizeQle: 14.sp,
-              b17DtkColorZma: Color(0xff858C92),
+              b17RvxFontSizeQle: 12.sp,
+              b17DtkColorZma: Color(0xff555978),
               b17HncFontWeightYsp: FontWeight.w500,
             ),
           ],
@@ -131,7 +131,6 @@ class _B17VqnDocumentsListSectionStateXre
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12.w),
-        border: Border.all(width: 0.5.w, color: Color(0xffEBEBEB)),
       ),
       child: switch (b17VqncontrollerXre.b17PqmListStateXza) {
         B17QmvDocumentsListStateNza.noPermission =>
@@ -180,7 +179,7 @@ class _B17VqnDocumentsListSectionStateXre
         b17PqnControllerVze.b17VqmVisibleFilesWza.length +
         b17VqmNativeAdCountWza;
     b17PqnControllerVze.b17PqnSyncNativeAdListStateVze(b17HqmItemCountWza);
-    return ListView.builder(
+    return ListView.separated(
       itemCount: b17HqmItemCountWza,
       itemBuilder: (context, index) {
         if (b17QxmCanShowNativeAdVza &&
@@ -199,6 +198,8 @@ class _B17VqnDocumentsListSectionStateXre
             b17PqnControllerVze.b17VqmVisibleFilesWza[b17QxmFileIndexVza];
         return _b17RqmFileItemWidgetWza(b17PqnControllerVze, b17QxmFileVza);
       },
+      separatorBuilder: (BuildContext context, int index) =>
+          SizedBox(height: 8.h),
     );
   }
 
@@ -243,6 +244,13 @@ class _B17VqnDocumentsListSectionStateXre
         _ => 'b17_ouq_word_logo_asset_auf',
       };
 
+  Color _b17QxnFileBackgroundColorVza(FileToolsFileInfo b17QxmFileVza) =>
+      switch (b17QxmFileVza.type) {
+        FileToolsDocumentType.word => const Color(0xff2C90FE),
+        FileToolsDocumentType.excel => const Color(0xff01C87C),
+        _ => const Color(0xffF85758),
+      };
+
   String _b17PqmFileDetailWza(FileToolsFileInfo b17VqnFileTze) {
     final b17HqmDateWza = DateTime.fromMillisecondsSinceEpoch(
       b17VqnFileTze.updateTime ?? 0,
@@ -257,57 +265,58 @@ class _B17VqnDocumentsListSectionStateXre
     B17HqmDocumentsListSectionControllerWze b17PqnControllerVze,
     FileToolsFileInfo b17QxmFileVza,
   ) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        B17MfwTapGuardViewQke(
-          b17JkcOnPressedXwu: () =>
-              b17PqnControllerVze.b17XxoClickFileItemDgu(b17QxmFileVza),
-          b17HnqChildVsa: Container(
-            width: double.infinity,
-            height: 72.h,
-            alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: Row(
-              children: [
-                B17PzrAssetPictureViewXcu(
-                  _b17KqnFileIconVze(b17QxmFileVza),
-                  b17DtvWidthQpl: 32.w,
-                  b17RnxHeightKse: 32.w,
-                ),
-                SizedBox(width: 12.w),
-                Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      B17CxmLocalizedTextViewPra(
-                        b17QxmFileVza.name ?? '',
-                        b17RvxFontSizeQle: 14.sp,
-                        b17DtkColorZma: Colors.black,
-                        b17HncFontWeightYsp: FontWeight.bold,
-                        b17FzrOverflowXke: TextOverflow.ellipsis,
-                      ),
-                      B17CxmLocalizedTextViewPra(
-                        _b17PqmFileDetailWza(b17QxmFileVza),
-                        b17RvxFontSizeQle: 12.sp,
-                        b17DtkColorZma: const Color(0xff858C92),
-                        b17HncFontWeightYsp: FontWeight.w500,
-                        b17FzrOverflowXke: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+    return B17MfwTapGuardViewQke(
+      b17JkcOnPressedXwu: () =>
+          b17PqnControllerVze.b17XxoClickFileItemDgu(b17QxmFileVza),
+      b17HnqChildVsa: Container(
+        width: double.infinity,
+        height: 68.h,
+        alignment: Alignment.centerLeft,
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.w),
+          gradient: LinearGradient(
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+            colors: [
+              _b17QxnFileBackgroundColorVza(b17QxmFileVza).withOpacity(0.08),
+              Colors.transparent,
+            ],
           ),
         ),
-        Container(
-          width: double.infinity,
-          height: 0.5.h,
-          color: const Color(0xffEBEBEB),
+        child: Row(
+          children: [
+            B17PzrAssetPictureViewXcu(
+              _b17KqnFileIconVze(b17QxmFileVza),
+              b17DtvWidthQpl: 40.w,
+              b17RnxHeightKse: 40.w,
+            ),
+            SizedBox(width: 12.w),
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  B17CxmLocalizedTextViewPra(
+                    b17QxmFileVza.name ?? '',
+                    b17RvxFontSizeQle: 14.sp,
+                    b17DtkColorZma: Color(0xff242C3C),
+                    b17HncFontWeightYsp: FontWeight.bold,
+                    b17FzrOverflowXke: TextOverflow.ellipsis,
+                  ),
+                  B17CxmLocalizedTextViewPra(
+                    _b17PqmFileDetailWza(b17QxmFileVza),
+                    b17RvxFontSizeQle: 10.sp,
+                    b17DtkColorZma: const Color(0xff9C9FAE),
+                    b17HncFontWeightYsp: FontWeight.w500,
+                    b17FzrOverflowXke: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 
@@ -408,7 +417,12 @@ class _B17VqnDocumentsListSectionStateXre
           b17VqncontrollerXre.b17LozClickRequestPermissionOsz();
         },
         b17HnqChildVsa: Container(
-          padding: EdgeInsets.only(left: 36.w,right: 36.w,top: 8.h,bottom: 8.h),
+          padding: EdgeInsets.only(
+            left: 36.w,
+            right: 36.w,
+            top: 8.h,
+            bottom: 8.h,
+          ),
           decoration: BoxDecoration(
             color: Color(0xffD12629),
             borderRadius: BorderRadius.circular(42.w),
