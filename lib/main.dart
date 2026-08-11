@@ -45,7 +45,7 @@ class B17VqmApplicationXza extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(360, 780),
+      designSize: const Size(375, 790),
       builder: (BuildContext b17KqmContextWze, Widget? b17VqnChildXra) =>
           RefreshConfiguration(
             springDescription: const SpringDescription(

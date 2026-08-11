@@ -67,12 +67,8 @@ class B17DjeRequestAccessPopupIfj
               alignment: Alignment.center,
               margin: EdgeInsets.only(left: 24.w, right: 24.w),
               decoration: BoxDecoration(
+                color: Color(0xffD12629),
                 borderRadius: BorderRadius.circular(24.w),
-                gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [Color(0xffFF8E71), Color(0xffA77FF1)],
-                ),
               ),
               child: B17CxmLocalizedTextViewPra(
                 "Allow".tr,

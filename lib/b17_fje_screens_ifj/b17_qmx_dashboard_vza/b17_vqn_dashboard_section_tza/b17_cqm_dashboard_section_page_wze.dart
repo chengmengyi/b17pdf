@@ -37,22 +37,28 @@ class _B17PqnDashboardSectionStateVxa
     BuildContext b17HqmContextWza,
     B17RkpDashboardSectionControllerXwe b17VqmControllerXze,
   ) {
-    return GetBuilder<B17RkpDashboardSectionControllerXwe>(
-      init: b17VqmControllerXze,
-      builder: (b17QxmControllerVza) => Container(
-        padding: EdgeInsets.only(left: 16.w, right: 16.w),
-        child: Column(
-          children: [
-            _topWidget(b17QxmControllerVza),
-            SizedBox(height: 12.h),
-            _tabWidget(b17QxmControllerVza),
-            if (b17QxmControllerVza.b17QxnShowAddWidgetVza)
-              _addSmallWidget(b17QxmControllerVza),
-            SizedBox(height: 12.h),
-            _pageWidget(b17QxmControllerVza, b17HqmContextWza),
-          ],
+    return Stack(
+      alignment: Alignment.topCenter,
+      children: [
+        B17PzrAssetPictureViewXcu("b17_jdk_home_top_bg_dhiw",b17DtvWidthQpl: double.infinity,b17RnxHeightKse: 232.h,),
+        GetBuilder<B17RkpDashboardSectionControllerXwe>(
+          init: b17VqmControllerXze,
+          builder: (b17QxmControllerVza) => Container(
+            padding: EdgeInsets.only(left: 16.w, right: 16.w),
+            child: Column(
+              children: [
+                _topWidget(b17QxmControllerVza),
+                SizedBox(height: 12.h),
+                _tabWidget(b17QxmControllerVza),
+                if (b17QxmControllerVza.b17QxnShowAddWidgetVza)
+                  _addSmallWidget(b17QxmControllerVza),
+                SizedBox(height: 12.h),
+                _pageWidget(b17QxmControllerVza, b17HqmContextWza),
+              ],
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 
@@ -210,88 +216,54 @@ class _B17PqnDashboardSectionStateVxa
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                B17CxmLocalizedTextViewPra(
-                  "Files".tr,
-                  b17RvxFontSizeQle: 28.sp,
-                  b17DtkColorZma: Colors.black,
-                  b17HncFontWeightYsp: FontWeight.bold,
-                ),
-                Expanded(
-                  child: kDebugMode
-                      ? B17MfwTapGuardViewQke(
-                          b17JkcOnPressedXwu: () {
-                            b17VqmcontrollerXze.test();
-                          },
-                          b17HnqChildVsa: Container(
-                            width: double.infinity,
-                            height: 20.h,
-                          ),
-                        )
-                      : Container(),
-                ),
-              ],
-            ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 8.h),
             Container(
               width: double.infinity,
-              height: 48.h,
-              padding: EdgeInsets.all(1.w),
+              height: 46.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12.w),
-                gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [Color(0xffFF8E71), Color(0xffA77FF1)],
+                border: Border.all(
+                  width: 2.w,
+                  color: Color(0xff242C3C),
                 ),
               ),
-              child: Container(
-                width: double.infinity,
-                height: double.infinity,
-                alignment: Alignment.centerLeft,
-                padding: EdgeInsets.only(left: 12.w, right: 12.w),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12.w),
-                ),
-                child: Row(
-                  children: [
-                    B17PzrAssetPictureViewXcu(
-                      "b17_fjh_find_asset_ief",
-                      b17DtvWidthQpl: 24.w,
-                      b17RnxHeightKse: 24.w,
-                    ),
-                    SizedBox(width: 8.w),
-                    Expanded(
-                      child: TextField(
-                        enabled: true,
-                        textAlign: TextAlign.left,
-                        controller: b17VqmcontrollerXze.textEditingController,
-                        textInputAction: TextInputAction.search,
-                        style: TextStyle(fontSize: 16.sp, color: Colors.black),
-                        onTap: () {
-                          B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
-                            b17QxnPointTypeVza:
-                                B17JdwMetricTypeIjd.search_click,
-                          );
-                        },
-                        decoration: InputDecoration(
-                          counterText: '',
-                          isCollapsed: true,
-                          hintText: "Search...".tr,
-                          hintStyle: TextStyle(
-                            fontSize: 16.sp,
-                            color: Color(0xff858C92),
-                          ),
-                          border: InputBorder.none,
+              child: Row(
+                children: [
+                  SizedBox(width: 12.w,),
+                  Expanded(
+                    child: TextField(
+                      enabled: true,
+                      textAlign: TextAlign.left,
+                      controller: b17VqmcontrollerXze.textEditingController,
+                      textInputAction: TextInputAction.search,
+                      style: TextStyle(fontSize: 14.sp, color: Color(0xff202326)),
+                      onTap: () {
+                        B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
+                          b17QxnPointTypeVza:
+                              B17JdwMetricTypeIjd.search_click,
+                        );
+                      },
+                      decoration: InputDecoration(
+                        counterText: '',
+                        isCollapsed: true,
+                        hintText: "Search...".tr,
+                        hintStyle: TextStyle(
+                          fontSize: 14.sp,
+                          color: Color(0xff202326),
                         ),
-                        onChanged: b17VqmcontrollerXze.b17PqmSearchFilesXza,
-                        onSubmitted: b17VqmcontrollerXze.b17PqmSearchFilesXza,
+                        border: InputBorder.none,
                       ),
+                      onChanged: b17VqmcontrollerXze.b17PqmSearchFilesXza,
+                      onSubmitted: b17VqmcontrollerXze.b17PqmSearchFilesXza,
                     ),
-                  ],
-                ),
+                  ),
+                  B17PzrAssetPictureViewXcu(
+                    "b17_fjh_find_asset_ief",
+                    b17DtvWidthQpl: 22.w,
+                    b17RnxHeightKse: 22.w,
+                  ),
+                  SizedBox(width: 12.w,),
+                ],
               ),
             ),
           ],
