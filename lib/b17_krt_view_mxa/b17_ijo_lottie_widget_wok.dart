@@ -16,7 +16,7 @@ class B17IjoLottieWidgetWok extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Lottie.asset(
-    "assets/b17_fji_pdf_lottie_wji/$name.json",
+    "assets/b17_fji_pdf_animation_bundle_wji/$name.json",
     width: width,
     height: height,
     fit: boxFit,

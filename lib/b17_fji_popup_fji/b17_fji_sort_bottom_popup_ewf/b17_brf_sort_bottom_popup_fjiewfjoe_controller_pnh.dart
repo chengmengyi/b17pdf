@@ -1,0 +1,30 @@
+import 'package:b17pdf/b17_dji_func_jdo/b17_jwj_analytics_func_owd/b17_jdw_metric_type_ijd.dart';
+import 'package:b17pdf/b17_dji_func_jdo/b17_jwj_analytics_func_owd/b17_dji_analytics_func_wji.dart';
+import 'package:b17pdf/b17_fji_base_eld/b17_fje_base_controller_sak.dart';
+import 'package:b17pdf/b17_dji_func_jdo/b17_dji_navigation_func_ejf/b17_fje_navigation_func_ifj.dart';
+
+enum B17JffSortTypeRiq {
+  dateNew("Date(Newest First)", "b17_ihd_sort_newdate_icon_asset_kog"),
+  dateOld("Date(Oldest First)", "b17_wwb_sort_olddate_icon_asset_pce"),
+  nameAZ("Name(A-Z)", "b17_zqk_sort_az_icon_asset_zfw"),
+  nameZA("Name(Z-A)", "b17_gsu_sort_za_icon_asset_cui");
+
+  final String b17HqmTextWza;
+  final String b17KqnIconVxe;
+  const B17JffSortTypeRiq(this.b17HqmTextWza, this.b17KqnIconVxe);
+}
+
+class B17FjiSortBottomPopupControllerEwf extends B17FjeBaseControllerSak {
+  final B17JffSortTypeRiq b17VqmSelectedTypeXza;
+  B17FjiSortBottomPopupControllerEwf({required this.b17VqmSelectedTypeXza});
+
+  void b17OteClickSortNcs(B17JffSortTypeRiq b17PqnTypeVze) {
+    B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
+      b17QxnPointTypeVza: B17JdwMetricTypeIjd.file_sort_change,
+      b17KqmParametersWze: {"sort_type": b17PqnTypeVze.name},
+    );
+    B17FjeNavigationFuncIfj.b17FtyBackNwp<B17JffSortTypeRiq>(
+      b17NcgResultKqe: b17PqnTypeVze,
+    );
+  }
+}
