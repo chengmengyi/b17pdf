@@ -21,9 +21,9 @@ abstract class B17QazBasePageMtr<T extends B17FjeBaseControllerSak>
     return false;
   }
 
-  Color get b17LxqBackgroundColorVbi => Color(0xffF3F5F7);
+  Color get b17LxqBackgroundColorVbi => Colors.white;
 
-  Color get b17LxqNavigationBarColorVbi => Color(0xffF3F5F7);
+  Color get b17LxqNavigationBarColorVbi => Colors.white;
 
   SystemUiOverlayStyle get b17GfrSystemUiOverlayStyleTpo =>
       SystemUiOverlayStyle(

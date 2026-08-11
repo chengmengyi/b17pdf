@@ -32,7 +32,7 @@ class B17FjeStartupPageIji
         B17CxmLocalizedTextViewPra(
           'Your pocket file pro'.tr,
           b17RvxFontSizeQle: 16.sp,
-          b17DtkColorZma: Colors.black,
+          b17DtkColorZma: Color(0xff242C3C),
           b17HncFontWeightYsp: FontWeight.bold,
         ),
         const Spacer(),
@@ -44,43 +44,53 @@ class B17FjeStartupPageIji
             );
           },
         ),
-        SizedBox(height: 142.h),
+        SizedBox(height: 100.h),
       ],
     );
   }
 
   Widget b17PqnProgressWidgetVxe(double b17VqmProgressWza) {
-    return Container(
-      width: double.infinity,
-      height: 16.h,
-      margin: EdgeInsets.symmetric(horizontal: 62.w),
-      child: LayoutBuilder(
-        builder: (BuildContext b17HqmContextXve, BoxConstraints b17KqvBoxWza) {
-          final double b17PqmTrackWidthXre = b17KqvBoxWza.maxWidth - 4.w;
-          final double b17TqnSafeProgressVxa = b17VqmProgressWza.clamp(
-            0.0,
-            1.0,
-          );
-          return Container(
-            alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 2.w),
-            decoration: BoxDecoration(
-              color: const Color(0xffebebeb),
-              borderRadius: BorderRadius.circular(8.w),
-            ),
-            child: Container(
-              width: b17PqmTrackWidthXre * b17TqnSafeProgressVxa,
-              height: 12.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.w),
-                gradient: const LinearGradient(
-                  colors: [Color(0xffff8e71), Color(0xffa77ff1)],
-                ),
-              ),
-            ),
-          );
-        },
-      ),
+    final double b17TqnSafeProgressVxa = b17VqmProgressWza.clamp(0.0, 1.0);
+    final int b17KqnProgressPercentVze = (b17TqnSafeProgressVxa * 100).round();
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: double.infinity,
+          height: 6.h,
+          margin: EdgeInsets.symmetric(horizontal: 32.w),
+          child: LayoutBuilder(
+            builder:
+                (BuildContext b17HqmContextXve, BoxConstraints b17KqvBoxWza) {
+                  final double b17PqmTrackWidthXre =
+                      b17KqvBoxWza.maxWidth - 4.w;
+                  return Container(
+                    alignment: Alignment.centerLeft,
+                    decoration: BoxDecoration(
+                      color: const Color(0xffCAD5E0),
+                      borderRadius: BorderRadius.circular(8.w),
+                    ),
+                    child: Container(
+                      width: b17PqmTrackWidthXre * b17TqnSafeProgressVxa,
+                      height: 6.h,
+                      decoration: BoxDecoration(
+                        color: Color(0xffD12629),
+                        borderRadius: BorderRadius.circular(8.w),
+                      ),
+                    ),
+                  );
+                },
+          ),
+        ),
+        SizedBox(height: 10.h),
+        B17CxmLocalizedTextViewPra(
+          '$b17KqnProgressPercentVze%',
+          b17RvxFontSizeQle: 16.sp,
+          b17DtkColorZma: Color(0xff242C3C),
+          b17HncFontWeightYsp: FontWeight.bold,
+        ),
+      ],
     );
   }
 }

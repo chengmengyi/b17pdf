@@ -25,90 +25,82 @@ class B17KqnSelectLocalePageVze
   Widget b17RuzBuildContentNxe(
     BuildContext b17QxmContextVza,
     B17HqmSelectLocaleControllerWza b17KqnControllerVze,
-  ) => GetBuilder<B17HqmSelectLocaleControllerWza>(
-    init: b17KqnControllerVze,
-    global: false,
-    builder: (b17QxmControllerVza) => Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
-      child: SafeArea(
-        top: true,
-        bottom: false,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 16.h),
-            _b17VvdNativeAdWidgetWdp(),
-            SizedBox(height: 16.h),
-            _b17HqmTopWidgetWza(),
-            SizedBox(height: 40.h),
-            _b17KqnListWidgetVze(b17QxmControllerVza),
-            SizedBox(height: 40.h),
-            _b17VqnBottomWidgetTza(b17QxmControllerVza),
-            SizedBox(height: 16.h),
-          ],
+  ) => Stack(
+    alignment: Alignment.topCenter,
+    children: [
+      B17PzrAssetPictureViewXcu("b17_choose_locale_top_bg_dhi",b17DtvWidthQpl: double.infinity,b17RnxHeightKse: 264.h,),
+      GetBuilder<B17HqmSelectLocaleControllerWza>(
+        init: b17KqnControllerVze,
+        global: false,
+        builder: (b17QxmControllerVza) => Container(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: SafeArea(
+            top: true,
+            bottom: false,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _b17HqmTopWidgetWza(),
+                SizedBox(height: 10.h),
+                _b17KqnListWidgetVze(b17QxmControllerVza),
+                SizedBox(height: 10.h),
+                _b17VqnBottomWidgetTza(b17QxmControllerVza),
+                SizedBox(height: 16.h),
+                _b17VvdNativeAdWidgetWdp(),
+              ],
+            ),
+          ),
         ),
-      ),
-    ),
+      )
+    ],
   );
 
   Widget _b17KqnListWidgetVze(
     B17HqmSelectLocaleControllerWza b17QxmControllerVza,
   ) => Expanded(
-    child: Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12.w),
-        border: Border.all(width: 0.5.w, color: const Color(0xffE0E3EA)),
-      ),
-      child: B17VnyMediaPaddingViewQsl(
-        b17QzpChildMwa: ListView.builder(
-          controller: b17QxmControllerVza.b17QxmLanguageScrollControllerVza,
-          itemCount: b17QxmControllerVza.b17PqmLanguageListWza.length,
-          itemBuilder: (b17KqnContextVze, b17VqnIndexTza) {
-            final B17QxmLocaleItemVza b17PqmItemWza =
-                b17QxmControllerVza.b17PqmLanguageListWza[b17VqnIndexTza];
-            final b17HqmSelectedWza = b17QxmControllerVza.b17PqmIsSelectedXza(
-              b17PqmItemWza,
-            );
-            return B17MfwTapGuardViewQke(
-              b17JkcOnPressedXwu: () =>
-                  b17QxmControllerVza.b17HqmClickLanguageWza(b17PqmItemWza),
-              b17HnqChildVsa: SizedBox(
-                height: 56.h,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.w),
-                  child: Row(
-                    children: [
-                      B17PzrAssetPictureViewXcu(
-                        b17PqmItemWza.b17HqmIconWza,
-                        b17DtvWidthQpl: 32.w,
-                        b17RnxHeightKse: 32.w,
-                      ),
-                      SizedBox(width: 12.w),
-                      Expanded(
-                        child: B17CxmLocalizedTextViewPra(
-                          b17PqmItemWza.b17KqnNameVze,
-                          b17RvxFontSizeQle: 14.sp,
-                          b17DtkColorZma: const Color(0xff060E23),
-                        ),
-                      ),
-                      SizedBox(width: 12.w),
-                      B17PzrAssetPictureViewXcu(
-                        b17HqmSelectedWza
-                            ? 'b17_nmt_selected_icon_asset_zml'
-                            : 'b17_qug_unselected_icon_asset_jxa',
-                        b17DtvWidthQpl: 24.w,
-                        b17RnxHeightKse: 24.w,
-                      ),
-                    ],
+    child: B17VnyMediaPaddingViewQsl(
+      b17QzpChildMwa: ListView.builder(
+        controller: b17QxmControllerVza.b17QxmLanguageScrollControllerVza,
+        itemCount: b17QxmControllerVza.b17PqmLanguageListWza.length,
+        itemBuilder: (b17KqnContextVze, b17VqnIndexTza) {
+          final B17QxmLocaleItemVza b17PqmItemWza =
+              b17QxmControllerVza.b17PqmLanguageListWza[b17VqnIndexTza];
+          final b17HqmSelectedWza = b17QxmControllerVza.b17PqmIsSelectedXza(
+            b17PqmItemWza,
+          );
+          return B17MfwTapGuardViewQke(
+            b17JkcOnPressedXwu: () =>
+                b17QxmControllerVza.b17HqmClickLanguageWza(b17PqmItemWza),
+            b17HnqChildVsa: SizedBox(
+              height: 70.h,
+              child: Row(
+                children: [
+                  B17PzrAssetPictureViewXcu(
+                    b17PqmItemWza.b17HqmIconWza,
+                    b17DtvWidthQpl: 38.w,
+                    b17RnxHeightKse: 38.w,
                   ),
-                ),
+                  SizedBox(width: 12.w),
+                  Expanded(
+                    child: B17CxmLocalizedTextViewPra(
+                      b17PqmItemWza.b17KqnNameVze,
+                      b17RvxFontSizeQle: 14.sp,
+                      b17DtkColorZma: const Color(0xff090A0A),
+                    ),
+                  ),
+                  SizedBox(width: 12.w),
+                  B17PzrAssetPictureViewXcu(
+                    b17HqmSelectedWza
+                        ? 'b17_nmt_selected_icon_asset_zml'
+                        : 'b17_qug_unselected_icon_asset_jxa',
+                    b17DtvWidthQpl: 24.w,
+                    b17RnxHeightKse: 24.w,
+                  ),
+                ],
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     ),
   );
@@ -119,16 +111,11 @@ class B17KqnSelectLocalePageVze
     b17JkcOnPressedXwu: b17QxmControllerVza.b17PooClickOkUto,
     b17HnqChildVsa: Container(
       width: double.infinity,
-      height: 48.h,
+      height: 46.h,
       alignment: Alignment.center,
-      margin: EdgeInsets.symmetric(horizontal: 16.w),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(24.w),
-        gradient: const LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [Color(0xff06B3F2), Color(0xff002DF6)],
-        ),
+        color: Color(0xffD12629),
+        borderRadius: BorderRadius.circular(42.w),
       ),
       child: B17CxmLocalizedTextViewPra(
         'OK'.tr,
@@ -141,24 +128,22 @@ class B17KqnSelectLocalePageVze
 
   Widget _b17HqmTopWidgetWza() => Column(
     mainAxisSize: MainAxisSize.min,
-    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      B17PzrAssetPictureViewXcu(
-        'b17_nqm_locale_top_picture_asset_vza',
-        b17DtvWidthQpl: 72.w,
-        b17RnxHeightKse: 72.w,
-      ),
-      SizedBox(height: 12.h),
-      B17CxmLocalizedTextViewPra(
-        'Welcome'.tr,
-        b17RvxFontSizeQle: 32.sp,
-        b17DtkColorZma: Colors.black,
-        b17HncFontWeightYsp: FontWeight.bold,
+      Container(
+        width: double.infinity,
+        height: 56.h,
+        alignment: Alignment.center,
+        child:  B17CxmLocalizedTextViewPra(
+          'Choose Language'.tr,
+          b17RvxFontSizeQle: 16.sp,
+          b17DtkColorZma: Color(0xff242C3C),
+          b17HncFontWeightYsp: FontWeight.bold,
+        ),
       ),
       B17CxmLocalizedTextViewPra(
         'Choose your preferred language to get started.'.tr,
         b17RvxFontSizeQle: 16.sp,
-        b17DtkColorZma: const Color(0xff858C92),
+        b17DtkColorZma: const Color(0xff555978),
         b17HncFontWeightYsp: FontWeight.w500,
       ),
     ],

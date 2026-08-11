@@ -43,22 +43,22 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
   @override
   void onInit() {
     super.onInit();
-    // B17QxnStartupClickGateFuncVza.instance.b17QxnMarkLauncherStartedVza();
-    // _b17QxnResolveLaunchAdVza();
-    // B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqnUploadAdChanceVxe(
-    //   b17PqmAdSceneVzr: b17QxnLaunchAdSceneVza,
-    //   b17KqmAdPosIdVzr: b17KqmLaunchAdPosIdWze,
-    // );
-    // b17KqnProgressControllerVza =
-    //     AnimationController(vsync: this, duration: b17VqmLaunchDurationWxe)
-    //       ..addListener(b17RkqNotifyProgressVma)
-    //       ..addStatusListener(b17TqmHandleAnimationStatusXze)
-    //       ..forward();
-    // _b17PqnAdCheckStopwatchVze.start();
-    // _b17KqnAdCheckTimerVxe = Timer.periodic(
-    //   const Duration(milliseconds: 500),
-    //   (_) => _b17PqmCheckCachedAdXza(),
-    // );
+    B17QxnStartupClickGateFuncVza.instance.b17QxnMarkLauncherStartedVza();
+    _b17QxnResolveLaunchAdVza();
+    B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqnUploadAdChanceVxe(
+      b17PqmAdSceneVzr: b17QxnLaunchAdSceneVza,
+      b17KqmAdPosIdVzr: b17KqmLaunchAdPosIdWze,
+    );
+    b17KqnProgressControllerVza =
+        AnimationController(vsync: this, duration: b17VqmLaunchDurationWxe)
+          ..addListener(b17RkqNotifyProgressVma)
+          ..addStatusListener(b17TqmHandleAnimationStatusXze)
+          ..forward();
+    _b17PqnAdCheckStopwatchVze.start();
+    _b17KqnAdCheckTimerVxe = Timer.periodic(
+      const Duration(milliseconds: 500),
+      (_) => _b17PqmCheckCachedAdXza(),
+    );
   }
 
   void _b17QxnResolveLaunchAdVza() {

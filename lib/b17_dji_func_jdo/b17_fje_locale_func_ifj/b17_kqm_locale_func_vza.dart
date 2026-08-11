@@ -227,6 +227,7 @@ final class B17KqmLocaleFuncVza extends Translations {
       'All notifications': 'All notifications',
       'Update now': 'Update now',
       'Welcome': 'Welcome',
+      'Choose Language': 'Choose Language',
       'Choose your preferred language to get started.':
           'Choose your preferred language to get started.',
       'OK': 'OK',
@@ -382,6 +383,7 @@ final class B17KqmLocaleFuncVza extends Translations {
       'All notifications': 'Toutes les notifications',
       'Update now': 'Mettre à jour',
       'Welcome': 'Bienvenue',
+      'Choose Language': 'Choisir la langue',
       'Choose your preferred language to get started.':
           'Choisissez votre langue préférée pour commencer.',
       'OK': 'OK',
@@ -525,6 +527,7 @@ final class B17KqmLocaleFuncVza extends Translations {
       'All notifications': 'すべての通知',
       'Update now': '今すぐ更新',
       'Welcome': 'ようこそ',
+      'Choose Language': '言語を選択',
       'Choose your preferred language to get started.': '使用する言語を選択してください。',
       'OK': 'OK',
       'Color': '色',
@@ -664,6 +667,7 @@ final class B17KqmLocaleFuncVza extends Translations {
       'All notifications': '모든 알림',
       'Update now': '지금 업데이트',
       'Welcome': '환영합니다',
+      'Choose Language': '언어 선택',
       'Choose your preferred language to get started.': '시작하려면 선호하는 언어를 선택하세요.',
       'OK': '확인',
       'Color': '색상',
@@ -814,6 +818,7 @@ final class B17KqmLocaleFuncVza extends Translations {
       'All notifications': 'Alle Benachrichtigungen',
       'Update now': 'Jetzt aktualisieren',
       'Welcome': 'Willkommen',
+      'Choose Language': 'Sprache auswählen',
       'Choose your preferred language to get started.':
           'Wählen Sie Ihre bevorzugte Sprache aus.',
       'OK': 'OK',
@@ -973,6 +978,7 @@ final class B17KqmLocaleFuncVza extends Translations {
       'All notifications': 'Todas las notificaciones',
       'Update now': 'Actualizar ahora',
       'Welcome': 'Bienvenido',
+      'Choose Language': 'Elegir idioma',
       'Choose your preferred language to get started.':
           'Elige tu idioma preferido para comenzar.',
       'OK': 'Aceptar',
@@ -1129,6 +1135,7 @@ final class B17KqmLocaleFuncVza extends Translations {
       'All notifications': 'Tutte le notifiche',
       'Update now': 'Aggiorna ora',
       'Welcome': 'Benvenuto',
+      'Choose Language': 'Scegli la lingua',
       'Choose your preferred language to get started.':
           'Scegli la lingua che preferisci per iniziare.',
       'OK': 'OK',
@@ -1287,6 +1294,7 @@ final class B17KqmLocaleFuncVza extends Translations {
       'All notifications': 'Todas as notificações',
       'Update now': 'Atualizar agora',
       'Welcome': 'Bem-vindo',
+      'Choose Language': 'Escolher idioma',
       'Choose your preferred language to get started.':
           'Escolha seu idioma preferido para começar.',
       'OK': 'OK',
@@ -1444,6 +1452,7 @@ final class B17KqmLocaleFuncVza extends Translations {
       'All notifications': 'Все уведомления',
       'Update now': 'Обновить сейчас',
       'Welcome': 'Добро пожаловать',
+      'Choose Language': 'Выберите язык',
       'Choose your preferred language to get started.':
           'Выберите предпочитаемый язык, чтобы начать.',
       'OK': 'ОК',
@@ -1586,6 +1595,7 @@ final class B17KqmLocaleFuncVza extends Translations {
       'All notifications': '所有通知',
       'Update now': '立即更新',
       'Welcome': '歡迎',
+      'Choose Language': '選擇語言',
       'Choose your preferred language to get started.': '選擇偏好的語言以開始使用。',
       'OK': '確定',
       'Color': '顏色',
@@ -1720,6 +1730,7 @@ final class B17KqmLocaleFuncVza extends Translations {
       'All notifications': '所有通知',
       'Update now': '立即更新',
       'Welcome': '欢迎',
+      'Choose Language': '选择语言',
       'Choose your preferred language to get started.': '选择你偏好的语言以开始使用。',
       'OK': '确定',
       'Color': '颜色',
@@ -1860,6 +1871,7 @@ final class B17KqmLocaleFuncVza extends Translations {
       'All notifications': 'جميع الإشعارات',
       'Update now': 'التحديث الآن',
       'Welcome': 'مرحبًا',
+      'Choose Language': 'اختر اللغة',
       'Choose your preferred language to get started.':
           'اختر لغتك المفضلة للبدء.',
       'OK': 'موافق',
