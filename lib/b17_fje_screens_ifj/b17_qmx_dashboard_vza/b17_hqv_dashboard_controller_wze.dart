@@ -19,7 +19,11 @@ enum B17XjoDashboardBottomTabTypeMyz {
     'b17_dfe_main_selected_icon_asset_ife',
     'b17_dhw_main_unselected_icon_asset_idi',
   ),
-  tools('Tools', 'b17_djw_utility_selected_icon_asset_ijo', 'b17_djw_utility_unselected_icon_asset_ijo');
+  tools(
+    'Tools',
+    'b17_djw_utility_selected_icon_asset_ijo',
+    'b17_djw_utility_unselected_icon_asset_ijo',
+  );
 
   const B17XjoDashboardBottomTabTypeMyz(
     this.b17KqmTextVza,
@@ -33,7 +37,7 @@ enum B17XjoDashboardBottomTabTypeMyz {
 }
 
 class B17HqvDashboardControllerWze extends B17FjeBaseControllerSak {
-  static const String b17PqmTabUpdateIdXve = 'b16_home_tab';
+  static const String b17PqmTabUpdateIdXve = 'b17_pqm_dashboard_tab_xve';
 
   int b17KqmTabIndexWza = 0;
   bool _b17QxnCanExitAfterCommentVza = false, _showOpenNotificationPage = true;
