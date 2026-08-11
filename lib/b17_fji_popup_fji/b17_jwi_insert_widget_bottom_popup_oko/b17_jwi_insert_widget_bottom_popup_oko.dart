@@ -1,3 +1,4 @@
+import 'package:b17pdf/b17_dji_func_jdo/b17_fje_device_info_ifj.dart';
 import 'package:b17pdf/b17_fji_popup_fji/b17_jwi_insert_widget_bottom_popup_oko/b17_yik_insert_widget_bottom_popup_jwiokowdw_controller_lki.dart';
 import 'package:b17pdf/b17_dji_func_jdo/b17_qxn_insert_widget_func_vza/b17_kqm_insert_widget_func_vze.dart';
 import 'package:b17pdf/b17_fji_base_eld/b17_hqm_controller_widget_vza.dart';
@@ -26,7 +27,6 @@ class B17JwiInsertWidgetBottomPopupOko
   ) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -34,59 +34,64 @@ class B17JwiInsertWidgetBottomPopupOko
           topRight: Radius.circular(16.w),
         ),
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
+      child: Stack(
+        alignment: Alignment.topCenter,
         children: [
-          B17CxmLocalizedTextViewPra(
-            'Add Widget'.tr,
-            b17RvxFontSizeQle: 20.sp,
-            b17DtkColorZma: Colors.black,
-            b17HncFontWeightYsp: FontWeight.bold,
-          ),
-          SizedBox(height: 10.h),
-          B17CxmLocalizedTextViewPra(
-            'Add widget with one click to open files'.tr,
-            b17RvxFontSizeQle: 14.sp,
-            b17DtkColorZma: const Color(0xff4B5156),
-            b17PqmMaxLinesTva: 1,
-            b17FzrOverflowXke: TextOverflow.ellipsis,
-          ),
-          SizedBox(height: 12.h),
-          _b17IpmContentWidgetRmp(),
-          SizedBox(height: 20.h),
-          B17MfwTapGuardViewQke(
-            b17JkcOnPressedXwu: () {
-              b17VqnControllerXre.b17ZahClickAddZei();
-            },
-            b17HnqChildVsa: Container(
-              width: double.infinity,
-              height: 48.h,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24.w),
-                gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [Color(0xffFF8E71), Color(0xffA77FF1)],
+          B17PzrAssetPictureViewXcu("b17_add_widget_bg_hik",b17DtvWidthQpl: double.infinity,b17RnxHeightKse: 198.h,),
+          Container(
+            padding: EdgeInsets.all(16.w),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                B17CxmLocalizedTextViewPra(
+                  'Add Widget'.tr,
+                  b17RvxFontSizeQle: 18.sp,
+                  b17DtkColorZma: Colors.black,
+                  b17HncFontWeightYsp: FontWeight.bold,
                 ),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  B17PzrAssetPictureViewXcu(
-                    "b17_fwo_insert_icon_asset_dko",
-                    b17DtvWidthQpl: 24.w,
-                    b17RnxHeightKse: 24.w,
+                SizedBox(height: 10.h),
+                B17CxmLocalizedTextViewPra(
+                  'Add widget with one click to open files'.tr,
+                  b17RvxFontSizeQle: 14.sp,
+                  b17DtkColorZma: const Color(0xff555978),
+                  b17PqmMaxLinesTva: 1,
+                  b17FzrOverflowXke: TextOverflow.ellipsis,
+                ),
+                SizedBox(height: 12.h),
+                _b17IpmContentWidgetRmp(),
+                SizedBox(height: 20.h),
+                B17MfwTapGuardViewQke(
+                  b17JkcOnPressedXwu: () {
+                    b17VqnControllerXre.b17ZahClickAddZei();
+                  },
+                  b17HnqChildVsa: Container(
+                    width: double.infinity,
+                    height: 48.h,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Color(0xffD12629),
+                      borderRadius: BorderRadius.circular(24.w),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        B17PzrAssetPictureViewXcu(
+                          "b17_fwo_insert_icon_asset_dko",
+                          b17DtvWidthQpl: 24.w,
+                          b17RnxHeightKse: 24.w,
+                        ),
+                        SizedBox(width: 8.w),
+                        B17CxmLocalizedTextViewPra(
+                          "Add".tr,
+                          b17RvxFontSizeQle: 16.sp,
+                          b17DtkColorZma: Colors.white,
+                          b17HncFontWeightYsp: FontWeight.bold,
+                        ),
+                      ],
+                    ),
                   ),
-                  SizedBox(width: 8.w),
-                  B17CxmLocalizedTextViewPra(
-                    "Add".tr,
-                    b17RvxFontSizeQle: 16.sp,
-                    b17DtkColorZma: Colors.white,
-                    b17HncFontWeightYsp: FontWeight.bold,
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
@@ -96,10 +101,13 @@ class B17JwiInsertWidgetBottomPopupOko
 
   Widget _b17IpmContentWidgetRmp() => Container(
     width: double.infinity,
-    height: 152.h,
     decoration: BoxDecoration(
       color: Colors.white,
-      borderRadius: BorderRadius.circular(20.w),
+      borderRadius: BorderRadius.circular(12.w),
+      border: Border.all(
+        width: 1.w,
+        color: Color(0xffCAD5E0),
+      ),
       boxShadow: [
         BoxShadow(
           color: Colors.black.withValues(alpha: 0.2),
@@ -108,105 +116,89 @@ class B17JwiInsertWidgetBottomPopupOko
         ),
       ],
     ),
-    child: Stack(
-      alignment: Alignment.center,
-      children: [
-        B17PzrAssetPictureViewXcu(
-          "b17_fie_insert_widget_background_asset_jdi",
-          b17DtvWidthQpl: double.infinity,
-          b17RnxHeightKse: double.infinity,
-        ),
-        Container(
-          margin: EdgeInsets.only(left: 16.w, right: 16.w),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+    child: Container(
+      margin: EdgeInsets.all(16.w),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
             children: [
-              Container(
-                width: double.infinity,
-                height: 40.h,
-                padding: EdgeInsets.all(1.w),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.w),
-                  gradient: LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: [Color(0xffFF8E71), Color(0xffA77FF1)],
-                  ),
-                ),
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.only(left: 12.w, right: 12.w),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12.w),
-                  ),
-                  child: Row(
-                    children: [
-                      B17PzrAssetPictureViewXcu(
-                        "b17_fjh_find_asset_ief",
-                        b17DtvWidthQpl: 24.w,
-                        b17RnxHeightKse: 24.w,
-                      ),
-                      SizedBox(width: 8.w),
-                      B17CxmLocalizedTextViewPra(
-                        "Search...".tr,
-                        b17RvxFontSizeQle: 16.sp,
-                        b17DtkColorZma: Color(0xff858C92),
-                      ),
-                    ],
-                  ),
-                ),
+              B17PzrAssetPictureViewXcu(
+                'b17_fhu_logo_asset_efh',
+                b17DtvWidthQpl: 20.w,
+                b17RnxHeightKse: 20.w,
               ),
-              SizedBox(height: 16.h),
-              B17VnyMediaPaddingViewQsl(
-                b17QzpChildMwa: MasonryGridView.count(
-                  crossAxisCount: 4,
-                  mainAxisSpacing: 0,
-                  crossAxisSpacing: 8.w,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: B17AdwInsertWidgetTypeTpe.values.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    var type = B17AdwInsertWidgetTypeTpe.values[index];
-                    return Container(
-                      width: double.infinity,
-                      height: 64.h,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12.w),
-                        border: Border.all(
-                          width: 0.5.w,
-                          color: Color(0xffEBEBEB),
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          B17PzrAssetPictureViewXcu(
-                            type.icon,
-                            b17DtvWidthQpl: 24.w,
-                            b17RnxHeightKse: 24.w,
-                          ),
-                          SizedBox(height: 4.h),
-                          B17CxmLocalizedTextViewPra(
-                            type.text.tr,
-                            b17RvxFontSizeQle: 12.sp,
-                            b17DtkColorZma: Colors.black,
-                            b17HncFontWeightYsp: FontWeight.bold,
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+              SizedBox(width: 8.w,),
+              B17CxmLocalizedTextViewPra(
+                B17FjeDeviceInfoIfj.appName,
+                b17RvxFontSizeQle: 12.sp,
+                b17DtkColorZma: Color(0xff242C3C),
+                b17HncFontWeightYsp: FontWeight.bold,
               ),
             ],
           ),
-        ),
-      ],
+          SizedBox(height: 12.h,),
+          Container(
+            width: double.infinity,
+            height: 42.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12.w),
+              border: Border.all(
+                width: 2.w,
+                color: Color(0xff242C3C),
+              ),
+            ),
+            child: Row(
+              children: [
+                SizedBox(width: 12.w,),
+                B17CxmLocalizedTextViewPra(
+                  "Search...".tr,
+                  b17RvxFontSizeQle: 14.sp,
+                  b17DtkColorZma: Color(0xff555978),
+                ),
+                Spacer(),
+                B17PzrAssetPictureViewXcu(
+                  "b17_fjh_find_asset_ief",
+                  b17DtvWidthQpl: 22.w,
+                  b17RnxHeightKse: 22.w,
+                ),
+                SizedBox(width: 12.w,),
+              ],
+            ),
+          ),
+          SizedBox(height: 16.h),
+          B17VnyMediaPaddingViewQsl(
+            b17QzpChildMwa: MasonryGridView.count(
+              crossAxisCount: 4,
+              mainAxisSpacing: 0,
+              crossAxisSpacing: 8.w,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: B17AdwInsertWidgetTypeTpe.values.length,
+              itemBuilder: (BuildContext context, int index) {
+                var type = B17AdwInsertWidgetTypeTpe.values[index];
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    B17PzrAssetPictureViewXcu(
+                      type.icon,
+                      b17DtvWidthQpl: 36.w,
+                      b17RnxHeightKse: 36.w,
+                    ),
+                    SizedBox(height: 4.h),
+                    B17CxmLocalizedTextViewPra(
+                      type.text.tr,
+                      b17RvxFontSizeQle: 12.sp,
+                      b17DtkColorZma: Colors.black,
+                      b17HncFontWeightYsp: FontWeight.bold,
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }
