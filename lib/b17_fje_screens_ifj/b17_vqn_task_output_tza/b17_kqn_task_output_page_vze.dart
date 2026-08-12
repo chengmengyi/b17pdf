@@ -27,11 +27,11 @@ class B17KqnTaskOutputPageVze
     return Column(
       children: [
         _b17HqmTitleWza(b17KqmControllerXve),
-        SizedBox(height: 100.h),
+        SizedBox(height: 80.h),
         B17PzrAssetPictureViewXcu(
           "b17_ejw_task_result_top_asset_oeo",
-          b17DtvWidthQpl: 80.w,
-          b17RnxHeightKse: 80.w,
+          b17DtvWidthQpl: 196.w,
+          b17RnxHeightKse: 125.w,
         ),
         SizedBox(height: 20.h),
         B17CxmLocalizedTextViewPra(
@@ -43,14 +43,15 @@ class B17KqnTaskOutputPageVze
         SizedBox(height: 8.h),
         B17CxmLocalizedTextViewPra(
           'Your file is ready'.tr,
-          b17RvxFontSizeQle: 14.sp,
-          b17DtkColorZma: Color(0xff4B5156),
+          b17RvxFontSizeQle: 16.sp,
+          b17DtkColorZma: Color(0xff555978),
           b17HncFontWeightYsp: FontWeight.w500,
         ),
-        SizedBox(height: 50.h),
-        _b17WqsInfoWidgetVoz(b17KqmControllerXve),
         Spacer(),
+        _b17WqsInfoWidgetVoz(b17KqmControllerXve),
+        SizedBox(height: 18.h),
         _b17AgdBottomWidgetHkw(b17KqmControllerXve),
+        SizedBox(height: 46.h),
       ],
     );
   }
@@ -61,41 +62,18 @@ class B17KqnTaskOutputPageVze
     b17JkcOnPressedXwu: b17KqmcontrollerXve.b17OyxClickOpenWpt,
     b17HnqChildVsa: Container(
       width: double.infinity,
-      height: 60.h,
+      height: 46.h,
       alignment: Alignment.center,
-      padding: EdgeInsets.only(left: 16.w, right: 16.w),
+      margin: EdgeInsets.only(left: 16.w,right: 16.w),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(12.w),
-          topRight: Radius.circular(12.w),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.2),
-            blurRadius: 5,
-            offset: const Offset(0, -0.5),
-          ),
-        ],
+        color: Color(0xffD12629),
+        borderRadius: BorderRadius.circular(42.w),
       ),
-      child: Container(
-        width: double.infinity,
-        height: 44.h,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(22.w),
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: [Color(0xffFF8E71), Color(0xffA77FF1)],
-          ),
-        ),
-        child: B17CxmLocalizedTextViewPra(
-          "Open".tr,
-          b17RvxFontSizeQle: 16.sp,
-          b17DtkColorZma: Colors.white,
-          b17HncFontWeightYsp: FontWeight.bold,
-        ),
+      child: B17CxmLocalizedTextViewPra(
+        "Open".tr,
+        b17RvxFontSizeQle: 18.sp,
+        b17DtkColorZma: Colors.white,
+        b17HncFontWeightYsp: FontWeight.bold,
       ),
     ),
   );
@@ -109,16 +87,15 @@ class B17KqnTaskOutputPageVze
     padding: EdgeInsets.only(left: 16.w, right: 16.w),
     margin: EdgeInsets.only(left: 40.w, right: 40.w),
     decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(12.w),
-      border: Border.all(width: 0.5.w, color: Color(0xffEBEBEB)),
+      color: Color(0xffF3F3F4),
+      borderRadius: BorderRadius.circular(8.w),
     ),
     child: Row(
       children: [
         B17PzrAssetPictureViewXcu(
           "b17_gpf_pdf_logo_asset_tpd",
-          b17DtvWidthQpl: 32.w,
-          b17RnxHeightKse: 32.w,
+          b17DtvWidthQpl: 42.w,
+          b17RnxHeightKse: 42.w,
         ),
         SizedBox(width: 12.w),
         Expanded(
