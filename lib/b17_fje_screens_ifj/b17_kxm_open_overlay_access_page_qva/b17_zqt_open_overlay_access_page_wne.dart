@@ -92,7 +92,7 @@ class B17ZqtOpenOverlayAccessPageWne
                   SizedBox(width: 8.w),
                   Expanded(
                     child: B17CxmLocalizedTextViewPra(
-                      B17FjeDeviceInfoIfj.appName.tr,
+                      B17FjeDeviceInfoIfj.b17QxnApplicationNameVza.tr,
                       b17RvxFontSizeQle: 16.sp,
                       b17DtkColorZma: Colors.black,
                       b17HncFontWeightYsp: FontWeight.bold,

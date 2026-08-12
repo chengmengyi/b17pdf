@@ -59,13 +59,12 @@ dependencies:
   flutter_tba_info: 0.0.9
   flutter_app_lifecycle: 0.0.3
 #  flutter_check_adjust: 0.0.9
-  flutter_check_af_new: 0.0.1
+  flutter_check_af_new: 0.0.2
   flutter_pdf_risk_control_plugins: 0.0.2
   sqflite: 2.4.2
   dio: 5.8.0+1
   flutter_custom_facebook: 0.0.5
   flutter_local_notification_plugins: 0.2.1
-  flutter_set_defaults_app: 0.0.1
   flutter_add_widget_plugins: 0.0.2
   url_launcher: 6.3.2
   visibility_detector: 0.4.0+2

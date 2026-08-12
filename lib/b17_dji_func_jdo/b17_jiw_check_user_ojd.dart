@@ -42,10 +42,10 @@ class B17QxnUserCheckFuncVza {
     final String b17QxnDistinctIdVza = await FlutterTbaInfo.instance
         .getDistinctId();
     FlutterCheckAf.instance.init(
-      afKey: B17FjeDeviceInfoIfj.afKey,
+      afKey: B17FjeDeviceInfoIfj.b17PqnAppsFlyerKeyVze,
       afAppId: "",
       distinctId: b17QxnDistinctIdVza,
-      clockUrl: B17FjeDeviceInfoIfj.clockUrl,
+      clockUrl: B17FjeDeviceInfoIfj.b17HqmClockEndpointWza,
       cloakWhiteKey: 'claw',
       cloakData: <String, dynamic>{
         'baggage': await FlutterTbaInfo.instance.getBundleId(),
@@ -176,7 +176,9 @@ class B17QxnUserCheckFuncVza {
     if (b17QxnStoredConfigVza.isNotEmpty) {
       return b17QxnStoredConfigVza;
     }
-    return rootBundle.loadString(B17FjeDeviceInfoIfj.localReferrerConfig);
+    return rootBundle.loadString(
+      B17FjeDeviceInfoIfj.b17VqnLocalReferrerConfigTza,
+    );
   }
 
   void b17VqnRefreshUserStateTza() {

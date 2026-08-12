@@ -361,7 +361,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
 
   Future<String> _b17VmqLoadLocalAdConfigTextXtr() async {
     final String b17PqmEncryptedLocalAdConfigVzr = await rootBundle.loadString(
-      B17FjeDeviceInfoIfj.localAdConfig,
+      B17FjeDeviceInfoIfj.b17HqmLocalAdConfigWza,
     );
     return b17PqmEncryptedLocalAdConfigVzr;
   }
@@ -456,7 +456,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
           B17VqnAdSwitchCacheTza.b17KqmReadConfigWze();
       if (b17PqnSwitchConfigVze.isEmpty) {
         b17PqnSwitchConfigVze = await rootBundle.loadString(
-          B17FjeDeviceInfoIfj.localAdSwitch,
+          B17FjeDeviceInfoIfj.b17VqnLocalAdSwitchTza,
         );
       }
       final dynamic b17QxnSwitchJsonVza = jsonDecode(b17PqnSwitchConfigVze);
@@ -684,6 +684,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
       b17PqmAdInfoVzr.adId ?? "",
       b17PqmAdPlacementVzr.name,
       AFMediationNetwork.googleAdMob,
+      b17PqmCurrencyCodeVzr,
     );
 
     B17KqmFirebaseFuncWze.instance.b17KqmLogFacebookPurchaseWze(

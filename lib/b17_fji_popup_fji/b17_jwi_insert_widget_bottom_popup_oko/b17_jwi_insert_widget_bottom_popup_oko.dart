@@ -37,7 +37,11 @@ class B17JwiInsertWidgetBottomPopupOko
       child: Stack(
         alignment: Alignment.topCenter,
         children: [
-          B17PzrAssetPictureViewXcu("b17_add_widget_bg_hik",b17DtvWidthQpl: double.infinity,b17RnxHeightKse: 198.h,),
+          B17PzrAssetPictureViewXcu(
+            "b17_add_widget_bg_hik",
+            b17DtvWidthQpl: double.infinity,
+            b17RnxHeightKse: 198.h,
+          ),
           Container(
             padding: EdgeInsets.all(16.w),
             child: Column(
@@ -104,10 +108,7 @@ class B17JwiInsertWidgetBottomPopupOko
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(12.w),
-      border: Border.all(
-        width: 1.w,
-        color: Color(0xffCAD5E0),
-      ),
+      border: Border.all(width: 1.w, color: Color(0xffCAD5E0)),
       boxShadow: [
         BoxShadow(
           color: Colors.black.withValues(alpha: 0.2),
@@ -128,29 +129,26 @@ class B17JwiInsertWidgetBottomPopupOko
                 b17DtvWidthQpl: 20.w,
                 b17RnxHeightKse: 20.w,
               ),
-              SizedBox(width: 8.w,),
+              SizedBox(width: 8.w),
               B17CxmLocalizedTextViewPra(
-                B17FjeDeviceInfoIfj.appName,
+                B17FjeDeviceInfoIfj.b17QxnApplicationNameVza,
                 b17RvxFontSizeQle: 12.sp,
                 b17DtkColorZma: Color(0xff242C3C),
                 b17HncFontWeightYsp: FontWeight.bold,
               ),
             ],
           ),
-          SizedBox(height: 12.h,),
+          SizedBox(height: 12.h),
           Container(
             width: double.infinity,
             height: 42.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.w),
-              border: Border.all(
-                width: 2.w,
-                color: Color(0xff242C3C),
-              ),
+              border: Border.all(width: 2.w, color: Color(0xff242C3C)),
             ),
             child: Row(
               children: [
-                SizedBox(width: 12.w,),
+                SizedBox(width: 12.w),
                 B17CxmLocalizedTextViewPra(
                   "Search...".tr,
                   b17RvxFontSizeQle: 14.sp,
@@ -162,7 +160,7 @@ class B17JwiInsertWidgetBottomPopupOko
                   b17DtvWidthQpl: 22.w,
                   b17RnxHeightKse: 22.w,
                 ),
-                SizedBox(width: 12.w,),
+                SizedBox(width: 12.w),
               ],
             ),
           ),

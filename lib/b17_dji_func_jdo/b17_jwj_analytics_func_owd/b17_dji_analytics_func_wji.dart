@@ -216,7 +216,7 @@ class B17DjiAnalyticsFuncWji {
     final String b17QxnBundleIdVza = await FlutterTbaInfo.instance
         .getBundleId();
     final String b17KqmBrandWze = await FlutterTbaInfo.instance.getBrand();
-    return '${B17FjeDeviceInfoIfj.tbaUrl}?baggage=$b17QxnBundleIdVza&fall=$b17KqmBrandWze';
+    return '${B17FjeDeviceInfoIfj.b17KqmTbaEndpointWze}?baggage=$b17QxnBundleIdVza&fall=$b17KqmBrandWze';
   }
 
   addUserGroup(int userGroup) async {

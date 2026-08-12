@@ -69,7 +69,7 @@ class B17KqmOpenNoticePageXve
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     B17CxmLocalizedTextViewPra(
-                      B17FjeDeviceInfoIfj.appName.tr,
+                      B17FjeDeviceInfoIfj.b17QxnApplicationNameVza.tr,
                       b17RvxFontSizeQle: 14.sp,
                       b17DtkColorZma: Color(0xff242C3C),
                       b17HncFontWeightYsp: FontWeight.bold,
@@ -87,7 +87,7 @@ class B17KqmOpenNoticePageXve
             ],
           ),
         ),
-        SizedBox(height: 30.h,),
+        SizedBox(height: 30.h),
         B17HqvPulseViewZna(
           b17PxnChildVta: B17MfwTapGuardViewQke(
             b17JkcOnPressedXwu: () {

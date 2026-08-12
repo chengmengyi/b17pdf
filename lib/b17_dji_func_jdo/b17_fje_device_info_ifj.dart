@@ -1,43 +1,45 @@
 import 'package:flutter/foundation.dart';
 
 class B17FjeDeviceInfoIfj {
-  static final appName = "PDF Editer";
-  static final secretKey = "B16secretKeyKhuwi";
+  static const String b17QxnApplicationNameVza = "PDF Editer";
+  static const String b17KqmSecretKeyWze = "B17Keydjfeo";
   // static String adjustToken=kDebugMode?"4qedga65udq8":"";
-  static String afKey = kDebugMode
+  static String b17PqnAppsFlyerKeyVze = kDebugMode
       ? "Ed2FymhzHg3qqYpyH8Z9Eg"
       : "GR8a4XoJ2JWo7rVoYwVDCR";
 
-  static final clockUrl =
+  static const String b17HqmClockEndpointWza =
       "https://upturn.pdfeditorpaperforge.com/ashmen/emma/irish";
 
-  static const _localReferrerConfigDebug =
+  static const b17QxnLocalReferrerConfigDebugVza =
       "assets/b17_rxv_pdf_bundled_config_lrr/b17_xfv_pdf_bundled_referrer_mor/b17_jco_referrer_debug_config_tnq.json";
-  static const _localReferrerConfigRelease =
+  static const b17QxnLocalReferrerConfigReleaseVza =
       "assets/b17_rxv_pdf_bundled_config_lrr/b17_xfv_pdf_bundled_referrer_mor/b17_gcc_referrer_release_config_fyj.json";
-  static String localReferrerConfig = kDebugMode
-      ? _localReferrerConfigDebug
-      : _localReferrerConfigRelease;
+  static String b17VqnLocalReferrerConfigTza = kDebugMode
+      ? b17QxnLocalReferrerConfigDebugVza
+      : b17QxnLocalReferrerConfigReleaseVza;
 
-  static const _localAdConfigDebug =
+  static const b17KqnLocalAdConfigDebugVze =
       "assets/b17_rxv_pdf_bundled_config_lrr/b17_asd_pdf_bundled_ad_prt/b17_fkw_ad_debug_config_qmm.json";
-  static const _localAdConfigRelease =
+  static const b17KqnLocalAdConfigReleaseVze =
       "assets/b17_rxv_pdf_bundled_config_lrr/b17_asd_pdf_bundled_ad_prt/b17_ghl_ad_release_config_zzg.json";
-  static String localAdConfig = kDebugMode
-      ? _localAdConfigDebug
-      : _localAdConfigRelease;
+  static String b17HqmLocalAdConfigWza = kDebugMode
+      ? b17KqnLocalAdConfigDebugVze
+      : b17KqnLocalAdConfigReleaseVze;
 
-  static const _localAdSwitchDebug =
+  static const b17PqnLocalAdSwitchDebugVza =
       "assets/b17_rxv_pdf_bundled_config_lrr/b17_has_pdf_bundled_ad_switch_ctk/b17_olx_ad_switch_debug_config_nql.json";
-  static const _localAdSwitchRelease =
+  static const b17PqnLocalAdSwitchReleaseVza =
       "assets/b17_rxv_pdf_bundled_config_lrr/b17_has_pdf_bundled_ad_switch_ctk/b17_dff_ad_switch_release_config_ywa.json";
-  static String localAdSwitch = kDebugMode
-      ? _localAdSwitchDebug
-      : _localAdSwitchRelease;
+  static String b17VqnLocalAdSwitchTza = kDebugMode
+      ? b17PqnLocalAdSwitchDebugVza
+      : b17PqnLocalAdSwitchReleaseVza;
 
-  static const _tbaUrlDebug =
+  static const b17QxnTbaEndpointDebugVza =
       "https://test-playpen.pdfeditorpaperforge.com/tipple/chaise/mellon";
-  static const _tbaUrlRelease =
+  static const b17QxnTbaEndpointReleaseVza =
       "https://playpen.pdfeditorpaperforge.com/obdurate/impress/hoar";
-  static String tbaUrl = kDebugMode ? _tbaUrlDebug : _tbaUrlRelease;
+  static String b17KqmTbaEndpointWze = kDebugMode
+      ? b17QxnTbaEndpointDebugVza
+      : b17QxnTbaEndpointReleaseVza;
 }
