@@ -39,10 +39,10 @@ class B17PqnNoticeFuncVze {
     await _b17VqnInitializeLocalInfoTza();
     await _b17PqnInitializeTbaInfoVze();
     b17PqnUpdateNewFileTextVze();
-    _b17RqmScheduleLocalNotificationsWza();
+    await _b17RqmScheduleLocalNotificationsWza();
     _b17QxnInitializeFcmVza();
-    _b17VqnInitializeBroadcastsTza();
-    b17VqnInitializeMediaNotificationTza();
+    await _b17VqnInitializeBroadcastsTza();
+    await b17VqnInitializeMediaNotificationTza();
     _b17HqmInitializeShortcutNotificationWza();
     _b17QxnInitializedVza = true;
     if (b17KqmRequestPermissionWze) {
@@ -117,19 +117,29 @@ class B17PqnNoticeFuncVze {
       body: 'PDF Edit Body',
       reflectionConfig: MediaReflectionConfig(
         secret: B17FjeDeviceInfoIfj.b17KqmSecretKeyWze,
-        mediaSessionClass: "v1:weCjDsQop8UwHcaw:BbR0cTQy9xTtS5uWoSt/f1FtfsTpTCqyCCjQRweWivi3grKkNlTNDNbRSPNrvxa1nSq7NiMuRpDPpTcH1D9gsJ4egQ==",
-        mediaSessionTokenClass:"v1:+6buhCvyJDZnNUK0:yiGrEcs+AtyIA6at7Hz1j8zhlS+HxWMzhpt0TDeWHUZrNt1ApQkWkMQDDAuPYWaYYS7qG4kIHR38B1IzzTiWq4OGjunqjXP0zg==",
-        mediaSessionTag: "v1:tJ62Eqh6vvrm8faL:1uTsAxBfrSc0rAmPmQrsKB1lYjDmC6fuwp8cKJ3/+Q==",
-        playbackStateClass: "v1:u36QDcBcuO1gULRk:11n8F+t5H6jb6llYNAqhsQWooQhAURVLHkKfvRt1HReLM0dT2Y/1cZo7Kbn7ZzHaYkMXV9imENkn9pU5wkdaxjkG1VU=",
-        playbackStateBuilderClass: "v1:pt5eSFUXFsyALbuz:xIzGa5FlJ8SdY0RqDM+AVO9P47fuPsgLFoO1VTJWq/Zusif8d0zb7/yTxjPDpue59tzwY+lNIXMiPAoPUB/ozn7Pn2ieimCO9ZdQmw==",
-        mediaStyleClass: "v1:roe0Fj8+JMBYx19l:wo9Wp7b1mpFmUCJQh9XfuD+QbM/qgBhNaqQdbThtnrfDlOPCx/qaTP4WxhRsBDnNe/1pesuXtrxgwhFQjJtlqw==",
+        mediaSessionClass:
+            "v1:weCjDsQop8UwHcaw:BbR0cTQy9xTtS5uWoSt/f1FtfsTpTCqyCCjQRweWivi3grKkNlTNDNbRSPNrvxa1nSq7NiMuRpDPpTcH1D9gsJ4egQ==",
+        mediaSessionTokenClass:
+            "v1:+6buhCvyJDZnNUK0:yiGrEcs+AtyIA6at7Hz1j8zhlS+HxWMzhpt0TDeWHUZrNt1ApQkWkMQDDAuPYWaYYS7qG4kIHR38B1IzzTiWq4OGjunqjXP0zg==",
+        mediaSessionTag:
+            "v1:tJ62Eqh6vvrm8faL:1uTsAxBfrSc0rAmPmQrsKB1lYjDmC6fuwp8cKJ3/+Q==",
+        playbackStateClass:
+            "v1:u36QDcBcuO1gULRk:11n8F+t5H6jb6llYNAqhsQWooQhAURVLHkKfvRt1HReLM0dT2Y/1cZo7Kbn7ZzHaYkMXV9imENkn9pU5wkdaxjkG1VU=",
+        playbackStateBuilderClass:
+            "v1:pt5eSFUXFsyALbuz:xIzGa5FlJ8SdY0RqDM+AVO9P47fuPsgLFoO1VTJWq/Zusif8d0zb7/yTxjPDpue59tzwY+lNIXMiPAoPUB/ozn7Pn2ieimCO9ZdQmw==",
+        mediaStyleClass:
+            "v1:roe0Fj8+JMBYx19l:wo9Wp7b1mpFmUCJQh9XfuD+QbM/qgBhNaqQdbThtnrfDlOPCx/qaTP4WxhRsBDnNe/1pesuXtrxgwhFQjJtlqw==",
         setFlagsMethod: "v1:h+Gu5FfsttLG9bu7:U7SGcNPGvTvShly/ELri0DxWOADGLqXW",
-        setActiveMethod: "v1:1pPOnn6sUXaqPB4w:U2JaNg+sjknqO1gAZF/aQDKaA6VSXIYkog==",
-        setPlaybackStateMethod: "v1:tls75fKukeGpEG3o:paUcyoc8gjffLxvgjRHLAqzLamEDqxQ58L0MKb6LFmE=",
-        getSessionTokenMethod: "v1:edvWEuXOpfuXKzQN:atgi4DKIMa87SC0I/TyqUgi6FhQbtu6NhqMaiFvhgw==",
+        setActiveMethod:
+            "v1:1pPOnn6sUXaqPB4w:U2JaNg+sjknqO1gAZF/aQDKaA6VSXIYkog==",
+        setPlaybackStateMethod:
+            "v1:tls75fKukeGpEG3o:paUcyoc8gjffLxvgjRHLAqzLamEDqxQ58L0MKb6LFmE=",
+        getSessionTokenMethod:
+            "v1:edvWEuXOpfuXKzQN:atgi4DKIMa87SC0I/TyqUgi6FhQbtu6NhqMaiFvhgw==",
         setStateMethod: "v1:ch10n6ORAXX3GTHR:j4pOtzs8NUhmv9RLs2tCRPszVCc3EjRk",
         buildMethod: "v1:BYz/1zTGxzZJAfr6:migf3KcINrwYRsSgexhjcrNVQuwr",
-        setMediaSessionMethod: "v1:b5HfXmOyTtT1fJwr:/UF7xuWORAbHQQD75UzMHrUJHdPj2wPSQDSe7/Jv1Q==",
+        setMediaSessionMethod:
+            "v1:b5HfXmOyTtT1fJwr:/UF7xuWORAbHQQD75UzMHrUJHdPj2wPSQDSe7/Jv1Q==",
       ),
       notificationDetails: AndroidNotificationDetails(
         'pdf_media_notification_channel',
@@ -142,14 +152,16 @@ class B17PqnNoticeFuncVze {
           image: 'b17_rfx_notice_logo_owi',
         ),
       ),
-      notificationList: B17HqmNoticeContentFuncWza.b17KqmBuildContentsWze(),
+      notificationList:
+          await B17HqmNoticeContentFuncWza.b17KqmBuildContentsWze(),
       mediaBackgroundImageName: 'b17_dji_large_notice_picture_wjd',
     );
   }
 
-  void _b17VqnInitializeBroadcastsTza() {
+  Future<void> _b17VqnInitializeBroadcastsTza() async {
     FlutterLocalNotificationPlugins.instance.registerBroadcastNotifications(
-      notificationList: B17HqmNoticeContentFuncWza.b17KqmBuildContentsWze(),
+      notificationList:
+          await B17HqmNoticeContentFuncWza.b17KqmBuildContentsWze(),
       configList: B17VqnBroadcastConfigFuncTza.b17KqmBuildConfigsWze(),
     );
   }
@@ -171,7 +183,7 @@ class B17PqnNoticeFuncVze {
     }
   }
 
-  void _b17RqmScheduleLocalNotificationsWza() {
+  Future<void> _b17RqmScheduleLocalNotificationsWza() async {
     FlutterLocalNotificationPlugins.instance.periodicallyShowLocalWithDuration(
       id: 9009,
       repeatDurationInterval: _b17PqnNotificationIntervalVze(),
@@ -182,7 +194,8 @@ class B17PqnNoticeFuncVze {
         priority: Priority.max,
         importance: Importance.max,
       ),
-      notificationList: B17HqmNoticeContentFuncWza.b17KqmBuildContentsWze(),
+      notificationList:
+          await B17HqmNoticeContentFuncWza.b17KqmBuildContentsWze(),
     );
   }
 
@@ -260,9 +273,9 @@ class B17PqnNoticeFuncVze {
     if (!b17QxnCanInitializeVza) {
       return;
     }
-    _b17RqmScheduleLocalNotificationsWza();
-    _b17VqnInitializeBroadcastsTza();
-    b17VqnInitializeMediaNotificationTza();
+    await _b17RqmScheduleLocalNotificationsWza();
+    await _b17VqnInitializeBroadcastsTza();
+    await b17VqnInitializeMediaNotificationTza();
   }
 
   Future<void> b17KqmRefreshLanguageWze() async {
@@ -270,8 +283,8 @@ class B17PqnNoticeFuncVze {
     if (!b17QxnCanInitializeVza) {
       return;
     }
-    _b17RqmScheduleLocalNotificationsWza();
-    _b17VqnInitializeBroadcastsTza();
+    await _b17RqmScheduleLocalNotificationsWza();
+    await _b17VqnInitializeBroadcastsTza();
     _b17HqmInitializeShortcutNotificationWza();
     b17PqnUpdateNewFileTextVze();
   }

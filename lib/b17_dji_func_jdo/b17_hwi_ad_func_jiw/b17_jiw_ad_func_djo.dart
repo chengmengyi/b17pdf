@@ -611,7 +611,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
         "ad_code_id": b17KqmAdInfoVzr.adId,
         "ad_pos_id": b17VmqAdPosIdXtr.name,
         "ad_network": b17VmqAdNetworkXtr,
-        "ad_source_client": b17PqmAdSourceNameVzr,
+        "ad_source_client": b17KqmAdInfoVzr.adPlat,
       },
     );
   }
@@ -638,7 +638,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
         "ad_code_id": b17KqmAdInfoVzr.adId,
         "ad_pos_id": b17VmqAdPosIdXtr.name,
         "ad_network": b17VmqAdNetworkXtr,
-        "ad_source_client": b17PqmAdSourceNameVzr,
+        "ad_source_client": b17KqmAdInfoVzr.adPlat,
       },
     );
   }
@@ -743,7 +743,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
         "ad_format": b17KqmAdInfoVzr.adType,
         "ad_code_id": b17KqmAdInfoVzr.adId,
         "error_message": b17PqmFailReasonVzr,
-        "ad_source_client": b17KqmAdSourceNameVzr,
+        "ad_source_client": b17KqmAdInfoVzr.adPlat,
         "ad_network": b17VmqAdNetworkXtr,
         "load_time": loadDurationSeconds,
       },
@@ -785,7 +785,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
         "scene": b17PqmAdPlacementVzr.name,
         "ad_format": b17KqmAdInfoVzr.adType,
         "ad_code_id": b17KqmAdInfoVzr.adId,
-        "ad_source_client": b17PqmAdSourceNameVzr,
+        "ad_source_client": b17KqmAdInfoVzr.adPlat,
         "ad_network": b17VmqAdNetworkXtr,
         "load_time": loadDurationSeconds,
       },
@@ -815,7 +815,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
         "ad_code_id": b17KqmAdInfoVzr.adId,
         "ad_pos_id": b17VmqAdPosIdXtr.name,
         "ad_network": b17VmqAdNetworkXtr,
-        "ad_source_client": b17PqmAdSourceNameVzr,
+        "ad_source_client": b17KqmAdInfoVzr.adPlat,
         "error_message": b17KqmErrorMessageVzr,
       },
     );
@@ -848,8 +848,8 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
         "ad_code_id": b17KqmAdInfoVzr.adId,
         "ad_pos_id": b17VmqAdPosIdXtr.name,
         "ad_network": b17VmqAdNetworkXtr,
-        "ad_source_client": b17PqmAdSourceNameVzr,
-        "ad_source": b17PqmAdSourceNameVzr,
+        "ad_source_client": b17KqmAdInfoVzr.adPlat,
+        "ad_source": B17KqmFirebaseFuncWze.instance.b17AdSource,
       },
     );
   }
