@@ -115,8 +115,8 @@ class B17RqmTaskProgressPageXze
                     child: Center(
                       child: B17PzrAssetPictureViewXcu(
                         'b17_wjo_return_icon_asset_mvj',
-                        b17DtvWidthQpl: 24.w,
-                        b17RnxHeightKse: 24.w,
+                        b17DtvWidthQpl: 33.w,
+                        b17RnxHeightKse: 33.w,
                       ),
                     ),
                   ),

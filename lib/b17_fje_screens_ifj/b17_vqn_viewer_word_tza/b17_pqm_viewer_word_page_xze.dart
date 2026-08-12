@@ -96,7 +96,7 @@ class B17PqmViewerWordPageXze
                 onTap: b17QxmControllerVza.b17AckClickEditEif,
                 color: b17QxmControllerVza.b17QxmIsEditingVza
                     ? const Color(0xff858C92)
-                    : const Color(0xff067BF2),
+                    : const Color(0xffD12629),
               ),
             ),
             if (b17QxmControllerVza.b17QxmIsEditingVza) SizedBox(width: 8.w),
@@ -107,7 +107,7 @@ class B17PqmViewerWordPageXze
                       ? 'Saving...'.tr
                       : 'Save'.tr,
                   onTap: b17QxmControllerVza.b17IedClickSaveJkt,
-                  color: const Color(0xff067BF2),
+                  color: const Color(0xffD12629),
                 ),
               ),
           ],
@@ -153,8 +153,8 @@ class B17PqmViewerWordPageXze
                     child: Center(
                       child: B17PzrAssetPictureViewXcu(
                         'b17_wjo_return_icon_asset_mvj',
-                        b17DtvWidthQpl: 24.w,
-                        b17RnxHeightKse: 24.w,
+                        b17DtvWidthQpl: 33.w,
+                        b17RnxHeightKse: 33.w,
                       ),
                     ),
                   ),

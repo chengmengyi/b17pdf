@@ -233,53 +233,6 @@ class B17KqnViewerPdfPageVze
           ),
         ),
         SizedBox(height: 10.h),
-        Row(
-          children: [
-            SizedBox(width: 16.w),
-            B17MfwTapGuardViewQke(
-              b17JkcOnPressedXwu: b17QxmControllerVza.b17EliClickUndoLmw,
-              b17HnqChildVsa: B17PzrAssetPictureViewXcu(
-                'b17_fje_revert_icon_asset_ifj',
-                b17DtvWidthQpl: 24.w,
-                b17RnxHeightKse: 24.w,
-              ),
-            ),
-            SizedBox(width: 16.w),
-            B17MfwTapGuardViewQke(
-              b17JkcOnPressedXwu: b17QxmControllerVza.b17NirClickRedoQwq,
-              b17HnqChildVsa: B17PzrAssetPictureViewXcu(
-                'b17_jij_repeat_icon_asset_fio',
-                b17DtvWidthQpl: 24.w,
-                b17RnxHeightKse: 24.w,
-              ),
-            ),
-            const Spacer(),
-            B17MfwTapGuardViewQke(
-              b17JkcOnPressedXwu: b17QxmControllerVza.b17IedClickSaveJkt,
-              b17HnqChildVsa: Container(
-                width: 140.w,
-                height: 44.h,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: const Color(0xff067BF2),
-                  borderRadius: BorderRadius.circular(22.w),
-                ),
-                child: B17CxmLocalizedTextViewPra(
-                  b17QxmControllerVza.b17PqmSavingWza
-                      ? 'Saving...'.tr
-                      : 'Save'.tr,
-                  b17RvxFontSizeQle: 16.sp,
-                  b17DtkColorZma: Colors.white,
-                  b17HncFontWeightYsp: FontWeight.bold,
-                ),
-              ),
-            ),
-            SizedBox(width: 16.w),
-          ],
-        ),
-        SizedBox(height: 8.h),
-        const Divider(height: 0.5),
-        SizedBox(height: 8.h),
         SizedBox(
           height: 44.h,
           child: Row(
@@ -290,33 +243,22 @@ class B17KqnViewerPdfPageVze
                 child: B17MfwTapGuardViewQke(
                   b17JkcOnPressedXwu: () =>
                       b17QxmControllerVza.b17KqnSelectToolVze(b17KqnTypeVze),
-                  b17HnqChildVsa: Container(
-                    height: 44.h,
-                    margin: EdgeInsets.symmetric(horizontal: 4.w),
-                    padding: EdgeInsets.all(1.5.w),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(22.w),
-                      gradient: b17VqnSelectedTza
-                          ? const LinearGradient(
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                              colors: [Color(0xffFF8E71), Color(0xffA77FF1)],
-                            )
-                          : null,
-                    ),
+                  b17HnqChildVsa: Center(
                     child: Container(
-                      width: double.infinity,
-                      height: double.infinity,
-                      alignment: Alignment.center,
+                      width: 38.w,
+                      height: 38.w,
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(22.w),
+                        borderRadius: BorderRadius.circular(5.w),
+                        border: b17VqnSelectedTza?
+                        Border.all(
+                          width: 1.w,
+                          color: Color(0xffD12629),
+                        ):null,
                       ),
                       child: B17PzrAssetPictureViewXcu(
                         b17KqnTypeVze.b17KqnIconVze,
-                        b17DtvWidthQpl: 28.w,
-                        b17RnxHeightKse: 28.w,
+                        b17DtvWidthQpl: 38.w,
+                        b17RnxHeightKse: 38.w,
                       ),
                     ),
                   ),
@@ -324,6 +266,56 @@ class B17KqnViewerPdfPageVze
               );
             }).toList(),
           ),
+        ),
+        SizedBox(height: 8.h),
+        Row(
+          children: [
+            SizedBox(width: 16.w),
+            B17MfwTapGuardViewQke(
+              b17JkcOnPressedXwu: b17QxmControllerVza.b17EliClickUndoLmw,
+              b17HnqChildVsa: B17PzrAssetPictureViewXcu(
+                'b17_fje_revert_icon_asset_ifj',
+                b17DtvWidthQpl: 30.w,
+                b17RnxHeightKse: 30.w,
+              ),
+            ),
+            SizedBox(width: 10.w),
+            B17MfwTapGuardViewQke(
+              b17JkcOnPressedXwu: b17QxmControllerVza.b17NirClickRedoQwq,
+              b17HnqChildVsa: B17PzrAssetPictureViewXcu(
+                'b17_jij_repeat_icon_asset_fio',
+                b17DtvWidthQpl: 30.w,
+                b17RnxHeightKse: 30.w,
+              ),
+            ),
+            const Spacer(),
+            B17MfwTapGuardViewQke(
+              b17JkcOnPressedXwu: b17QxmControllerVza.b17IedClickSaveJkt,
+              b17HnqChildVsa: Container(
+                padding: EdgeInsets.only(left: 34.w,right: 34.w,top: 6.h,bottom: 6.h),
+                decoration: BoxDecoration(
+                  color: const Color(0xffD12629),
+                  borderRadius: BorderRadius.circular(22.w),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    B17PzrAssetPictureViewXcu("b17_save_icon_djwi",b17DtvWidthQpl: 25.w,b17RnxHeightKse: 25.w,),
+                    SizedBox(width: 4.w,),
+                    B17CxmLocalizedTextViewPra(
+                      b17QxmControllerVza.b17PqmSavingWza
+                          ? 'Saving...'.tr
+                          : 'Save'.tr,
+                      b17RvxFontSizeQle: 16.sp,
+                      b17DtkColorZma: Colors.white,
+                      b17HncFontWeightYsp: FontWeight.bold,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(width: 16.w),
+          ],
         ),
         SizedBox(height: 8.h),
       ],
@@ -349,8 +341,8 @@ class B17KqnViewerPdfPageVze
                     child: Center(
                       child: B17PzrAssetPictureViewXcu(
                         'b17_wjo_return_icon_asset_mvj',
-                        b17DtvWidthQpl: 24.w,
-                        b17RnxHeightKse: 24.w,
+                        b17DtvWidthQpl: 33.w,
+                        b17RnxHeightKse: 33.w,
                       ),
                     ),
                   ),
