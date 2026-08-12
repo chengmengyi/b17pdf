@@ -11,9 +11,8 @@
     android:paddingBottom="10dp">
 
     <ImageView
-        android:id="@+id/apex09_notify_logo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
         android:scaleType="centerCrop"
         android:src="@drawable/b17_rfx_notice_logo_owi" />
 

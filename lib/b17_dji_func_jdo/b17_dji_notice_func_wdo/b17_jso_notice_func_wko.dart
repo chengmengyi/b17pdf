@@ -90,9 +90,9 @@ class B17PqnNoticeFuncVze {
   void _b17HqmInitializeShortcutNotificationWza() {
     FlutterLocalNotificationPlugins.instance.showPersistentShortcutNotification(
       homeText: 'Home'.tr,
-      mergeText: 'Scan'.tr,
-      importText: 'Word to PDF'.tr,
-      convertText: 'Image to PDF'.tr,
+      mergeText: 'Search'.tr,
+      importText: 'Scan'.tr,
+      convertText: 'Convert'.tr,
       homeIcon: 'b17_hhv_func_vgc',
       mergeIcon: 'b17_aua_func_pxg',
       importIcon: 'b17_qmz_func_word_rbf',
