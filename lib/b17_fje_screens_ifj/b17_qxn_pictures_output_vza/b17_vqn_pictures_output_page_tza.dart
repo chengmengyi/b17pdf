@@ -62,7 +62,7 @@ class B17VqnPicturesOutputPageTza
       children: [
         SizedBox(height: 8.h),
         SizedBox(
-          height: 88.h,
+          height: 78.h,
           child: ListView.separated(
             controller: b17KqmcontrollerXve.b17PqnThumbnailControllerVze,
             itemCount: b17KqmcontrollerXve.b17QxnImagePathsVza.length,
@@ -74,7 +74,7 @@ class B17VqnPicturesOutputPageTza
                   b17KqmcontrollerXve.b17VqnSelectImageTza(b17KqnIndexVze);
                 },
                 b17HnqChildVsa: Container(
-                  width: 72.w,
+                  width: 60.w,
                   decoration: BoxDecoration(
                     color: const Color(0xffF3F5F7),
                     borderRadius: BorderRadius.circular(3.w),
@@ -103,8 +103,8 @@ class B17VqnPicturesOutputPageTza
                         ),
                       ),
                       Positioned(
-                        right: 2.w,
-                        bottom: 2.h,
+                        top: 0,
+                        left: 0,
                         child: Container(
                           padding: EdgeInsets.symmetric(
                             horizontal: 5.w,
@@ -135,12 +135,12 @@ class B17VqnPicturesOutputPageTza
             B17MfwTapGuardViewQke(
               b17JkcOnPressedXwu: b17KqmcontrollerXve.b17RuaClickReplacePmb,
               b17HnqChildVsa: Container(
-                width: 64.w,
+                width: 92.w,
                 height: 64.w,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
+                  color: Color(0xffF5F6F9),
                   borderRadius: BorderRadius.circular(16.w),
-                  border: Border.all(width: 0.5.w, color: Color(0xffCFD6DC)),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -153,8 +153,8 @@ class B17VqnPicturesOutputPageTza
                     SizedBox(height: 4.h),
                     B17CxmLocalizedTextViewPra(
                       "Retake".tr,
-                      b17RvxFontSizeQle: 11.sp,
-                      b17DtkColorZma: Color(0xff858C92),
+                      b17RvxFontSizeQle: 14.sp,
+                      b17DtkColorZma: Color(0xff242C3C),
                       b17HncFontWeightYsp: FontWeight.w500,
                     ),
                   ],
@@ -165,12 +165,12 @@ class B17VqnPicturesOutputPageTza
             B17MfwTapGuardViewQke(
               b17JkcOnPressedXwu: b17KqmcontrollerXve.b17ZahClickAddZei,
               b17HnqChildVsa: Container(
-                width: 64.w,
+                width: 92.w,
                 height: 64.w,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
+                  color: Color(0xffF5F6F9),
                   borderRadius: BorderRadius.circular(16.w),
-                  border: Border.all(width: 0.5.w, color: Color(0xffCFD6DC)),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -183,8 +183,8 @@ class B17VqnPicturesOutputPageTza
                     SizedBox(height: 4.h),
                     B17CxmLocalizedTextViewPra(
                       "Add".tr,
-                      b17RvxFontSizeQle: 11.sp,
-                      b17DtkColorZma: Color(0xff858C92),
+                      b17RvxFontSizeQle: 14.sp,
+                      b17DtkColorZma: Color(0xff242C3C),
                       b17HncFontWeightYsp: FontWeight.w500,
                     ),
                   ],
@@ -199,24 +199,24 @@ class B17VqnPicturesOutputPageTza
                 },
                 b17HnqChildVsa: Container(
                   width: double.infinity,
-                  height: 44.h,
+                  height: 64.h,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: Color(0xff067BF2),
-                    borderRadius: BorderRadius.circular(22.w),
+                    color: Color(0xffD12629),
+                    borderRadius: BorderRadius.circular(8.w),
                   ),
-                  child: Row(
+                  child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       B17PzrAssetPictureViewXcu(
-                        "b17_nmt_selected_icon_asset_zml",
-                        b17DtvWidthQpl: 24.w,
-                        b17RnxHeightKse: 24.w,
+                        "b17_sel_icon_white_djwi",
+                        b17DtvWidthQpl: 22.w,
+                        b17RnxHeightKse: 22.w,
                       ),
-                      SizedBox(width: 8.w),
+                      SizedBox(height: 2.w),
                       B17CxmLocalizedTextViewPra(
                         "Save PDF".tr,
-                        b17RvxFontSizeQle: 16.sp,
+                        b17RvxFontSizeQle: 14.sp,
                         b17DtkColorZma: Colors.white,
                         b17HncFontWeightYsp: FontWeight.bold,
                       ),

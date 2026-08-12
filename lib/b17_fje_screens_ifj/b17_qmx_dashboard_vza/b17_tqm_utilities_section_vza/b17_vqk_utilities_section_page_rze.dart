@@ -51,9 +51,17 @@ class _B17MqnUtilitiesSectionStateVxa
                 _b17KprTitleWidgetDnm(),
                 SizedBox(height: 10.h),
                 _b17DhnToolsWidgetQfv(),
-                SizedBox(height: 8.h),
+                Container(
+                  width: double.infinity,
+                  height: 8.h,
+                  color: Color(0xffF3F3F4),
+                ),
                 _b17CaqSystemWidgetUas(),
-                SizedBox(height: 8.h),
+                Container(
+                  width: double.infinity,
+                  height: 8.h,
+                  color: Color(0xffF3F3F4),
+                ),
                 _b17MvePreferenceWidgetRka(b17QxmControllerVza),
               ],
             ),
@@ -65,7 +73,7 @@ class _B17MqnUtilitiesSectionStateVxa
 
   Widget _b17DhnToolsWidgetQfv() => Container(
     width: double.infinity,
-    padding: EdgeInsets.all(8.w),
+    padding: EdgeInsets.all(16.w),
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(12.w),
@@ -77,10 +85,9 @@ class _B17MqnUtilitiesSectionStateVxa
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(width: 8.w),
             B17CxmLocalizedTextViewPra(
               "PDF tools".tr,
-              b17RvxFontSizeQle: 14.sp,
+              b17RvxFontSizeQle: 16.sp,
               b17DtkColorZma: Colors.black,
               b17HncFontWeightYsp: FontWeight.bold,
             ),
@@ -96,40 +103,20 @@ class _B17MqnUtilitiesSectionStateVxa
                 },
                 b17HnqChildVsa: Container(
                   width: double.infinity,
-                  height: 72.h,
-                  alignment: Alignment.centerLeft,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8.w),
-                    border: Border.all(width: 0.5.w, color: Color(0xffEBEBEB)),
-                  ),
-                  child: Row(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      SizedBox(width: 10.w),
                       B17PzrAssetPictureViewXcu(
                         "b17_fji_capture_to_pdf_asset_efo",
-                        b17DtvWidthQpl: 52.w,
-                        b17RnxHeightKse: 60.h,
+                        b17DtvWidthQpl: 42.w,
+                        b17RnxHeightKse: 42.h,
                       ),
-                      SizedBox(width: 10.w),
-                      Expanded(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            B17CxmLocalizedTextViewPra(
-                              "Scan To".tr,
-                              b17RvxFontSizeQle: 14.sp,
-                              b17DtkColorZma: Colors.black,
-                            ),
-                            B17CxmLocalizedTextViewPra(
-                              "PDF".tr,
-                              b17RvxFontSizeQle: 18.sp,
-                              b17DtkColorZma: Colors.black,
-                              b17HncFontWeightYsp: FontWeight.bold,
-                            ),
-                          ],
-                        ),
+                      SizedBox(height: 2.w),
+                      B17CxmLocalizedTextViewPra(
+                        "Scan To PDF".tr,
+                        b17RvxFontSizeQle: 12.sp,
+                        b17DtkColorZma: Colors.black,
+                        b17HncFontWeightYsp: FontWeight.bold,
                       ),
                     ],
                   ),
@@ -144,40 +131,20 @@ class _B17MqnUtilitiesSectionStateVxa
                 },
                 b17HnqChildVsa: Container(
                   width: double.infinity,
-                  height: 72.h,
-                  alignment: Alignment.centerLeft,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8.w),
-                    border: Border.all(width: 0.5.w, color: Color(0xffEBEBEB)),
-                  ),
-                  child: Row(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      SizedBox(width: 10.w),
                       B17PzrAssetPictureViewXcu(
                         "b17_fji_picture_to_pdf_asset_efj",
-                        b17DtvWidthQpl: 52.w,
-                        b17RnxHeightKse: 60.h,
+                        b17DtvWidthQpl: 42.w,
+                        b17RnxHeightKse: 42.h,
                       ),
-                      SizedBox(width: 10.w),
-                      Expanded(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            B17CxmLocalizedTextViewPra(
-                              "Image To".tr,
-                              b17RvxFontSizeQle: 14.sp,
-                              b17DtkColorZma: Colors.black,
-                            ),
-                            B17CxmLocalizedTextViewPra(
-                              "PDF".tr,
-                              b17RvxFontSizeQle: 18.sp,
-                              b17DtkColorZma: Colors.black,
-                              b17HncFontWeightYsp: FontWeight.bold,
-                            ),
-                          ],
-                        ),
+                      SizedBox(height: 2.w),
+                      B17CxmLocalizedTextViewPra(
+                        "Image To PDF".tr,
+                        b17RvxFontSizeQle: 12.sp,
+                        b17DtkColorZma: Colors.black,
+                        b17HncFontWeightYsp: FontWeight.bold,
                       ),
                     ],
                   ),
@@ -192,10 +159,9 @@ class _B17MqnUtilitiesSectionStateVxa
 
   Widget _b17CaqSystemWidgetUas() => Container(
     width: double.infinity,
-    padding: EdgeInsets.all(8.w),
+    padding: EdgeInsets.all(16.w),
     decoration: BoxDecoration(
       color: Colors.white,
-      borderRadius: BorderRadius.circular(12.w),
     ),
     child: Column(
       mainAxisSize: MainAxisSize.min,
@@ -204,10 +170,9 @@ class _B17MqnUtilitiesSectionStateVxa
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(width: 8.w),
             B17CxmLocalizedTextViewPra(
               "System".tr,
-              b17RvxFontSizeQle: 14.sp,
+              b17RvxFontSizeQle: 16.sp,
               b17DtkColorZma: Colors.black,
               b17HncFontWeightYsp: FontWeight.bold,
             ),
@@ -220,19 +185,14 @@ class _B17MqnUtilitiesSectionStateVxa
           },
           b17HnqChildVsa: Container(
             width: double.infinity,
-            height: 56.h,
+            height: 64.h,
             alignment: Alignment.centerLeft,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.w),
-              border: Border.all(width: 0.5.w, color: Color(0xffEBEBEB)),
-            ),
             child: Row(
               children: [
-                SizedBox(width: 12.w),
                 B17PzrAssetPictureViewXcu(
                   "b17_fji_insert_widget_icon_asset_ejf",
-                  b17DtvWidthQpl: 32.w,
-                  b17RnxHeightKse: 32.w,
+                  b17DtvWidthQpl: 38.w,
+                  b17RnxHeightKse: 38.w,
                 ),
                 SizedBox(width: 12.w),
                 Expanded(
@@ -240,13 +200,16 @@ class _B17MqnUtilitiesSectionStateVxa
                     "Add Widget".tr,
                     b17RvxFontSizeQle: 14.sp,
                     b17DtkColorZma: Colors.black,
-                    b17HncFontWeightYsp: FontWeight.w500,
+                    b17HncFontWeightYsp: FontWeight.bold,
                   ),
                 ),
-                B17PzrAssetPictureViewXcu(
-                  "b17_fjo_insert_icon_asset_efe",
-                  b17DtvWidthQpl: 24.w,
-                  b17RnxHeightKse: 24.w,
+                Container(
+                  padding: EdgeInsets.only(left: 30.w,right: 30.w,top: 6.h,bottom: 6.h),
+                  decoration: BoxDecoration(
+                    color: Color(0xffD12629),
+                    borderRadius: BorderRadius.circular(38.w),
+                  ),
+                  child: B17CxmLocalizedTextViewPra("Add".tr,b17RvxFontSizeQle: 12.sp,b17DtkColorZma: Colors.white,b17HncFontWeightYsp: FontWeight.bold,),
                 ),
               ],
             ),
@@ -260,10 +223,9 @@ class _B17MqnUtilitiesSectionStateVxa
     B17HpnUtilitiesSectionControllerXwe b17VqmcontrollerXre,
   ) => Container(
     width: double.infinity,
-    padding: EdgeInsets.all(8.w),
+    padding: EdgeInsets.all(16.w),
     decoration: BoxDecoration(
       color: Colors.white,
-      borderRadius: BorderRadius.circular(12.w),
     ),
     child: Column(
       mainAxisSize: MainAxisSize.min,
@@ -290,17 +252,12 @@ class _B17MqnUtilitiesSectionStateVxa
             width: double.infinity,
             height: 56.h,
             alignment: Alignment.centerLeft,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.w),
-              border: Border.all(width: 0.5.w, color: Color(0xffEBEBEB)),
-            ),
             child: Row(
               children: [
-                SizedBox(width: 12.w),
                 B17PzrAssetPictureViewXcu(
                   "b17_gmn_locale_icon_asset_bzl",
-                  b17DtvWidthQpl: 32.w,
-                  b17RnxHeightKse: 32.w,
+                  b17DtvWidthQpl: 38.w,
+                  b17RnxHeightKse: 38.w,
                 ),
                 SizedBox(width: 12.w),
                 Expanded(
@@ -308,22 +265,21 @@ class _B17MqnUtilitiesSectionStateVxa
                     "App Language".tr,
                     b17RvxFontSizeQle: 14.sp,
                     b17DtkColorZma: Colors.black,
-                    b17HncFontWeightYsp: FontWeight.w500,
+                    b17HncFontWeightYsp: FontWeight.bold,
                   ),
                 ),
                 B17CxmLocalizedTextViewPra(
                   b17VqmcontrollerXre.b17QxmCurrentLanguageNameVza,
-                  b17RvxFontSizeQle: 12.sp,
-                  b17DtkColorZma: Color(0xff858C92),
+                  b17RvxFontSizeQle: 10.sp,
+                  b17DtkColorZma: Color(0xff9C9FAE),
                   b17HncFontWeightYsp: FontWeight.w500,
                 ),
                 SizedBox(width: 4.w),
                 B17PzrAssetPictureViewXcu(
-                  "b17_ksp_forward_asset_wkp",
-                  b17DtvWidthQpl: 16.w,
-                  b17RnxHeightKse: 16.w,
+                  "b17_right_icon_djiw",
+                  b17DtvWidthQpl: 25.w,
+                  b17RnxHeightKse: 25.w,
                 ),
-                SizedBox(width: 4.w),
               ],
             ),
           ),
