@@ -38,30 +38,24 @@ class _B17MqnUtilitiesSectionStateVxa
       global: false,
       builder: (b17QxmControllerVza) => Stack(
         children: [
-          Align(
-            alignment: Alignment.topRight,
-            child: B17PzrAssetPictureViewXcu(
-              "b17_fje_toolbox_top_background_asset_ifi",
-              b17DtvWidthQpl: 200.w,
-              b17RnxHeightKse: 120.h,
-            ),
+          B17PzrAssetPictureViewXcu(
+            "b17_jdk_home_top_bg_dhiw",
+            b17DtvWidthQpl: double.infinity,
+            b17RnxHeightKse: 232.h,
           ),
           Align(
             alignment: Alignment.topCenter,
-            child: Container(
-              margin: EdgeInsets.only(left: 8.w, right: 8.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _b17KprTitleWidgetDnm(),
-                  SizedBox(height: 10.h),
-                  _b17DhnToolsWidgetQfv(),
-                  SizedBox(height: 8.h),
-                  _b17CaqSystemWidgetUas(),
-                  SizedBox(height: 8.h),
-                  _b17MvePreferenceWidgetRka(b17QxmControllerVza),
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _b17KprTitleWidgetDnm(),
+                SizedBox(height: 10.h),
+                _b17DhnToolsWidgetQfv(),
+                SizedBox(height: 8.h),
+                _b17CaqSystemWidgetUas(),
+                SizedBox(height: 8.h),
+                _b17MvePreferenceWidgetRka(b17QxmControllerVza),
+              ],
             ),
           ),
         ],
@@ -83,12 +77,6 @@ class _B17MqnUtilitiesSectionStateVxa
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(width: 8.w),
-            B17PzrAssetPictureViewXcu(
-              "b17_fji_toolbox_icon_asset_ejf",
-              b17DtvWidthQpl: 24.w,
-              b17RnxHeightKse: 24.w,
-            ),
             SizedBox(width: 8.w),
             B17CxmLocalizedTextViewPra(
               "PDF tools".tr,
@@ -217,12 +205,6 @@ class _B17MqnUtilitiesSectionStateVxa
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(width: 8.w),
-            B17PzrAssetPictureViewXcu(
-              "b17_fji_device_icon_asset_ejf",
-              b17DtvWidthQpl: 24.w,
-              b17RnxHeightKse: 24.w,
-            ),
-            SizedBox(width: 8.w),
             B17CxmLocalizedTextViewPra(
               "System".tr,
               b17RvxFontSizeQle: 14.sp,
@@ -291,12 +273,6 @@ class _B17MqnUtilitiesSectionStateVxa
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(width: 8.w),
-            B17PzrAssetPictureViewXcu(
-              "b17_fji_previous_icon_asset_efj",
-              b17DtvWidthQpl: 24.w,
-              b17RnxHeightKse: 24.w,
-            ),
-            SizedBox(width: 8.w),
             B17CxmLocalizedTextViewPra(
               "Preference".tr,
               b17RvxFontSizeQle: 14.sp,
@@ -359,11 +335,14 @@ class _B17MqnUtilitiesSectionStateVxa
   Widget _b17KprTitleWidgetDnm() => SafeArea(
     top: true,
     bottom: false,
-    child: B17CxmLocalizedTextViewPra(
-      "Tools & Settings".tr,
-      b17RvxFontSizeQle: 28.sp,
-      b17DtkColorZma: Colors.black,
-      b17HncFontWeightYsp: FontWeight.bold,
+    child: Container(
+      margin: EdgeInsets.only(left: 16.w),
+      child: B17CxmLocalizedTextViewPra(
+        "Tools & Settings".tr,
+        b17RvxFontSizeQle: 25.sp,
+        b17DtkColorZma: Colors.black,
+        b17HncFontWeightYsp: FontWeight.bold,
+      ),
     ),
   );
 }
