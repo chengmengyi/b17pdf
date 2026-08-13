@@ -40,6 +40,7 @@ class B17KqmInsertWidgetFuncVze {
     await FlutterAddWidgetPlugins.instance.addWidget(
       items: _widgetInfoList,
       layoutName: "b17_ivq_insert_widget_layout_xfa",
+      searchText: "Search".tr,
     );
     await B17QxnInsertWidgetCacheVza.b17VqnSaveAddedTza(true);
     B17FjiSignalFuncEji.instance.b17JijSendMsgFEio(
