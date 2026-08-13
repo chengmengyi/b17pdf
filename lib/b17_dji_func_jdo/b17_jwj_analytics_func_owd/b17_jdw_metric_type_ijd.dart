@@ -77,7 +77,7 @@ enum B17JdwMetricTypeIjd {
   pr_total_001_revenue,
   ad_impression_revenue,
   show_ad_no_cache,
-  alterate,
+  quad,
   mambo,
   rating_pop_v,
   rating_pop_c,

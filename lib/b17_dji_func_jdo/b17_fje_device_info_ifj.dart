@@ -6,10 +6,10 @@ class B17FjeDeviceInfoIfj {
   // static String adjustToken=kDebugMode?"4qedga65udq8":"";
   static String b17PqnAppsFlyerKeyVze = kDebugMode
       ? "Ed2FymhzHg3qqYpyH8Z9Eg"
-      : "GR8a4XoJ2JWo7rVoYwVDCR";
+      : "2aZcZMmRYmjSs94pak9F5i";
 
   static const String b17HqmClockEndpointWza =
-      "https://upturn.pdfeditorpaperforge.com/ashmen/emma/irish";
+      "https://emplace.pdfutilitydocforge.com/crypto/attache";
 
   static const b17QxnLocalReferrerConfigDebugVza =
       "assets/b17_rxv_pdf_bundled_config_lrr/b17_xfv_pdf_bundled_referrer_mor/b17_jco_referrer_debug_config_tnq.json";
@@ -36,9 +36,9 @@ class B17FjeDeviceInfoIfj {
       : b17PqnLocalAdSwitchReleaseVza;
 
   static const b17QxnTbaEndpointDebugVza =
-      "https://test-playpen.pdfeditorpaperforge.com/tipple/chaise/mellon";
+      "https://test-spectra.pdfutilitydocforge.com/julia/taxicab";
   static const b17QxnTbaEndpointReleaseVza =
-      "https://playpen.pdfeditorpaperforge.com/obdurate/impress/hoar";
+      "https://spectra.pdfutilitydocforge.com/anew/whomever/orville";
   static String b17KqmTbaEndpointWze = kDebugMode
       ? b17QxnTbaEndpointDebugVza
       : b17QxnTbaEndpointReleaseVza;

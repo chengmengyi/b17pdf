@@ -31,18 +31,19 @@ class B17DjiAnalyticsFuncWji {
     final Map<dynamic, dynamic> b17PqnReferrerDataVze = await FlutterTbaInfo
         .instance
         .getReferrerMap();
-    b17VqnRequestBodyTza['incant'] = <String, dynamic>{
-      'annul': b17PqnReferrerDataVze['build'],
-      'gambol': b17PqnReferrerDataVze['referrer_url'],
-      'aunt': b17PqnReferrerDataVze['install_version'],
-      'iodide': b17PqnReferrerDataVze['user_agent'],
-      'mayapple': 'starr',
-      'drama': b17PqnReferrerDataVze['referrer_click_timestamp_seconds'],
-      'moderate': b17PqnReferrerDataVze['install_begin_timestamp_seconds'],
-      'ne': b17PqnReferrerDataVze['referrer_click_timestamp_server_seconds'],
-      'cindy': b17PqnReferrerDataVze['install_begin_timestamp_server_seconds'],
-      'emerson': b17PqnReferrerDataVze['install_first_seconds'],
-      'junctor': b17PqnReferrerDataVze['last_update_seconds'],
+    b17VqnRequestBodyTza['newfound'] = <String, dynamic>{
+      'boo': b17PqnReferrerDataVze['build'],
+      'inertia': b17PqnReferrerDataVze['referrer_url'],
+      'scot': b17PqnReferrerDataVze['install_version'],
+      'ellipsis': b17PqnReferrerDataVze['user_agent'],
+      'awaken': 'dunbar',
+      'isabella': b17PqnReferrerDataVze['referrer_click_timestamp_seconds'],
+      'senile': b17PqnReferrerDataVze['install_begin_timestamp_seconds'],
+      'diploma': b17PqnReferrerDataVze['referrer_click_timestamp_server_seconds'],
+      'pogrom': b17PqnReferrerDataVze['install_begin_timestamp_server_seconds'],
+      'cossack': b17PqnReferrerDataVze['install_first_seconds'],
+      'satin': b17PqnReferrerDataVze['last_update_seconds'],
+      'degas': b17PqnReferrerDataVze['google_play_instant'],
     };
 
     final bool b17KqnUploadedVxe = await _b17PqmPostWithRetryXza(
@@ -58,7 +59,7 @@ class B17DjiAnalyticsFuncWji {
   Future<void> b17VqnUploadSessionTza() async {
     final Map<String, dynamic> b17HqmRequestBodyWza =
         await _b17HqmCreateCommonBodyWza();
-    b17HqmRequestBodyWza['gorilla'] = <String, dynamic>{};
+    b17HqmRequestBodyWza['threaten'] = "moser";
     await _b17PqmPostWithRetryXza(
       b17HqmBodyWze: b17HqmRequestBodyWza,
       b17KqmEventTypeWze: 'session',
@@ -77,16 +78,16 @@ class B17DjiAnalyticsFuncWji {
   }) async {
     final Map<String, dynamic> b17VqnRequestBodyTze =
         await _b17HqmCreateCommonBodyWza();
-    b17VqnRequestBodyTze['jug'] = <String, dynamic>{
-      'amtrak': b17HqmRevenueWza * 1000000,
-      'culpable': b17PqnCurrencyVze,
-      'cushion': b17KqnAdNetworkVxe,
-      'criss': b17QxnAdInfoVza.adPlat ?? '',
-      'standard': b17QxnAdInfoVza.adId ?? '',
-      'rant': b17VqnPositionIdTza?.name ?? '',
-      'sinology': b17KqmAdSceneWze.name,
-      'lord': b17PqmPrecisionXza,
-      'ideate': b17QxnAdInfoVza.adType,
+    b17VqnRequestBodyTze['nutrient'] = <String, dynamic>{
+      'crystal': b17HqmRevenueWza * 1000000,
+      'demurred': b17PqnCurrencyVze,
+      'furrow': b17KqnAdNetworkVxe,
+      'chapman': b17QxnAdInfoVza.adPlat ?? '',
+      'allen': b17QxnAdInfoVza.adId ?? '',
+      'deportee': b17VqnPositionIdTza?.name ?? '',
+      'blitz': b17KqmAdSceneWze.name,
+      'reflect': b17PqmPrecisionXza,
+      'dionysus': b17QxnAdInfoVza.adType,
     };
     await _b17PqmPostWithRetryXza(
       b17HqmBodyWze: b17VqnRequestBodyTze,
@@ -100,15 +101,11 @@ class B17DjiAnalyticsFuncWji {
     Map<String, dynamic>? b17KqmParametersWze,
     Map<String, dynamic>? b17VqnUserGroupTza,
   }) async {
-    final Map<String, dynamic> b17HqmRequestBodyWze =
-        await _b17HqmCreateCommonBodyWza();
-    b17HqmRequestBodyWze['rove'] = b17QxnPointTypeVza.name;
-    b17KqmParametersWze?.forEach((String b17PqnKeyVze, dynamic b17KqnValueVxe) {
-      b17HqmRequestBodyWze['vaccine~$b17PqnKeyVze'] = b17KqnValueVxe;
-    });
-    if (null != b17VqnUserGroupTza) {
-      b17HqmRequestBodyWze["decouple"] = b17VqnUserGroupTza;
-    }
+    var b17HqmRequestBodyWze = await b17GetPointMapBody(
+      b17QxnPointTypeVza: b17QxnPointTypeVza,
+      b17KqmParametersWze: b17KqmParametersWze,
+      b17VqnUserGroupTza: b17VqnUserGroupTza,
+    );
     await _b17PqmPostWithRetryXza(
       b17HqmBodyWze: b17HqmRequestBodyWze,
       b17KqmEventTypeWze: 'point',
@@ -116,11 +113,20 @@ class B17DjiAnalyticsFuncWji {
     );
   }
 
-  Future<Map<String, dynamic>> b17RytGetPushPointBodyFjb() async {
+  Future<Map<String, dynamic>> b17GetPointMapBody({
+    required B17JdwMetricTypeIjd b17QxnPointTypeVza,
+    Map<String, dynamic>? b17KqmParametersWze,
+    Map<String, dynamic>? b17VqnUserGroupTza,
+  })async{
     final Map<String, dynamic> b17HqmRequestBodyWze =
-        await _b17HqmCreateCommonBodyWza();
-    b17HqmRequestBodyWze['rove'] = B17JdwMetricTypeIjd.push.name;
-    b17HqmRequestBodyWze['vaccine~sourse'] = "local";
+    await _b17HqmCreateCommonBodyWza();
+    b17HqmRequestBodyWze['threaten'] = b17QxnPointTypeVza.name;
+    b17KqmParametersWze?.forEach((String b17PqnKeyVze, dynamic b17KqnValueVxe) {
+      b17HqmRequestBodyWze['$b17PqnKeyVze~glory'] = b17KqnValueVxe;
+    });
+    if (null != b17VqnUserGroupTza) {
+      b17HqmRequestBodyWze["bequeath"] = b17VqnUserGroupTza;
+    }
     return b17HqmRequestBodyWze;
   }
 
@@ -178,52 +184,46 @@ class B17DjiAnalyticsFuncWji {
 
   Future<Map<String, dynamic>> _b17HqmCreateCommonBodyWza() async {
     return <String, dynamic>{
-      'weco': <String, dynamic>{
-        'baggage': await FlutterTbaInfo.instance.getBundleId(),
-        'proper': Platform.isAndroid ? 'hotelman' : 'octoroon',
-        'germinal': DateTime.now().millisecondsSinceEpoch,
-        'tardy': await FlutterTbaInfo.instance.getNetworkType(),
-        'vivaldi': await FlutterTbaInfo.instance.getIdfa(),
+      'harlem': <String, dynamic>{
+        'pershing': await FlutterTbaInfo.instance.getBundleId(),
+        'andersen': await FlutterTbaInfo.instance.getAppVersion(),
+        'zagging': await FlutterTbaInfo.instance.getDistinctId(),
+        "prophecy": DateTime.now().millisecondsSinceEpoch,
+        "quicken": await FlutterTbaInfo.instance.getBrand(),
+        "midrange": await FlutterTbaInfo.instance.getDeviceModel(),
+        "carnal": await FlutterTbaInfo.instance.getOsVersion(),
+        "decisive": await FlutterTbaInfo.instance.getSystemLanguage(),
+        "bondage": await FlutterTbaInfo.instance.getIdfa(),
+        "archae": await FlutterTbaInfo.instance.getIdfv(),
+        "europa": await FlutterTbaInfo.instance.getGaid(),
       },
-      'cannibal': <String, dynamic>{
-        'braille': await FlutterTbaInfo.instance.getAppVersion(),
-        'fall': await FlutterTbaInfo.instance.getBrand(),
-        'awkward': await FlutterTbaInfo.instance.getDeviceModel(),
-        'modulus': await FlutterTbaInfo.instance.getOperator(),
-        'cornish': await FlutterTbaInfo.instance.getSystemLanguage(),
-        'aurelius': await FlutterTbaInfo.instance.getAndroidId(),
-      },
-      'yew': <String, dynamic>{
-        'secular': await FlutterTbaInfo.instance.getDistinctId(),
-        'sorority': await FlutterTbaInfo.instance.getLogId(),
-        'moreover': await FlutterTbaInfo.instance.getManufacturer(),
-        'gao': await FlutterTbaInfo.instance.getOsVersion(),
-        'ogre': await FlutterTbaInfo.instance.getIdfv(),
-        'dana': await FlutterTbaInfo.instance.getGaid(),
-        'anderson': await FlutterTbaInfo.instance.getOsCountry(),
+      'mandamus': <String, dynamic>{
+        'span': Platform.isAndroid?"haggle":"not",
+        "bahama": await FlutterTbaInfo.instance.getLogId(),
+        "typology": await FlutterTbaInfo.instance.getManufacturer(),
+        "defector": await FlutterTbaInfo.instance.getOperator(),
+        "ring": await FlutterTbaInfo.instance.getAndroidId(),
+        "tipple": await FlutterTbaInfo.instance.getOsCountry(),
       },
     };
   }
 
   Future<Map<String, String>> b17KqnCreateHeadersVxe() async {
     return <String, String>{
-      'ogre': await FlutterTbaInfo.instance.getIdfv(),
-      'baggage': await FlutterTbaInfo.instance.getBundleId(),
+      'defector': await FlutterTbaInfo.instance.getOperator(),
     };
   }
 
   Future<String> b17VqnCreateUrlTza() async {
-    final String b17QxnBundleIdVza = await FlutterTbaInfo.instance
-        .getBundleId();
-    final String b17KqmBrandWze = await FlutterTbaInfo.instance.getBrand();
-    return '${B17FjeDeviceInfoIfj.b17KqmTbaEndpointWze}?baggage=$b17QxnBundleIdVza&fall=$b17KqmBrandWze';
+    final String s = await FlutterTbaInfo.instance.getSystemLanguage();
+    return '${B17FjeDeviceInfoIfj.b17KqmTbaEndpointWze}?decisive=$s';
   }
 
   addUserGroup(int userGroup) async {
     b17KqnUploadPointVxe(
-      b17QxnPointTypeVza: B17JdwMetricTypeIjd.alterate,
+      b17QxnPointTypeVza: B17JdwMetricTypeIjd.quad,
       b17KqmParametersWze: {
-        "secular": await FlutterTbaInfo.instance.getDistinctId(),
+        "zagging": await FlutterTbaInfo.instance.getDistinctId(),
       },
       b17VqnUserGroupTza: {"user_group": userGroup},
     );
@@ -231,9 +231,9 @@ class B17DjiAnalyticsFuncWji {
 
   addUserBV(bool b12allNewUserStatePqmvzr) async {
     b17KqnUploadPointVxe(
-      b17QxnPointTypeVza: B17JdwMetricTypeIjd.alterate,
+      b17QxnPointTypeVza: B17JdwMetricTypeIjd.quad,
       b17KqmParametersWze: {
-        "secular": await FlutterTbaInfo.instance.getDistinctId(),
+        "zagging": await FlutterTbaInfo.instance.getDistinctId(),
       },
       b17VqnUserGroupTza: {"user_bv": b12allNewUserStatePqmvzr ? 1 : 0},
     );
@@ -260,9 +260,9 @@ class B17DjiAnalyticsFuncWji {
           b17PqnInstallDateVze.day == b17HqmNowWza.day;
     }
     b17KqnUploadPointVxe(
-      b17QxnPointTypeVza: B17JdwMetricTypeIjd.alterate,
+      b17QxnPointTypeVza: B17JdwMetricTypeIjd.quad,
       b17KqmParametersWze: {
-        "secular": await FlutterTbaInfo.instance.getDistinctId(),
+        "zagging": await FlutterTbaInfo.instance.getDistinctId(),
       },
       b17VqnUserGroupTza: {
         "life_time": b17VqnIsInstalledTodayTza ? "d0" : "d1",

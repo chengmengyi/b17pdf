@@ -46,13 +46,13 @@ class B17QxnUserCheckFuncVza {
       afAppId: "",
       distinctId: b17QxnDistinctIdVza,
       clockUrl: B17FjeDeviceInfoIfj.b17HqmClockEndpointWza,
-      cloakWhiteKey: 'claw',
+      cloakWhiteKey: 'eurasia',
       cloakData: <String, dynamic>{
-        'baggage': await FlutterTbaInfo.instance.getBundleId(),
-        'proper': Platform.isAndroid ? 'hotelman' : 'octoroon',
-        'braille': await FlutterTbaInfo.instance.getAppVersion(),
-        'secular': b17QxnDistinctIdVza,
-        'germinal': DateTime.now().millisecondsSinceEpoch,
+        'pershing': await FlutterTbaInfo.instance.getBundleId(),
+        'span': Platform.isAndroid ? 'haggle' : 'not',
+        'andersen': await FlutterTbaInfo.instance.getAppVersion(),
+        'zagging': b17QxnDistinctIdVza,
+        'prophecy': DateTime.now().millisecondsSinceEpoch,
       },
       requestCallback: RequestCallback(
         requestAfCallback: RequestAfCallback(
@@ -129,12 +129,12 @@ class B17QxnUserCheckFuncVza {
     FlutterPdfRiskControlPlugins.instance.initPdfRiskControl(
       riskConfigJson: b17QxnRiskConfigVza,
       ipConfig: FlutterPdfRiskControlIpConfig(
-        requestUrl: 'https://ip-prod.pdfeditorpaperforge.com/api/cshark',
+        requestUrl: 'https://ip-prod.pdfutilitydocforge.com/api/cduck',
         requestData: <String, String>{
-          'awolf': await FlutterTbaInfo.instance.getAndroidId(),
+          'abat': await FlutterTbaInfo.instance.getAndroidId(),
         },
         riskResultKey: 'bcat',
-        decryptCode: 62,
+        decryptCode: 63,
       ),
       callback: FlutterPdfRiskControlCallback(
         onUploadSessionRisk: (Map<String, int> b12allRiskMapPqmvzr) {},

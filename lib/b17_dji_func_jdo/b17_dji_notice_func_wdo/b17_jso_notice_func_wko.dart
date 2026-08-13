@@ -72,18 +72,20 @@ class B17PqnNoticeFuncVze {
     );
     final String b17KqmRequestUrlWze = await B17DjiAnalyticsFuncWji.instance
         .b17VqnCreateUrlTza();
-    final Map<String, dynamic> b17VqnPushPayloadTza =
-        await B17DjiAnalyticsFuncWji.instance.b17RytGetPushPointBodyFjb();
+    final Map<String, dynamic> b17VqnPushPayloadTza = await B17DjiAnalyticsFuncWji.instance.b17GetPointMapBody(
+      b17QxnPointTypeVza: B17JdwMetricTypeIjd.push,
+      b17KqmParametersWze: {'sourse': "local"},
+    );
     FlutterLocalNotificationPlugins.instance.configureNativePushReporting(
       enabled: true,
       url: b17KqmRequestUrlWze,
       headers: b17QxnHeaderMapVza,
       payloadTemplate: b17VqnPushPayloadTza,
-      distinctIdKey: "secular",
-      logIdKey: "sorority",
-      clientTsKey: "germinal",
-      notificationSourceKey: "vaccine~sourse",
-      packageKey: "baggage",
+      distinctIdKey: "zagging",
+      logIdKey: "bahama",
+      clientTsKey: "prophecy",
+      notificationSourceKey: "sourse~glory",
+      packageKey: "pershing",
     );
   }
 

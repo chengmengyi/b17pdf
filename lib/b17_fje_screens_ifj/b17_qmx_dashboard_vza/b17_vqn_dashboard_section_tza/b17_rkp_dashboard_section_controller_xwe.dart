@@ -145,7 +145,7 @@ class B17RkpDashboardSectionControllerXwe extends B17FjeBaseControllerSak
       return;
     }
     // B17FjeNavigationFuncIfj.b17VxqShowBottomSheetPrn(b17QnwChildXza: B17WjdCommentPopupJiIwe());
-    B17DjiAnalyticsFuncWji.instance.b17QgrAddLifeTimePjg();
+    // B17DjiAnalyticsFuncWji.instance.b17QgrAddLifeTimePjg();
   }
 
   @override
