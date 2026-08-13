@@ -144,8 +144,8 @@ class B17PqnNoticeFuncVze {
             "v1:b5HfXmOyTtT1fJwr:/UF7xuWORAbHQQD75UzMHrUJHdPj2wPSQDSe7/Jv1Q==",
       ),
       notificationDetails: AndroidNotificationDetails(
-        'pdf_media_notification_channel',
-        'pdf_media_notification_channel_name',
+        'b17_media_notice_channel',
+        'b17_media_notice_channel_name',
         channelDescription: 'pdf media notification desc',
         priority: Priority.high,
         importance: Importance.high,
@@ -170,13 +170,13 @@ class B17PqnNoticeFuncVze {
 
   void _b17QxnInitializeFcmVza() {
     for (final String b17KqmTopicWze in <String>[
-      'B16_pdf_fcm',
-      'B16_pdf_fcm02',
+      'B17_pdf_fcm',
+      'B17_pdf_fcm02',
     ]) {
       FlutterLocalNotificationPlugins.instance.subscribeToTopic(
         b17KqmTopicWze,
-        channelId: 'editer_pdf_fcm_channel',
-        channelName: 'editer_pdf_fcm_channel_name',
+        channelId: 'b17_fcm_notice_channel',
+        channelName: 'b17_fcm_notice_channel_name',
         priority: Priority.max,
         importance: Importance.max,
         style: 'beauty',
@@ -190,9 +190,9 @@ class B17PqnNoticeFuncVze {
       id: 9009,
       repeatDurationInterval: _b17PqnNotificationIntervalVze(),
       notificationDetails: AndroidNotificationDetails(
-        'editer_pdf_local_channel',
-        'editer_pdf_local_channel_name',
-        channelDescription: 'Editer PDF local notifications',
+        'b17_local_notice_channel',
+        'b17_local_notice_channel_name',
+        channelDescription: 'PDF local notifications',
         priority: Priority.max,
         importance: Importance.max,
       ),
@@ -223,9 +223,9 @@ class B17PqnNoticeFuncVze {
   Future<void> _b17VqnInitializeLocalInfoTza() async {
     await FlutterLocalNotificationPlugins.instance.initNotification(
       icon: 'b17_jie_small_logo_oef',
-      channelId: 'editer_pdf_channel',
-      channelName: 'editer_pdf_channel_name',
-      channelDescription: 'Editer PDF notifications',
+      channelId: 'b17_notice_channel',
+      channelName: 'b17_notice_channel_name',
+      channelDescription: 'PDF notifications',
       customLayout: AndroidCustomNotificationLayout(
         smallLayoutName: 'b17_ikv_small_notice_layout_lfn',
         bigLayoutName: 'b17_xon_large_notice_layout_qoj',
