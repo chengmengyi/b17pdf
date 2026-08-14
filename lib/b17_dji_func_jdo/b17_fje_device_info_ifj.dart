@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 class B17FjeDeviceInfoIfj {
-  static const String b17QxnApplicationNameVza = "PDF Editer";
+  static const String b17QxnApplicationNameVza = "Ai FileMaster";
   static const String b17KqmSecretKeyWze = "B17Keydjfeo";
   // static String adjustToken=kDebugMode?"4qedga65udq8":"";
   static String b17PqnAppsFlyerKeyVze = kDebugMode

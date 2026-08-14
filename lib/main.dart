@@ -1,3 +1,4 @@
+import 'package:b17pdf/b17_dji_func_jdo/b17_fje_device_info_ifj.dart';
 import 'package:b17pdf/b17_dji_func_jdo/b17_hwi_ad_func_jiw/b17_jiw_ad_func_djo.dart';
 import 'package:b17pdf/b17_dji_func_jdo/b17_fje_applife_func_ifj.dart';
 import 'package:b17pdf/b17_dji_func_jdo/b17_jiw_check_user_ojd.dart';
@@ -54,6 +55,7 @@ class B17VqmApplicationXza extends StatelessWidget {
               damping: 20.0,
             ),
             child: GetMaterialApp(
+              title: B17FjeDeviceInfoIfj.b17QxnApplicationNameVza,
               onGenerateTitle: (BuildContext b17TqmContextWva) => 'PDF'.tr,
               enableLog: true,
               darkTheme: ThemeData.dark(),

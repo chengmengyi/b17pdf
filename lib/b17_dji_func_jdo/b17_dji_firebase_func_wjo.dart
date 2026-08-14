@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:b17pdf/b17_dji_func_jdo/b17_fje_device_info_ifj.dart';
 import 'package:b17pdf/b17_dji_func_jdo/b17_hwi_ad_func_jiw/b17_jiw_ad_func_djo.dart';
 import 'package:b17pdf/b17_dji_func_jdo/b17_jiw_check_user_ojd.dart';
 import 'package:b17pdf/b17_dji_func_jdo/b17_fhi_signal_func_ejo/b17_fhi_signal_bean_feo.dart';
@@ -163,7 +164,7 @@ class B17KqmFirebaseFuncWze {
           .initFaceBook(
             facebookId: b17VqnFacebookJsonTza['app_id'],
             facebookToken: b17VqnFacebookJsonTza['token'],
-            facebookAppName: "PDF Editer",
+            facebookAppName: B17FjeDeviceInfoIfj.b17QxnApplicationNameVza,
           );
       _b17HqmFacebookInitializedWza = b17KqmInitializedWze;
     } catch (_) {}
