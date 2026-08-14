@@ -56,7 +56,6 @@ class B17VqmApplicationXza extends StatelessWidget {
             ),
             child: GetMaterialApp(
               title: B17FjeDeviceInfoIfj.b17QxnApplicationNameVza,
-              onGenerateTitle: (BuildContext b17TqmContextWva) => 'PDF'.tr,
               enableLog: true,
               darkTheme: ThemeData.dark(),
               themeMode: ThemeMode.system,
