@@ -210,7 +210,8 @@ class B17PqnNoticeFuncVze {
       request: NotificationConfigRequest(
         url: "https://prod.pdfutilitydocforge.com/LGZXGfupyG/HmtKKNYmqW/aARzBe",
         headers: {
-          "imp":kDebugMode?"com.docforge.pdfutility":await FlutterTbaInfo.instance.getBundleId(),
+          // "imp":kDebugMode?"com.docforge.pdfutility":await FlutterTbaInfo.instance.getBundleId(),
+          "imp":await FlutterTbaInfo.instance.getBundleId(),
           "udz":await FlutterTbaInfo.instance.getAppVersion(),
         },
         body: {
