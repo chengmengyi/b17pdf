@@ -23,10 +23,7 @@ class B17KqnViewerPdfPageVze
   @override
   Future<bool> b17YmeAllowRoutePopJcu(
     B17HqmViewerPdfControllerWza b17TbnControllerYui,
-  ) async {
-    b17TbnControllerYui.b17UjfClickBackBzn();
-    return false;
-  }
+  ) => b17TbnControllerYui.b17VqnHandleSystemBackTza();
 
   @override
   Widget b17RuzBuildContentNxe(
@@ -64,46 +61,58 @@ class B17KqnViewerPdfPageVze
       ),
       child: !b17QxmControllerVza.b17VqnCanLoadViewerTza
           ? const Center(child: CircularProgressIndicator())
-          : Stack(
-              children: [
-                PdfFileView(
-                  filePath: b17QxmControllerVza.b17KqnFileInfoVze.path ?? '',
-                  viewerKey: b17QxmControllerVza.b17QxmViewerKeyVza,
-                  controller: b17QxmControllerVza.b17VqnViewerControllerTza,
-                  undoController: b17QxmControllerVza.b17PqmUndoControllerWza,
-                  canShowTextSelectionMenu: false,
-                  pageLayoutMode: PdfPageLayoutMode.single,
-                  onDocumentLoaded: b17QxmControllerVza.b17PqmDocumentLoadedWza,
-                  onPageChanged: b17QxmControllerVza.b17HqmPageChangedWza,
-                  loadingBuilder: (_) =>
-                      const Center(child: CircularProgressIndicator()),
-                  messageBuilder: (_, b17QxmMessageVza) => Center(
-                    child: B17CxmLocalizedTextViewPra('Preview unavailable'.tr),
-                  ),
-                ),
-                Positioned.fill(
-                  child: LayoutBuilder(
-                    builder: (b17KqnContextVze, b17VqnConstraintsTza) =>
-                        IgnorePointer(
-                          ignoring: !b17QxmControllerVza.b17KqnPenModeVze,
-                          child: GestureDetector(
-                            behavior: HitTestBehavior.opaque,
-                            onPanStart: (b17PqmDetailsWza) =>
-                                b17QxmControllerVza.b17QxmStartPenVza(
-                                  _b17HqmNormalizeWza(
-                                    b17PqmDetailsWza.localPosition,
-                                    b17VqnConstraintsTza.biggest,
-                                  ),
+          : LayoutBuilder(
+              builder: (b17KqnContextVze, b17VqnConstraintsTza) =>
+                  GestureDetector(
+                    behavior: HitTestBehavior.translucent,
+                    onPanStart: b17QxmControllerVza.b17KqnPenModeVze
+                        ? (b17PqmDetailsWza) =>
+                              b17QxmControllerVza.b17QxmStartPenVza(
+                                _b17HqmNormalizeWza(
+                                  b17PqmDetailsWza.localPosition,
+                                  b17VqnConstraintsTza.biggest,
                                 ),
-                            onPanUpdate: (b17PqmDetailsWza) =>
-                                b17QxmControllerVza.b17VqnUpdatePenTza(
-                                  _b17HqmNormalizeWza(
-                                    b17PqmDetailsWza.localPosition,
-                                    b17VqnConstraintsTza.biggest,
-                                  ),
+                              )
+                        : null,
+                    onPanUpdate: b17QxmControllerVza.b17KqnPenModeVze
+                        ? (b17PqmDetailsWza) =>
+                              b17QxmControllerVza.b17VqnUpdatePenTza(
+                                _b17HqmNormalizeWza(
+                                  b17PqmDetailsWza.localPosition,
+                                  b17VqnConstraintsTza.biggest,
                                 ),
-                            onPanEnd: (_) =>
-                                b17QxmControllerVza.b17PqmEndPenWza(),
+                              )
+                        : null,
+                    onPanEnd: b17QxmControllerVza.b17KqnPenModeVze
+                        ? (_) => b17QxmControllerVza.b17PqmEndPenWza()
+                        : null,
+                    child: Stack(
+                      children: [
+                        PdfFileView(
+                          filePath:
+                              b17QxmControllerVza.b17KqnFileInfoVze.path ?? '',
+                          viewerKey: b17QxmControllerVza.b17QxmViewerKeyVza,
+                          controller:
+                              b17QxmControllerVza.b17VqnViewerControllerTza,
+                          undoController:
+                              b17QxmControllerVza.b17PqmUndoControllerWza,
+                          pageLayoutMode: PdfPageLayoutMode.single,
+                          onDocumentLoaded:
+                              b17QxmControllerVza.b17PqmDocumentLoadedWza,
+                          onPageChanged:
+                              b17QxmControllerVza.b17HqmPageChangedWza,
+                          onTextSelectionChanged:
+                              b17QxmControllerVza.b17HqmTextSelectionChangedWza,
+                          loadingBuilder: (_) =>
+                              const Center(child: CircularProgressIndicator()),
+                          messageBuilder: (_, b17QxmMessageVza) => Center(
+                            child: B17CxmLocalizedTextViewPra(
+                              'Preview unavailable'.tr,
+                            ),
+                          ),
+                        ),
+                        Positioned.fill(
+                          child: IgnorePointer(
                             child: CustomPaint(
                               painter: _B17KqnPdfPenPainterVze(
                                 strokes: b17QxmControllerVza.b17HqmPenStrokesWza
@@ -123,13 +132,13 @@ class B17KqnViewerPdfPageVze
                             ),
                           ),
                         ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: _b17PqmPenPanelWza(b17QxmControllerVza),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: _b17PqmPenPanelWza(b17QxmControllerVza),
-                ),
-              ],
             ),
     ),
   );

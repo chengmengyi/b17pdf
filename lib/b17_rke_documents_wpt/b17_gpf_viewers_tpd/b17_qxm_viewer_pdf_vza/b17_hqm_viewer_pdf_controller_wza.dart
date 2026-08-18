@@ -55,6 +55,9 @@ class B17HqmViewerPdfControllerWza extends B17FjeBaseControllerSak {
   bool b17KqnDocumentLoadedVze = false;
   bool b17PqmSavingWza = false;
   bool b17KqnPenPanelVisibleVze = false;
+  bool b17VqnHasTextSelectionTza = false;
+  bool b17PqmIsExitingWza = false;
+  DateTime? b17HqmSelectionDismissedAtVza;
   int b17HqmPageCountWza = 0;
   int b17VqmCurrentPageXza = 1;
   Color b17QxmPenColorVza = const Color(0xff067BF2);
@@ -116,6 +119,17 @@ class B17HqmViewerPdfControllerWza extends B17FjeBaseControllerSak {
     update();
   }
 
+  void b17HqmTextSelectionChangedWza(
+    PdfTextSelectionChangedDetails b17QxmDetailsVza,
+  ) {
+    final b17KqnHasSelectionVze =
+        b17QxmDetailsVza.selectedText?.isNotEmpty == true;
+    if (b17VqnHasTextSelectionTza && !b17KqnHasSelectionVze) {
+      b17HqmSelectionDismissedAtVza = DateTime.now();
+    }
+    b17VqnHasTextSelectionTza = b17KqnHasSelectionVze;
+  }
+
   void b17KqnSelectToolVze(B17QakPdfEditTypeJlg b17QxmTypeVza) {
     if (b17QxmTypeVza == B17QakPdfEditTypeJlg.pen) {
       b17RqmClickPenWza();
@@ -123,16 +137,29 @@ class B17HqmViewerPdfControllerWza extends B17FjeBaseControllerSak {
     }
     b17KqnHidePenPanelVze();
     b17RqmDraftPointsWza = <Offset>[];
-    b17QxmSelectedTypeVza = b17QxmSelectedTypeVza == b17QxmTypeVza
-        ? null
-        : b17QxmTypeVza;
-    b17VqnViewerControllerTza.annotationMode = switch (b17QxmSelectedTypeVza) {
-      B17QakPdfEditTypeJlg.highlight => PdfAnnotationMode.highlight,
-      B17QakPdfEditTypeJlg.underline => PdfAnnotationMode.underline,
-      B17QakPdfEditTypeJlg.strikeThrough => PdfAnnotationMode.strikethrough,
-      _ => PdfAnnotationMode.none,
+    final b17KqnSelectedLinesVze =
+        b17QxmViewerKeyVza.currentState?.getSelectedTextLines() ??
+        <PdfTextLine>[];
+    b17QxmSelectedTypeVza = b17QxmTypeVza;
+    b17VqnViewerControllerTza.annotationMode = PdfAnnotationMode.none;
+    if (b17KqnSelectedLinesVze.isEmpty) {
+      Fluttertoast.showToast(msg: 'Please select text first'.tr);
+      update();
+      return;
+    }
+    final Annotation b17VqnAnnotationTza = switch (b17QxmTypeVza) {
+      B17QakPdfEditTypeJlg.highlight => HighlightAnnotation(
+        textBoundsCollection: b17KqnSelectedLinesVze,
+      ),
+      B17QakPdfEditTypeJlg.underline => UnderlineAnnotation(
+        textBoundsCollection: b17KqnSelectedLinesVze,
+      ),
+      B17QakPdfEditTypeJlg.strikeThrough => StrikethroughAnnotation(
+        textBoundsCollection: b17KqnSelectedLinesVze,
+      ),
+      _ => throw StateError('Unsupported text annotation type'),
     };
-    b17VqnViewerControllerTza.clearSelection();
+    b17VqnViewerControllerTza.addAnnotation(b17VqnAnnotationTza);
     update();
   }
 
@@ -319,8 +346,31 @@ class B17HqmViewerPdfControllerWza extends B17FjeBaseControllerSak {
     }
   }
 
+  Future<bool> b17VqnHandleSystemBackTza() async {
+    if (b17PqmIsExitingWza) return true;
+    if (b17VqnHasTextSelectionTza) {
+      b17VqnViewerControllerTza.clearSelection();
+      return false;
+    }
+    final b17KqnDismissedAtVze = b17HqmSelectionDismissedAtVza;
+    if (b17KqnDismissedAtVze != null &&
+        DateTime.now().difference(b17KqnDismissedAtVze) <
+            const Duration(milliseconds: 500)) {
+      return false;
+    }
+    b17PqmIsExitingWza = true;
+    _b17KqnShowExitAdVze();
+    return true;
+  }
+
   void b17UjfClickBackBzn() {
+    if (b17PqmIsExitingWza) return;
+    b17PqmIsExitingWza = true;
     B17FjeNavigationFuncIfj.b17FtyBackNwp();
+    _b17KqnShowExitAdVze();
+  }
+
+  void _b17KqnShowExitAdVze() {
     if (B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza) {
       B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmShowCachedSceneAdVzr(
         b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_exit,
