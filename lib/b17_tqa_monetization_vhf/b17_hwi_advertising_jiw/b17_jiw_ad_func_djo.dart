@@ -86,10 +86,10 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     if (!b17KqmUmpConsentResultVzr.canRequestAds) {
       return;
     }
-    FlutterPdfAdPlugins.instance.updateDebugPaidRevenueRange(
-      minRevenue: 100,
-      maxRevenue: 200,
-    );
+    // FlutterPdfAdPlugins.instance.updateDebugPaidRevenueRange(
+    //   minRevenue: 100,
+    //   maxRevenue: 200,
+    // );
     FlutterPdfAdPlugins.instance.updateInterstitialLikeNativePlacements(
       const <B17EipAdSceneUkg>[B17EipAdSceneUkg.pr_user_use],
     );

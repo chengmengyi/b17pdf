@@ -4,7 +4,6 @@ import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navi
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_fji_locale_selected_efj.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_qxm_select_locale_vza/b17_hqm_select_locale_controller_wza.dart';
 import 'package:b17pdf/b17_mye_messaging_kra/b17_rqm_notice_access_vza/b17_hqv_open_notice_controller_wze.dart';
-import 'package:flutter_local_notification_plugins/flutter_local_notification_plugins.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 

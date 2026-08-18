@@ -9,8 +9,6 @@ import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_fji_signal_
 import 'package:b17pdf/b17_mye_messaging_kra/b17_dji_notifications_wdo/b17_jso_notice_func_wko.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_vqn_ad_switch_cache_tza.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_hqm_firebase_ad_config_cache_wza.dart';
-import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_jid_media_unique_config_wjo.dart';
-import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_fji_notice_time_efj.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_jdi_referrer_config_wiw.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -96,19 +94,6 @@ class B17KqmFirebaseFuncWze {
       B17QxnUserCheckFuncVza.instance.b17KqmInitializeRiskControlWze(
         b17RqmRiskConfigWza,
       );
-    }
-
-    final String b17QxnPushTimeConfigVza =
-        _b17QxnRemoteConfigVza?.getString('push_time') ?? '';
-    if (b17QxnPushTimeConfigVza.isNotEmpty) {
-      B17FjiNoticeTimeEfj.b17DqnSaveVya(b17QxnPushTimeConfigVza);
-      B17PqnNoticeFuncVze.instance.b17KqmRefreshScheduleWze();
-    }
-    final int b17QxnMediaUniqueVza =
-        _b17QxnRemoteConfigVza?.getInt('pr_md_unique') ?? 0;
-    if (b17QxnMediaUniqueVza > 0) {
-      B17JidMediaUniqueConfigWjo.b17DqnSaveVya(b17QxnMediaUniqueVza);
-      B17PqnNoticeFuncVze.instance.b17VqnInitializeMediaNotificationTza();
     }
 
     _b17PqnInitializeFacebookVze();

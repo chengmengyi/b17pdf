@@ -64,7 +64,9 @@ dependencies:
   sqflite: 2.4.2
   dio: 5.8.0+1
   flutter_custom_facebook: 0.0.5
-  flutter_local_notification_plugins: 0.2.2
+#  flutter_local_notification_plugins: 0.2.2
+  flutter_boom_notification_plugins:
+    path: /Users/chengmengyi/testbird/flutter_boom_notification_plugins
   flutter_add_widget_plugins: 0.0.3
   url_launcher: 6.3.2
   visibility_detector: 0.4.0+2
@@ -100,6 +102,8 @@ flutter:
    - assets/b17_rxv_pdf_bundled_config_lrr/b17_xfv_pdf_bundled_referrer_mor/
    - assets/b17_rxv_pdf_bundled_config_lrr/b17_asd_pdf_bundled_ad_prt/
    - assets/b17_rxv_pdf_bundled_config_lrr/b17_has_pdf_bundled_ad_switch_ctk/
+   - assets/b17_rxv_pdf_bundled_config_lrr/b17_fed_notification_config_jdi/default_config/
+   - assets/b17_rxv_pdf_bundled_config_lrr/b17_fed_notification_config_jdi/filed_config/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -64,12 +64,17 @@ class _B17VqnDocumentsListSectionStateXre
   ) => Row(
     children: [
       Expanded(
-        child: B17CxmLocalizedTextViewPra(
-          "Local Storage".tr,
-          b17RvxFontSizeQle: 18.sp,
-          b17DtkColorZma: Colors.black,
-          b17HncFontWeightYsp: FontWeight.bold,
-          b17FzrOverflowXke: TextOverflow.ellipsis,
+        child: B17MfwTapGuardViewQke(
+          b17JkcOnPressedXwu: (){
+            b17VqncontrollerXre.test();
+          },
+          b17HnqChildVsa: B17CxmLocalizedTextViewPra(
+            "Local Storage".tr,
+            b17RvxFontSizeQle: 18.sp,
+            b17DtkColorZma: Colors.black,
+            b17HncFontWeightYsp: FontWeight.bold,
+            b17FzrOverflowXke: TextOverflow.ellipsis,
+          ),
         ),
       ),
       SizedBox(width: 8.w),
