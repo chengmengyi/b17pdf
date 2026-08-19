@@ -30,9 +30,9 @@ class B17QxnUserCheckFuncVza {
   bool _b17KqmIsEligibleUserWze = false;
 
   bool get b17VqnIsEligibleUserTza {
-    if (kDebugMode) {
-      return true;
-    }
+    // if (kDebugMode) {
+    //   return true;
+    // }
     return _b17KqmIsEligibleUserWze;
   }
 

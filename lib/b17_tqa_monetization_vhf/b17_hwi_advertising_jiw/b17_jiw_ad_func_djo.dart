@@ -413,7 +413,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
         B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
           b17QxnPointTypeVza: B17JdwMetricTypeIjd.show_ad_no_cache,
           b17KqmParametersWze: {
-            "scene": b17PqmAdSceneVzr.name,
+            "ad_context": b17PqmAdSceneVzr.name,
             "ad_pos_id": b17KqmAdPosIdVzr.name,
             "last_time": b17KqmLastShowCachedSceneAdIntervalVzr,
           },
@@ -478,7 +478,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.ad_chance,
       b17KqmParametersWze: {
-        "scene": b17PqmAdSceneVzr.name,
+        "ad_context": b17PqmAdSceneVzr.name,
         "ad_pos_id": b17KqmAdPosIdVzr.name,
       },
     );
@@ -606,7 +606,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.ad_click,
       b17KqmParametersWze: {
-        "scene": b17PqmAdPlacementVzr.name,
+        "ad_context": b17PqmAdPlacementVzr.name,
         "ad_format": b17KqmAdInfoVzr.adType,
         "ad_code_id": b17KqmAdInfoVzr.adId,
         "ad_pos_id": b17VmqAdPosIdXtr.name,
@@ -633,7 +633,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.ad_close,
       b17KqmParametersWze: {
-        "scene": b17PqmAdPlacementVzr.name,
+        "ad_context": b17PqmAdPlacementVzr.name,
         "ad_format": b17KqmAdInfoVzr.adType,
         "ad_code_id": b17KqmAdInfoVzr.adId,
         "ad_pos_id": b17VmqAdPosIdXtr.name,
@@ -666,7 +666,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
       B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
         b17QxnPointTypeVza: B17JdwMetricTypeIjd.pr_total_001_revenue,
         b17KqmParametersWze: {
-          "scene": b17PqmAdPlacementVzr.name,
+          "ad_context": b17PqmAdPlacementVzr.name,
           "ad_pos_id": b17VmqAdPosIdXtr.name,
           "ad_format": b17PqmAdInfoVzr.adType,
           "ad_code_id": b17PqmAdInfoVzr.adId,
@@ -702,7 +702,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.ad_impression_revenue,
       b17KqmParametersWze: {
-        "scene": b17PqmAdPlacementVzr.name,
+        "ad_context": b17PqmAdPlacementVzr.name,
         "ad_pos_id": b17VmqAdPosIdXtr.name,
         "ad_format": b17PqmAdInfoVzr.adType,
         "ad_code_id": b17PqmAdInfoVzr.adId,
@@ -739,7 +739,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.ad_load_fail,
       b17KqmParametersWze: {
-        "scene": b17PqmAdPlacementVzr.name,
+        "ad_context": b17PqmAdPlacementVzr.name,
         "ad_format": b17KqmAdInfoVzr.adType,
         "ad_code_id": b17KqmAdInfoVzr.adId,
         "error_message": b17PqmFailReasonVzr,
@@ -761,7 +761,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.ad_request,
       b17KqmParametersWze: {
-        "scene": b17PqmAdPlacementVzr.name,
+        "ad_context": b17PqmAdPlacementVzr.name,
         "ad_format": b17KqmAdInfoVzr.adType,
         "ad_code_id": b17KqmAdInfoVzr.adId,
       },
@@ -782,7 +782,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.ad_load_success,
       b17KqmParametersWze: {
-        "scene": b17PqmAdPlacementVzr.name,
+        "ad_context": b17PqmAdPlacementVzr.name,
         "ad_format": b17KqmAdInfoVzr.adType,
         "ad_code_id": b17KqmAdInfoVzr.adId,
         "ad_source_client": b17KqmAdInfoVzr.adPlat,
@@ -810,7 +810,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.ad_show_fail,
       b17KqmParametersWze: {
-        "scene": b17PqmAdPlacementVzr.name,
+        "ad_context": b17PqmAdPlacementVzr.name,
         "ad_format": b17KqmAdInfoVzr.adType,
         "ad_code_id": b17KqmAdInfoVzr.adId,
         "ad_pos_id": b17VmqAdPosIdXtr.name,
@@ -843,7 +843,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.ad_show,
       b17KqmParametersWze: {
-        "scene": b17PqmAdPlacementVzr.name,
+        "ad_context": b17PqmAdPlacementVzr.name,
         "ad_format": b17KqmAdInfoVzr.adType,
         "ad_code_id": b17KqmAdInfoVzr.adId,
         "ad_pos_id": b17VmqAdPosIdXtr.name,
