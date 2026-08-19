@@ -385,9 +385,10 @@ packages:
   flutter_boom_notification_plugins:
     dependency: "direct main"
     description:
-      path: "/Users/chengmengyi/testbird/flutter_boom_notification_plugins"
-      relative: false
-    source: path
+      name: flutter_boom_notification_plugins
+      sha256: bdbd99dcbd6c9b2441f1216497d61ab0e33cf379508f4e838a43d0e4d4bb1005
+      url: "https://pub.dev"
+    source: hosted
     version: "0.0.1"
   flutter_check_af_new:
     dependency: "direct main"
