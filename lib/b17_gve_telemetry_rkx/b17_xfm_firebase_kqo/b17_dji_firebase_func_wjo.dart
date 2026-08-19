@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_applife_func_ifj.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_device_info_ifj.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jiw_ad_func_djo.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_jiw_check_user_ojd.dart';
@@ -112,6 +113,11 @@ class B17KqmFirebaseFuncWze {
       FlutterPdfAdPlugins.instance.updateAdRequestTimeoutSeconds(
         b17IskRemoteTimeoutTme,
       );
+    }
+
+    var cd_hot = _b17QxnRemoteConfigVza?.getInt("cd_hot");
+    if(cd_hot>0){
+      B17FjeApplifeFuncIfj.instance.b17HotCd=cd_hot;
     }
   }
 

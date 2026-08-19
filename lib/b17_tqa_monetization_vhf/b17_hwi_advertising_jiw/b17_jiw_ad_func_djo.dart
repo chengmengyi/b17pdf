@@ -764,6 +764,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
         "ad_context": b17PqmAdPlacementVzr.name,
         "ad_format": b17KqmAdInfoVzr.adType,
         "ad_code_id": b17KqmAdInfoVzr.adId,
+        "ad_source_client": b17KqmAdInfoVzr.adPlat,
       },
     );
   }

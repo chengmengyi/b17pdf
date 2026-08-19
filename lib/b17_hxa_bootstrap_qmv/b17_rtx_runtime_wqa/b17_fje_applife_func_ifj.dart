@@ -16,6 +16,7 @@ class B17FjeApplifeFuncIfj {
   B17FjeApplifeFuncIfj._();
 
   static final B17FjeApplifeFuncIfj instance = B17FjeApplifeFuncIfj._();
+  int b17HotCd=3;
   bool b17HqmObserverStartedXwe = false, _b17StaAppIsBackTus = false;
   bool _b17QxnSuppressNextHotLaunchVza = false;
 
