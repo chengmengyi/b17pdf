@@ -16,9 +16,11 @@ class B17FjeApplifeFuncIfj {
   B17FjeApplifeFuncIfj._();
 
   static final B17FjeApplifeFuncIfj instance = B17FjeApplifeFuncIfj._();
-  int b17HotCd=3;
+  int b17HotCd = 3;
   bool b17HqmObserverStartedXwe = false, _b17StaAppIsBackTus = false;
   bool _b17QxnSuppressNextHotLaunchVza = false;
+  bool _b17KqnReachedHotBackgroundVze = false;
+  Timer? _b17PqmHotBackgroundTimerWza;
 
   bool get b17QxnShouldSuppressClickHotLaunchVza => _b17StaAppIsBackTus;
 
@@ -62,16 +64,31 @@ class B17FjeApplifeFuncIfj {
   }
 
   void _b17NplAppBackIkd() {
-    _b17StaAppIsBackTus = true;
+    _b17PqmHotBackgroundTimerWza?.cancel();
+    _b17StaAppIsBackTus = false;
+    _b17KqnReachedHotBackgroundVze = false;
+    _b17PqmHotBackgroundTimerWza = Timer(
+      Duration(seconds: b17HotCd < 0 ? 0 : b17HotCd),
+      () {
+        _b17PqmHotBackgroundTimerWza = null;
+        _b17StaAppIsBackTus = true;
+        _b17KqnReachedHotBackgroundVze = true;
+      },
+    );
   }
 
   Future<void> _b17WchAppFrontYze() async {
+    _b17PqmHotBackgroundTimerWza?.cancel();
+    _b17PqmHotBackgroundTimerWza = null;
     unawaited(
       B17PqnNoticeFuncVze.instance.b17TqnUploadPendingNotificationEventsVze(),
     );
-    if (!_b17StaAppIsBackTus && !_b17QxnSuppressNextHotLaunchVza) {
+    if (!_b17KqnReachedHotBackgroundVze) {
+      _b17StaAppIsBackTus = false;
+      _b17QxnSuppressNextHotLaunchVza = false;
       return;
     }
+    _b17KqnReachedHotBackgroundVze = false;
     await Future<void>.delayed(const Duration(milliseconds: 300));
     if (_b17QxnConsumeSuppressedHotLaunchVza()) {
       return;

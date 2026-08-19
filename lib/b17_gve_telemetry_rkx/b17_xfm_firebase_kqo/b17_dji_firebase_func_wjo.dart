@@ -115,10 +115,11 @@ class B17KqmFirebaseFuncWze {
       );
     }
 
-    var cd_hot = _b17QxnRemoteConfigVza?.getInt("cd_hot");
+    var cd_hot = _b17QxnRemoteConfigVza?.getInt("cd_hot")??0;
     if(cd_hot>0){
       B17FjeApplifeFuncIfj.instance.b17HotCd=cd_hot;
     }
+    _b17GetAdShowClickConfig();
   }
 
   void _b17RqmParseSwitchConfigWza() {
@@ -129,6 +130,23 @@ class B17KqmFirebaseFuncWze {
         B17VqnAdSwitchCacheTza.b17HqmSaveConfigWza(b17QxnSwitchConfigVza);
       }
     } catch (_) {}
+  }
+
+  void _b17GetAdShowClickConfig(){
+    try{
+      var ad_config = _b17QxnRemoteConfigVza?.getString("ad_config")??"";
+      if(ad_config.isNotEmpty){
+        var json = jsonDecode(ad_config);
+        var ad_show = json["ad_show"];
+        var ad_click = json["ad_click"];
+        FlutterPdfAdPlugins.instance.setMaxShowAndClickNum(
+          maxShowNum: ad_show,
+          maxClickNum: ad_click,
+        );
+      }
+    }catch(_){
+
+    }
   }
 
   void b17HqmApplyAdCooldownConfigWza() {
