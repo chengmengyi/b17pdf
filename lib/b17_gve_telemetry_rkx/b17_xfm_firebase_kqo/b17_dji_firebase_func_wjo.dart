@@ -26,7 +26,7 @@ class B17KqmFirebaseFuncWze {
 
   bool _b17HqmFacebookInitializedWza = false;
 
-  int b17PqnAdCooldownSecondsVze = 30;
+  int b17PqnAdCooldownSecondsVze = 30,aKcCd=180;
   bool b17KqmKoreanPhoneNotificationWze = false;
   String b17AdSource = "local";
 
@@ -150,10 +150,13 @@ class B17KqmFirebaseFuncWze {
   }
 
   void b17HqmApplyAdCooldownConfigWza() {
-    final int b17QxnRemoteCooldownVza =
-        _b17QxnRemoteConfigVza?.getInt('kc_cd') ?? 0;
+    final int b17QxnRemoteCooldownVza = _b17QxnRemoteConfigVza?.getInt('kc_cd') ?? 0;
     if (b17QxnRemoteCooldownVza > 0) {
       b17PqnAdCooldownSecondsVze = b17QxnRemoteCooldownVza;
+    }
+    final int a_kc_cd = _b17QxnRemoteConfigVza?.getInt('a_kc_cd') ?? 0;
+    if(a_kc_cd>0){
+      aKcCd=a_kc_cd;
     }
   }
 
