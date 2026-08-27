@@ -619,6 +619,11 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     String b17VmqAdNetworkXtr,
     String b17PqmAdSourceNameVzr,
   ) {
+    if (b17KqmAdInfoVzr.parsedAdType?.isFullScreen == true) {
+      B17PqnLastAdShowTimeCacheVze.b17VqnSaveTimeTza(
+        b17PqnTimestampVze: DateTime.now().millisecondsSinceEpoch,
+      );
+    }
     if (b17PqmAdPlacementVzr is! B17EipAdSceneUkg) {
       return;
     }
@@ -864,12 +869,6 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     if (b17VmqAdPosIdXtr is! B17JkwPosidKos) {
       return;
     }
-    if (b17KqmAdInfoVzr.parsedAdType?.isFullScreen != true) {
-      return;
-    }
-    B17PqnLastAdShowTimeCacheVze.b17VqnSaveTimeTza(
-      b17PqnTimestampVze: DateTime.now().millisecondsSinceEpoch,
-    );
   }
 
   @override

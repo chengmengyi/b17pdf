@@ -35,35 +35,49 @@ class B17PqnTaskProgressControllerVze extends B17FjeBaseControllerSak {
   Future<void> _b17KqmGeneratePdfWze() async {
     if (b17HqmGeneratingWza || b17QxnImagePathsVza.isEmpty) return;
     b17HqmGeneratingWza = true;
-    final List<FileToolsFileInfo> b17VqnImagesTza = <FileToolsFileInfo>[];
-    for (final String b17QxnPathVza in b17QxnImagePathsVza) {
-      final File b17HqmFileWza = File(b17QxnPathVza);
-      final FileStat b17KqmStatWze = await b17HqmFileWza.stat();
-      b17VqnImagesTza.add(
-        FileToolsFileInfo(
-          name: b17QxnPathVza.split(Platform.pathSeparator).last,
-          path: b17QxnPathVza,
-          size: b17KqmStatWze.size,
-          updateTime: b17KqmStatWze.modified.millisecondsSinceEpoch,
-        ),
-      );
-    }
-    final FileToolsFileInfo b17PqnResultVze =
-        await FlutterPreviewFile.generatePdfFromImages(
-          imageList: b17VqnImagesTza,
-          onProgress: (double b17KqmValueWze) {
-            b17VqnProgressTza = b17KqmValueWze.clamp(0, 1);
-            update();
-          },
+    try {
+      final List<FileToolsFileInfo> b17VqnImagesTza = <FileToolsFileInfo>[];
+      for (final String b17QxnPathVza in b17QxnImagePathsVza) {
+        final File b17HqmFileWza = File(b17QxnPathVza);
+        final FileStat b17KqmStatWze = await b17HqmFileWza.stat();
+        b17VqnImagesTza.add(
+          FileToolsFileInfo(
+            name: b17QxnPathVza.split(Platform.pathSeparator).last,
+            path: b17QxnPathVza,
+            size: b17KqmStatWze.size,
+            updateTime: b17KqmStatWze.modified.millisecondsSinceEpoch,
+          ),
         );
-    b17VqnProgressTza = 1;
-    update();
-    B17FjeNavigationFuncIfj.b17ZxpReplaceNamedLrt<void>(
-      b17YweRouteNameQpn:
-          B17FjeNavigationAddressIfj.b17PqnProcessResultRouteVze,
-      b17KstArgumentsJva: <String, dynamic>{
-        'b17CorFileInfoVve': b17PqnResultVze,
-      },
-    );
+      }
+      final FileToolsFileInfo b17PqnResultVze =
+          await FlutterPreviewFile.generatePdfFromImages(
+            imageList: b17VqnImagesTza,
+            onProgress: (double b17KqmValueWze) {
+              if (isClosed) return;
+              b17VqnProgressTza = b17KqmValueWze.clamp(0, 1);
+              update();
+            },
+          );
+      if (isClosed) return;
+      b17VqnProgressTza = 1;
+      update();
+      B17FjeNavigationFuncIfj.b17ZxpReplaceNamedLrt<void>(
+        b17YweRouteNameQpn:
+            B17FjeNavigationAddressIfj.b17PqnProcessResultRouteVze,
+        b17KstArgumentsJva: <String, dynamic>{
+          'b17CorFileInfoVve': b17PqnResultVze,
+        },
+      );
+    } catch (b17KqmErrorWze) {
+      if (isClosed ||
+          b17KqmErrorWze.toString().contains('generate_pdf_replaced')) {
+        return;
+      }
+      rethrow;
+    } finally {
+      if (!isClosed) {
+        b17HqmGeneratingWza = false;
+      }
+    }
   }
 }
