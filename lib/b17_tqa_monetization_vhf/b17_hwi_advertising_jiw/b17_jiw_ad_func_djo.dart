@@ -676,6 +676,10 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     if (b17KqmRevenueVzr >= 0.01) {
       B17KqmFirebaseFuncWze.instance.b17VqnLogAnalyticsEventTza(
         b17QxnNameVza: B17JdwMetricTypeIjd.pr_total_001_revenue.name,
+        b17KqmParametersWze: {
+          "currency": b17PqmCurrencyCodeVzr,
+          "value": b17KqmRevenueVzr,
+        },
       );
       B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
         b17QxnPointTypeVza: B17JdwMetricTypeIjd.pr_total_001_revenue,
