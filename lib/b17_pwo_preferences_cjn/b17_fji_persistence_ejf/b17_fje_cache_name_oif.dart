@@ -17,5 +17,7 @@ class B17FjeCacheNameOif {
   static const String b17VqnFirebaseAdConfigTza =
       'b17_vqn_firebase_ad_config_tza';
   static const String b17HqmLastAdShowTimeWza = 'b17_hqm_last_ad_show_time_wza';
+  static const String b17RqmLastOpenAdCloseTimeXza =
+      'b17_rqm_last_open_ad_close_time_xza';
   static const String b17PqnAdSwitchVze = 'b17_pqn_ad_switch_vze';
 }

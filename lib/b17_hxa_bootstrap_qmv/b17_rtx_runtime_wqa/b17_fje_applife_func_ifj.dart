@@ -8,6 +8,7 @@ import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_qxm_signal_
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_fji_signal_func_eji.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_dji_active_startup_source_func_wdj.dart';
 import 'package:b17pdf/b17_mye_messaging_kra/b17_dji_notifications_wdo/b17_jso_notice_func_wko.dart';
+import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_rqm_last_open_ad_close_time_xza.dart';
 import 'package:flutter_app_lifecycle/app_state_observer.dart';
 import 'package:flutter_app_lifecycle/flutter_app_lifecycle.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
@@ -19,8 +20,6 @@ class B17FjeApplifeFuncIfj {
   int b17HotCd = 3;
   bool b17HqmObserverStartedXwe = false, _b17StaAppIsBackTus = false;
   bool _b17QxnSuppressNextHotLaunchVza = false;
-  bool _b17KqnReachedHotBackgroundVze = false;
-  Timer? _b17PqmHotBackgroundTimerWza;
 
   bool get b17QxnShouldSuppressClickHotLaunchVza => _b17StaAppIsBackTus;
 
@@ -64,32 +63,13 @@ class B17FjeApplifeFuncIfj {
   }
 
   void _b17NplAppBackIkd() {
-    _b17PqmHotBackgroundTimerWza?.cancel();
-    _b17StaAppIsBackTus = false;
-    _b17KqnReachedHotBackgroundVze = false;
-    _b17PqmHotBackgroundTimerWza = Timer(
-      Duration(seconds: b17HotCd < 0 ? 0 : b17HotCd),
-      () {
-        _b17PqmHotBackgroundTimerWza = null;
-        _b17StaAppIsBackTus = true;
-        _b17KqnReachedHotBackgroundVze = true;
-      },
-    );
+    _b17StaAppIsBackTus = true;
   }
 
   Future<void> _b17WchAppFrontYze() async {
-    _b17PqmHotBackgroundTimerWza?.cancel();
-    _b17PqmHotBackgroundTimerWza = null;
-    unawaited(
-      B17PqnNoticeFuncVze.instance.b17TqnUploadPendingNotificationEventsVze(),
-    );
-    if (!_b17KqnReachedHotBackgroundVze) {
-      _b17StaAppIsBackTus = false;
-      _b17QxnSuppressNextHotLaunchVza = false;
+    if (!_b17StaAppIsBackTus && !_b17QxnSuppressNextHotLaunchVza) {
       return;
     }
-    _b17KqnReachedHotBackgroundVze = false;
-    await Future<void>.delayed(const Duration(milliseconds: 300));
     if (_b17QxnConsumeSuppressedHotLaunchVza()) {
       return;
     }
@@ -97,6 +77,9 @@ class B17FjeApplifeFuncIfj {
       return;
     }
     _b17StaAppIsBackTus = false;
+    unawaited(
+      B17PqnNoticeFuncVze.instance.b17TqnUploadPendingNotificationEventsVze(),
+    );
     final B17KqmActiveStartupSourceInfoWze? b17PqnSourceVze =
         B17DjiActiveStartupSourceFuncWdj.instance.b17VqnConsumeSourceTza();
     if (b17PqnSourceVze == null) {
@@ -115,6 +98,11 @@ class B17FjeApplifeFuncIfj {
     B17EipAdSceneUkg b17QxnAdSceneVza,
     B17JkwPosidKos b17VqnPositionIdTza,
   ) async {
+    final int b17KqmLastOpenAdCloseTimeWze = B17RqmLastOpenAdCloseTimeXza.b17KqmReadTimeWze();
+    final int b17VqnHotCooldownMsTza = b17HotCd * 1000;
+    if (DateTime.now().millisecondsSinceEpoch - b17KqmLastOpenAdCloseTimeWze < b17VqnHotCooldownMsTza) {
+      return;
+    }
     await FlutterPdfAdPlugins.instance.closeFullScreenAdAndWait();
     B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmShowCachedSceneAdVzr(
       b17PqmAdSceneVzr: b17QxnAdSceneVza,

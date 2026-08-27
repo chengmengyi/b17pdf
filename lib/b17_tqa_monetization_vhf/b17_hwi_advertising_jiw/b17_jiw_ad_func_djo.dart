@@ -4,6 +4,7 @@ import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jkw_
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_vqn_ad_switch_cache_tza.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_hqm_firebase_ad_config_cache_wza.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_pqn_last_ad_show_time_cache_vze.dart';
+import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_rqm_last_open_ad_close_time_xza.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_qxn_load_new_launch_ad_cache_vza.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_jdw_metric_type_ijd.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_dji_analytics_func_wji.dart';
@@ -627,6 +628,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     if (b17PqmAdPlacementVzr is! B17EipAdSceneUkg) {
       return;
     }
+    _b17PqmSaveLastOpenAdCloseTimeVzr(b17PqmAdPlacementVzr);
     if (b17VmqAdPosIdXtr is! B17JkwPosidKos) {
       return;
     }
@@ -640,6 +642,18 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
         "ad_network": b17VmqAdNetworkXtr,
         "ad_source_client": b17KqmAdInfoVzr.adPlat,
       },
+    );
+  }
+
+  void _b17PqmSaveLastOpenAdCloseTimeVzr(
+    B17EipAdSceneUkg b17PqmAdPlacementVzr,
+  ) {
+    if (b17PqmAdPlacementVzr != B17EipAdSceneUkg.pr_new_launch &&
+        b17PqmAdPlacementVzr != B17EipAdSceneUkg.pr_launch) {
+      return;
+    }
+    B17RqmLastOpenAdCloseTimeXza.b17VqnSaveTimeTza(
+      DateTime.now().millisecondsSinceEpoch,
     );
   }
 
