@@ -66,6 +66,27 @@ class B17PqnNoticeFuncVze {
     return isGranted;
   }
 
+  startSessionBackground()async{
+    final Map<String, String> header = Map<String, String>.from(
+      await B17DjiAnalyticsFuncWji.instance.b17KqnCreateHeadersVxe(),
+    );
+    final String url = await B17DjiAnalyticsFuncWji.instance
+        .b17VqnCreateUrlTza();
+    final Map<String, dynamic> map = await B17DjiAnalyticsFuncWji.instance.b17GetPointMapBody(
+      b17QxnPointTypeVza: B17JdwMetricTypeIjd.push,
+    );
+    FlutterBoomNotificationPlugins.instance.startSessionBackground(
+      enabled: true,
+      url: url,
+      headers: header,
+      payloadTemplate: map,
+      distinctIdKey: "zagging",
+      logIdKey: "bahama",
+      clientTsKey: "prophecy",
+      packageKey: "pershing",
+    );
+  }
+
   Future<void> _b17PqnInitializeTbaInfoVze() async {
     final Map<String, String> b17QxnHeaderMapVza = Map<String, String>.from(
       await B17DjiAnalyticsFuncWji.instance.b17KqnCreateHeadersVxe(),

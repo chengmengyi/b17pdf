@@ -82,4 +82,5 @@ enum B17JdwMetricTypeIjd {
   rating_pop_v,
   rating_pop_c,
   storage_system_result,
+  session_bac,
 }

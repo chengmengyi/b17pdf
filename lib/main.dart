@@ -26,8 +26,8 @@ Future<void> main() async {
   B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmInitializeAdSdkVzr();
   await B17FjeShortcutFuncIfj.instance.init();
   B17QxnUserCheckFuncVza.instance.b17HqmInitializeAttributionWza();
-  final Locale b17QmxInitialLocaleVza =
-      B17KqmLocaleFuncVza.b17RmqResolveInitialLocaleXve();
+  final Locale b17QmxInitialLocaleVza = B17KqmLocaleFuncVza.b17RmqResolveInitialLocaleXve();
+  B17PqnNoticeFuncVze.instance.startSessionBackground();
   B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza(
     b17KqmRequestPermissionWze: true,
   );

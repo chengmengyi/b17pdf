@@ -12,6 +12,7 @@ plugins {
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
     id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -80,6 +81,7 @@ flutter {
 }
 
 dependencies {
+    implementation("com.google.firebase:firebase-crashlytics")
     implementation(platform("com.google.firebase:firebase-bom:32.1.1"))
     // AdMob mediation adapters are declared in the app module on purpose.
     // The Flutter plugin already brings Google Mobile Ads SDK 24.9.0 transitively.

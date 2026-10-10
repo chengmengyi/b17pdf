@@ -32,7 +32,9 @@
                 android:name="flutter_deeplinking_enabled"
                 android:value="false" />
             <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
                 <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
             <intent-filter>
@@ -84,6 +86,17 @@
                 <data android:mimeType="text/csv" />
             </intent-filter>
         </activity>
+        <service
+            android:name=".Fjejefef"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.action.FJEJEFEF_SERVICE" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.media.MediaRouteProviderService" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </service>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data

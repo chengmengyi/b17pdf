@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_applife_func_ifj.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_device_info_ifj.dart';
+import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_float_oho_cache_vze.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jiw_ad_func_djo.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_jiw_check_user_ojd.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_fhi_signal_bean_feo.dart';
@@ -53,8 +54,11 @@ class B17KqmFirebaseFuncWze {
   }
 
   void b17VqnApplyRemoteConfigTza() {
-    final int b17QxnOpenCooldownVza =
-        _b17QxnRemoteConfigVza?.getInt('new_op_cd') ?? 0;
+    var float_oho = _b17QxnRemoteConfigVza?.getInt("float_oho")??0;
+    if(float_oho>0){
+      B17FloatOhoCacheVze.b17VqnSaveTimeTza(b17PqnTimestampVze: float_oho);
+    }
+    final int b17QxnOpenCooldownVza = _b17QxnRemoteConfigVza?.getInt('new_op_cd') ?? 0;
     if (b17QxnOpenCooldownVza > 0) {
       B17FjiSignalFuncEji.instance.b17JijSendMsgFEio(
         B17FhiSignalBeanFeo(

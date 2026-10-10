@@ -17,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_check_af_new/flutter_check_af_new.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
+import 'package:flutter_pdf_risk_control_plugins/flutter_pdf_risk_control_plugins.dart';
 import 'package:flutter_tba_info/flutter_tba_info.dart';
 import 'package:appsflyer_sdk_plus/appsflyer_sdk.dart';
 
@@ -111,6 +112,9 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
         return false;
       },
       smallNativeAdLayoutName: 'b17_krb_native_ad_layout_ncz',
+      nativeAdHeadlineCallback: ({required String? headline, required bool isNextGenAdmob}) {
+        FlutterPdfRiskControlPlugins.instance.checkTestAdUser(headline: headline);
+      },
     );
     await _b17VmqPreloadStartupAdScenesXtr();
   }
