@@ -16,25 +16,60 @@ import 'package:get_storage/get_storage.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'package:b17pdf/b17_mye_messaging_kra/b17_dji_notifications_wdo/b17_jso_notice_func_wko.dart';
+import 'package:flutter_headless_lifecycle_bootstrap/flutter_headless_lifecycle_bootstrap.dart';
 
-Future<void> main() async {
+
+@pragma('vm:entry-point')
+Future<void> cycleMainB17() async {
+  await FlutterHeadlessLifecycleBootstrap.run(
+    backgroundInitializer: initB17Backgroundk,
+    uiInitializer: initB17UI,
+  );
+}
+
+Future<void> initB17Backgroundk() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   await GetStorage.init();
+
+  // Service 无界面拉活也上报 install；不要在这里上报 session。
+  B17DjiAnalyticsFuncWji.instance.b17QxnUploadInstallVza();
+
+  // 后台首次拉起时 GetMaterialApp 尚未创建，必须先手动初始化 GetX 翻译。
+  Get.addTranslations(B17KqmLocaleFuncVza().keys);
+  Get.locale = B17KqmLocaleFuncVza.b17RmqResolveInitialLocaleXve();
+  Get.fallbackLocale = const Locale('en', 'US');
+
+  B17PqnNoticeFuncVze.instance.startSessionBackground();
+
+  await B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza();
+  await B17QxnUserCheckFuncVza.instance.b17HqmInitializeAttributionWza();
+}
+
+Future<void> initB17UI() async {
+
+  await SystemChrome.setPreferredOrientations(
+    <DeviceOrientation>[
+      DeviceOrientation.portraitUp,
+    ],
+  );
   await B17JiwInitialStartupSourceFuncJdo.instance.b17CchInitSourceQrc();
   B17KqmFirebaseFuncWze.instance.b17QxnInitializeFirebaseVza();
   B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmInitializeAdSdkVzr();
   await B17FjeShortcutFuncIfj.instance.init();
-  B17QxnUserCheckFuncVza.instance.b17HqmInitializeAttributionWza();
   final Locale b17QmxInitialLocaleVza = B17KqmLocaleFuncVza.b17RmqResolveInitialLocaleXve();
-  B17PqnNoticeFuncVze.instance.startSessionBackground();
   B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza(
-    b17KqmRequestPermissionWze: true,
+    b17KqmRequestPermissionWze: false,
   );
   B17DjiAnalyticsFuncWji.instance.b17QxnUploadInstallVza();
+  B17DjiAnalyticsFuncWji.instance.b17VqnUploadSessionTza();
   B17PqnNoticeFuncVze.instance.b17RqmUploadNotificationEventDataWza();
 
   runApp(B17VqmApplicationXza(b17HqmInitialLocaleWze: b17QmxInitialLocaleVza));
+}
+
+Future<void> main() async {
+  await cycleMainB17();
 }
 
 class B17VqmApplicationXza extends StatelessWidget {

@@ -11,6 +11,7 @@ import 'package:b17pdf/b17_rke_documents_wpt/b17_gpf_viewers_tpd/b17_rqm_viewer_
 import 'package:b17pdf/b17_ncu_conversion_fsz/b17_ejw_workflow_oeo/b17_vqn_task_output_tza/b17_kqn_task_output_page_vze.dart';
 import 'package:b17pdf/b17_ncu_conversion_fsz/b17_ejw_workflow_oeo/b17_hqm_task_progress_wza/b17_rqm_task_progress_page_xze.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_qxn_uninstall_vza/b17_kqm_uninstall_page_wze.dart';
+import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_kfm_startup_oqa/b17_rqm_open_ad_loading_page_xza.dart';
 import 'package:get/get.dart';
 
 abstract final class B17FjeNavigationAddressIfj {
@@ -31,6 +32,8 @@ abstract final class B17FjeNavigationAddressIfj {
   static const String b17HqmProcessWaitingRouteWza =
       '/b17_hqm_task_progress_wza';
   static const String b17PqnProcessResultRouteVze = '/b17_pqn_task_output_vze';
+  static const String b17RqmOpenAdLoadingRouteXza =
+      '/b17_rqm_open_ad_loading_xza';
 
   static final List<GetPage<dynamic>> b17RxqPagesTma = [
     GetPage(name: b17KfmLauncherRouteOqa, page: B17FjeStartupPageIji.new),
@@ -69,6 +72,10 @@ abstract final class B17FjeNavigationAddressIfj {
     GetPage(
       name: b17PqnProcessResultRouteVze,
       page: B17KqnTaskOutputPageVze.new,
+    ),
+    GetPage(
+      name: b17RqmOpenAdLoadingRouteXza,
+      page: B17RqmOpenAdLoadingPageXza.new,
     ),
   ];
 }

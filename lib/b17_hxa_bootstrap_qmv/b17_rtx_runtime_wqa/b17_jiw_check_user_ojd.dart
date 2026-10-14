@@ -29,15 +29,22 @@ class B17QxnUserCheckFuncVza {
 
   bool _b17KqmIsEligibleUserWze = false;
 
+  bool _hasInitializedAdjust = false;
+
+
   bool get b17VqnIsEligibleUserTza {
-    if (kDebugMode) {
-      return true;
-    }
+    // if (kDebugMode) {
+    //   return true;
+    // }
     return _b17KqmIsEligibleUserWze;
   }
 
   Future<void> b17HqmInitializeAttributionWza() async {
-    b17PqnApplyReferrerConfigVze();
+    if (_hasInitializedAdjust) {
+      return;
+    }
+    _hasInitializedAdjust = true;
+    await b17PqnApplyReferrerConfigVze();
     b17VqnRefreshUserStateTza();
     final String b17QxnDistinctIdVza = await FlutterTbaInfo.instance
         .getDistinctId();

@@ -1,0 +1,139 @@
+import 'dart:async';
+
+import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_fhi_signal_bean_feo.dart';
+import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_qxm_signal_code_vza.dart';
+import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navigation_func_ifj.dart';
+import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jiw_ad_func_djo.dart';
+import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jkw_posid_kos.dart';
+import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_ynx_ad_scene_ige.dart';
+import 'package:b17pdf/b17_ydu_interface_mqp/b17_nrx_foundation_pke/b17_fje_base_controller_sak.dart';
+import 'package:get/get.dart';
+
+class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
+  static const String b17RqmProgressUpdateIdXza =
+      'b17_open_ad_loading_progress';
+  static const Duration b17VqnMaximumWaitTza = Duration(seconds: 15);
+  static const Duration b17KqmTickIntervalWze = Duration(milliseconds: 100);
+  static const Duration b17HqmCacheCheckIntervalWza = Duration(
+    milliseconds: 500,
+  );
+
+  B17EipAdSceneUkg? b17PqmAdSceneVzr;
+  B17JkwPosidKos? b17KqmAdPosIdVzr;
+  double b17VqnProgressTza = 0;
+
+  final Stopwatch _b17PqmStopwatchVzr = Stopwatch();
+  Timer? _b17KqmTimerWze;
+  Duration _b17VqnLastCacheCheckTza = Duration.zero;
+  bool _b17HqmCheckingCacheWza = false;
+  bool _b17RqmFinishedXza = false;
+
+  @override
+  void onInit() {
+    super.onInit();
+    final Map<String, dynamic> b17VqnArgumentsTza =
+        Get.arguments is Map<String, dynamic>
+        ? Get.arguments as Map<String, dynamic>
+        : <String, dynamic>{};
+    final Object? b17PqmSceneArgumentVzr = b17VqnArgumentsTza['adScene'];
+    final Object? b17KqmPosIdArgumentWze = b17VqnArgumentsTza['adPosId'];
+    if (b17PqmSceneArgumentVzr is B17EipAdSceneUkg &&
+        b17KqmPosIdArgumentWze is B17JkwPosidKos) {
+      b17PqmAdSceneVzr = b17PqmSceneArgumentVzr;
+      b17KqmAdPosIdVzr = b17KqmPosIdArgumentWze;
+    }
+    if (b17PqmAdSceneVzr == null || b17KqmAdPosIdVzr == null) {
+      Future<void>.delayed(
+        Duration.zero,
+        () => _b17PqmFinishVzr(b17VqnCacheReadyTza: false),
+      );
+      return;
+    }
+    _b17PqmStopwatchVzr.start();
+    _b17KqmTimerWze = Timer.periodic(
+      b17KqmTickIntervalWze,
+      (_) => _b17KqmOnTickWze(),
+    );
+    unawaited(
+      B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17VqnForceLoadAdSceneTza(
+        b17PqmAdSceneVzr: b17PqmAdSceneVzr!,
+        b17KqmAdPosIdVzr: b17KqmAdPosIdVzr!,
+      ),
+    );
+    unawaited(_b17VqnCheckCacheTza());
+  }
+
+  void _b17KqmOnTickWze() {
+    if (_b17RqmFinishedXza) return;
+    b17VqnProgressTza =
+        (_b17PqmStopwatchVzr.elapsedMilliseconds /
+                b17VqnMaximumWaitTza.inMilliseconds)
+            .clamp(0.0, 1.0);
+    update(<String>[b17RqmProgressUpdateIdXza]);
+    if (_b17PqmStopwatchVzr.elapsed >= b17VqnMaximumWaitTza) {
+      _b17PqmFinishVzr(b17VqnCacheReadyTza: false);
+      return;
+    }
+    if (_b17PqmStopwatchVzr.elapsed - _b17VqnLastCacheCheckTza >=
+        b17HqmCacheCheckIntervalWza) {
+      unawaited(_b17VqnCheckCacheTza());
+    }
+  }
+
+  Future<void> _b17VqnCheckCacheTza() async {
+    if (_b17HqmCheckingCacheWza ||
+        _b17RqmFinishedXza ||
+        b17PqmAdSceneVzr == null ||
+        b17KqmAdPosIdVzr == null) {
+      return;
+    }
+    _b17HqmCheckingCacheWza = true;
+    _b17VqnLastCacheCheckTza = _b17PqmStopwatchVzr.elapsed;
+    try {
+      final bool b17PqmHasCachedAdVzr = await B17JiwAdFuncDjo
+          .b17KqmAdUtilsInstanceVzr
+          .b17XmqHasCachedSceneAdVtr(
+            b17PqmAdSceneVzr: b17PqmAdSceneVzr!,
+            b17KqmAdPosIdVzr: b17KqmAdPosIdVzr!,
+          );
+      if (b17PqmHasCachedAdVzr && !_b17RqmFinishedXza) {
+        b17VqnProgressTza = 1;
+        update(<String>[b17RqmProgressUpdateIdXza]);
+        _b17PqmFinishVzr(b17VqnCacheReadyTza: true);
+      }
+    } finally {
+      _b17HqmCheckingCacheWza = false;
+    }
+  }
+
+  void _b17PqmFinishVzr({required bool b17VqnCacheReadyTza}) {
+    if (_b17RqmFinishedXza) return;
+    _b17RqmFinishedXza = true;
+    _b17KqmTimerWze?.cancel();
+    _b17KqmTimerWze = null;
+    _b17PqmStopwatchVzr.stop();
+    B17FjeNavigationFuncIfj.b17FtyBackNwp<bool>(
+      b17NcgResultKqe: b17VqnCacheReadyTza,
+    );
+  }
+
+  @override
+  bool b17FeiRegisterEventJif() => true;
+
+  @override
+  void b17RifHandleEventhJei(B17FhiSignalBeanFeo b17QzmEventXva) {
+    if (b17QzmEventXva.b17HfeEventCodeFMie ==
+            B17QxmSignalCodeVza.b17KqmAppLifecycleWze &&
+        b17QzmEventXva.b17DjiIntValueJie == 1) {
+      _b17PqmFinishVzr(b17VqnCacheReadyTza: false);
+    }
+  }
+
+  @override
+  void onClose() {
+    _b17KqmTimerWze?.cancel();
+    _b17KqmTimerWze = null;
+    _b17PqmStopwatchVzr.stop();
+    super.onClose();
+  }
+}

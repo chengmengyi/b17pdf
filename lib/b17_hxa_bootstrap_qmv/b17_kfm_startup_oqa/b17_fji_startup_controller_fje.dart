@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:b17pdf/b17_mye_messaging_kra/b17_dji_notifications_wdo/b17_jso_notice_func_wko.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jiw_ad_func_djo.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_ynx_ad_scene_ige.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jkw_posid_kos.dart';
@@ -43,6 +44,7 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
   @override
   void onInit() {
     super.onInit();
+    B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza(b17KqmRequestPermissionWze: true);
     B17QxnStartupClickGateFuncVza.instance.b17QxnMarkLauncherStartedVza();
     _b17QxnResolveLaunchAdVza();
     B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqnUploadAdChanceVxe(

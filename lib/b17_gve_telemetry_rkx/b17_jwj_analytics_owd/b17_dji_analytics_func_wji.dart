@@ -21,7 +21,6 @@ class B17DjiAnalyticsFuncWji {
 
   Future<void> b17QxnUploadInstallVza() async {
     b17QgrAddLifeTimePjg();
-    b17VqnUploadSessionTza();
     if (!B17QxnUploadInstallSignalCacheVza.b17KqmReadEnabledWze()) {
       return;
     }

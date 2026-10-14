@@ -25,14 +25,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.1"
-  appsflyer_sdk_plus:
-    dependency: transitive
-    description:
-      name: appsflyer_sdk_plus
-      sha256: "66d0c14aa6f1dce80a3622cff7a39c0d736acf5c97459db5fb6d595eeddcaac9"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.4"
   archive:
     dependency: transitive
     description:
@@ -393,11 +385,10 @@ packages:
   flutter_check_af_new:
     dependency: "direct main"
     description:
-      name: flutter_check_af_new
-      sha256: "93b8027d008911edcaf954c86fd78bd5b074c70d502fb487223e644c5edcc588"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.2"
+      path: "/Users/chengmengyi/testbird/plugins/flutter_check_af_new"
+      relative: false
+    source: path
+    version: "0.0.3"
   flutter_custom_facebook:
     dependency: "direct main"
     description:
@@ -406,6 +397,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.5"
+  flutter_headless_lifecycle_bootstrap:
+    dependency: "direct main"
+    description:
+      path: "/Users/chengmengyi/testbird/plugins/flutter_headless_lifecycle_bootstrap"
+      relative: false
+    source: path
+    version: "0.0.2"
   flutter_html:
     dependency: transitive
     description:

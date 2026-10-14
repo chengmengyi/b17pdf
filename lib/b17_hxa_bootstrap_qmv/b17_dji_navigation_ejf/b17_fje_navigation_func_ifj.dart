@@ -8,6 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract final class B17FjeNavigationFuncIfj {
+  static bool b17HqmIsCurrentRouteWza(String b17VqnRouteNameTza) =>
+      Get.currentRoute == b17VqnRouteNameTza;
+
   static Future<T?>? b17HkqPushNamedVpa<T>({
     required String b17McfRouteNameZsq,
     Map<String, dynamic>? b17XveArgumentsDlu,

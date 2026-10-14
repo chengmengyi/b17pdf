@@ -28,23 +28,23 @@ class B17PqnNoticeFuncVze {
   Future<void> b17QxnInitializeNotificationsVza({
     bool b17KqmRequestPermissionWze = false,
   }) async {
-    if (_b17QxnInitializedVza) {
-      return;
-    }
     final bool b17VqnCanInitializeTza = await _b17HqmCanInitializeWza();
     if (!b17VqnCanInitializeTza) {
       return;
     }
-    _b17KqmInitializeListenersWze();
-    await _b17VqnInitializeLocalInfoTza();
-    await _b17PqnInitializeTbaInfoVze();
-    b17PqnUpdateNewFileTextVze();
-    await _b17RqmScheduleLocalNotificationsWza();
-    _b17QxnInitializeFcmVza();
-    await _b17VqnInitializeBroadcastsTza();
-    await b17VqnInitializeMediaNotificationTza();
-    _b17HqmInitializeShortcutNotificationWza();
-    _b17QxnInitializedVza = true;
+    if (!_b17QxnInitializedVza) {
+      _b17KqmInitializeListenersWze();
+      await _b17VqnInitializeLocalInfoTza();
+      await _b17PqnInitializeTbaInfoVze();
+      b17PqnUpdateNewFileTextVze();
+      await _b17RqmScheduleLocalNotificationsWza();
+      _b17QxnInitializeFcmVza();
+      await _b17VqnInitializeBroadcastsTza();
+      await b17VqnInitializeMediaNotificationTza();
+      _b17HqmInitializeShortcutNotificationWza();
+      _b17QxnInitializedVza = true;
+      return;
+    }
     if (b17KqmRequestPermissionWze) {
       await Permission.notification.request();
       B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
@@ -66,15 +66,14 @@ class B17PqnNoticeFuncVze {
     return isGranted;
   }
 
-  startSessionBackground()async{
+  startSessionBackground() async {
     final Map<String, String> header = Map<String, String>.from(
       await B17DjiAnalyticsFuncWji.instance.b17KqnCreateHeadersVxe(),
     );
     final String url = await B17DjiAnalyticsFuncWji.instance
         .b17VqnCreateUrlTza();
-    final Map<String, dynamic> map = await B17DjiAnalyticsFuncWji.instance.b17GetPointMapBody(
-      b17QxnPointTypeVza: B17JdwMetricTypeIjd.push,
-    );
+    final Map<String, dynamic> map = await B17DjiAnalyticsFuncWji.instance
+        .b17GetPointMapBody(b17QxnPointTypeVza: B17JdwMetricTypeIjd.push);
     FlutterBoomNotificationPlugins.instance.startSessionBackground(
       enabled: true,
       url: url,
@@ -201,42 +200,46 @@ class B17PqnNoticeFuncVze {
     );
   }
 
-  Future<NotificationInitConfig> _getNotificationInitConfig()async{
+  Future<NotificationInitConfig> _getNotificationInitConfig() async {
     final String b17DefaultNotificationConfig = await rootBundle.loadString(
       B17FjeDeviceInfoIfj.b17DefaultNotificationConfig,
     );
     final String b17FiledConfig = await rootBundle.loadString(
       B17FjeDeviceInfoIfj.b17FiledConfig,
     );
-    var deviceLanguage="",countryCode="";
+    var deviceLanguage = "", countryCode = "";
     var languageXpe = B17FjiLocaleSelectedEfj.b17VqmReadLanguageXpe();
-    if(languageXpe.isNotEmpty){
-      try{
+    if (languageXpe.isNotEmpty) {
+      try {
         //zh-CN
         var list = languageXpe.split("-");
-        deviceLanguage=list.first;
-        countryCode=list.last;
-      }catch(_){
-
-      }
+        deviceLanguage = list.first;
+        countryCode = list.last;
+      } catch (_) {}
     }
-    if(deviceLanguage.isEmpty){
-      deviceLanguage=await FlutterBoomNotificationPlugins.instance.getDeviceLanguage();
+    if (deviceLanguage.isEmpty) {
+      deviceLanguage = await FlutterBoomNotificationPlugins.instance
+          .getDeviceLanguage();
     }
-    if(countryCode.isEmpty){
-      countryCode=await FlutterBoomNotificationPlugins.instance.getCountryCode();
+    if (countryCode.isEmpty) {
+      countryCode = await FlutterBoomNotificationPlugins.instance
+          .getCountryCode();
     }
     return NotificationInitConfig(
       defaultConfig: b17DefaultNotificationConfig,
       request: NotificationConfigRequest(
         url: "https://prod.pdfutilitydocforge.com/LGZXGfupyG/HmtKKNYmqW/aARzBe",
         headers: {
-          "imp":kDebugMode?"com.docforge.pdfutility":await FlutterTbaInfo.instance.getBundleId(),
+          "imp": kDebugMode
+              ? "com.docforge.pdfutility"
+              : await FlutterTbaInfo.instance.getBundleId(),
           // "imp":await FlutterTbaInfo.instance.getBundleId(),
-          "udz":kDebugMode?"0.0.1":await FlutterTbaInfo.instance.getAppVersion(),
+          "udz": kDebugMode
+              ? "0.0.1"
+              : await FlutterTbaInfo.instance.getAppVersion(),
         },
         body: {
-          "iSrc":deviceLanguage,
+          "iSrc": deviceLanguage,
           "DgTaa": await FlutterTbaInfo.instance.getDistinctId(),
           "pnsKCAj": countryCode,
         },
@@ -275,8 +278,6 @@ class B17PqnNoticeFuncVze {
           b17VqnEventTza.payload ?? b17VqnEventTza.payloadType?.name ?? '',
         );
       },
-      onTimerOverlayClicked: (TimerOverlayClickEvent b17PqnEventVze) {},
-      onProcessingOverlayClicked: () {},
     );
   }
 
