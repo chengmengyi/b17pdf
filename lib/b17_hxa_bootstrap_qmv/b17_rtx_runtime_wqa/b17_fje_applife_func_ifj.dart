@@ -22,7 +22,7 @@ class B17FjeApplifeFuncIfj {
   static final B17FjeApplifeFuncIfj instance = B17FjeApplifeFuncIfj._();
   static const Duration _b17PqmOpenAdLoadingTimeoutVzr = Duration(seconds: 16);
 
-  int b17HotCd = 3;
+  int b17HotCd = 10;
   bool b17HqmObserverStartedXwe = false, _b17StaAppIsBackTus = false;
   bool _b17PqmAppIsForegroundVzr = true;
   bool _b17KqmWaitingForegroundClickSourceWze = false;
@@ -126,6 +126,9 @@ class B17FjeApplifeFuncIfj {
     B17EipAdSceneUkg b17QxnAdSceneVza,
     B17JkwPosidKos b17VqnPositionIdTza,
   ) async {
+    if (_b17PqmIsHotLaunchCooldownActiveVzr()) {
+      return;
+    }
     _b17PqmLogLifecycleVzr(
       'showLifecycleAd start scene=${b17QxnAdSceneVza.name} '
       'position=${b17VqnPositionIdTza.name} foreground=$_b17PqmAppIsForegroundVzr '
@@ -160,22 +163,7 @@ class B17FjeApplifeFuncIfj {
     }
     final B17JiwAdFuncDjo b17KqmAdFuncWze =
         B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr;
-    final bool b17VqnHasCachedAdTza = await b17KqmAdFuncWze
-        .b17XmqHasCachedSceneAdVtr(
-          b17PqmAdSceneVzr: b17PqmAdSceneVzr,
-          b17KqmAdPosIdVzr: b17KqmAdPosIdVzr,
-        );
     if (!_b17PqmAppIsForegroundVzr) return;
-    if (b17VqnHasCachedAdTza) {
-      unawaited(
-        _b17HqmShowCachedLifecycleAdWza(
-          b17PqmAdSceneVzr: b17PqmAdSceneVzr,
-          b17KqmAdPosIdVzr: b17KqmAdPosIdVzr,
-          b17VqnUploadChanceTza: true,
-        ),
-      );
-      return;
-    }
     if (B17FjeNavigationFuncIfj.b17HqmIsCurrentRouteWza(
       B17FjeNavigationAddressIfj.b17RqmOpenAdLoadingRouteXza,
     )) {
@@ -260,8 +248,7 @@ class B17FjeApplifeFuncIfj {
   ) async {
     if (!_b17PqmAppIsForegroundVzr) return false;
     if (b17KqmAdPosIdVzr == B17JkwPosidKos.pr_open_hot) {
-      if (b17PqmAdPluginVzr.isShowingAd() ||
-          _b17PqmIsHotLaunchCooldownActiveVzr()) {
+      if (b17PqmAdPluginVzr.isShowingAd()) {
         return false;
       }
       return true;

@@ -70,8 +70,7 @@ dependencies:
   url_launcher: 6.3.2
   visibility_detector: 0.4.0+2
   path_provider: 2.1.6
-  flutter_headless_lifecycle_bootstrap:
-    path: /Users/chengmengyi/testbird/plugins/flutter_headless_lifecycle_bootstrap
+  flutter_headless_lifecycle_bootstrap: 0.0.4
 
 dev_dependencies:
   flutter_test:

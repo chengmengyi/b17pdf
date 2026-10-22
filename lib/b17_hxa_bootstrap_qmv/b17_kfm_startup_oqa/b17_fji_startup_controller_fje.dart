@@ -14,6 +14,7 @@ import 'package:b17pdf/b17_mye_messaging_kra/b17_gmn_shortcuts_bzl/b17_fje_short
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_jdw_metric_type_ijd.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_dji_analytics_func_wji.dart';
 import 'package:b17pdf/b17_ydu_interface_mqp/b17_nrx_foundation_pke/b17_fje_base_controller_sak.dart';
+import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_loading_delay_djwi.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
@@ -35,6 +36,7 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
   Timer? _b17KqnAdCheckTimerVxe;
   bool _b17PqmCheckingAdXza = false;
   bool _b17VqnInBackgroundTze = false;
+  late final Duration _b17KqmCacheCheckDelayWze;
 
   double get b17PqmProgressValueXra => b17KqnProgressControllerVza.value;
 
@@ -44,8 +46,14 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
   @override
   void onInit() {
     super.onInit();
-    B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza(b17KqmRequestPermissionWze: true);
+    B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza(
+      b17KqmRequestPermissionWze: true,
+    );
     B17QxnStartupClickGateFuncVza.instance.b17QxnMarkLauncherStartedVza();
+    final int b17PqmDelaySecondsVzr = B17LoadingDelayDjwi.b17KqmReadTimeWze();
+    _b17KqmCacheCheckDelayWze = Duration(
+      seconds: b17PqmDelaySecondsVzr > 0 ? b17PqmDelaySecondsVzr : 0,
+    );
     _b17QxnResolveLaunchAdVza();
     B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqnUploadAdChanceVxe(
       b17PqmAdSceneVzr: b17QxnLaunchAdSceneVza,
@@ -111,7 +119,8 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
   Future<void> _b17PqmCheckCachedAdXza() async {
     if (b17HqmNavigationStartedWxe ||
         _b17VqnInBackgroundTze ||
-        _b17PqmCheckingAdXza) {
+        _b17PqmCheckingAdXza ||
+        _b17PqnAdCheckStopwatchVze.elapsed < _b17KqmCacheCheckDelayWze) {
       return;
     }
     _b17PqmCheckingAdXza = true;
@@ -161,6 +170,7 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
   }
 
   Future<void> _b17RqmHandleLaunchDeadlineWza() async {
+    await _b17PqmWaitForCacheCheckDelayVzr();
     if (_b17HqmUseNewLaunchAdWza) {
       if (b17VqnNewUserOpenAdCheckTimeTza >= b17VqmLaunchDurationWxe) {
         final bool b17QxnHasNewAdVza = await _b17HqmHasCachedAdWza(
@@ -192,6 +202,12 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
       return;
     }
     await b17QxnFinishLauncherVza();
+  }
+
+  Future<void> _b17PqmWaitForCacheCheckDelayVzr() async {
+    while (_b17PqnAdCheckStopwatchVze.elapsed < _b17KqmCacheCheckDelayWze) {
+      await Future<void>.delayed(const Duration(milliseconds: 100));
+    }
   }
 
   Future<void> _b17VqnShowLaunchAdTza(

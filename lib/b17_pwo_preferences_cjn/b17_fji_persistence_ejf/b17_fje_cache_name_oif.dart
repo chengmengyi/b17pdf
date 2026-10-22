@@ -21,4 +21,6 @@ class B17FjeCacheNameOif {
   static const String b17RqmLastOpenAdCloseTimeXza =
       'b17_rqm_last_open_ad_close_time_xza';
   static const String b17PqnAdSwitchVze = 'b17_pqn_ad_switch_vze';
+  static const String b17AdClickDelay = 'b17AdClickDelay';
+  static const String b17LoadingDelay = 'b17LoadingDelay';
 }

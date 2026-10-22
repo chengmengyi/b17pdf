@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'dart:convert';
+import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_ad_click_delay_jdw.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_ynx_ad_scene_ige.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jkw_posid_kos.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_vqn_ad_switch_cache_tza.dart';
@@ -9,6 +11,7 @@ import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_c
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_jdw_metric_type_ijd.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_dji_analytics_func_wji.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_jiw_check_user_ojd.dart';
+import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_applife_func_ifj.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_xfm_firebase_kqo/b17_dji_firebase_func_wjo.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_device_info_ifj.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_qxn_startup_click_gate_func_vza.dart';
@@ -314,11 +317,11 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     if (!await b17VqnCanShowAdBySwitchTza(b17KqmAdPosIdVzr)) {
       return false;
     }
-    if (!b17HqmIgnoreCooldownWza &&
-        !_b17OrsShouldExcludeCooldownFHow(
-          b17PqmAdSceneVzr: b17PqmAdSceneVzr,
-          b17KqmAdPosIdVzr: b17KqmAdPosIdVzr,
-        )) {
+    if (!_b17OrsShouldExcludeCooldownFHow(
+      b17PqmAdSceneVzr: b17PqmAdSceneVzr,
+      b17KqmAdPosIdVzr: b17KqmAdPosIdVzr,
+      b17HqmIgnoreRegularCooldownWza: b17HqmIgnoreCooldownWza,
+    )) {
       return false;
     }
     final int b17VmqCurrentShowCachedSceneAdTimeXtr =
@@ -436,7 +439,22 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
   bool _b17OrsShouldExcludeCooldownFHow({
     required B17EipAdSceneUkg b17PqmAdSceneVzr,
     required B17JkwPosidKos b17KqmAdPosIdVzr,
+    required bool b17HqmIgnoreRegularCooldownWza,
   }) {
+    if (b17PqmAdSceneVzr == B17EipAdSceneUkg.pr_new_launch ||
+        b17PqmAdSceneVzr == B17EipAdSceneUkg.pr_launch) {
+      final int b17PqmLastOpenAdCloseTimeVzr =
+          B17RqmLastOpenAdCloseTimeXza.b17KqmReadTimeWze();
+      final int b17KqmHotCooldownMsWze =
+          B17FjeApplifeFuncIfj.instance.b17HotCd * 1000;
+      if (DateTime.now().millisecondsSinceEpoch - b17PqmLastOpenAdCloseTimeVzr <
+          b17KqmHotCooldownMsWze) {
+        return false;
+      }
+    }
+    if (b17HqmIgnoreRegularCooldownWza) {
+      return true;
+    }
     final bool b17VmqIsBPackageXtr =
         B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza;
     final bool b17PqmIsBCooldownPlacementVzr =
@@ -513,7 +531,14 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     String b17VmqAdNetworkXtr,
     String b17PqmAdSourceNameVzr,
   ) {
-    B17PqnNoticeFuncVze.instance.b17KqnShowAdClickNotificationVxe();
+    final delaySeconds = B17AdClickDelayJdw.b17KqmReadTimeWze();
+    unawaited(
+      Future<void>.delayed(
+        Duration(seconds: delaySeconds > 0 ? delaySeconds : 0),
+      ).then(
+        (_) => B17PqnNoticeFuncVze.instance.b17KqnShowAdClickNotificationVxe(),
+      ),
+    );
     if (b17PqmAdPlacementVzr is! B17EipAdSceneUkg) {
       return;
     }

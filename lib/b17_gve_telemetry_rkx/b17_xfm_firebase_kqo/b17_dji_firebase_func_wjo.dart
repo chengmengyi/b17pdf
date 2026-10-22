@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_applife_func_ifj.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_device_info_ifj.dart';
+import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_ad_click_delay_jdw.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_float_oho_cache_vze.dart';
+import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_loading_delay_djwi.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jiw_ad_func_djo.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_jiw_check_user_ojd.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_fhi_signal_bean_feo.dart';
@@ -54,6 +56,18 @@ class B17KqmFirebaseFuncWze {
   }
 
   void b17VqnApplyRemoteConfigTza() {
+    var ad_click_delay = _b17QxnRemoteConfigVza?.getInt("ad_click_delay") ?? 0;
+    if (ad_click_delay > 0) {
+      B17AdClickDelayJdw.b17VqnSaveTimeTza(b17PqnTimestampVze: ad_click_delay);
+    }
+    // var app_exit = _b17QxnRemoteConfigVza?.getInt("app_exit") ?? 0;
+    // if (app_exit > 0) {
+    //   Apex09StorageUtils.appExit.apex09SaveData(app_exit);
+    // }
+    var loading_delay = _b17QxnRemoteConfigVza?.getInt("loading_delay") ?? 0;
+    if (loading_delay > 0) {
+      B17LoadingDelayDjwi.b17VqnSaveTimeTza(b17PqnTimestampVze: loading_delay);
+    }
     var float_oho = _b17QxnRemoteConfigVza?.getInt("float_oho")??0;
     if(float_oho>0){
       B17FloatOhoCacheVze.b17VqnSaveTimeTza(b17PqnTimestampVze: float_oho);

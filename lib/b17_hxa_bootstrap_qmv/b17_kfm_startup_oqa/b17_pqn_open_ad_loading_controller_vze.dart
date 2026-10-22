@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_fhi_signal_bean_feo.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_qxm_signal_code_vza.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navigation_func_ifj.dart';
+import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_loading_delay_djwi.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jiw_ad_func_djo.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jkw_posid_kos.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_ynx_ad_scene_ige.dart';
@@ -27,6 +28,7 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
   Duration _b17VqnLastCacheCheckTza = Duration.zero;
   bool _b17HqmCheckingCacheWza = false;
   bool _b17RqmFinishedXza = false;
+  late final Duration _b17PqmCacheCheckDelayVzr;
 
   @override
   void onInit() {
@@ -49,6 +51,10 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
       );
       return;
     }
+    final int b17KqmDelaySecondsWze = B17LoadingDelayDjwi.b17KqmReadTimeWze();
+    _b17PqmCacheCheckDelayVzr = Duration(
+      seconds: b17KqmDelaySecondsWze > 0 ? b17KqmDelaySecondsWze : 0,
+    );
     _b17PqmStopwatchVzr.start();
     _b17KqmTimerWze = Timer.periodic(
       b17KqmTickIntervalWze,
@@ -60,7 +66,6 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
         b17KqmAdPosIdVzr: b17KqmAdPosIdVzr!,
       ),
     );
-    unawaited(_b17VqnCheckCacheTza());
   }
 
   void _b17KqmOnTickWze() {
@@ -74,8 +79,9 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
       _b17PqmFinishVzr(b17VqnCacheReadyTza: false);
       return;
     }
-    if (_b17PqmStopwatchVzr.elapsed - _b17VqnLastCacheCheckTza >=
-        b17HqmCacheCheckIntervalWza) {
+    if (_b17PqmStopwatchVzr.elapsed >= _b17PqmCacheCheckDelayVzr &&
+        _b17PqmStopwatchVzr.elapsed - _b17VqnLastCacheCheckTza >=
+            b17HqmCacheCheckIntervalWza) {
       unawaited(_b17VqnCheckCacheTza());
     }
   }
