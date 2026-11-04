@@ -18,12 +18,31 @@ class B17DjiAnalyticsFuncWji {
   static B17DjiAnalyticsFuncWji get instance => _b17QxnInstanceVza;
 
   final Dio _b17KqmDioClientWze = Dio();
+  Future<void>? _b17QxnInstallUploadFutureVza;
 
   Future<void> b17QxnUploadInstallVza() async {
-    b17QgrAddLifeTimePjg();
     if (!B17QxnUploadInstallSignalCacheVza.b17KqmReadEnabledWze()) {
       return;
     }
+    final Future<void>? b17KqmRunningFutureWze = _b17QxnInstallUploadFutureVza;
+    if (b17KqmRunningFutureWze != null) {
+      return b17KqmRunningFutureWze;
+    }
+
+    final Future<void> b17VqnUploadFutureTza =
+        _b17HqmUploadInstallInternalWza();
+    _b17QxnInstallUploadFutureVza = b17VqnUploadFutureTza;
+    try {
+      await b17VqnUploadFutureTza;
+    } finally {
+      if (identical(_b17QxnInstallUploadFutureVza, b17VqnUploadFutureTza)) {
+        _b17QxnInstallUploadFutureVza = null;
+      }
+    }
+  }
+
+  Future<void> _b17HqmUploadInstallInternalWza() async {
+    b17QgrAddLifeTimePjg();
 
     final Map<String, dynamic> b17VqnRequestBodyTza =
         await _b17HqmCreateCommonBodyWza();

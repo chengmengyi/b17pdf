@@ -46,7 +46,6 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
   @override
   void onInit() {
     super.onInit();
-    B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza();
     B17PqnNoticeFuncVze.instance.b17KqmRequestNotificationPermissionWze();
     B17QxnStartupClickGateFuncVza.instance.b17QxnMarkLauncherStartedVza();
     final int b17PqmDelaySecondsVzr = B17LoadingDelayDjwi.b17KqmReadTimeWze();

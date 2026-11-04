@@ -50,11 +50,11 @@ class B17HqvDashboardControllerWze extends B17FjeBaseControllerSak {
   @override
   void onInit() {
     super.onInit();
+    B17PqnNoticeFuncVze.instance.b17KqmRequestNotificationPermissionWze();
     B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.page_view,
       b17KqmParametersWze: {"page": "file"},
     );
-    B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza();
   }
 
   Future<bool> b17PqnHandleBackPressedVze() async {

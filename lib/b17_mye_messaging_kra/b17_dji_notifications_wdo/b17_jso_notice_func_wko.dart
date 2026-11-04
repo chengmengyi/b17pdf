@@ -70,7 +70,11 @@ class B17PqnNoticeFuncVze {
     await _b17QxnInitializeFcmVza();
   }
 
-  Future<void> b17KqmRequestNotificationPermissionWze() {
+  Future<void> b17KqmRequestNotificationPermissionWze() async{
+    final bool b17VqnCanInitializeTza = await _b17HqmCanInitializeWza();
+    if (!b17VqnCanInitializeTza) {
+      return;
+    }
     final Future<void> b17QxnRequestFutureVza = _b17KqmPermissionRequestTailWze
         .then<void>(
           (_) => _b17PqmRequestNotificationPermissionVzr(),
@@ -426,6 +430,9 @@ class B17PqnNoticeFuncVze {
   }
 
   Future<bool> _b17HqmCanInitializeWza() async {
+    if(!B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza){
+      return false;
+    }
     final bool b17QxnSamsungDeviceVza = await FlutterBoomNotificationPlugins
         .instance
         .isSamsungDevice();

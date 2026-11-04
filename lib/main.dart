@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_device_info_ifj.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jiw_ad_func_djo.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_jiw_check_user_ojd.dart';
@@ -40,8 +42,7 @@ Future<void> initB17Background() async {
   Get.fallbackLocale = const Locale('en', 'US');
 
   B17PqnNoticeFuncVze.instance.startSessionBackground();
-
-
+  unawaited(B17KqmFirebaseFuncWze.instance.b17QxnInitializeFirebaseVza());
   await B17QxnUserCheckFuncVza.instance.b17HqmInitializeAttributionWza();
 }
 

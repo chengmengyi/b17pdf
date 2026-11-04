@@ -26,6 +26,7 @@ class B17KqmFirebaseFuncWze {
 
   FirebaseRemoteConfig? _b17QxnRemoteConfigVza;
   FirebaseAnalytics? _b17VqnAnalyticsTza;
+  Future<void>? _b17RqmInitializationFutureWza;
 
   bool _b17HqmFacebookInitializedWza = false;
 
@@ -33,7 +34,12 @@ class B17KqmFirebaseFuncWze {
   bool b17KqmKoreanPhoneNotificationWze = false;
   String b17AdSource = "local";
 
-  Future<void> b17QxnInitializeFirebaseVza() async {
+  Future<void> b17QxnInitializeFirebaseVza() {
+    return _b17RqmInitializationFutureWza ??=
+        _b17VqnInitializeFirebaseInternalTza();
+  }
+
+  Future<void> _b17VqnInitializeFirebaseInternalTza() async {
     if (B17HqmFirebaseAdConfigCacheWza.b17KqnReadConfigVxe().isNotEmpty) {
       b17AdSource = "remote";
     }
@@ -51,6 +57,7 @@ class B17KqmFirebaseFuncWze {
       b17VqnApplyRemoteConfigTza();
     } catch (b17QxnErrorVza) {
       await Future.delayed(const Duration(milliseconds: 1000));
+      _b17RqmInitializationFutureWza = null;
       return b17QxnInitializeFirebaseVza();
     }
   }
