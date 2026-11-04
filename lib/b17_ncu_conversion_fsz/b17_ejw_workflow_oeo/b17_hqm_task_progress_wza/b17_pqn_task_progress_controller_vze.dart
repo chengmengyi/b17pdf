@@ -2,6 +2,9 @@ import 'dart:io';
 
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navigation_address_ifj.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navigation_func_ifj.dart';
+import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jiw_ad_func_djo.dart';
+import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jkw_posid_kos.dart';
+import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_ynx_ad_scene_ige.dart';
 import 'package:b17pdf/b17_ydu_interface_mqp/b17_nrx_foundation_pke/b17_fje_base_controller_sak.dart';
 import 'package:flutter_preview_file/flutter_preview_file.dart';
 import 'package:get/get.dart';
@@ -36,6 +39,11 @@ class B17PqnTaskProgressControllerVze extends B17FjeBaseControllerSak {
     if (b17HqmGeneratingWza || b17QxnImagePathsVza.isEmpty) return;
     b17HqmGeneratingWza = true;
     try {
+      await B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmShowCachedSceneAdVzr(
+        b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_user_use,
+        b17KqmAdPosIdVzr: B17JkwPosidKos.pr_use_end,
+        b17VmqAdHostContextXtr: Get.context,
+      );
       final List<FileToolsFileInfo> b17VqnImagesTza = <FileToolsFileInfo>[];
       for (final String b17QxnPathVza in b17QxnImagePathsVza) {
         final File b17HqmFileWza = File(b17QxnPathVza);

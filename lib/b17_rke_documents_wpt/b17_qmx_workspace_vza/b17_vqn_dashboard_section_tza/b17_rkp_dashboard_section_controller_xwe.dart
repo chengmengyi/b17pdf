@@ -108,12 +108,12 @@ class B17RkpDashboardSectionControllerXwe extends B17FjeBaseControllerSak
         B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
           b17QxnPointTypeVza: B17JdwMetricTypeIjd.storage_auth_click,
         );
-        if (B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza) {
-          B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmShowCachedSceneAdVzr(
-            b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_launch,
-            b17KqmAdPosIdVzr: B17JkwPosidKos.pr_permission_open,
-          );
-        }
+      }
+      if (B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza) {
+        B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmShowCachedSceneAdVzr(
+          b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_launch,
+          b17KqmAdPosIdVzr: B17JkwPosidKos.pr_permission_open,
+        );
       }
       if (!b17VqnResultTza.b17HqmIsGrantedWza) return;
       B17FjiSignalFuncEji.instance.b17JijSendMsgFEio(
