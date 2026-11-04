@@ -27,7 +27,6 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
   B17JiwAdFuncDjo._();
 
   bool b17QxnLoadNewLaunchAdVza = false;
-  int _b17PqmLastShowCachedSceneAdTimeVzr = 0;
 
   static B17JiwAdFuncDjo get b17KqmAdUtilsInstanceVzr =>
       _b17PqmAdUtilsInstanceVzr;
@@ -338,14 +337,6 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     )) {
       return false;
     }
-    final int b17VmqCurrentShowCachedSceneAdTimeXtr =
-        DateTime.now().millisecondsSinceEpoch;
-    final int b17KqmLastShowCachedSceneAdIntervalVzr =
-        _b17PqmLastShowCachedSceneAdTimeVzr <= 0
-        ? -1
-        : b17VmqCurrentShowCachedSceneAdTimeXtr -
-              _b17PqmLastShowCachedSceneAdTimeVzr;
-    _b17PqmLastShowCachedSceneAdTimeVzr = b17VmqCurrentShowCachedSceneAdTimeXtr;
     if (b17PqnUploadChanceVze) {
       b17KqnUploadAdChanceVxe(
         b17PqmAdSceneVzr: b17PqmAdSceneVzr,

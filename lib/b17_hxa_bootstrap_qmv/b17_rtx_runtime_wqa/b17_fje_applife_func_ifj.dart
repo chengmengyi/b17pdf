@@ -29,6 +29,7 @@ class B17FjeApplifeFuncIfj {
   bool b17HqmObserverStartedXwe = false;
   bool _b17StaAppIsBackTus = false;
   bool _b17PqmAppIsForegroundVzr = true;
+  bool _b17QxnHotLaunchEnabledVza = false;
   bool _b17QxnSuppressNextHotLaunchVza = false;
   bool _b17HqmHandlingForegroundWza = false;
   bool _b17VqnHasPendingForegroundTza = false;
@@ -41,6 +42,16 @@ class B17FjeApplifeFuncIfj {
 
   bool get b17QxnShouldSuppressClickHotLaunchVza =>
       !_b17PqmAppIsForegroundVzr || _b17StaAppIsBackTus;
+
+  bool get b17PqmAppIsForegroundVzr => _b17PqmAppIsForegroundVzr;
+
+  void b17KqmEnableHotLaunchWze() {
+    if (_b17QxnHotLaunchEnabledVza) return;
+    _b17QxnHotLaunchEnabledVza = true;
+    // 启动页期间发生的前后台切换不应被当成一次热启动。
+    _b17StaAppIsBackTus = false;
+    _b17QxnSuppressNextHotLaunchVza = false;
+  }
 
   void b17QxnSuppressNextHotLaunchVza() {
     _b17QxnSuppressNextHotLaunchVza = true;
@@ -75,7 +86,9 @@ class B17FjeApplifeFuncIfj {
             unawaited(
               B17QxnOverlayFuncVza.instance.b17KqmCloseTimerOverlayWze(),
             );
-            if (_b17HqmHandlingForegroundWza) {
+            if (!_b17QxnHotLaunchEnabledVza) {
+              _b17StaAppIsBackTus = false;
+            } else if (_b17HqmHandlingForegroundWza) {
               _b17VqnHasPendingForegroundTza = true;
             } else {
               unawaited(_b17WchAppFrontYze());

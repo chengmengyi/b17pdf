@@ -7,6 +7,7 @@ import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_jiw_check_u
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_xfm_firebase_kqo/b17_dji_firebase_func_wjo.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fje_localization_ifj/b17_kqm_locale_func_vza.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_jiw_initial_startup_source_func_jdo.dart';
+import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_applife_func_ifj.dart';
 import 'package:b17pdf/b17_mye_messaging_kra/b17_gmn_shortcuts_bzl/b17_fje_shortcut_func_ifj.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navigation_address_ifj.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_dji_analytics_func_wji.dart';
@@ -51,6 +52,7 @@ Future<void> initB17UI() async {
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
   ]);
+  B17FjeApplifeFuncIfj.instance.b17KpvStartObserverNza();
   await B17JiwInitialStartupSourceFuncJdo.instance.b17CchInitSourceQrc();
   B17KqmFirebaseFuncWze.instance.b17QxnInitializeFirebaseVza();
   B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmInitializeAdSdkVzr();
@@ -64,7 +66,6 @@ Future<void> initB17UI() async {
   B17DjiAnalyticsFuncWji.instance.b17VqnUploadSessionTza();
   B17QxnOverlayFuncVza.instance.b17QxnInitializeOverlayVza();
   B17PqnNoticeFuncVze.instance.b17RqmUploadNotificationEventDataWza();
-
   runApp(B17VqmApplicationXza(b17HqmInitialLocaleWze: b17QmxInitialLocaleVza));
 }
 

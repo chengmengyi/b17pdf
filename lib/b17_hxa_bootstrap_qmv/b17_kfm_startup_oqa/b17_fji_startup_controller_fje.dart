@@ -47,6 +47,9 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
   @override
   void onInit() {
     super.onInit();
+    B17FjeApplifeFuncIfj.instance.b17KpvStartObserverNza();
+    _b17VqnInBackgroundTze =
+        !B17FjeApplifeFuncIfj.instance.b17PqmAppIsForegroundVzr;
     B17PqnNoticeFuncVze.instance.b17KqmRequestNotificationPermissionWze();
     B17QxnStartupClickGateFuncVza.instance.b17QxnMarkLauncherStartedVza();
     final int b17PqmDelaySecondsVzr = B17LoadingDelayDjwi.b17KqmReadTimeWze();
@@ -61,9 +64,11 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
     b17KqnProgressControllerVza =
         AnimationController(vsync: this, duration: b17VqmLaunchDurationWxe)
           ..addListener(b17RkqNotifyProgressVma)
-          ..addStatusListener(b17TqmHandleAnimationStatusXze)
-          ..forward();
-    _b17PqnAdCheckStopwatchVze.start();
+          ..addStatusListener(b17TqmHandleAnimationStatusXze);
+    if (!_b17VqnInBackgroundTze) {
+      b17KqnProgressControllerVza.forward();
+      _b17PqnAdCheckStopwatchVze.start();
+    }
     _b17KqnAdCheckTimerVxe = Timer.periodic(
       const Duration(milliseconds: 500),
       (_) => _b17PqmCheckCachedAdXza(),
@@ -135,7 +140,9 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
     );
     final bool b17QxnHasAdVza = await _b17HqmHasCachedAdWza(b17TqnSceneVze);
     _b17PqmCheckingAdXza = false;
-    if (!b17QxnHasAdVza || b17HqmNavigationStartedWxe) {
+    if (!b17QxnHasAdVza ||
+        b17HqmNavigationStartedWxe ||
+        _b17VqnInBackgroundTze) {
       return;
     }
     b17HqmNavigationStartedWxe = true;
@@ -176,11 +183,13 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
 
   Future<void> _b17RqmHandleLaunchDeadlineWza() async {
     await _b17PqmWaitForCacheCheckDelayVzr();
+    await _b17PqmWaitUntilForegroundVzr();
     if (_b17HqmUseNewLaunchAdWza) {
       if (b17VqnNewUserOpenAdCheckTimeTza >= b17VqmLaunchDurationWxe) {
         final bool b17QxnHasNewAdVza = await _b17HqmHasCachedAdWza(
           B17EipAdSceneUkg.pr_new_launch,
         );
+        await _b17PqmWaitUntilForegroundVzr();
         if (b17QxnHasNewAdVza) {
           await _b17VqnShowLaunchAdTza(
             B17EipAdSceneUkg.pr_new_launch,
@@ -192,6 +201,7 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
       final bool b17KqmHasFallbackAdWze = await _b17HqmHasCachedAdWza(
         B17EipAdSceneUkg.pr_launch,
       );
+      await _b17PqmWaitUntilForegroundVzr();
       if (b17KqmHasFallbackAdWze) {
         await _b17VqnShowLaunchAdTza(
           B17EipAdSceneUkg.pr_launch,
@@ -199,12 +209,18 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
         );
         return;
       }
-    } else if (await _b17HqmHasCachedAdWza(b17QxnLaunchAdSceneVza)) {
-      await _b17VqnShowLaunchAdTza(
+    } else {
+      final bool b17QxnHasLaunchAdVza = await _b17HqmHasCachedAdWza(
         b17QxnLaunchAdSceneVza,
-        b17KqmLaunchAdPosIdWze,
       );
-      return;
+      await _b17PqmWaitUntilForegroundVzr();
+      if (b17QxnHasLaunchAdVza) {
+        await _b17VqnShowLaunchAdTza(
+          b17QxnLaunchAdSceneVza,
+          b17KqmLaunchAdPosIdWze,
+        );
+        return;
+      }
     }
     await b17QxnFinishLauncherVza();
   }
@@ -215,10 +231,17 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
     }
   }
 
+  Future<void> _b17PqmWaitUntilForegroundVzr() async {
+    while (_b17VqnInBackgroundTze) {
+      await Future<void>.delayed(const Duration(milliseconds: 100));
+    }
+  }
+
   Future<void> _b17VqnShowLaunchAdTza(
     B17EipAdSceneUkg b17QxnSceneVza,
     B17JkwPosidKos b17KqmPosIdWze,
   ) async {
+    await _b17PqmWaitUntilForegroundVzr();
     _b17KqnAdCheckTimerVxe?.cancel();
     _b17PqnAdCheckStopwatchVze.stop();
     if (b17KqnProgressControllerVza.isAnimating) {
@@ -300,7 +323,7 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
 
   @override
   void onClose() {
-    B17FjeApplifeFuncIfj.instance.b17KpvStartObserverNza();
+    B17FjeApplifeFuncIfj.instance.b17KqmEnableHotLaunchWze();
     B17QxnStartupClickGateFuncVza.instance.b17KqmMarkLauncherClosedWze();
     _b17KqnAdCheckTimerVxe?.cancel();
     _b17PqnAdCheckStopwatchVze.stop();
