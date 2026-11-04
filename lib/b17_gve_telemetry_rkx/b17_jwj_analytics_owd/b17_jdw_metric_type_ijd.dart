@@ -56,6 +56,7 @@ enum B17JdwMetricTypeIjd {
   float_pop_click,
   float_click,
   risk_control,
+  up_local_nat,
   ump_form_request,
   ump_form_load,
   consent_flow_trigger,

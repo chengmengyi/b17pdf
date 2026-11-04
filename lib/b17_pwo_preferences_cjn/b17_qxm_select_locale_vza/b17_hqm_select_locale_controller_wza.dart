@@ -79,7 +79,7 @@ class B17HqmSelectLocaleControllerWza extends B17FjeBaseControllerSak {
     await B17KqmLocaleFuncVza.b17GqmSelectLanguageWxe(
       b17KqnSelectedLanguageVze.b17VqnLocaleTza,
     );
-    B17JfiFirstUserFuncEjf.instance.toPageOpenNotificationPermission();
+    B17JfiFirstUserFuncEjf.instance.toPageGuide();
   }
 
   @override

@@ -23,4 +23,7 @@ class B17FjeCacheNameOif {
   static const String b17PqnAdSwitchVze = 'b17_pqn_ad_switch_vze';
   static const String b17AdClickDelay = 'b17AdClickDelay';
   static const String b17LoadingDelay = 'b17LoadingDelay';
+  static const String b17QxnGuideCompletedVza = 'b17_qxn_guide_completed_vza';
+  static const String b17QxnOverlayPermissionOpenDateVza =
+      'b17_qxn_overlay_permission_open_date_vza';
 }

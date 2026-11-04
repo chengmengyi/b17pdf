@@ -22,7 +22,7 @@ class B17FjeApplifeFuncIfj {
   static final B17FjeApplifeFuncIfj instance = B17FjeApplifeFuncIfj._();
   static const Duration _b17PqmOpenAdLoadingTimeoutVzr = Duration(seconds: 16);
 
-  int b17HotCd = 10;
+  int b17HotCd = 500;
   bool b17HqmObserverStartedXwe = false, _b17StaAppIsBackTus = false;
   bool _b17PqmAppIsForegroundVzr = true;
   bool _b17KqmWaitingForegroundClickSourceWze = false;

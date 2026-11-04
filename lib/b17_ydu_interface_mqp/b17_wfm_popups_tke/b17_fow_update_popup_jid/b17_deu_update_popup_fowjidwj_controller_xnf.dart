@@ -34,6 +34,6 @@ class B17FowUpdatePopupControllerJid extends B17FjeBaseControllerSak {
       );
       return;
     }
-    B17JfiFirstUserFuncEjf.instance.toPageChooseLanguage();
+    B17JfiFirstUserFuncEjf.instance.toPageAfterLauncher();
   }
 }

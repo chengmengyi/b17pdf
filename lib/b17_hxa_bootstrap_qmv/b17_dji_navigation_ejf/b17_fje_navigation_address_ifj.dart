@@ -12,6 +12,7 @@ import 'package:b17pdf/b17_ncu_conversion_fsz/b17_ejw_workflow_oeo/b17_vqn_task_
 import 'package:b17pdf/b17_ncu_conversion_fsz/b17_ejw_workflow_oeo/b17_hqm_task_progress_wza/b17_rqm_task_progress_page_xze.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_qxn_uninstall_vza/b17_kqm_uninstall_page_wze.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_kfm_startup_oqa/b17_rqm_open_ad_loading_page_xza.dart';
+import 'package:b17pdf/b17_pwo_preferences_cjn/b17_pqn_guide_vze/b17_kqn_guide_page_vze.dart';
 import 'package:get/get.dart';
 
 abstract final class B17FjeNavigationAddressIfj {
@@ -23,6 +24,7 @@ abstract final class B17FjeNavigationAddressIfj {
   static const String b17KqnDeleteFileRouteVze = '/b17_kqn_remove_document_vze';
   static const String b17HqmChooseLanguageRouteWza =
       '/b17_hqm_select_locale_wza';
+  static const String b17QxnGuideRouteVza = '/b17_qxn_guide_vza';
   static const String b17QxmPreviewPdfRouteVza = '/b17_qxm_viewer_pdf_vza';
   static const String b17VqnPreviewWordRouteTza = '/b17_vqn_viewer_word_tza';
   static const String b17RqmPreviewExcelRouteWza = '/b17_rqm_viewer_excel_wza';
@@ -54,6 +56,7 @@ abstract final class B17FjeNavigationAddressIfj {
       name: b17HqmChooseLanguageRouteWza,
       page: B17KqnSelectLocalePageVze.new,
     ),
+    GetPage(name: b17QxnGuideRouteVza, page: B17KqnGuidePageVze.new),
     GetPage(name: b17QxmPreviewPdfRouteVza, page: B17KqnViewerPdfPageVze.new),
     GetPage(name: b17VqnPreviewWordRouteTza, page: B17PqmViewerWordPageXze.new),
     GetPage(

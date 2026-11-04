@@ -42,7 +42,7 @@ class B17VqnUninstallControllerTza extends B17FjeBaseControllerSak {
       B17FjeNavigationFuncIfj.b17VqnShowExitAdIfNeededTza();
       return;
     }
-    B17JfiFirstUserFuncEjf.instance.toPageChooseLanguage();
+    B17JfiFirstUserFuncEjf.instance.toPageAfterLauncher();
     B17FjeNavigationFuncIfj.b17VqnShowExitAdIfNeededTza();
   }
 

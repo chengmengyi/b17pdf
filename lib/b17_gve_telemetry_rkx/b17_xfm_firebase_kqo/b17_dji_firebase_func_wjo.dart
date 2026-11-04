@@ -142,7 +142,10 @@ class B17KqmFirebaseFuncWze {
 
     var cd_hot = _b17QxnRemoteConfigVza?.getInt("cd_hot")??0;
     if(cd_hot>0){
-      B17FjeApplifeFuncIfj.instance.b17HotCd=cd_hot;
+      B17FjeApplifeFuncIfj.instance.b17HotCd=cd_hot*1000;
+    }
+    if(cd_hot==-1){
+      B17FjeApplifeFuncIfj.instance.b17HotCd=0;
     }
     _b17GetAdShowClickConfig();
   }

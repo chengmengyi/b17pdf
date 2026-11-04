@@ -27,4 +27,10 @@ enum B17JkwPosidKos {
   pr_search_int,
   pr_read_int,
   pr_comment,
+  pr_guide1,
+  pr_guide2,
+  pr_guide_full,
+  pr_new_lan_int,
+  pr_guide_int,
+  pr_use_end,
 }

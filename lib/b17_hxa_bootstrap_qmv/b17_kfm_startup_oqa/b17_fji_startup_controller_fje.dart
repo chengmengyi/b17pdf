@@ -238,6 +238,15 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
     B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(
       B17EipAdSceneUkg.pr_user_use,
     );
+    B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(
+      B17EipAdSceneUkg.pr_ban1,
+    );
+    B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(
+      B17EipAdSceneUkg.pr_ban2,
+    );
+    B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(
+      B17EipAdSceneUkg.pr_new_int,
+    );
     B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.app_launch_result,
     );
@@ -246,7 +255,7 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
     if (result) {
       return;
     }
-    B17JfiFirstUserFuncEjf.instance.toPageChooseLanguage();
+    B17JfiFirstUserFuncEjf.instance.toPageAfterLauncher();
   }
 
   @override

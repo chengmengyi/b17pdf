@@ -73,14 +73,22 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
         return false;
       },
       smallNativeAdLayoutName: 'b17_krb_native_ad_layout_ncz',
-      nativeAdHeadlineCallback:
-          ({required String? headline, required bool isNextGenAdmob}) {
-            FlutterPdfRiskControlPlugins.instance.checkTestAdUser(
-              headline: headline,
-            );
-          },
+      nativeAdHeadlineCallback: ({required String? headline, required bool isNextGenAdmob}) {
+        handleNativeAdHeadline(headline);
+      },
     );
     await _b17VmqPreloadStartupAdScenesXtr();
+  }
+
+  handleNativeAdHeadline(String? headline)async{
+    var result = await FlutterPdfRiskControlPlugins.instance.checkTestAdUser(
+      headline: headline,
+    );
+    if(result==0){
+      B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
+        b17QxnPointTypeVza: B17JdwMetricTypeIjd.up_local_nat,
+      );
+    }
   }
 
   Future<void> _b17VmqPreloadStartupAdScenesXtr() async {
@@ -184,9 +192,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
   void _b17XmqBuildStartupPreloadSceneListVtr() {
     _b17VmqStartupPreloadAdScenesXtr.clear();
     _b17VmqStartupPreloadAdScenesXtr.add(B17EipAdSceneUkg.pr_launch);
-    _b17VmqStartupPreloadAdScenesXtr.add(B17EipAdSceneUkg.pr_ban1);
     if (B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza) {
-      _b17VmqStartupPreloadAdScenesXtr.add(B17EipAdSceneUkg.pr_ban2);
       _b17VmqStartupPreloadAdScenesXtr.add(B17EipAdSceneUkg.pr_exit);
     }
     b17QxnLoadNewLaunchAdVza =
@@ -433,7 +439,8 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
       return;
     }
     b17KqmPreloadAdBySceneWze(B17EipAdSceneUkg.pr_exit);
-    b17KqmPreloadAdBySceneWze(B17EipAdSceneUkg.pr_ban2);
+    b17KqmPreloadAdBySceneWze(B17EipAdSceneUkg.pr_ban1);
+    b17KqmPreloadAdBySceneWze(B17EipAdSceneUkg.pr_new_int);
   }
 
   bool _b17OrsShouldExcludeCooldownFHow({
