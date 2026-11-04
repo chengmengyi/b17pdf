@@ -79,10 +79,7 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
       (_) => _b17KqmOnTickWze(),
     );
     unawaited(
-      B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17VqnForceLoadAdSceneTza(
-        b17PqmAdSceneVzr: b17PqmAdSceneVzr!,
-        b17KqmAdPosIdVzr: b17KqmAdPosIdVzr!,
-      ),
+      B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(b17PqmAdSceneVzr!),
     );
   }
 

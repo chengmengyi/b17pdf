@@ -10,7 +10,6 @@ import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jkw_
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_ynx_ad_scene_ige.dart';
 import 'package:b17pdf/b17_ydu_interface_mqp/b17_nrx_foundation_pke/b17_fje_base_controller_sak.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class B17HqmGuideControllerWza extends B17FjeBaseControllerSak {
   static const String b17QxnNativeAdEligibilityUpdateIdVza =
@@ -24,7 +23,10 @@ class B17HqmGuideControllerWza extends B17FjeBaseControllerSak {
   bool _b17VqnTriedGuideFullAdTza = false;
   bool _b17PqnFinishingGuideVze = false;
 
-  void b17RqmOnPageChangedWza(int b17QxnPageIndexVza) {
+  void b17RqmOnPageChangedWza(
+    int b17QxnPageIndexVza,
+    BuildContext b17QxnContextVza,
+  ) {
     b17KqmCurrentPageWze = b17QxnPageIndexVza;
     if (b17QxnPageIndexVza == 1 && !_b17VqnTriedGuideFullAdTza) {
       _b17VqnTriedGuideFullAdTza = true;
@@ -33,13 +35,13 @@ class B17HqmGuideControllerWza extends B17FjeBaseControllerSak {
           b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_new_int,
           b17KqmAdPosIdVzr: B17JkwPosidKos.pr_guide_full,
           b17HqmIgnoreCooldownWza: true,
-          b17VmqAdHostContextXtr: Get.context,
+          b17VmqAdHostContextXtr: b17QxnContextVza,
         );
       }
     }
   }
 
-  void b17VqnClickBottomTza() {
+  void b17VqnClickBottomTza(BuildContext b17QxnContextVza) {
     if (b17KqmCurrentPageWze < 1) {
       b17QxnPageControllerVza.animateToPage(
         b17KqmCurrentPageWze + 1,
@@ -50,16 +52,16 @@ class B17HqmGuideControllerWza extends B17FjeBaseControllerSak {
     }
     if (_b17PqnFinishingGuideVze) return;
     _b17PqnFinishingGuideVze = true;
-    unawaited(_b17HqmFinishGuideWza());
+    unawaited(_b17HqmFinishGuideWza(b17QxnContextVza));
   }
 
-  Future<void> _b17HqmFinishGuideWza() async {
+  Future<void> _b17HqmFinishGuideWza(BuildContext b17QxnContextVza) async {
     if (B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza) {
       await B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmShowCachedSceneAdVzr(
         b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_new_int,
         b17KqmAdPosIdVzr: B17JkwPosidKos.pr_guide_int,
         b17HqmIgnoreCooldownWza: true,
-        b17VmqAdHostContextXtr: Get.context,
+        b17VmqAdHostContextXtr: b17QxnContextVza,
       );
     }
     await B17QxnGuideCompletedCacheVza.b17VqnSaveCompletedTza(true);

@@ -10,7 +10,6 @@ import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_ynx_
 import 'package:b17pdf/b17_ydu_interface_mqp/b17_nrx_foundation_pke/b17_fje_base_controller_sak.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 class B17HqmSelectLocaleControllerWza extends B17FjeBaseControllerSak {
   final ScrollController b17QxmLanguageScrollControllerVza = ScrollController();
@@ -77,7 +76,7 @@ class B17HqmSelectLocaleControllerWza extends B17FjeBaseControllerSak {
     );
   }
 
-  Future<void> b17PooClickOkUto() async {
+  Future<void> b17PooClickOkUto(BuildContext b17QxnContextVza) async {
     B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.lang_select_click,
     );
@@ -86,7 +85,7 @@ class B17HqmSelectLocaleControllerWza extends B17FjeBaseControllerSak {
         b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_new_int,
         b17KqmAdPosIdVzr: B17JkwPosidKos.pr_new_lan_int,
         b17HqmIgnoreCooldownWza: true,
-        b17VmqAdHostContextXtr: Get.context,
+        b17VmqAdHostContextXtr: b17QxnContextVza,
       );
     }
     await B17KqmLocaleFuncVza.b17GqmSelectLanguageWxe(

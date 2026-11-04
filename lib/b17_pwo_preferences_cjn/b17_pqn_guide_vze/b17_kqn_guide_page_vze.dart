@@ -37,7 +37,11 @@ class B17KqnGuidePageVze extends B17QazBasePageMtr<B17HqmGuideControllerWza> {
               builder: (B17HqmGuideControllerWza b17QxnControllerVza) =>
                   PageView(
                     controller: b17QxnControllerVza.b17QxnPageControllerVza,
-                    onPageChanged: b17QxnControllerVza.b17RqmOnPageChangedWza,
+                    onPageChanged: (int b17QxnPageIndexVza) =>
+                        b17QxnControllerVza.b17RqmOnPageChangedWza(
+                          b17QxnPageIndexVza,
+                          b17QxnContextVza,
+                        ),
                     children: <Widget>[
                       _b17VqnGuideOneWidgetTza(
                         b17QxnControllerVza.b17RqmCanShowNativeAdWza,
@@ -52,7 +56,7 @@ class B17KqnGuidePageVze extends B17QazBasePageMtr<B17HqmGuideControllerWza> {
           SizedBox(height: 20.h),
           _indicatorWidget(b17KqmControllerWze),
           SizedBox(height: 20.h),
-          _b17PqnBottomWidgetVze(b17KqmControllerWze),
+          _b17PqnBottomWidgetVze(b17KqmControllerWze, b17QxnContextVza),
           SizedBox(height: 20.h),
         ],
       ),
@@ -148,9 +152,13 @@ class B17KqnGuidePageVze extends B17QazBasePageMtr<B17HqmGuideControllerWza> {
     ],
   );
 
-  Widget _b17PqnBottomWidgetVze(B17HqmGuideControllerWza b17QxnControllerVza) {
+  Widget _b17PqnBottomWidgetVze(
+    B17HqmGuideControllerWza b17QxnControllerVza,
+    BuildContext b17QxnContextVza,
+  ) {
     return B17MfwTapGuardViewQke(
-      b17JkcOnPressedXwu: b17QxnControllerVza.b17VqnClickBottomTza,
+      b17JkcOnPressedXwu: () =>
+          b17QxnControllerVza.b17VqnClickBottomTza(b17QxnContextVza),
       b17HnqChildVsa: Container(
         width: 240.w,
         height: 46.h,
@@ -244,9 +252,8 @@ class _B17VqnGuideNativeAdStateTza extends State<_B17QxnGuideNativeAdVza>
 
   Future<void> _b17RqmLoadNextAdWza() async {
     try {
-      await B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17VqnForceLoadAdSceneTza(
-        b17PqmAdSceneVzr: widget.b17QxnAdSceneVza,
-        b17KqmAdPosIdVzr: widget.b17VqnAdPosIdTza,
+      B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(
+        widget.b17QxnAdSceneVza,
       );
     } catch (_) {}
   }

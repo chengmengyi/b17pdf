@@ -48,7 +48,7 @@ class B17KqnSelectLocalePageVze
                 SizedBox(height: 10.h),
                 _b17KqnListWidgetVze(b17QxmControllerVza),
                 SizedBox(height: 10.h),
-                _b17VqnBottomWidgetTza(b17QxmControllerVza),
+                _b17VqnBottomWidgetTza(b17QxmControllerVza, b17QxmContextVza),
                 SizedBox(height: 16.h),
                 _b17VvdNativeAdWidgetWdp(),
               ],
@@ -111,8 +111,10 @@ class B17KqnSelectLocalePageVze
 
   Widget _b17VqnBottomWidgetTza(
     B17HqmSelectLocaleControllerWza b17QxmControllerVza,
+    BuildContext b17QxnContextVza,
   ) => B17MfwTapGuardViewQke(
-    b17JkcOnPressedXwu: b17QxmControllerVza.b17PooClickOkUto,
+    b17JkcOnPressedXwu: () =>
+        b17QxmControllerVza.b17PooClickOkUto(b17QxnContextVza),
     b17HnqChildVsa: Container(
       width: double.infinity,
       height: 46.h,

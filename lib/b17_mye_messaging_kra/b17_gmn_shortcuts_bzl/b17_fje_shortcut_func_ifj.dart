@@ -43,7 +43,8 @@ class B17FjeShortcutFuncIfj {
       _b17VqnPendingTypeTza = null;
       B17JiwInitialStartupSourceFuncJdo.instance
           .b17VqnClearQuickActionSourceTza();
-      B17DjiActiveStartupSourceFuncWdj.instance.removeHotLauncherSourceInfo();
+      B17DjiActiveStartupSourceFuncWdj.instance
+          .b17KqmClearQuickActionSourceWze();
       await _quickActions.clearShortcutItems();
       return;
     }

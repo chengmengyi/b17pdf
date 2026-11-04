@@ -51,7 +51,7 @@ class _B17PqnDashboardSectionStateVxa
             child: Column(
               children: [
                 _topWidget(b17QxmControllerVza),
-                _tabWidget(b17QxmControllerVza),
+                _tabWidget(b17QxmControllerVza, b17HqmContextWza),
                 if (b17QxmControllerVza.b17QxnShowAddWidgetVza)
                   _addSmallWidget(b17QxmControllerVza),
                 SizedBox(height: 12.h),
@@ -77,17 +77,19 @@ class _B17PqnDashboardSectionStateVxa
         ),
       );
 
-  _tabWidget(B17RkpDashboardSectionControllerXwe b17VqmcontrollerXze) =>
-      SizedBox(
-        width: double.infinity,
-        height: 40.h,
-        child: B17HjkTabViewJdo(
-          b17KqnTabControllerVze: b17VqmcontrollerXze.b17KqnTabControllerVze,
-          b17PqmOnTapXze: (int b17KqnIndexVze) {
-            b17VqmcontrollerXze.b17QxnHandleTabTapVza();
-          },
-        ),
-      );
+  _tabWidget(
+    B17RkpDashboardSectionControllerXwe b17VqmcontrollerXze,
+    BuildContext b17QxnContextVza,
+  ) => SizedBox(
+    width: double.infinity,
+    height: 40.h,
+    child: B17HjkTabViewJdo(
+      b17KqnTabControllerVze: b17VqmcontrollerXze.b17KqnTabControllerVze,
+      b17PqmOnTapXze: (int b17KqnIndexVze) {
+        b17VqmcontrollerXze.b17QxnHandleTabTapVza(b17QxnContextVza);
+      },
+    ),
+  );
 
   _addSmallWidget(B17RkpDashboardSectionControllerXwe b17VqmcontrollerXze) =>
       Container(

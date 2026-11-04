@@ -6,6 +6,7 @@ import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jiw_
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jkw_posid_kos.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_ynx_ad_scene_ige.dart';
 import 'package:b17pdf/b17_ydu_interface_mqp/b17_nrx_foundation_pke/b17_fje_base_controller_sak.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_preview_file/flutter_preview_file.dart';
 import 'package:get/get.dart';
 
@@ -16,6 +17,7 @@ class B17PqnTaskProgressControllerVze extends B17FjeBaseControllerSak {
   );
   double b17VqnProgressTza = 0;
   bool b17HqmGeneratingWza = false;
+  bool _b17QxnGenerationStartedVza = false;
 
   int get b17KqmProcessedCountWze {
     if (b17QxnImagePathsVza.isEmpty) return 0;
@@ -29,20 +31,15 @@ class B17PqnTaskProgressControllerVze extends B17FjeBaseControllerSak {
 
   void b17UjfClickBackBzn() => B17FjeNavigationFuncIfj.b17FtyBackNwp();
 
-  @override
-  void onReady() {
-    super.onReady();
-    _b17KqmGeneratePdfWze();
-  }
-
-  Future<void> _b17KqmGeneratePdfWze() async {
-    if (b17HqmGeneratingWza || b17QxnImagePathsVza.isEmpty) return;
+  Future<void> b17QxnStartGenerationVza(BuildContext b17QxnContextVza) async {
+    if (_b17QxnGenerationStartedVza || b17QxnImagePathsVza.isEmpty) return;
+    _b17QxnGenerationStartedVza = true;
     b17HqmGeneratingWza = true;
     try {
       await B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmShowCachedSceneAdVzr(
         b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_user_use,
         b17KqmAdPosIdVzr: B17JkwPosidKos.pr_use_end,
-        b17VmqAdHostContextXtr: Get.context,
+        b17VmqAdHostContextXtr: b17QxnContextVza,
       );
       final List<FileToolsFileInfo> b17VqnImagesTza = <FileToolsFileInfo>[];
       for (final String b17QxnPathVza in b17QxnImagePathsVza) {

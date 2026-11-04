@@ -8,6 +8,7 @@ import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navi
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navigation_func_ifj.dart';
 import 'package:b17pdf/b17_rke_documents_wpt/b17_qmx_workspace_vza/b17_hqv_dashboard_controller_wze.dart';
 import 'package:b17pdf/b17_ydu_interface_mqp/b17_nrx_foundation_pke/b17_fje_base_controller_sak.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class B17FowUpdatePopupControllerJid extends B17FjeBaseControllerSak {
@@ -15,12 +16,12 @@ class B17FowUpdatePopupControllerJid extends B17FjeBaseControllerSak {
     _b17QxmReturnToAppVza();
   }
 
-  Future<void> b17VqnClickLeaveAnywayTza() async {
+  Future<void> b17VqnClickLeaveAnywayTza(BuildContext b17QxnContextVza) async {
     if (B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza) {
       await B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmShowCachedSceneAdVzr(
         b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_exit,
         b17KqmAdPosIdVzr: B17JkwPosidKos.unload_2,
-        b17VmqAdHostContextXtr: Get.context,
+        b17VmqAdHostContextXtr: b17QxnContextVza,
       );
     }
     _b17QxmReturnToAppVza();

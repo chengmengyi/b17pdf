@@ -89,8 +89,8 @@ class B17FowUpdatePopupJid
                 ),
                 SizedBox(height: 16.h),
                 B17MfwTapGuardViewQke(
-                  b17JkcOnPressedXwu:
-                      b17KqmControllerWza.b17VqnClickLeaveAnywayTza,
+                  b17JkcOnPressedXwu: () => b17KqmControllerWza
+                      .b17VqnClickLeaveAnywayTza(b17HqnContextVxe),
                   b17HnqChildVsa: B17CxmLocalizedTextViewPra(
                     "Leave anyway".tr,
                     b17RvxFontSizeQle: 14.sp,

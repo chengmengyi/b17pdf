@@ -42,7 +42,14 @@ class B17DjiActiveStartupSourceFuncWdj {
     return b17QxnSourceVza;
   }
 
-  removeHotLauncherSourceInfo() {
+  void b17KqmClearQuickActionSourceWze() {
+    if (_b17VqnPendingSourceTza?.b17VqnTypeTza ==
+        B17QxnActiveStartupSourceTypeVza.quickAction) {
+      _b17VqnPendingSourceTza = null;
+    }
+  }
+
+  void removeHotLauncherSourceInfo() {
     _b17VqnPendingSourceTza = null;
   }
 }

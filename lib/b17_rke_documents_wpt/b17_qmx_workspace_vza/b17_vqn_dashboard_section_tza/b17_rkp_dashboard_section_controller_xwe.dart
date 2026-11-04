@@ -52,23 +52,21 @@ class B17RkpDashboardSectionControllerXwe extends B17FjeBaseControllerSak
     b17HqmRequestStoragePermissionWza();
   }
 
-  void b17QxnHandleTabTapVza() {
-    B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
-      b17QxnPointTypeVza: B17JdwMetricTypeIjd.file_filter_click,
-    );
-  }
-
   void b17HqmHandleTabChangedWza() {
     final int b17KqnIndexVze = b17KqnTabControllerVze.index;
     if (b17QmvSelectedTabIndexNza == b17KqnIndexVze) return;
     b17QmvSelectedTabIndexNza = b17KqnIndexVze;
     update();
-    final BuildContext? b17HqmContextWza = Get.context;
-    if (b17HqmContextWza == null) return;
+  }
+
+  void b17QxnHandleTabTapVza(BuildContext b17QxnContextVza) {
+    B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
+      b17QxnPointTypeVza: B17JdwMetricTypeIjd.file_filter_click,
+    );
     B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmShowCachedSceneAdVzr(
       b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_user_use,
       b17KqmAdPosIdVzr: B17JkwPosidKos.pr_up_int,
-      b17VmqAdHostContextXtr: b17HqmContextWza,
+      b17VmqAdHostContextXtr: b17QxnContextVza,
     );
   }
 
@@ -113,6 +111,7 @@ class B17RkpDashboardSectionControllerXwe extends B17FjeBaseControllerSak
         B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmShowCachedSceneAdVzr(
           b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_launch,
           b17KqmAdPosIdVzr: B17JkwPosidKos.pr_permission_open,
+          b17HqmIgnoreCooldownWza: true,
         );
       }
       if (!b17VqnResultTza.b17HqmIsGrantedWza) return;

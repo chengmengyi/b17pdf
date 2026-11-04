@@ -2,7 +2,6 @@ import 'package:b17pdf/b17_ncu_conversion_fsz/b17_ejw_workflow_oeo/b17_hqm_task_
 import 'package:b17pdf/b17_ydu_interface_mqp/b17_nrx_foundation_pke/b17_qaz_base_page_mtr.dart';
 import 'package:b17pdf/b17_ydu_interface_mqp/b17_hcv_widgets_rqa/b17_pzr_asset_picture_view_xcu.dart';
 import 'package:b17pdf/b17_ydu_interface_mqp/b17_hcv_widgets_rqa/b17_cxm_localized_text_view_pra.dart';
-import 'package:b17pdf/b17_ydu_interface_mqp/b17_hcv_widgets_rqa/b17_ijo_lottie_widget_wok.dart';
 import 'package:b17pdf/b17_ydu_interface_mqp/b17_hcv_widgets_rqa/b17_mfw_tap_guard_view_qke.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,6 +21,10 @@ class B17RqmTaskProgressPageXze
     BuildContext b17VqmContextWza,
     B17PqnTaskProgressControllerVze b17KqmControllerXve,
   ) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!b17VqmContextWza.mounted) return;
+      b17KqmControllerXve.b17QxnStartGenerationVza(b17VqmContextWza);
+    });
     return GetBuilder<B17PqnTaskProgressControllerVze>(
       builder: (B17PqnTaskProgressControllerVze b17VqnControllerTza) => Column(
         children: [

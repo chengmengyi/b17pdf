@@ -141,18 +141,6 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     ]);
   }
 
-  Future<void> b17VqnForceLoadAdSceneTza({
-    required B17EipAdSceneUkg b17PqmAdSceneVzr,
-    required B17JkwPosidKos b17KqmAdPosIdVzr,
-  }) async {
-    await FlutterPdfAdPlugins.instance.loadPlacement<B17EipAdSceneUkg>(
-      b17PqmAdSceneVzr,
-      force: true,
-      placementLabelBuilder: (B17EipAdSceneUkg b17PqmPlacementVzr) =>
-          b17PqmPlacementVzr.name,
-    );
-  }
-
   Future<Widget?> b17PqmTakeFilesListNativeAdWidgetVzr({
     bool b17PqmLoadIfNeededVzr = true,
     bool b17PqmReloadAfterTakeVzr = false,
@@ -382,11 +370,11 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
       );
       if (!b17VmqHasCachedAdXtr) {
         B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
-          b17QxnPointTypeVza: B17JdwMetricTypeIjd.show_ad_no_cache,
+          b17QxnPointTypeVza: B17JdwMetricTypeIjd.ad_show_fail,
           b17KqmParametersWze: {
             "ad_context": b17PqmAdSceneVzr.name,
             "ad_pos_id": b17KqmAdPosIdVzr.name,
-            "last_time": b17KqmLastShowCachedSceneAdIntervalVzr,
+            "error_message": "no cache",
           },
         );
         if (_b17KqmNoReloadAfterCloseAdScenesVzr.contains(b17PqmAdSceneVzr)) {
