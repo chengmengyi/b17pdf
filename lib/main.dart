@@ -18,16 +18,15 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:b17pdf/b17_mye_messaging_kra/b17_dji_notifications_wdo/b17_jso_notice_func_wko.dart';
 import 'package:flutter_headless_lifecycle_bootstrap/flutter_headless_lifecycle_bootstrap.dart';
 
-
 @pragma('vm:entry-point')
 Future<void> cycleMainB17() async {
   await FlutterHeadlessLifecycleBootstrap.run(
-    backgroundInitializer: initB17Backgroundk,
+    backgroundInitializer: initB17Background,
     uiInitializer: initB17UI,
   );
 }
 
-Future<void> initB17Backgroundk() async {
+Future<void> initB17Background() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await GetStorage.init();
@@ -42,25 +41,20 @@ Future<void> initB17Backgroundk() async {
 
   B17PqnNoticeFuncVze.instance.startSessionBackground();
 
-  await B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza();
+
   await B17QxnUserCheckFuncVza.instance.b17HqmInitializeAttributionWza();
 }
 
 Future<void> initB17UI() async {
-
-  await SystemChrome.setPreferredOrientations(
-    <DeviceOrientation>[
-      DeviceOrientation.portraitUp,
-    ],
-  );
+  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+    DeviceOrientation.portraitUp,
+  ]);
   await B17JiwInitialStartupSourceFuncJdo.instance.b17CchInitSourceQrc();
   B17KqmFirebaseFuncWze.instance.b17QxnInitializeFirebaseVza();
   B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmInitializeAdSdkVzr();
   await B17FjeShortcutFuncIfj.instance.init();
   final Locale b17QmxInitialLocaleVza = B17KqmLocaleFuncVza.b17RmqResolveInitialLocaleXve();
-  B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza(
-    b17KqmRequestPermissionWze: false,
-  );
+  B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza();
   B17DjiAnalyticsFuncWji.instance.b17QxnUploadInstallVza();
   B17DjiAnalyticsFuncWji.instance.b17VqnUploadSessionTza();
   B17PqnNoticeFuncVze.instance.b17RqmUploadNotificationEventDataWza();

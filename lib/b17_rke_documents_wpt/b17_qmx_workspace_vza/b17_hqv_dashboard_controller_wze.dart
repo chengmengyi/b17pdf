@@ -54,9 +54,7 @@ class B17HqvDashboardControllerWze extends B17FjeBaseControllerSak {
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.page_view,
       b17KqmParametersWze: {"page": "file"},
     );
-    B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza(
-      b17KqmRequestPermissionWze: true,
-    );
+    B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza();
   }
 
   Future<bool> b17PqnHandleBackPressedVze() async {

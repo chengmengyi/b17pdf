@@ -106,6 +106,9 @@
         <meta-data
             android:name="flutter_headless_lifecycle_bootstrap.dart_entrypoint"
             android:value="cycleMainB17" />
+        <meta-data
+            android:name="flutter_headless_lifecycle_bootstrap.require_first_ui_launch"
+            android:value="true" />
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
