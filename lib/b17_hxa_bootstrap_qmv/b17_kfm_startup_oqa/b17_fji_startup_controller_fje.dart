@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_jiw_check_user_ojd.dart';
 import 'package:b17pdf/b17_mye_messaging_kra/b17_dji_notifications_wdo/b17_jso_notice_func_wko.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jiw_ad_func_djo.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_ynx_ad_scene_ige.dart';
@@ -244,9 +245,11 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
     B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(
       B17EipAdSceneUkg.pr_ban2,
     );
-    B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(
-      B17EipAdSceneUkg.pr_new_int,
-    );
+    if(B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza){
+      B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(
+        B17EipAdSceneUkg.pr_new_int,
+      );
+    }
     B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.app_launch_result,
     );
