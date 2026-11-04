@@ -30,6 +30,7 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
   Duration _b17VqnLastCacheCheckTza = Duration.zero;
   bool _b17HqmCheckingCacheWza = false;
   bool _b17RqmFinishedXza = false;
+  bool _b17QxnIsForegroundVza = true;
   late final Duration _b17PqmCacheCheckDelayVzr;
 
   @override
@@ -42,6 +43,8 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
     final Object? b17PqmSceneArgumentVzr = b17VqnArgumentsTza['adScene'];
     final Object? b17KqmPosIdArgumentWze = b17VqnArgumentsTza['adPosId'];
     final Object? b17QxnSessionArgumentVza = b17VqnArgumentsTza['sessionId'];
+    final Object? b17QxnForegroundArgumentVza =
+        b17VqnArgumentsTza['isForeground'];
     if (b17PqmSceneArgumentVzr is B17EipAdSceneUkg &&
         b17KqmPosIdArgumentWze is B17JkwPosidKos) {
       b17PqmAdSceneVzr = b17PqmSceneArgumentVzr;
@@ -49,6 +52,9 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
     }
     if (b17QxnSessionArgumentVza is int) {
       b17QxnSessionIdVza = b17QxnSessionArgumentVza;
+    }
+    if (b17QxnForegroundArgumentVza is bool) {
+      _b17QxnIsForegroundVza = b17QxnForegroundArgumentVza;
     }
     if (b17PqmAdSceneVzr == null ||
         b17KqmAdPosIdVzr == null ||
@@ -65,7 +71,9 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
     _b17PqmCacheCheckDelayVzr = Duration(
       seconds: b17KqmDelaySecondsWze > 0 ? b17KqmDelaySecondsWze : 0,
     );
-    _b17PqmStopwatchVzr.start();
+    if (_b17QxnIsForegroundVza) {
+      _b17PqmStopwatchVzr.start();
+    }
     _b17KqmTimerWze = Timer.periodic(
       b17KqmTickIntervalWze,
       (_) => _b17KqmOnTickWze(),
@@ -79,7 +87,7 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
   }
 
   void _b17KqmOnTickWze() {
-    if (_b17RqmFinishedXza) return;
+    if (_b17RqmFinishedXza || !_b17QxnIsForegroundVza) return;
     b17VqnProgressTza =
         (_b17PqmStopwatchVzr.elapsedMilliseconds /
                 b17VqnMaximumWaitTza.inMilliseconds)
@@ -99,6 +107,7 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
   Future<void> _b17VqnCheckCacheTza() async {
     if (_b17HqmCheckingCacheWza ||
         _b17RqmFinishedXza ||
+        !_b17QxnIsForegroundVza ||
         b17PqmAdSceneVzr == null ||
         b17KqmAdPosIdVzr == null) {
       return;
@@ -112,7 +121,9 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
             b17PqmAdSceneVzr: b17PqmAdSceneVzr!,
             b17KqmAdPosIdVzr: b17KqmAdPosIdVzr!,
           );
-      if (b17PqmHasCachedAdVzr && !_b17RqmFinishedXza) {
+      if (b17PqmHasCachedAdVzr &&
+          !_b17RqmFinishedXza &&
+          _b17QxnIsForegroundVza) {
         b17VqnProgressTza = 1;
         update(<String>[b17RqmProgressUpdateIdXza]);
         _b17PqmFinishVzr(
@@ -155,13 +166,18 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
 
   @override
   void b17RifHandleEventhJei(B17FhiSignalBeanFeo b17QzmEventXva) {
-    if (b17QzmEventXva.b17HfeEventCodeFMie ==
-            B17QxmSignalCodeVza.b17KqmAppLifecycleWze &&
-        b17QzmEventXva.b17DjiIntValueJie == 1) {
-      _b17PqmFinishVzr(
-        b17VqnCacheReadyTza: false,
-        b17HqmReasonWza: 'app_backgrounded',
-      );
+    if (b17QzmEventXva.b17HfeEventCodeFMie !=
+        B17QxmSignalCodeVza.b17KqmAppLifecycleWze) {
+      return;
+    }
+    final bool b17QxnIsForegroundVza = b17QzmEventXva.b17DjiIntValueJie != 1;
+    if (_b17QxnIsForegroundVza == b17QxnIsForegroundVza) return;
+    _b17QxnIsForegroundVza = b17QxnIsForegroundVza;
+    if (_b17RqmFinishedXza) return;
+    if (_b17QxnIsForegroundVza) {
+      _b17PqmStopwatchVzr.start();
+    } else {
+      _b17PqmStopwatchVzr.stop();
     }
   }
 

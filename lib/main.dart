@@ -54,8 +54,11 @@ Future<void> initB17UI() async {
   await B17JiwInitialStartupSourceFuncJdo.instance.b17CchInitSourceQrc();
   B17KqmFirebaseFuncWze.instance.b17QxnInitializeFirebaseVza();
   B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmInitializeAdSdkVzr();
-  await B17FjeShortcutFuncIfj.instance.init();
-  final Locale b17QmxInitialLocaleVza = B17KqmLocaleFuncVza.b17RmqResolveInitialLocaleXve();
+  await B17FjeShortcutFuncIfj.instance.init(
+    b17QxnEnabledVza: B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza,
+  );
+  final Locale b17QmxInitialLocaleVza =
+      B17KqmLocaleFuncVza.b17RmqResolveInitialLocaleXve();
   B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza();
   B17DjiAnalyticsFuncWji.instance.b17QxnUploadInstallVza();
   B17DjiAnalyticsFuncWji.instance.b17VqnUploadSessionTza();

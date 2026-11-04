@@ -15,43 +15,78 @@ class B17FjeShortcutFuncIfj {
   static const String b17QxnUninstallTypeVza = 'uninstall';
 
   final QuickActions _quickActions = const QuickActions();
-  Future<void>? _b17KqmInitializeFutureWze;
+  Future<void> _b17KqmAvailabilityTransitionWze = Future<void>.value();
   String? _b17VqnPendingTypeTza;
-  bool _b17QxnInitializedVza = false;
+  bool _b17QxnNativeInitializedVza = false;
+  bool _b17PqnEnabledVze = false;
   bool _b17HqmLauncherFinishedWza = false;
 
-  Future<void> init() {
-    _b17KqmInitializeFutureWze ??= _b17PqnInitializeInternalVze();
-    return _b17KqmInitializeFutureWze!;
+  Future<void> init({required bool b17QxnEnabledVza}) {
+    _b17PqnEnabledVze = b17QxnEnabledVza;
+    return _b17KqmSyncAvailabilityWze();
   }
 
-  Future<void> _b17PqnInitializeInternalVze() async {
-    if (_b17QxnInitializedVza) {
+  Future<void> _b17KqmSyncAvailabilityWze() {
+    final Future<void> b17QxnCurrentTransitionVza =
+        _b17KqmAvailabilityTransitionWze.then<void>(
+          (_) => _b17PqnSyncAvailabilityInternalVze(),
+        );
+    _b17KqmAvailabilityTransitionWze = b17QxnCurrentTransitionVza.then<void>(
+      (_) {},
+      onError: (_, _) {},
+    );
+    return b17QxnCurrentTransitionVza;
+  }
+
+  Future<void> _b17PqnSyncAvailabilityInternalVze() async {
+    if (!_b17PqnEnabledVze) {
+      _b17VqnPendingTypeTza = null;
+      B17JiwInitialStartupSourceFuncJdo.instance
+          .b17VqnClearQuickActionSourceTza();
+      B17DjiActiveStartupSourceFuncWdj.instance.removeHotLauncherSourceInfo();
+      await _quickActions.clearShortcutItems();
       return;
     }
-    _b17QxnInitializedVza = true;
-    await _quickActions.initialize((String b17KqnShortcutTypeVxe) {
-      if (!_b17HqmLauncherFinishedWza) {
-        _b17VqnPendingTypeTza = b17KqnShortcutTypeVxe;
-        B17JiwInitialStartupSourceFuncJdo.instance
-            .b17QxnRecordQuickActionSourceVza(b17KqnShortcutTypeVxe);
-        return;
-      }
-      B17DjiActiveStartupSourceFuncWdj.instance
-          .b17HqmRecordQuickActionSourceWza(b17KqnShortcutTypeVxe);
-      unawaited(
-        _b17HqmHandleShortcutWza(
-          b17KqnShortcutTypeVxe,
-          b17PqmFromColdStartXza: false,
-        ),
-      );
-    });
+
+    if (!_b17QxnNativeInitializedVza) {
+      await _quickActions.initialize(_b17QxnHandleNativeShortcutVza);
+      _b17QxnNativeInitializedVza = true;
+    }
+    if (!_b17PqnEnabledVze) {
+      await _quickActions.clearShortcutItems();
+      return;
+    }
     await b17ModSetShortcutItemsTqy();
   }
 
+  void _b17QxnHandleNativeShortcutVza(String b17KqnShortcutTypeVxe) {
+    if (!_b17PqnEnabledVze) return;
+    if (!_b17HqmLauncherFinishedWza) {
+      _b17VqnPendingTypeTza = b17KqnShortcutTypeVxe;
+      B17JiwInitialStartupSourceFuncJdo.instance
+          .b17QxnRecordQuickActionSourceVza(b17KqnShortcutTypeVxe);
+      return;
+    }
+    B17DjiActiveStartupSourceFuncWdj.instance.b17HqmRecordQuickActionSourceWza(
+      b17KqnShortcutTypeVxe,
+    );
+    unawaited(
+      _b17HqmHandleShortcutWza(
+        b17KqnShortcutTypeVxe,
+        b17PqmFromColdStartXza: false,
+      ),
+    );
+  }
+
   Future<bool> b17VqnConsumeColdStartActionTza() async {
-    await init();
+    await _b17KqmAvailabilityTransitionWze;
     _b17HqmLauncherFinishedWza = true;
+    if (!_b17PqnEnabledVze) {
+      _b17VqnPendingTypeTza = null;
+      B17JiwInitialStartupSourceFuncJdo.instance
+          .b17VqnClearQuickActionSourceTza();
+      return false;
+    }
     final String? b17QxnShortcutTypeVza = _b17VqnPendingTypeTza;
     _b17VqnPendingTypeTza = null;
     if (b17QxnShortcutTypeVza == null || b17QxnShortcutTypeVza.isEmpty) {
@@ -67,6 +102,7 @@ class B17FjeShortcutFuncIfj {
     String b17PqnShortcutTypeVze, {
     required bool b17PqmFromColdStartXza,
   }) async {
+    if (!_b17PqnEnabledVze) return false;
     if (b17PqnShortcutTypeVze != b17QxnUninstallTypeVza) {
       return false;
     }
@@ -85,6 +121,10 @@ class B17FjeShortcutFuncIfj {
   }
 
   Future<void> b17ModSetShortcutItemsTqy() async {
+    if (!_b17PqnEnabledVze) {
+      await _quickActions.clearShortcutItems();
+      return;
+    }
     final b17QxmLocaleVza = B17KqmLocaleFuncVza.b17RmqResolveInitialLocaleXve();
     final b17VqnLocaleKeyTza = b17QxmLocaleVza.toString();
     final b17HqmUninstallTitleWza =

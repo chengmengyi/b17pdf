@@ -16,6 +16,10 @@ class B17JiwInitialStartupSourceFuncJdo {
     b17KqmQuickActionTypeWze = b17VqnShortcutTypeTza;
   }
 
+  void b17VqnClearQuickActionSourceTza() {
+    b17KqmQuickActionTypeWze = null;
+  }
+
   Future<void> b17CchInitSourceQrc() async {
     await _b17CklB12allInitNotificationLaunchSourcePqmvzrRep();
     b17QxnTimerOverlayClickEventVza = await FlutterBoomNotificationPlugins

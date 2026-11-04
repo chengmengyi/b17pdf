@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_qxn_overlay_func_vza.dart';
@@ -7,6 +8,7 @@ import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_qxm_signal_
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_fji_signal_func_eji.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_device_info_ifj.dart';
 import 'package:b17pdf/b17_mye_messaging_kra/b17_dji_notifications_wdo/b17_jso_notice_func_wko.dart';
+import 'package:b17pdf/b17_mye_messaging_kra/b17_gmn_shortcuts_bzl/b17_fje_shortcut_func_ifj.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_jdi_referrer_config_wiw.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_jdw_metric_type_ijd.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_dji_analytics_func_wji.dart';
@@ -31,7 +33,6 @@ class B17QxnUserCheckFuncVza {
   bool _b17KqmIsEligibleUserWze = false;
 
   bool _hasInitializedAdjust = false;
-
 
   bool get b17VqnIsEligibleUserTza {
     if (kDebugMode) {
@@ -216,6 +217,11 @@ class B17QxnUserCheckFuncVza {
 
     B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza();
     B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17RqmLoadBPackageAdXza();
+    unawaited(
+      B17FjeShortcutFuncIfj.instance.init(
+        b17QxnEnabledVza: b12allNewUserStatePqmvzr,
+      ),
+    );
   }
 
   Future<void> _b17SenUploadReferrerResultJit(String referrer) async {
