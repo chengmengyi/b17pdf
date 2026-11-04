@@ -6,12 +6,10 @@ import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jkw_
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_vqn_ad_switch_cache_tza.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_hqm_firebase_ad_config_cache_wza.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_pqn_last_ad_show_time_cache_vze.dart';
-import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_rqm_last_open_ad_close_time_xza.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_qxn_load_new_launch_ad_cache_vza.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_jdw_metric_type_ijd.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_dji_analytics_func_wji.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_jiw_check_user_ojd.dart';
-import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_applife_func_ifj.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_xfm_firebase_kqo/b17_dji_firebase_func_wjo.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_device_info_ifj.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_qxn_startup_click_gate_func_vza.dart';
@@ -38,6 +36,27 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
       <B17EipAdSceneUkg>[];
   final Set<B17EipAdSceneUkg> _b17KqmNoReloadAfterCloseAdScenesVzr =
       <B17EipAdSceneUkg>{B17EipAdSceneUkg.pr_new_launch};
+  final Map<(Object, Object, String?, String, String), int>
+  _b17QxnAdShowSuccessTimesVza =
+      <(Object, Object, String?, String, String), int>{};
+  int? _b17VqnLastAdShowSuccessToCloseDurationMsTza;
+
+  int? get b17VqnLastAdShowSuccessToCloseDurationMsTza =>
+      _b17VqnLastAdShowSuccessToCloseDurationMsTza;
+
+  (Object, Object, String?, String, String) _b17QxnAdCallbackKeyVza(
+    Object b17PqmAdPlacementVzr,
+    AdInfoBean b17KqmAdInfoVzr,
+    Object b17VmqAdPosIdXtr,
+    String b17VmqAdNetworkXtr,
+    String b17PqmAdSourceNameVzr,
+  ) => (
+    b17PqmAdPlacementVzr,
+    b17VmqAdPosIdXtr,
+    b17KqmAdInfoVzr.adId,
+    b17VmqAdNetworkXtr,
+    b17PqmAdSourceNameVzr,
+  );
 
   Future<void> b17PqmInitializeAdSdkVzr() async {
     _b17XmqBuildStartupPreloadSceneListVtr();
@@ -54,7 +73,10 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     //   maxRevenue: 200,
     // );
     FlutterPdfAdPlugins.instance.updateInterstitialLikeNativePlacements(
-      const <B17EipAdSceneUkg>[B17EipAdSceneUkg.pr_user_use,B17EipAdSceneUkg.pr_new_int],
+      const <B17EipAdSceneUkg>[
+        B17EipAdSceneUkg.pr_user_use,
+        B17EipAdSceneUkg.pr_new_int,
+      ],
     );
     FlutterPdfAdPlugins.instance.updateSmallTemplateNativePlacements(
       const <B17EipAdSceneUkg>[
@@ -73,18 +95,19 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
         return false;
       },
       smallNativeAdLayoutName: 'b17_krb_native_ad_layout_ncz',
-      nativeAdHeadlineCallback: ({required String? headline, required bool isNextGenAdmob}) {
-        handleNativeAdHeadline(headline);
-      },
+      nativeAdHeadlineCallback:
+          ({required String? headline, required bool isNextGenAdmob}) {
+            handleNativeAdHeadline(headline);
+          },
     );
     await _b17VmqPreloadStartupAdScenesXtr();
   }
 
-  handleNativeAdHeadline(String? headline)async{
+  Future<void> handleNativeAdHeadline(String? headline) async {
     var result = await FlutterPdfRiskControlPlugins.instance.checkTestAdUser(
       headline: headline,
     );
-    if(result==0){
+    if (result == 0) {
       B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
         b17QxnPointTypeVza: B17JdwMetricTypeIjd.up_local_nat,
       );
@@ -317,9 +340,6 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     bool b17PqnUploadChanceVze = true,
     bool b17HqmIgnoreCooldownWza = false,
   }) async {
-    if (FlutterPdfAdPlugins.instance.isShowingAd()) {
-      return false;
-    }
     if (!await b17VqnCanShowAdBySwitchTza(b17KqmAdPosIdVzr)) {
       return false;
     }
@@ -343,6 +363,17 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
         b17PqmAdSceneVzr: b17PqmAdSceneVzr,
         b17KqmAdPosIdVzr: b17KqmAdPosIdVzr,
       );
+    }
+    if (FlutterPdfAdPlugins.instance.isShowingAd()) {
+      B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
+        b17QxnPointTypeVza: B17JdwMetricTypeIjd.ad_show_fail,
+        b17KqmParametersWze: <String, dynamic>{
+          'ad_context': b17PqmAdSceneVzr.name,
+          'ad_pos_id': b17KqmAdPosIdVzr.name,
+          'error_message': 'ad showing',
+        },
+      );
+      return false;
     }
     try {
       final bool b17VmqHasCachedAdXtr = await _b17KqmHasCachedAdForSceneVzr(
@@ -448,41 +479,15 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     required B17JkwPosidKos b17KqmAdPosIdVzr,
     required bool b17HqmIgnoreRegularCooldownWza,
   }) {
-    if (b17PqmAdSceneVzr == B17EipAdSceneUkg.pr_new_launch ||
-        b17PqmAdSceneVzr == B17EipAdSceneUkg.pr_launch) {
-      final int b17PqmLastOpenAdCloseTimeVzr =
-          B17RqmLastOpenAdCloseTimeXza.b17KqmReadTimeWze();
-      final int b17KqmHotCooldownMsWze =
-          B17FjeApplifeFuncIfj.instance.b17HotCd * 1000;
-      if (DateTime.now().millisecondsSinceEpoch - b17PqmLastOpenAdCloseTimeVzr <
-          b17KqmHotCooldownMsWze) {
-        return false;
-      }
-    }
     if (b17HqmIgnoreRegularCooldownWza) {
+      return true;
+    }
+    if (b17KqmAdPosIdVzr == B17JkwPosidKos.unload_1 ||
+        b17KqmAdPosIdVzr == B17JkwPosidKos.unload_2) {
       return true;
     }
     final bool b17VmqIsBPackageXtr =
         B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza;
-    final bool b17PqmIsBCooldownPlacementVzr =
-        b17PqmAdSceneVzr == B17EipAdSceneUkg.pr_new_launch ||
-        b17PqmAdSceneVzr == B17EipAdSceneUkg.pr_launch;
-    final bool b17KqmIsBCooldownPosIdVzr = <B17JkwPosidKos>{
-      B17JkwPosidKos.pr_up_int,
-      B17JkwPosidKos.pr_down_int,
-      B17JkwPosidKos.pr_readback,
-      B17JkwPosidKos.pr_exit_app,
-    }.contains(b17KqmAdPosIdVzr);
-    if (b17VmqIsBPackageXtr &&
-        !b17PqmIsBCooldownPlacementVzr &&
-        !b17KqmIsBCooldownPosIdVzr) {
-      debugPrint(
-        'b17YyxShowAdTwt cooldown scene=${b17PqmAdSceneVzr.name}, '
-        'posid=${b17KqmAdPosIdVzr.name}, canShow=true, '
-        'cooldownMs=0, intervalMs=-1, reason=no-cooldown',
-      );
-      return true;
-    }
     final int b17PqmLastShowTimeMsVzr =
         B17PqnLastAdShowTimeCacheVze.b17KqmReadTimeWze();
     final int b17KqmCooldownSecondsVzr = b17VmqIsBPackageXtr
@@ -573,18 +578,31 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     String b17VmqAdNetworkXtr,
     String b17PqmAdSourceNameVzr,
   ) {
-    if (b17KqmAdInfoVzr.parsedAdType?.isFullScreen == true) {
-      B17PqnLastAdShowTimeCacheVze.b17VqnSaveTimeTza(
-        b17PqnTimestampVze: DateTime.now().millisecondsSinceEpoch,
-      );
-    }
+    final int b17QxnClosedTimeMsVza = DateTime.now().millisecondsSinceEpoch;
+    B17PqnLastAdShowTimeCacheVze.b17VqnSaveTimeTza(
+      b17PqnTimestampVze: b17QxnClosedTimeMsVza,
+    );
     if (b17PqmAdPlacementVzr is! B17EipAdSceneUkg) {
       return;
     }
-    _b17PqmSaveLastOpenAdCloseTimeVzr(b17PqmAdPlacementVzr);
     if (b17VmqAdPosIdXtr is! B17JkwPosidKos) {
       return;
     }
+    final int? b17KqmShowSuccessTimeMsWze = _b17QxnAdShowSuccessTimesVza.remove(
+      _b17QxnAdCallbackKeyVza(
+        b17PqmAdPlacementVzr,
+        b17KqmAdInfoVzr,
+        b17VmqAdPosIdXtr,
+        b17VmqAdNetworkXtr,
+        b17PqmAdSourceNameVzr,
+      ),
+    );
+    _b17VqnLastAdShowSuccessToCloseDurationMsTza =
+        b17KqmShowSuccessTimeMsWze == null
+        ? null
+        : b17QxnClosedTimeMsVza >= b17KqmShowSuccessTimeMsWze
+        ? b17QxnClosedTimeMsVza - b17KqmShowSuccessTimeMsWze
+        : 0;
     B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.ad_close,
       b17KqmParametersWze: {
@@ -594,19 +612,8 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
         "ad_pos_id": b17VmqAdPosIdXtr.name,
         "ad_network": b17VmqAdNetworkXtr,
         "ad_source_client": b17KqmAdInfoVzr.adPlat,
+        "close_time_long": _b17VqnLastAdShowSuccessToCloseDurationMsTza ?? 0,
       },
-    );
-  }
-
-  void _b17PqmSaveLastOpenAdCloseTimeVzr(
-    B17EipAdSceneUkg b17PqmAdPlacementVzr,
-  ) {
-    if (b17PqmAdPlacementVzr != B17EipAdSceneUkg.pr_new_launch &&
-        b17PqmAdPlacementVzr != B17EipAdSceneUkg.pr_launch) {
-      return;
-    }
-    B17RqmLastOpenAdCloseTimeXza.b17VqnSaveTimeTza(
-      DateTime.now().millisecondsSinceEpoch,
     );
   }
 
@@ -840,6 +847,14 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     if (b17VmqAdPosIdXtr is! B17JkwPosidKos) {
       return;
     }
+    _b17QxnAdShowSuccessTimesVza[_b17QxnAdCallbackKeyVza(
+          b17PqmAdPlacementVzr,
+          b17KqmAdInfoVzr,
+          b17VmqAdPosIdXtr,
+          b17VmqAdNetworkXtr,
+          b17PqmAdSourceNameVzr,
+        )] =
+        DateTime.now().millisecondsSinceEpoch;
   }
 
   @override

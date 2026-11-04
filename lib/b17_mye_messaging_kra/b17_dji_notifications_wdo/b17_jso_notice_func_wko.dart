@@ -70,7 +70,7 @@ class B17PqnNoticeFuncVze {
     await _b17QxnInitializeFcmVza();
   }
 
-  Future<void> b17KqmRequestNotificationPermissionWze() async{
+  Future<void> b17KqmRequestNotificationPermissionWze() async {
     final bool b17VqnCanInitializeTza = await _b17HqmCanInitializeWza();
     if (!b17VqnCanInitializeTza) {
       return;
@@ -329,9 +329,7 @@ class B17PqnNoticeFuncVze {
       onNotificationClicked: (LocalNotificationEvent b17QxnEventVza) {
         final B17FjeApplifeFuncIfj b17QxnApplifeHepVza =
             B17FjeApplifeFuncIfj.instance;
-        if (b17QxnApplifeHepVza.b17QxnShouldSuppressClickHotLaunchVza) {
-          b17QxnApplifeHepVza.b17QxnSuppressNextHotLaunchVza();
-        }
+        _b17VqnSuppressClickHotLaunchIfNeededTza(b17QxnApplifeHepVza);
         if (!B17QxnStartupClickGateFuncVza
             .instance
             .b17KqnCanHandleNotificationClickVxe) {
@@ -346,6 +344,7 @@ class B17PqnNoticeFuncVze {
             b17VqnPayloadTza == 'media'
                 ? B17JkwPosidKos.pr_open_mediapop
                 : B17JkwPosidKos.pr_open_noti,
+            b17KqmTriggerWze: B17QxnLifecycleAdTriggerVza.notification,
           ),
         );
       },
@@ -354,8 +353,38 @@ class B17PqnNoticeFuncVze {
           b17VqnEventTza.payload ?? b17VqnEventTza.payloadType?.name ?? '',
         );
       },
+      onTimerOverlayClicked: (TimerOverlayClickEvent b17QxnEventVza) {
+        final B17FjeApplifeFuncIfj b17QxnApplifeHepVza =
+            B17FjeApplifeFuncIfj.instance;
+        _b17VqnSuppressClickHotLaunchIfNeededTza(b17QxnApplifeHepVza);
+        if (!B17QxnStartupClickGateFuncVza
+            .instance
+            .b17KqnCanHandleNotificationClickVxe) {
+          return;
+        }
+        _b17PqnUploadTimerOverlayClickVze(b17QxnEventVza);
+        unawaited(
+          FlutterBoomNotificationPlugins.instance
+              .consumeTimerOverlayClickEvent(),
+        );
+        unawaited(
+          b17QxnApplifeHepVza.b17YyxShowAdTwt(
+            B17EipAdSceneUkg.pr_launch,
+            B17JkwPosidKos.pr_open_pop,
+            b17KqmTriggerWze: B17QxnLifecycleAdTriggerVza.notification,
+          ),
+        );
+      },
     );
     _b17KqmListenersInitializedWze = true;
+  }
+
+  void _b17VqnSuppressClickHotLaunchIfNeededTza(
+    B17FjeApplifeFuncIfj b17QxnApplifeFuncVza,
+  ) {
+    if (b17QxnApplifeFuncVza.b17QxnShouldSuppressClickHotLaunchVza) {
+      b17QxnApplifeFuncVza.b17QxnSuppressNextHotLaunchVza();
+    }
   }
 
   Future<void> b17KqmRefreshLanguageWze() async {
@@ -394,6 +423,13 @@ class B17PqnNoticeFuncVze {
         B17JiwInitialStartupSourceFuncJdo.instance.notificationPayload ?? '',
       );
     }
+    final TimerOverlayClickEvent? b17QxnTimerOverlayEventVza =
+        B17JiwInitialStartupSourceFuncJdo
+            .instance
+            .b17QxnTimerOverlayClickEventVza;
+    if (b17QxnTimerOverlayEventVza != null) {
+      _b17PqnUploadTimerOverlayClickVze(b17QxnTimerOverlayEventVza);
+    }
     b17TqnUploadPendingNotificationEventsVze();
   }
 
@@ -422,6 +458,17 @@ class B17PqnNoticeFuncVze {
     );
   }
 
+  void _b17PqnUploadTimerOverlayClickVze(
+    TimerOverlayClickEvent b17QxnEventVza,
+  ) {
+    B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
+      b17QxnPointTypeVza: B17JdwMetricTypeIjd.float_click,
+      b17KqmParametersWze: <String, dynamic>{
+        'float_type': b17QxnEventVza.clickType,
+      },
+    );
+  }
+
   void _b17HqmUploadShowEventWza(String b17VqnEventSourceTza) {
     B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.push,
@@ -430,7 +477,7 @@ class B17PqnNoticeFuncVze {
   }
 
   Future<bool> _b17HqmCanInitializeWza() async {
-    if(!B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza){
+    if (!B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza) {
       return false;
     }
     final bool b17QxnSamsungDeviceVza = await FlutterBoomNotificationPlugins

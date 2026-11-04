@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_fhi_signal_bean_feo.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_qxm_signal_code_vza.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navigation_func_ifj.dart';
+import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_kfm_startup_oqa/b17_qxn_open_ad_loading_result_vza.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_loading_delay_djwi.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jiw_ad_func_djo.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jkw_posid_kos.dart';
@@ -21,6 +22,7 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
 
   B17EipAdSceneUkg? b17PqmAdSceneVzr;
   B17JkwPosidKos? b17KqmAdPosIdVzr;
+  int b17QxnSessionIdVza = -1;
   double b17VqnProgressTza = 0;
 
   final Stopwatch _b17PqmStopwatchVzr = Stopwatch();
@@ -39,16 +41,24 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
         : <String, dynamic>{};
     final Object? b17PqmSceneArgumentVzr = b17VqnArgumentsTza['adScene'];
     final Object? b17KqmPosIdArgumentWze = b17VqnArgumentsTza['adPosId'];
+    final Object? b17QxnSessionArgumentVza = b17VqnArgumentsTza['sessionId'];
     if (b17PqmSceneArgumentVzr is B17EipAdSceneUkg &&
         b17KqmPosIdArgumentWze is B17JkwPosidKos) {
       b17PqmAdSceneVzr = b17PqmSceneArgumentVzr;
       b17KqmAdPosIdVzr = b17KqmPosIdArgumentWze;
     }
-    if (b17PqmAdSceneVzr == null || b17KqmAdPosIdVzr == null) {
-      Future<void>.delayed(
-        Duration.zero,
-        () => _b17PqmFinishVzr(b17VqnCacheReadyTza: false),
-      );
+    if (b17QxnSessionArgumentVza is int) {
+      b17QxnSessionIdVza = b17QxnSessionArgumentVza;
+    }
+    if (b17PqmAdSceneVzr == null ||
+        b17KqmAdPosIdVzr == null ||
+        b17QxnSessionIdVza < 0) {
+      Future<void>.delayed(Duration.zero, () {
+        _b17PqmFinishVzr(
+          b17VqnCacheReadyTza: false,
+          b17HqmReasonWza: 'invalid_arguments',
+        );
+      });
       return;
     }
     final int b17KqmDelaySecondsWze = B17LoadingDelayDjwi.b17KqmReadTimeWze();
@@ -76,7 +86,7 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
             .clamp(0.0, 1.0);
     update(<String>[b17RqmProgressUpdateIdXza]);
     if (_b17PqmStopwatchVzr.elapsed >= b17VqnMaximumWaitTza) {
-      _b17PqmFinishVzr(b17VqnCacheReadyTza: false);
+      _b17PqmFinishVzr(b17VqnCacheReadyTza: false, b17HqmReasonWza: 'timeout');
       return;
     }
     if (_b17PqmStopwatchVzr.elapsed >= _b17PqmCacheCheckDelayVzr &&
@@ -105,21 +115,38 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
       if (b17PqmHasCachedAdVzr && !_b17RqmFinishedXza) {
         b17VqnProgressTza = 1;
         update(<String>[b17RqmProgressUpdateIdXza]);
-        _b17PqmFinishVzr(b17VqnCacheReadyTza: true);
+        _b17PqmFinishVzr(
+          b17VqnCacheReadyTza: true,
+          b17HqmReasonWza: 'cache_ready',
+        );
       }
     } finally {
       _b17HqmCheckingCacheWza = false;
     }
   }
 
-  void _b17PqmFinishVzr({required bool b17VqnCacheReadyTza}) {
+  void _b17PqmFinishVzr({
+    required bool b17VqnCacheReadyTza,
+    required String b17HqmReasonWza,
+  }) {
     if (_b17RqmFinishedXza) return;
     _b17RqmFinishedXza = true;
     _b17KqmTimerWze?.cancel();
     _b17KqmTimerWze = null;
     _b17PqmStopwatchVzr.stop();
-    B17FjeNavigationFuncIfj.b17FtyBackNwp<bool>(
-      b17NcgResultKqe: b17VqnCacheReadyTza,
+    B17FjeNavigationFuncIfj.b17FtyBackNwp<B17QxnOpenAdLoadingResultVza>(
+      b17NcgResultKqe: b17VqnCacheReadyTza
+          ? B17QxnOpenAdLoadingResultVza.ready(
+              b17QxnSessionIdVza: b17QxnSessionIdVza,
+              b17KqmAdSceneWze: b17PqmAdSceneVzr!,
+              b17VqnAdPosIdTza: b17KqmAdPosIdVzr!,
+            )
+          : B17QxnOpenAdLoadingResultVza.cancelled(
+              b17QxnSessionIdVza: b17QxnSessionIdVza,
+              b17HqmReasonWza: b17HqmReasonWza,
+              b17KqmAdSceneWze: b17PqmAdSceneVzr,
+              b17VqnAdPosIdTza: b17KqmAdPosIdVzr,
+            ),
     );
   }
 
@@ -131,7 +158,10 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
     if (b17QzmEventXva.b17HfeEventCodeFMie ==
             B17QxmSignalCodeVza.b17KqmAppLifecycleWze &&
         b17QzmEventXva.b17DjiIntValueJie == 1) {
-      _b17PqmFinishVzr(b17VqnCacheReadyTza: false);
+      _b17PqmFinishVzr(
+        b17VqnCacheReadyTza: false,
+        b17HqmReasonWza: 'app_backgrounded',
+      );
     }
   }
 

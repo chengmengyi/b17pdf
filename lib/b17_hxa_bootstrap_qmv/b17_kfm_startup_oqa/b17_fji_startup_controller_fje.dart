@@ -77,6 +77,12 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
       return;
     }
 
+    if (B17JiwInitialStartupSourceFuncJdo.instance.b17VqnFromTimerOverlayTza) {
+      b17QxnLaunchAdSceneVza = B17EipAdSceneUkg.pr_launch;
+      b17KqmLaunchAdPosIdWze = B17JkwPosidKos.pr_open_pop;
+      return;
+    }
+
     final String b17PqnNotificationPayloadVze =
         B17JiwInitialStartupSourceFuncJdo.instance.notificationPayload ?? '';
     if (b17PqnNotificationPayloadVze.isNotEmpty) {
@@ -245,7 +251,7 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
     B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(
       B17EipAdSceneUkg.pr_ban2,
     );
-    if(B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza){
+    if (B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza) {
       B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(
         B17EipAdSceneUkg.pr_new_int,
       );

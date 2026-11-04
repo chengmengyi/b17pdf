@@ -3,11 +3,13 @@ import 'dart:async';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_fhi_signal_bean_feo.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_fji_signal_func_eji.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_qxm_signal_code_vza.dart';
+import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_dji_analytics_func_wji.dart';
+import 'package:b17pdf/b17_gve_telemetry_rkx/b17_qxn_overlay_func_vza.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navigation_address_ifj.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navigation_func_ifj.dart';
+import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_kfm_startup_oqa/b17_qxn_open_ad_loading_result_vza.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_dji_active_startup_source_func_wdj.dart';
 import 'package:b17pdf/b17_mye_messaging_kra/b17_dji_notifications_wdo/b17_jso_notice_func_wko.dart';
-import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_rqm_last_open_ad_close_time_xza.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jiw_ad_func_djo.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jkw_posid_kos.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_ynx_ad_scene_ige.dart';
@@ -16,24 +18,29 @@ import 'package:flutter_app_lifecycle/app_state_observer.dart';
 import 'package:flutter_app_lifecycle/flutter_app_lifecycle.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
 
+enum B17QxnLifecycleAdTriggerVza { automatic, notification }
+
 class B17FjeApplifeFuncIfj {
   B17FjeApplifeFuncIfj._();
 
   static final B17FjeApplifeFuncIfj instance = B17FjeApplifeFuncIfj._();
-  static const Duration _b17PqmOpenAdLoadingTimeoutVzr = Duration(seconds: 16);
 
   int b17HotCd = 500;
-  bool b17HqmObserverStartedXwe = false, _b17StaAppIsBackTus = false;
+  bool b17HqmObserverStartedXwe = false;
+  bool _b17StaAppIsBackTus = false;
   bool _b17PqmAppIsForegroundVzr = true;
-  bool _b17KqmWaitingForegroundClickSourceWze = false;
   bool _b17QxnSuppressNextHotLaunchVza = false;
-  bool _b17VqnShowingLifecycleAdTza = false;
-  bool _b17HqmOpenAdLoadingActiveWza = false;
+  bool _b17HqmHandlingForegroundWza = false;
+  bool _b17VqnHasPendingForegroundTza = false;
+  int _b17KqmLastBackgroundTimeWze = 0;
+  int _b17QxnAdRequestSeedVza = 0;
+  int? _b17PqnActiveLoadingSessionIdVze;
+  B17EipAdSceneUkg? _b17KqmActiveLoadingSceneWze;
+  B17JkwPosidKos? _b17VqnActiveLoadingPosIdTza;
+  Future<void> _b17HqmAdTransitionFutureWza = Future<void>.value();
 
   bool get b17QxnShouldSuppressClickHotLaunchVza =>
-      !_b17PqmAppIsForegroundVzr ||
-      _b17StaAppIsBackTus ||
-      _b17KqmWaitingForegroundClickSourceWze;
+      !_b17PqmAppIsForegroundVzr || _b17StaAppIsBackTus;
 
   void b17QxnSuppressNextHotLaunchVza() {
     _b17QxnSuppressNextHotLaunchVza = true;
@@ -54,6 +61,7 @@ class B17FjeApplifeFuncIfj {
     FlutterAppLifecycle.instance.setCallObserver(
       AppStateObserver(
         call: (bool b17VqmInBackgroundWxe) {
+          if (!b17VqmInBackgroundWxe) _b17PqnPrepareForForegroundEventVze();
           B17FjiSignalFuncEji.instance.b17JijSendMsgFEio(
             B17FhiSignalBeanFeo(
               b17HfeEventCodeFMie: B17QxmSignalCodeVza.b17KqmAppLifecycleWze,
@@ -63,7 +71,15 @@ class B17FjeApplifeFuncIfj {
           if (b17VqmInBackgroundWxe) {
             _b17NplAppBackIkd();
           } else {
-            unawaited(_b17WchAppFrontYze());
+            B17DjiAnalyticsFuncWji.instance.b17VqnUploadSessionTza();
+            unawaited(
+              B17QxnOverlayFuncVza.instance.b17KqmCloseTimerOverlayWze(),
+            );
+            if (_b17HqmHandlingForegroundWza) {
+              _b17VqnHasPendingForegroundTza = true;
+            } else {
+              unawaited(_b17WchAppFrontYze());
+            }
           }
         },
       ),
@@ -73,202 +89,227 @@ class B17FjeApplifeFuncIfj {
   void _b17NplAppBackIkd() {
     _b17PqmAppIsForegroundVzr = false;
     _b17StaAppIsBackTus = true;
+    _b17KqmLastBackgroundTimeWze = DateTime.now().millisecondsSinceEpoch;
+  }
+
+  void _b17PqnPrepareForForegroundEventVze() {
+    _b17PqmAppIsForegroundVzr = true;
+    if (_b17StaAppIsBackTus &&
+        !_b17QxnSuppressNextHotLaunchVza &&
+        _b17VqnHasReachedHotLaunchCooldownTza()) {
+      _b17QxnAdRequestSeedVza++;
+    }
   }
 
   Future<void> _b17WchAppFrontYze() async {
-    _b17PqmAppIsForegroundVzr = true;
-    if (!_b17StaAppIsBackTus && !_b17QxnSuppressNextHotLaunchVza) return;
-    if (_b17QxnConsumeSuppressedHotLaunchVza()) return;
-    if (!_b17StaAppIsBackTus) return;
-    await Future<void>.delayed(const Duration(milliseconds: 120));
-    if (_b17QxnConsumeSuppressedHotLaunchVza()) return;
-    if (!_b17StaAppIsBackTus) return;
-    await _b17PqmWaitForForegroundClickSourceVzr();
-    if (_b17QxnConsumeSuppressedHotLaunchVza()) return;
-    if (!_b17StaAppIsBackTus) return;
-
-    unawaited(
-      B17PqnNoticeFuncVze.instance.b17TqnUploadPendingNotificationEventsVze(),
-    );
-    final B17KqmActiveStartupSourceInfoWze? b17PqnSourceVze =
-        B17DjiActiveStartupSourceFuncWdj.instance.b17VqnConsumeSourceTza();
-    if (_b17QxnConsumeSuppressedHotLaunchVza()) return;
-    _b17StaAppIsBackTus = false;
-    if (b17PqnSourceVze == null) {
-      unawaited(
-        b17YyxShowAdTwt(B17EipAdSceneUkg.pr_launch, B17JkwPosidKos.pr_open_hot),
-      );
+    if (_b17HqmHandlingForegroundWza) {
+      _b17VqnHasPendingForegroundTza = true;
       return;
     }
-    switch (b17PqnSourceVze.b17VqnTypeTza) {
-      case B17QxnActiveStartupSourceTypeVza.notification:
-        return;
-      case B17QxnActiveStartupSourceTypeVza.quickAction:
-        unawaited(
-          b17YyxShowAdTwt(B17EipAdSceneUkg.pr_exit, B17JkwPosidKos.unload_1),
-        );
-    }
-  }
-
-  Future<void> _b17PqmWaitForForegroundClickSourceVzr() async {
-    _b17KqmWaitingForegroundClickSourceWze = true;
+    _b17HqmHandlingForegroundWza = true;
+    _b17PqmAppIsForegroundVzr = true;
     try {
-      for (int b17KqmIndexWze = 0; b17KqmIndexWze < 10; b17KqmIndexWze++) {
-        if (_b17QxnSuppressNextHotLaunchVza) break;
-        await Future<void>.delayed(const Duration(milliseconds: 20));
+      if (!_b17StaAppIsBackTus && !_b17QxnSuppressNextHotLaunchVza) return;
+      await Future<void>.delayed(const Duration(milliseconds: 120));
+      if (_b17QxnConsumeSuppressedHotLaunchVza()) return;
+      if (!_b17StaAppIsBackTus || !_b17PqmAppIsForegroundVzr) return;
+      unawaited(
+        B17PqnNoticeFuncVze.instance.b17TqnUploadPendingNotificationEventsVze(),
+      );
+      final B17KqmActiveStartupSourceInfoWze? b17PqnSourceVze =
+          B17DjiActiveStartupSourceFuncWdj.instance.b17VqnConsumeSourceTza();
+      if (_b17QxnConsumeSuppressedHotLaunchVza()) return;
+      _b17StaAppIsBackTus = false;
+      if (b17PqnSourceVze == null) {
+        unawaited(
+          b17YyxShowAdTwt(
+            B17EipAdSceneUkg.pr_launch,
+            B17JkwPosidKos.pr_open_hot,
+          ),
+        );
+        return;
+      }
+      switch (b17PqnSourceVze.b17VqnTypeTza) {
+        case B17QxnActiveStartupSourceTypeVza.notification:
+          return;
+        case B17QxnActiveStartupSourceTypeVza.quickAction:
+          unawaited(
+            b17YyxShowAdTwt(B17EipAdSceneUkg.pr_exit, B17JkwPosidKos.unload_1),
+          );
       }
     } finally {
-      _b17KqmWaitingForegroundClickSourceWze = false;
+      _b17HqmHandlingForegroundWza = false;
+      final bool b17QxnShouldHandlePendingVza =
+          _b17VqnHasPendingForegroundTza && !_b17PqmAppIsForegroundVzr;
+      _b17VqnHasPendingForegroundTza = false;
+      if (b17QxnShouldHandlePendingVza) unawaited(_b17WchAppFrontYze());
     }
   }
 
   Future<void> b17YyxShowAdTwt(
     B17EipAdSceneUkg b17QxnAdSceneVza,
-    B17JkwPosidKos b17VqnPositionIdTza,
-  ) async {
-    if (_b17PqmIsHotLaunchCooldownActiveVzr()) {
+    B17JkwPosidKos b17VqnPositionIdTza, {
+    B17QxnLifecycleAdTriggerVza b17KqmTriggerWze =
+        B17QxnLifecycleAdTriggerVza.automatic,
+  }) async {
+    if (b17KqmTriggerWze == B17QxnLifecycleAdTriggerVza.automatic &&
+        !_b17VqnHasReachedHotLaunchCooldownTza()) {
       return;
     }
-    _b17PqmLogLifecycleVzr(
-      'showLifecycleAd start scene=${b17QxnAdSceneVza.name} '
-      'position=${b17VqnPositionIdTza.name} foreground=$_b17PqmAppIsForegroundVzr '
-      'showing=$_b17VqnShowingLifecycleAdTza loading=$_b17HqmOpenAdLoadingActiveWza',
-    );
-    if (_b17VqnShowingLifecycleAdTza ||
-        _b17HqmOpenAdLoadingActiveWza ||
-        !_b17PqmAppIsForegroundVzr) {
+    if ((b17KqmTriggerWze == B17QxnLifecycleAdTriggerVza.automatic &&
+            !_b17PqmAppIsForegroundVzr) ||
+        !await B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr
+            .b17VqnCanShowAdBySwitchTza(b17VqnPositionIdTza)) {
       return;
     }
-    _b17VqnShowingLifecycleAdTza = true;
-    try {
-      await _b17KqmPrepareAndShowLifecycleAdWze(
+    final int b17QxnRequestIdVza = ++_b17QxnAdRequestSeedVza;
+    final Future<void> b17VqnPreviousTransitionTza =
+        _b17HqmAdTransitionFutureWza;
+    final Future<void> b17KqmCurrentTransitionWze = () async {
+      await b17VqnPreviousTransitionTza;
+      await _b17HqmReplaceLifecycleAdSessionWza(
+        b17QxnRequestIdVza,
         b17QxnAdSceneVza,
         b17VqnPositionIdTza,
+        b17KqmTriggerWze,
       );
-    } finally {
-      _b17VqnShowingLifecycleAdTza = false;
-    }
+    }();
+    _b17HqmAdTransitionFutureWza = b17KqmCurrentTransitionWze.then<void>(
+      (_) {},
+      onError: (_, _) {},
+    );
+    try {
+      await b17KqmCurrentTransitionWze;
+    } catch (_) {}
   }
 
-  Future<void> _b17KqmPrepareAndShowLifecycleAdWze(
-    B17EipAdSceneUkg b17PqmAdSceneVzr,
-    B17JkwPosidKos b17KqmAdPosIdVzr,
+  Future<void> _b17HqmReplaceLifecycleAdSessionWza(
+    int b17QxnRequestIdVza,
+    B17EipAdSceneUkg b17KqmAdSceneWze,
+    B17JkwPosidKos b17VqnAdPosIdTza,
+    B17QxnLifecycleAdTriggerVza b17PqnTriggerVze,
   ) async {
-    final FlutterPdfAdPlugins b17PqmAdPluginVzr = FlutterPdfAdPlugins.instance;
-    if (!await _b17VqnPrepareCurrentFullScreenAdTza(
-      b17PqmAdPluginVzr,
-      b17KqmAdPosIdVzr,
-    )) {
+    if (!_b17PqnCanProcessAdRequestVze(b17QxnRequestIdVza, b17PqnTriggerVze)) {
       return;
     }
-    final B17JiwAdFuncDjo b17KqmAdFuncWze =
-        B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr;
-    if (!_b17PqmAppIsForegroundVzr) return;
+    final FlutterPdfAdPlugins b17QxnAdPluginVza = FlutterPdfAdPlugins.instance;
+    if (b17QxnAdPluginVza.isShowingAd()) {
+      try {
+        await b17QxnAdPluginVza.closeFullScreenAdAndWait(
+          timeout: const Duration(seconds: 3),
+        );
+      } catch (_) {}
+      if (!_b17PqnCanProcessAdRequestVze(
+        b17QxnRequestIdVza,
+        b17PqnTriggerVze,
+      )) {
+        return;
+      }
+    }
     if (B17FjeNavigationFuncIfj.b17HqmIsCurrentRouteWza(
       B17FjeNavigationAddressIfj.b17RqmOpenAdLoadingRouteXza,
     )) {
+      B17FjeNavigationFuncIfj.b17FtyBackNwp<B17QxnOpenAdLoadingResultVza>(
+        b17NcgResultKqe: B17QxnOpenAdLoadingResultVza.cancelled(
+          b17QxnSessionIdVza: _b17PqnActiveLoadingSessionIdVze ?? -1,
+          b17HqmReasonWza: 'replaced_by_new_session',
+          b17KqmAdSceneWze: _b17KqmActiveLoadingSceneWze,
+          b17VqnAdPosIdTza: _b17VqnActiveLoadingPosIdTza,
+        ),
+      );
+      await WidgetsBinding.instance.endOfFrame;
+    }
+    if (!_b17PqnCanProcessAdRequestVze(b17QxnRequestIdVza, b17PqnTriggerVze)) {
       return;
     }
-    b17KqmAdFuncWze.b17KqnUploadAdChanceVxe(
-      b17PqmAdSceneVzr: b17PqmAdSceneVzr,
-      b17KqmAdPosIdVzr: b17KqmAdPosIdVzr,
-    );
-    dynamic b17PqmLoadingResultVzr;
-    _b17HqmOpenAdLoadingActiveWza = true;
-    try {
-      final Future<dynamic>? b17VqnLoadingFutureTza =
-          B17FjeNavigationFuncIfj.b17HkqPushNamedVpa<dynamic>(
-            b17McfRouteNameZsq:
-                B17FjeNavigationAddressIfj.b17RqmOpenAdLoadingRouteXza,
-            b17XveArgumentsDlu: <String, dynamic>{
-              'adScene': b17PqmAdSceneVzr,
-              'adPosId': b17KqmAdPosIdVzr,
-            },
-          );
-      if (b17VqnLoadingFutureTza == null) return;
-      try {
-        b17PqmLoadingResultVzr = await b17VqnLoadingFutureTza.timeout(
-          _b17PqmOpenAdLoadingTimeoutVzr,
-          onTimeout: () {
-            if (B17FjeNavigationFuncIfj.b17HqmIsCurrentRouteWza(
+    final int b17QxnSessionIdVza = b17QxnRequestIdVza;
+    _b17PqnActiveLoadingSessionIdVze = b17QxnSessionIdVza;
+    _b17KqmActiveLoadingSceneWze = b17KqmAdSceneWze;
+    _b17VqnActiveLoadingPosIdTza = b17VqnAdPosIdTza;
+    final Future<dynamic>? b17QxnLoadingFutureVza =
+        B17FjeNavigationFuncIfj.b17HkqPushNamedVpa<dynamic>(
+          b17McfRouteNameZsq:
               B17FjeNavigationAddressIfj.b17RqmOpenAdLoadingRouteXza,
-            )) {
-              B17FjeNavigationFuncIfj.b17FtyBackNwp<bool>(
-                b17NcgResultKqe: false,
-              );
-            }
-            return false;
+          b17XveArgumentsDlu: <String, dynamic>{
+            'adScene': b17KqmAdSceneWze,
+            'adPosId': b17VqnAdPosIdTza,
+            'sessionId': b17QxnSessionIdVza,
+            'isForeground': _b17PqmAppIsForegroundVzr,
           },
         );
-      } catch (_) {
-        if (B17FjeNavigationFuncIfj.b17HqmIsCurrentRouteWza(
-          B17FjeNavigationAddressIfj.b17RqmOpenAdLoadingRouteXza,
-        )) {
-          B17FjeNavigationFuncIfj.b17FtyBackNwp<bool>(b17NcgResultKqe: false);
-        }
-        return;
-      }
-    } finally {
-      _b17HqmOpenAdLoadingActiveWza = false;
-    }
-    if (b17PqmLoadingResultVzr != true || !_b17PqmAppIsForegroundVzr) return;
-    await WidgetsBinding.instance.endOfFrame;
-    if (!_b17PqmAppIsForegroundVzr) return;
-    if (!await _b17VqnPrepareCurrentFullScreenAdTza(
-      b17PqmAdPluginVzr,
-      b17KqmAdPosIdVzr,
-    )) {
+    if (b17QxnLoadingFutureVza == null) {
+      _b17KqmClearActiveLoadingSessionWze(b17QxnSessionIdVza);
       return;
     }
     unawaited(
-      _b17HqmShowCachedLifecycleAdWza(
-        b17PqmAdSceneVzr: b17PqmAdSceneVzr,
-        b17KqmAdPosIdVzr: b17KqmAdPosIdVzr,
-        b17VqnUploadChanceTza: false,
+      _b17VqnHandleLoadingResultTza(
+        b17QxnLoadingFutureVza,
+        b17QxnRequestIdVza,
+        b17QxnSessionIdVza,
+        b17KqmAdSceneWze,
+        b17VqnAdPosIdTza,
       ),
     );
   }
 
-  Future<void> _b17HqmShowCachedLifecycleAdWza({
-    required B17EipAdSceneUkg b17PqmAdSceneVzr,
-    required B17JkwPosidKos b17KqmAdPosIdVzr,
-    required bool b17VqnUploadChanceTza,
-  }) async {
+  Future<void> _b17VqnHandleLoadingResultTza(
+    Future<dynamic> b17QxnLoadingFutureVza,
+    int b17QxnRequestIdVza,
+    int b17PqnSessionIdVze,
+    B17EipAdSceneUkg b17KqmAdSceneWze,
+    B17JkwPosidKos b17VqnAdPosIdTza,
+  ) async {
+    dynamic b17HqmRawResultWza;
+    try {
+      b17HqmRawResultWza = await b17QxnLoadingFutureVza;
+    } catch (_) {
+      _b17KqmClearActiveLoadingSessionWze(b17PqnSessionIdVze);
+      return;
+    }
+    _b17KqmClearActiveLoadingSessionWze(b17PqnSessionIdVze);
+    if (!_b17VqnCanShowAdRequestTza(b17QxnRequestIdVza) ||
+        b17HqmRawResultWza is! B17QxnOpenAdLoadingResultVza) {
+      return;
+    }
+    if (!b17HqmRawResultWza.b17VqnCacheReadyTza ||
+        b17HqmRawResultWza.b17QxnSessionIdVza != b17PqnSessionIdVze ||
+        b17HqmRawResultWza.b17KqmAdSceneWze != b17KqmAdSceneWze ||
+        b17HqmRawResultWza.b17VqnAdPosIdTza != b17VqnAdPosIdTza) {
+      return;
+    }
+    await WidgetsBinding.instance.endOfFrame;
+    if (!_b17VqnCanShowAdRequestTza(b17QxnRequestIdVza)) return;
     await B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmShowCachedSceneAdVzr(
-      b17PqmAdSceneVzr: b17PqmAdSceneVzr,
-      b17KqmAdPosIdVzr: b17KqmAdPosIdVzr,
-      b17PqnUploadChanceVze: b17VqnUploadChanceTza,
-      b17HqmIgnoreCooldownWza: b17KqmAdPosIdVzr != B17JkwPosidKos.pr_open_hot,
+      b17PqmAdSceneVzr: b17KqmAdSceneWze,
+      b17KqmAdPosIdVzr: b17VqnAdPosIdTza,
+      b17HqmIgnoreCooldownWza: true,
+      b17PqnUploadChanceVze: true,
     );
   }
 
-  Future<bool> _b17VqnPrepareCurrentFullScreenAdTza(
-    FlutterPdfAdPlugins b17PqmAdPluginVzr,
-    B17JkwPosidKos b17KqmAdPosIdVzr,
-  ) async {
-    if (!_b17PqmAppIsForegroundVzr) return false;
-    if (b17KqmAdPosIdVzr == B17JkwPosidKos.pr_open_hot) {
-      if (b17PqmAdPluginVzr.isShowingAd()) {
-        return false;
-      }
-      return true;
-    }
-    if (!b17PqmAdPluginVzr.isShowingAd()) return true;
-    final bool b17VqnClosedTza = await b17PqmAdPluginVzr
-        .closeFullScreenAdAndWait(timeout: const Duration(seconds: 3));
-    return b17VqnClosedTza && _b17PqmAppIsForegroundVzr;
+  bool _b17PqnCanProcessAdRequestVze(
+    int b17QxnRequestIdVza,
+    B17QxnLifecycleAdTriggerVza b17KqmTriggerWze,
+  ) =>
+      b17QxnRequestIdVza == _b17QxnAdRequestSeedVza &&
+      (_b17PqmAppIsForegroundVzr ||
+          b17KqmTriggerWze == B17QxnLifecycleAdTriggerVza.notification);
+
+  bool _b17VqnCanShowAdRequestTza(int b17QxnRequestIdVza) =>
+      b17QxnRequestIdVza == _b17QxnAdRequestSeedVza &&
+      _b17PqmAppIsForegroundVzr;
+
+  void _b17KqmClearActiveLoadingSessionWze(int b17QxnSessionIdVza) {
+    if (_b17PqnActiveLoadingSessionIdVze != b17QxnSessionIdVza) return;
+    _b17PqnActiveLoadingSessionIdVze = null;
+    _b17KqmActiveLoadingSceneWze = null;
+    _b17VqnActiveLoadingPosIdTza = null;
   }
 
-  bool _b17PqmIsHotLaunchCooldownActiveVzr() {
-    final int b17KqmLastOpenAdCloseTimeWze =
-        B17RqmLastOpenAdCloseTimeXza.b17KqmReadTimeWze();
-    final int b17VqnHotCooldownMsTza = b17HotCd * 1000;
-    return DateTime.now().millisecondsSinceEpoch -
-            b17KqmLastOpenAdCloseTimeWze <
-        b17VqnHotCooldownMsTza;
-  }
-
-  void _b17PqmLogLifecycleVzr(String b17VqnMessageTza) {
-    debugPrint('[AppLifecycle] $b17VqnMessageTza');
+  bool _b17VqnHasReachedHotLaunchCooldownTza() {
+    if (_b17KqmLastBackgroundTimeWze <= 0) return true;
+    final int b17QxnIntervalMsVza =
+        DateTime.now().millisecondsSinceEpoch - _b17KqmLastBackgroundTimeWze;
+    return b17QxnIntervalMsVza >= b17HotCd;
   }
 }
