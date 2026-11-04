@@ -53,12 +53,6 @@ class B17HqmGuideControllerWza extends B17FjeBaseControllerSak {
     unawaited(_b17HqmFinishGuideWza());
   }
 
-  void b17QxnClickSkipVza() {
-    if (_b17PqnFinishingGuideVze) return;
-    _b17PqnFinishingGuideVze = true;
-    unawaited(_b17HqmFinishGuideWza());
-  }
-
   Future<void> _b17HqmFinishGuideWza() async {
     if (B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza) {
       await B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17PqmShowCachedSceneAdVzr(

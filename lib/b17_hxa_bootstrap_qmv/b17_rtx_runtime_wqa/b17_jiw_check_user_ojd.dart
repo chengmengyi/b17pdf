@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:b17pdf/b17_gve_telemetry_rkx/b17_qxn_overlay_func_vza.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jiw_ad_func_djo.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_fhi_signal_bean_feo.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_qxm_signal_code_vza.dart';
@@ -205,6 +206,7 @@ class B17QxnUserCheckFuncVza {
       return;
     }
     _b17KqmIsEligibleUserWze = b12allNewUserStatePqmvzr;
+    B17QxnOverlayFuncVza.instance.b17QxnInitializeOverlayVza();
     B17FjiSignalFuncEji.instance.b17JijSendMsgFEio(
       B17FhiSignalBeanFeo(
         b17HfeEventCodeFMie: B17QxmSignalCodeVza.b17PqmRefreshBUserStateVzr,

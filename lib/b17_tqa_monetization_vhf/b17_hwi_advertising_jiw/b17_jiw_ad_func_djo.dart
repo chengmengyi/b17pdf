@@ -54,7 +54,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     //   maxRevenue: 200,
     // );
     FlutterPdfAdPlugins.instance.updateInterstitialLikeNativePlacements(
-      const <B17EipAdSceneUkg>[B17EipAdSceneUkg.pr_user_use],
+      const <B17EipAdSceneUkg>[B17EipAdSceneUkg.pr_user_use,B17EipAdSceneUkg.pr_new_int],
     );
     FlutterPdfAdPlugins.instance.updateSmallTemplateNativePlacements(
       const <B17EipAdSceneUkg>[

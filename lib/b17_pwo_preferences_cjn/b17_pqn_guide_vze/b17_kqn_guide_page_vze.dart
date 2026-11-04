@@ -11,6 +11,7 @@ import 'package:b17pdf/b17_ydu_interface_mqp/b17_nrx_foundation_pke/b17_qaz_base
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class B17KqnGuidePageVze extends B17QazBasePageMtr<B17HqmGuideControllerWza> {
   const B17KqnGuidePageVze({super.key});
@@ -27,7 +28,7 @@ class B17KqnGuidePageVze extends B17QazBasePageMtr<B17HqmGuideControllerWza> {
     return SafeArea(
       child: Column(
         children: <Widget>[
-          SizedBox(height: 20.h),
+          SizedBox(height: 120.h),
           Expanded(
             child: GetBuilder<B17HqmGuideControllerWza>(
               init: b17KqmControllerWze,
@@ -49,9 +50,26 @@ class B17KqnGuidePageVze extends B17QazBasePageMtr<B17HqmGuideControllerWza> {
             ),
           ),
           SizedBox(height: 20.h),
+          _indicatorWidget(b17KqmControllerWze),
+          SizedBox(height: 20.h),
           _b17PqnBottomWidgetVze(b17KqmControllerWze),
           SizedBox(height: 20.h),
         ],
+      ),
+    );
+  }
+
+  Widget _indicatorWidget(B17HqmGuideControllerWza b17QxnControllerVza) {
+    return SmoothPageIndicator(
+      controller: b17QxnControllerVza.b17QxnPageControllerVza,
+      count: 2,
+      effect: ExpandingDotsEffect(
+        dotWidth: 8.w,
+        dotHeight: 8.w,
+        spacing: 8.w,
+        expansionFactor: 2,
+        dotColor: const Color(0xffCAD5E0),
+        activeDotColor: const Color(0xff2897F3),
       ),
     );
   }
@@ -60,15 +78,15 @@ class B17KqnGuidePageVze extends B17QazBasePageMtr<B17HqmGuideControllerWza> {
     children: <Widget>[
       B17PzrAssetPictureViewXcu(
         'b17_fji_capture_to_pdf_asset_efo',
-        b17DtvWidthQpl: 280.w,
-        b17RnxHeightKse: 280.w,
+        b17DtvWidthQpl: 272.w,
+        b17RnxHeightKse: 272.w,
       ),
       SizedBox(height: 20.h),
       B17CxmLocalizedTextViewPra(
         'Scan Anything',
         b17VnhTranslateXre: true,
-        b17RvxFontSizeQle: 24.sp,
-        b17DtkColorZma: const Color(0xff000000),
+        b17RvxFontSizeQle: 18.sp,
+        b17DtkColorZma: const Color(0xff242C3C),
         b17HncFontWeightYsp: FontWeight.bold,
       ),
       SizedBox(height: 20.h),
@@ -78,12 +96,12 @@ class B17KqnGuidePageVze extends B17QazBasePageMtr<B17HqmGuideControllerWza> {
           'Turn physical contracts, receipts, and notes into crystal-clear PDFs in seconds.',
           b17VnhTranslateXre: true,
           b17RvxFontSizeQle: 14.sp,
-          b17DtkColorZma: const Color(0xff4B5156),
+          b17DtkColorZma: const Color(0xff555978),
           b17HncFontWeightYsp: FontWeight.w500,
           b17JkwTextAlignZdu: TextAlign.center,
         ),
       ),
-      const Spacer(),
+      SizedBox(height: 20.h),
       if (b17QxnCanShowNativeAdVza)
         const _B17QxnGuideNativeAdVza(
           key: ValueKey<String>('b17_guide_native_ad_1'),
@@ -97,15 +115,15 @@ class B17KqnGuidePageVze extends B17QazBasePageMtr<B17HqmGuideControllerWza> {
     children: <Widget>[
       B17PzrAssetPictureViewXcu(
         'b17_gpf_pdf_logo_asset_tpd',
-        b17DtvWidthQpl: 280.w,
-        b17RnxHeightKse: 280.w,
+        b17DtvWidthQpl: 272.w,
+        b17RnxHeightKse: 272.w,
       ),
       SizedBox(height: 20.h),
       B17CxmLocalizedTextViewPra(
         'Edit & Sign',
         b17VnhTranslateXre: true,
-        b17RvxFontSizeQle: 24.sp,
-        b17DtkColorZma: const Color(0xff000000),
+        b17RvxFontSizeQle: 18.sp,
+        b17DtkColorZma: const Color(0xff242C3C),
         b17HncFontWeightYsp: FontWeight.bold,
       ),
       SizedBox(height: 20.h),
@@ -115,12 +133,12 @@ class B17KqnGuidePageVze extends B17QazBasePageMtr<B17HqmGuideControllerWza> {
           'Annotate documents, add your signature, and fill out forms directly on your device.',
           b17VnhTranslateXre: true,
           b17RvxFontSizeQle: 14.sp,
-          b17DtkColorZma: const Color(0xff4B5156),
+          b17DtkColorZma: const Color(0xff555978),
           b17HncFontWeightYsp: FontWeight.w500,
           b17JkwTextAlignZdu: TextAlign.center,
         ),
       ),
-      const Spacer(),
+      SizedBox(height: 20.h),
       if (b17QxnCanShowNativeAdVza)
         const _B17QxnGuideNativeAdVza(
           key: ValueKey<String>('b17_guide_native_ad_2'),
@@ -130,34 +148,16 @@ class B17KqnGuidePageVze extends B17QazBasePageMtr<B17HqmGuideControllerWza> {
     ],
   );
 
-  Widget _b17RqmIndicatorItemWza({required bool b17QxnSelectedVza}) {
-    return Container(
-      width: b17QxnSelectedVza ? 16.w : 4.w,
-      height: 4.w,
-      decoration: BoxDecoration(
-        color: b17QxnSelectedVza
-            ? const Color(0xff067BF2)
-            : const Color(0xffCFD6DC),
-        borderRadius: BorderRadius.circular(2.w),
-      ),
-    );
-  }
-
   Widget _b17PqnBottomWidgetVze(B17HqmGuideControllerWza b17QxnControllerVza) {
     return B17MfwTapGuardViewQke(
       b17JkcOnPressedXwu: b17QxnControllerVza.b17VqnClickBottomTza,
       b17HnqChildVsa: Container(
-        width: double.infinity,
-        height: 48.h,
+        width: 240.w,
+        height: 46.h,
         alignment: Alignment.center,
-        margin: EdgeInsets.symmetric(horizontal: 16.w),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(24.w),
-          gradient: const LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: <Color>[Color(0xff06B3F2), Color(0xff002DF6)],
-          ),
+          color: Color(0xffD12629),
+          borderRadius: BorderRadius.circular(26.w),
         ),
         child: B17CxmLocalizedTextViewPra(
           'Next',

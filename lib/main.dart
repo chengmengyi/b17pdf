@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:b17pdf/b17_gve_telemetry_rkx/b17_qxn_overlay_func_vza.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_device_info_ifj.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jiw_ad_func_djo.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_jiw_check_user_ojd.dart';
@@ -58,6 +59,7 @@ Future<void> initB17UI() async {
   B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza();
   B17DjiAnalyticsFuncWji.instance.b17QxnUploadInstallVza();
   B17DjiAnalyticsFuncWji.instance.b17VqnUploadSessionTza();
+  B17QxnOverlayFuncVza.instance.b17QxnInitializeOverlayVza();
   B17PqnNoticeFuncVze.instance.b17RqmUploadNotificationEventDataWza();
 
   runApp(B17VqmApplicationXza(b17HqmInitialLocaleWze: b17QmxInitialLocaleVza));

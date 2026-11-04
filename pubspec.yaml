@@ -70,6 +70,7 @@ dependencies:
   visibility_detector: 0.4.0+2
   path_provider: 2.1.6
   flutter_headless_lifecycle_bootstrap: 0.0.4
+  smooth_page_indicator: 2.0.1
 
 dev_dependencies:
   flutter_test:

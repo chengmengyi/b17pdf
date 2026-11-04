@@ -29,22 +29,34 @@ class B17KqmOpenNoticePageXve
         SizedBox(height: 120.h),
         B17PzrAssetPictureViewXcu(
           "b17_fie_notice_top_pictures_asset_fjo",
-          b17DtvWidthQpl: 256.w,
-          b17RnxHeightKse: 208.h,
+          b17RnxHeightKse: 220.h,
+          b17JzpFitWcu: BoxFit.fitHeight,
         ),
         Spacer(),
         B17CxmLocalizedTextViewPra(
-          "This app has an update".tr,
+          "Stay Update".tr,
           b17RvxFontSizeQle: 20.sp,
           b17DtkColorZma: Color(0xff242C3C),
           b17HncFontWeightYsp: FontWeight.bold,
         ),
         SizedBox(height: 10.h),
-        B17CxmLocalizedTextViewPra(
-          "Please upgrade to enjoy the latest functions.".tr,
-          b17RvxFontSizeQle: 16.sp,
-          b17DtkColorZma: Color(0xff555978),
-          b17HncFontWeightYsp: FontWeight.w500,
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            B17CxmLocalizedTextViewPra(
+              '1.Tap the switch button below'.tr,
+              b17RvxFontSizeQle: 16.sp,
+              b17DtkColorZma: const Color(0xff555978),
+              b17HncFontWeightYsp: FontWeight.w500,
+            ),
+            B17CxmLocalizedTextViewPra(
+              '2.Allow Notifications In System Settings'.tr,
+              b17RvxFontSizeQle: 16.sp,
+              b17DtkColorZma: const Color(0xff555978),
+              b17HncFontWeightYsp: FontWeight.w500,
+            ),
+          ],
         ),
         SizedBox(height: 20.h),
         Container(

@@ -24,125 +24,104 @@ class B17ZqtOpenOverlayAccessPageWne
     BuildContext b17HqmContextXva,
     B17HvxOpenOverlayAccessControllerPra b17KqvControllerWze,
   ) {
-    return Stack(
-      alignment: Alignment.topCenter,
+    return Column(
       children: [
+        SizedBox(height: 120.h),
         B17PzrAssetPictureViewXcu(
-          'b17_fje_floating_access_top_background_asset_ifj',
+          'b17_fhu_floating_access_top_pictures_asset_efj',
           b17DtvWidthQpl: double.infinity,
-          b17RnxHeightKse: 180.h,
+          b17RnxHeightKse: 220.h,
         ),
+        const Spacer(),
+        B17CxmLocalizedTextViewPra(
+          'Unlock Full PDF Potential'.tr,
+          b17RvxFontSizeQle: 20.sp,
+          b17DtkColorZma: Color(0xff242C3C),
+          b17HncFontWeightYsp: FontWeight.bold,
+        ),
+        SizedBox(height: 10.h),
         Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SafeArea(
-              top: true,
-              bottom: false,
-              child: B17PzrAssetPictureViewXcu(
-                'b17_fhu_floating_access_top_pictures_asset_efj',
-                b17DtvWidthQpl: double.infinity,
-                b17RnxHeightKse: 272.h,
-              ),
-            ),
-            SizedBox(height: 24.h),
             B17CxmLocalizedTextViewPra(
-              'Unlock Full PDF Potential'.tr,
-              b17RvxFontSizeQle: 24.sp,
-              b17DtkColorZma: Colors.black,
-              b17HncFontWeightYsp: FontWeight.bold,
+              'Step 1: find PDF flow in the list below.'.tr,
+              b17RvxFontSizeQle: 16.sp,
+              b17DtkColorZma: const Color(0xff555978),
+              b17HncFontWeightYsp: FontWeight.w500,
             ),
-            SizedBox(height: 24.h),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                B17CxmLocalizedTextViewPra(
-                  'Step 1: find PDF flow in the list below.'.tr,
-                  b17RvxFontSizeQle: 14.sp,
-                  b17DtkColorZma: const Color(0xff4b5156),
-                  b17HncFontWeightYsp: FontWeight.w500,
-                ),
-                B17CxmLocalizedTextViewPra(
-                  'Step 2: toggle the switch to ON.'.tr,
-                  b17RvxFontSizeQle: 14.sp,
-                  b17DtkColorZma: const Color(0xff4b5156),
-                  b17HncFontWeightYsp: FontWeight.w500,
-                ),
-              ],
+            B17CxmLocalizedTextViewPra(
+              'Step 2: toggle the switch to ON.'.tr,
+              b17RvxFontSizeQle: 16.sp,
+              b17DtkColorZma: const Color(0xff555978),
+              b17HncFontWeightYsp: FontWeight.w500,
             ),
-            SizedBox(height: 56.h),
-            Container(
+          ],
+        ),
+        SizedBox(height: 20.h),
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.all(12.w),
+          margin: EdgeInsets.symmetric(horizontal: 30.w),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.w),
+            color: Color(0xffF3F3F4),
+          ),
+          child: Row(
+            children: [
+              B17PzrAssetPictureViewXcu(
+                'b17_fhu_logo_asset_efh',
+                b17DtvWidthQpl: 50.w,
+                b17RnxHeightKse: 50.w,
+              ),
+              SizedBox(width: 8.w),
+              Expanded(
+                child: B17CxmLocalizedTextViewPra(
+                  B17FjeDeviceInfoIfj.b17QxnApplicationNameVza.tr,
+                  b17RvxFontSizeQle: 14.sp,
+                  b17DtkColorZma: Color(0xff242C3C),
+                  b17HncFontWeightYsp: FontWeight.bold,
+                  b17FzrOverflowXke: TextOverflow.ellipsis,
+                ),
+              ),
+              const B17FeiSwitchViewFji(),
+            ],
+          ),
+        ),
+        SizedBox(height: 20.h),
+        B17HqvPulseViewZna(
+          b17PxnChildVta: B17MfwTapGuardViewQke(
+            b17JkcOnPressedXwu: b17KqvControllerWze.b17HqmClickContinueWze,
+            b17HnqChildVsa: Container(
               width: double.infinity,
-              padding: EdgeInsets.all(12.w),
-              margin: EdgeInsets.symmetric(horizontal: 40.w),
+              height: 45.h,
+              alignment: Alignment.center,
+              margin: EdgeInsets.symmetric(horizontal: 16.w),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12.w),
-                border: Border.all(
-                  width: 0.5.w,
-                  color: const Color(0xff000000).withValues(alpha: 0.1),
-                ),
-                color: Colors.white,
+                color: Color(0xffD12629),
+                borderRadius: BorderRadius.circular(24.w),
               ),
-              child: Row(
-                children: [
-                  B17PzrAssetPictureViewXcu(
-                    'b17_fhu_logo_asset_efh',
-                    b17DtvWidthQpl: 48.w,
-                    b17RnxHeightKse: 48.w,
-                  ),
-                  SizedBox(width: 8.w),
-                  Expanded(
-                    child: B17CxmLocalizedTextViewPra(
-                      B17FjeDeviceInfoIfj.b17QxnApplicationNameVza.tr,
-                      b17RvxFontSizeQle: 16.sp,
-                      b17DtkColorZma: Colors.black,
-                      b17HncFontWeightYsp: FontWeight.bold,
-                      b17FzrOverflowXke: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  const B17FeiSwitchViewFji(),
-                ],
-              ),
-            ),
-            const Spacer(),
-            B17HqvPulseViewZna(
-              b17PxnChildVta: B17MfwTapGuardViewQke(
-                b17JkcOnPressedXwu: b17KqvControllerWze.b17HqmClickContinueWze,
-                b17HnqChildVsa: Container(
-                  width: double.infinity,
-                  height: 48.h,
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.symmetric(horizontal: 16.w),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(24.w),
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Color(0xff06B3F2), Color(0xff002DF6)],
-                    ),
-                  ),
-                  child: B17CxmLocalizedTextViewPra(
-                    'Continue'.tr,
-                    b17RvxFontSizeQle: 18.sp,
-                    b17DtkColorZma: Colors.white,
-                    b17HncFontWeightYsp: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 20.h),
-            B17MfwTapGuardViewQke(
-              b17JkcOnPressedXwu: b17KqvControllerWze.b17VqmClickLaterXze,
-              b17HnqChildVsa: B17CxmLocalizedTextViewPra(
-                'Later'.tr,
+              child: B17CxmLocalizedTextViewPra(
+                'Continue'.tr,
                 b17RvxFontSizeQle: 16.sp,
-                b17DtkColorZma: const Color(0xff4b5156),
-                b17FefDecorationJie: TextDecoration.underline,
+                b17DtkColorZma: Colors.white,
                 b17HncFontWeightYsp: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 36.h),
-          ],
+          ),
         ),
+        SizedBox(height: 20.h),
+        B17MfwTapGuardViewQke(
+          b17JkcOnPressedXwu: b17KqvControllerWze.b17VqmClickLaterXze,
+          b17HnqChildVsa: B17CxmLocalizedTextViewPra(
+            'Later'.tr,
+            b17RvxFontSizeQle: 14.sp,
+            b17DtkColorZma: const Color(0xff555978),
+            b17FefDecorationJie: TextDecoration.underline,
+            b17HncFontWeightYsp: FontWeight.bold,
+          ),
+        ),
+        SizedBox(height: 25.h),
       ],
     );
   }
