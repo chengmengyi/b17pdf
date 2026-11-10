@@ -83,6 +83,7 @@ class B17FjeApplifeFuncIfj {
           if (b17VqmInBackgroundWxe) {
             _b17NplAppBackIkd();
           } else {
+            B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.hotLaunchCheckAd();
             B17DjiAnalyticsFuncWji.instance.b17VqnUploadSessionTza();
             unawaited(
               B17QxnOverlayFuncVza.instance.b17KqmCloseTimerOverlayWze(),

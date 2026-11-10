@@ -132,6 +132,13 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     }
   }
 
+  hotLaunchCheckAd(){
+    if(B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza){
+      b17KqmPreloadAdBySceneWze(B17EipAdSceneUkg.pr_exit);
+    }
+    b17KqmPreloadAdBySceneWze(B17EipAdSceneUkg.pr_user_use);
+  }
+
   Future<void> b17KqmPreloadAdBySceneWze(
     B17EipAdSceneUkg b17VqnAdSceneTza,
   ) async {
