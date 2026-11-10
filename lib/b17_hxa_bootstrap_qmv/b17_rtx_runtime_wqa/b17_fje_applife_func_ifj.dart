@@ -4,6 +4,7 @@ import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_fhi_signal_
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_fji_signal_func_eji.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_qxm_signal_code_vza.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_dji_analytics_func_wji.dart';
+import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_jdw_metric_type_ijd.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_qxn_overlay_func_vza.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navigation_address_ifj.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navigation_func_ifj.dart';
@@ -18,7 +19,7 @@ import 'package:flutter_app_lifecycle/app_state_observer.dart';
 import 'package:flutter_app_lifecycle/flutter_app_lifecycle.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
 
-enum B17QxnLifecycleAdTriggerVza { automatic, notification }
+enum B17QxnLifecycleAdTriggerVza { automatic, notification, quickAction }
 
 class B17FjeApplifeFuncIfj {
   B17FjeApplifeFuncIfj._();
@@ -147,7 +148,11 @@ class B17FjeApplifeFuncIfj {
           return;
         case B17QxnActiveStartupSourceTypeVza.quickAction:
           unawaited(
-            b17YyxShowAdTwt(B17EipAdSceneUkg.pr_exit, B17JkwPosidKos.unload_1),
+            b17YyxShowAdTwt(
+              B17EipAdSceneUkg.pr_exit,
+              B17JkwPosidKos.unload_1,
+              b17KqmTriggerWze: B17QxnLifecycleAdTriggerVza.quickAction,
+            ),
           );
       }
     } finally {
@@ -165,11 +170,21 @@ class B17FjeApplifeFuncIfj {
     B17QxnLifecycleAdTriggerVza b17KqmTriggerWze =
         B17QxnLifecycleAdTriggerVza.automatic,
   }) async {
+    final int b17QxnHotLaunchDurationMsVza = _b17KqmHotLaunchDurationMsWze();
     if (b17KqmTriggerWze == B17QxnLifecycleAdTriggerVza.automatic &&
-        !_b17VqnHasReachedHotLaunchCooldownTza()) {
+        b17QxnHotLaunchDurationMsVza >= 0 &&
+        b17QxnHotLaunchDurationMsVza < b17HotCd) {
+      B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
+        b17QxnPointTypeVza: B17JdwMetricTypeIjd.cd_hot,
+        b17KqmParametersWze: {
+          "ad_context": b17QxnAdSceneVza.name,
+          "ad_pos_id": b17VqnPositionIdTza.name,
+          "timer": b17QxnHotLaunchDurationMsVza,
+        },
+      );
       return;
     }
-    if ((b17KqmTriggerWze == B17QxnLifecycleAdTriggerVza.automatic &&
+    if ((b17KqmTriggerWze != B17QxnLifecycleAdTriggerVza.notification &&
             !_b17PqmAppIsForegroundVzr) ||
         !await B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr
             .b17VqnCanShowAdBySwitchTza(b17VqnPositionIdTza)) {
@@ -320,9 +335,15 @@ class B17FjeApplifeFuncIfj {
   }
 
   bool _b17VqnHasReachedHotLaunchCooldownTza() {
-    if (_b17KqmLastBackgroundTimeWze <= 0) return true;
-    final int b17QxnIntervalMsVza =
+    final int b17QxnHotLaunchDurationMsVza = _b17KqmHotLaunchDurationMsWze();
+    return b17QxnHotLaunchDurationMsVza < 0 ||
+        b17QxnHotLaunchDurationMsVza >= b17HotCd;
+  }
+
+  int _b17KqmHotLaunchDurationMsWze() {
+    if (_b17KqmLastBackgroundTimeWze <= 0) return -1;
+    final int b17QxnDurationMsVza =
         DateTime.now().millisecondsSinceEpoch - _b17KqmLastBackgroundTimeWze;
-    return b17QxnIntervalMsVza >= b17HotCd;
+    return b17QxnDurationMsVza < 0 ? 0 : b17QxnDurationMsVza;
   }
 }

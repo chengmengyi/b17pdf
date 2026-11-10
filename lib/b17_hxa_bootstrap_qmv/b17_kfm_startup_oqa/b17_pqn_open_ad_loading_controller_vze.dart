@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_fhi_signal_bean_feo.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_qxm_signal_code_vza.dart';
+import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_dji_analytics_func_wji.dart';
+import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_jdw_metric_type_ijd.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navigation_func_ifj.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_kfm_startup_oqa/b17_qxn_open_ad_loading_result_vza.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_loading_delay_djwi.dart';
@@ -67,6 +69,13 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
       });
       return;
     }
+    B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
+      b17QxnPointTypeVza: B17JdwMetricTypeIjd.show_hot_launcher,
+      b17KqmParametersWze: <String, dynamic>{
+        'ad_context': b17PqmAdSceneVzr!.name,
+        'ad_pos_id': b17KqmAdPosIdVzr!.name,
+      },
+    );
     final int b17KqmDelaySecondsWze = B17LoadingDelayDjwi.b17KqmReadTimeWze();
     _b17PqmCacheCheckDelayVzr = Duration(
       seconds: b17KqmDelaySecondsWze > 0 ? b17KqmDelaySecondsWze : 0,
@@ -79,7 +88,9 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
       (_) => _b17KqmOnTickWze(),
     );
     unawaited(
-      B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(b17PqmAdSceneVzr!),
+      B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(
+        b17PqmAdSceneVzr!,
+      ),
     );
   }
 
@@ -142,6 +153,23 @@ class B17PqnOpenAdLoadingControllerVze extends B17FjeBaseControllerSak {
     _b17KqmTimerWze?.cancel();
     _b17KqmTimerWze = null;
     _b17PqmStopwatchVzr.stop();
+    final String? b17QxnCloseReasonVza = b17VqnCacheReadyTza
+        ? 'has_cache'
+        : b17HqmReasonWza == 'timeout'
+        ? 'no_cache'
+        : null;
+    if (b17QxnCloseReasonVza != null &&
+        b17PqmAdSceneVzr != null &&
+        b17KqmAdPosIdVzr != null) {
+      B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
+        b17QxnPointTypeVza: B17JdwMetricTypeIjd.close_hot_launcher,
+        b17KqmParametersWze: <String, dynamic>{
+          'ad_context': b17PqmAdSceneVzr!.name,
+          'ad_pos_id': b17KqmAdPosIdVzr!.name,
+          'close_reason': b17QxnCloseReasonVza,
+        },
+      );
+    }
     B17FjeNavigationFuncIfj.b17FtyBackNwp<B17QxnOpenAdLoadingResultVza>(
       b17NcgResultKqe: b17VqnCacheReadyTza
           ? B17QxnOpenAdLoadingResultVza.ready(

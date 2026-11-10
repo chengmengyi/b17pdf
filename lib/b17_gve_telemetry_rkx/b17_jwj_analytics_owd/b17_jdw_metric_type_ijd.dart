@@ -84,4 +84,7 @@ enum B17JdwMetricTypeIjd {
   rating_pop_c,
   storage_system_result,
   session_bac,
+  cd_hot,
+  show_hot_launcher,
+  close_hot_launcher,
 }
