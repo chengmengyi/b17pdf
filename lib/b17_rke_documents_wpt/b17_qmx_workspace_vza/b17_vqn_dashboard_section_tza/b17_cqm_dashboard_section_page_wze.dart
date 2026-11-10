@@ -13,7 +13,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class B17CqmDashboardSectionPageWze extends B17MxkBaseSectionQza {
-  const B17CqmDashboardSectionPageWze({super.key});
+  final bool b17QxnIsActiveVza;
+
+  const B17CqmDashboardSectionPageWze({
+    super.key,
+    required this.b17QxnIsActiveVza,
+  });
 
   @override
   State<B17CqmDashboardSectionPageWze> createState() =>
@@ -71,7 +76,16 @@ class _B17PqnDashboardSectionStateVxa
           children: B17PeeDocumentTabTyFie.values
               .map(
                 (B17PeeDocumentTabTyFie b17QxnTypeVza) =>
-                    B17QxmDocumentsListSectionPageVza(type: b17QxnTypeVza),
+                    B17QxmDocumentsListSectionPageVza(
+                      key: ValueKey<String>(
+                        'b17_documents_${b17QxnTypeVza.name}',
+                      ),
+                      type: b17QxnTypeVza,
+                      b17QxnSectionActiveVza:
+                          widget.b17QxnIsActiveVza &&
+                          b17VqmControllerXze.b17QmvSelectedTabIndexNza ==
+                              b17QxnTypeVza.index,
+                    ),
               )
               .toList(growable: false),
         ),

@@ -267,7 +267,7 @@ class _B17KqnUninstallNativeAdStateVze
     if (!mounted || !b17PqnCanShowAdVze) return;
     setState(() => _b17VqnCanShowAdTza = true);
     b17KqmAdHepWze.b17KqnUploadAdChanceVxe(
-      b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_ban2,
+      b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_ban1,
       b17KqmAdPosIdVzr: B17JkwPosidKos.unload_nat1,
     );
     unawaited(_b17KqmTryBuildAdWidgetWze());
@@ -286,7 +286,7 @@ class _B17KqnUninstallNativeAdStateVze
       final Widget? b17PqmAdWidgetXza = await B17JiwAdFuncDjo
           .b17KqmAdUtilsInstanceVzr
           .b17PqmBuildCachedNativeAdWidgetVzr(
-            b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_ban2,
+            b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_ban1,
             b17KqmAdPosIdVzr: B17JkwPosidKos.unload_nat1,
           );
       if (!mounted || b17PqmAdWidgetXza == null) {

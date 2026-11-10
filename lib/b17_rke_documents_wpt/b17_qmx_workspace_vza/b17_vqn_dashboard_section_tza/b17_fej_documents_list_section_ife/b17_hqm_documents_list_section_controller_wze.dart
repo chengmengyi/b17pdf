@@ -60,6 +60,9 @@ class B17HqmDocumentsListSectionControllerWze extends B17FjeBaseControllerSak {
   bool _b17PqnIsListScrollingVze = false;
   bool _b17VqmIsRefreshingNativeAdWza = false;
   bool _b17QxnNativeAdSwitchEnabledVza = false;
+  bool _b17QxnSectionActiveVza = false;
+  bool _b17VqnPageVisibleTza = false;
+  int _b17PqnVisibilityEpochVze = 0;
   late B17JffSortTypeRiq b17PqnSortTypeVza;
 
   B17HqmDocumentsListSectionControllerWze({required this.type});
@@ -101,6 +104,33 @@ class B17HqmDocumentsListSectionControllerWze extends B17FjeBaseControllerSak {
       B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza &&
       b17VqmVisibleFilesWza.length >= b17KqmNativeAdIntervalVze;
 
+  bool get _b17KqmCanRunNativeAdWze =>
+      _b17QxnSectionActiveVza && _b17VqnPageVisibleTza;
+
+  void b17QxnUpdateSectionActiveVza(bool b17QxnActiveVza) {
+    if (_b17QxnSectionActiveVza == b17QxnActiveVza) return;
+    final bool b17KqmWasRunnableWze = _b17KqmCanRunNativeAdWze;
+    _b17QxnSectionActiveVza = b17QxnActiveVza;
+    _b17VqnHandlePageActivityChangedTza(b17KqmWasRunnableWze);
+  }
+
+  void b17VqnUpdatePageVisibilityTza(bool b17QxnVisibleVza) {
+    if (_b17VqnPageVisibleTza == b17QxnVisibleVza) return;
+    final bool b17KqmWasRunnableWze = _b17KqmCanRunNativeAdWze;
+    _b17VqnPageVisibleTza = b17QxnVisibleVza;
+    _b17VqnHandlePageActivityChangedTza(b17KqmWasRunnableWze);
+  }
+
+  void _b17VqnHandlePageActivityChangedTza(bool b17KqmWasRunnableWze) {
+    if (b17KqmWasRunnableWze == _b17KqmCanRunNativeAdWze) return;
+    _b17PqnVisibilityEpochVze++;
+    if (_b17KqmCanRunNativeAdWze) {
+      _b17QxmActivateNativeAdVza();
+    } else {
+      _b17KqnClearActiveNativeAdVze();
+    }
+  }
+
   bool b17VqnIsNativeAdIndexTza(int b17KqnIndexVze) =>
       (b17KqnIndexVze + 1) % (b17KqmNativeAdIntervalVze + 1) == 0;
 
@@ -114,7 +144,9 @@ class B17HqmDocumentsListSectionControllerWze extends B17FjeBaseControllerSak {
     );
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (isClosed || _b17VqmIsRefreshingNativeAdWza) return;
-      if (!b17HqmCanShowNativeAdWza || b17VqmItemCountWza <= 0) {
+      if (!_b17KqmCanRunNativeAdWze ||
+          !b17HqmCanShowNativeAdWza ||
+          b17VqmItemCountWza <= 0) {
         _b17KqnClearActiveNativeAdVze();
       } else if (b17PqmActiveNativeAdIndexXza == null ||
           b17PqmActiveNativeAdIndexXza! >= b17VqmItemCountWza) {
@@ -126,7 +158,8 @@ class B17HqmDocumentsListSectionControllerWze extends B17FjeBaseControllerSak {
   }
 
   void b17HqmPrepareNativeAdSlotWza(int b17KqnListIndexVze) {
-    if (b17HqmCanShowNativeAdWza &&
+    if (_b17KqmCanRunNativeAdWze &&
+        b17HqmCanShowNativeAdWza &&
         b17PqmActiveNativeAdIndexXza == b17KqnListIndexVze &&
         _b17VqnLastChanceNativeAdIndexTza != b17KqnListIndexVze) {
       _b17VqnLastChanceNativeAdIndexTza = b17KqnListIndexVze;
@@ -152,6 +185,7 @@ class B17HqmDocumentsListSectionControllerWze extends B17FjeBaseControllerSak {
       update();
     }
     if (b17QxmVisibleVza &&
+        _b17KqmCanRunNativeAdWze &&
         b17QxnAppInForegroundVza &&
         !_b17PqnIsListScrollingVze &&
         !_b17VqmIsRefreshingNativeAdWza) {
@@ -160,19 +194,25 @@ class B17HqmDocumentsListSectionControllerWze extends B17FjeBaseControllerSak {
   }
 
   void _b17KqmHandleScrollWze() {
-    if (isClosed || !b17HqmCanShowNativeAdWza) return;
+    if (isClosed || !_b17KqmCanRunNativeAdWze || !b17HqmCanShowNativeAdWza) {
+      return;
+    }
     _b17PqnIsListScrollingVze = true;
     _b17KqnScrollIdleTimerVze?.cancel();
     _b17QxnStopNativeAdRefreshTimerVza();
     _b17KqnScrollIdleTimerVze = Timer(_b17HqmScrollIdleDurationWza, () {
-      if (isClosed || !b17HqmCanShowNativeAdWza) return;
+      if (isClosed || !_b17KqmCanRunNativeAdWze || !b17HqmCanShowNativeAdWza) {
+        return;
+      }
       _b17PqnIsListScrollingVze = false;
       _b17QxmActivateNativeAdVza();
     });
   }
 
   void _b17QxmActivateNativeAdVza() {
-    if (!b17QxnAppInForegroundVza || _b17VqmVisibleNativeAdIndexesWza.isEmpty) {
+    if (!_b17KqmCanRunNativeAdWze ||
+        !b17QxnAppInForegroundVza ||
+        _b17VqmVisibleNativeAdIndexesWza.isEmpty) {
       _b17QxnStopNativeAdRefreshTimerVza();
       return;
     }
@@ -196,6 +236,7 @@ class B17HqmDocumentsListSectionControllerWze extends B17FjeBaseControllerSak {
   bool _b17KqnCanRefreshNativeAdVze() {
     final int? b17QxmActiveIndexVza = b17PqmActiveNativeAdIndexXza;
     return !isClosed &&
+        _b17KqmCanRunNativeAdWze &&
         b17QxnAppInForegroundVza &&
         !_b17VqmIsRefreshingNativeAdWza &&
         !_b17PqnIsListScrollingVze &&
@@ -204,8 +245,13 @@ class B17HqmDocumentsListSectionControllerWze extends B17FjeBaseControllerSak {
         b17HqmCanShowNativeAdWza;
   }
 
-  bool _b17RqmCanContinueNativeAdRefreshWza(int b17KqnIndexVze) =>
+  bool _b17RqmCanContinueNativeAdRefreshWza(
+    int b17KqnIndexVze,
+    int b17QxnVisibilityEpochVza,
+  ) =>
       !isClosed &&
+      _b17KqmCanRunNativeAdWze &&
+      _b17PqnVisibilityEpochVze == b17QxnVisibilityEpochVza &&
       b17QxnAppInForegroundVza &&
       !_b17PqnIsListScrollingVze &&
       _b17VqmVisibleNativeAdIndexesWza.contains(b17KqnIndexVze) &&
@@ -236,6 +282,7 @@ class B17HqmDocumentsListSectionControllerWze extends B17FjeBaseControllerSak {
   Future<void> _b17PqnRefreshActiveNativeAdVze() async {
     if (!_b17KqnCanRefreshNativeAdVze()) return;
     final int b17KqnRefreshIndexVze = b17PqmActiveNativeAdIndexXza!;
+    final int b17QxnVisibilityEpochVza = _b17PqnVisibilityEpochVze;
     _b17VqmIsRefreshingNativeAdWza = true;
     _b17QxmUploadNativeAdChanceVza();
     try {
@@ -243,19 +290,38 @@ class B17HqmDocumentsListSectionControllerWze extends B17FjeBaseControllerSak {
       update();
       await WidgetsBinding.instance.endOfFrame;
       await Future<void>.delayed(Duration.zero);
-      if (!_b17RqmCanContinueNativeAdRefreshWza(b17KqnRefreshIndexVze)) return;
+      if (!_b17RqmCanContinueNativeAdRefreshWza(
+        b17KqnRefreshIndexVze,
+        b17QxnVisibilityEpochVza,
+      )) {
+        return;
+      }
       final B17JiwAdFuncDjo b17VqmAdHepWza =
           B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr;
-      if (!await b17VqmAdHepWza.b17PqmHasFilesListNativeAdVzr()) {
+      final bool b17QxnHasCachedAdVza = await b17VqmAdHepWza
+          .b17PqmHasFilesListNativeAdVzr();
+      if (!_b17RqmCanContinueNativeAdRefreshWza(
+        b17KqnRefreshIndexVze,
+        b17QxnVisibilityEpochVza,
+      )) {
+        return;
+      }
+      if (!b17QxnHasCachedAdVza) {
         await b17VqmAdHepWza.b17PqmRequestFilesListNativeAdVzr();
       }
-      if (!_b17RqmCanContinueNativeAdRefreshWza(b17KqnRefreshIndexVze)) return;
+      if (!_b17RqmCanContinueNativeAdRefreshWza(
+        b17KqnRefreshIndexVze,
+        b17QxnVisibilityEpochVza,
+      )) {
+        return;
+      }
       b17QxnNativeAdRefreshKeyVza++;
       b17PqmActiveNativeAdIndexXza = b17KqnRefreshIndexVze;
       update();
     } finally {
       _b17VqmIsRefreshingNativeAdWza = false;
-      if (b17QxnAppInForegroundVza &&
+      if (_b17KqmCanRunNativeAdWze &&
+          b17QxnAppInForegroundVza &&
           !_b17PqnIsListScrollingVze &&
           b17HqmCanShowNativeAdWza &&
           b17PqmActiveNativeAdIndexXza == null) {
@@ -459,8 +525,8 @@ class B17HqmDocumentsListSectionControllerWze extends B17FjeBaseControllerSak {
     }
   }
 
-  test(){
-    if(!kDebugMode){
+  test() {
+    if (!kDebugMode) {
       return;
     }
   }

@@ -8,8 +8,6 @@ import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navi
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navigation_func_ifj.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_jdw_metric_type_ijd.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_dji_analytics_func_wji.dart';
-import 'package:b17pdf/b17_rke_documents_wpt/b17_qmx_workspace_vza/b17_vqn_dashboard_section_tza/b17_cqm_dashboard_section_page_wze.dart';
-import 'package:b17pdf/b17_rke_documents_wpt/b17_qmx_workspace_vza/b17_tqm_utilities_section_vza/b17_vqk_utilities_section_page_rze.dart';
 import 'package:b17pdf/b17_ydu_interface_mqp/b17_nrx_foundation_pke/b17_fje_base_controller_sak.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -41,11 +39,6 @@ class B17HqvDashboardControllerWze extends B17FjeBaseControllerSak {
 
   int b17KqmTabIndexWza = 0;
   bool _b17QxnCanExitAfterCommentVza = false, _showOpenNotificationPage = true;
-
-  final List<Widget> b17VqnPagesXre = const [
-    B17CqmDashboardSectionPageWze(),
-    B17VqkUtilitiesSectionPageRze(),
-  ];
 
   @override
   void onInit() {

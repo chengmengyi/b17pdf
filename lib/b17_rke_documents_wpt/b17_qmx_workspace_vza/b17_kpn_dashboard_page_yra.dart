@@ -1,5 +1,7 @@
 import 'package:b17pdf/b17_ncu_conversion_fsz/b17_fji_operations_ejf/b17_qxm_pictures_func_vza/b17_kqm_pictures_func_wze.dart';
 import 'package:b17pdf/b17_rke_documents_wpt/b17_qmx_workspace_vza/b17_hqv_dashboard_controller_wze.dart';
+import 'package:b17pdf/b17_rke_documents_wpt/b17_qmx_workspace_vza/b17_vqn_dashboard_section_tza/b17_cqm_dashboard_section_page_wze.dart';
+import 'package:b17pdf/b17_rke_documents_wpt/b17_qmx_workspace_vza/b17_tqm_utilities_section_vza/b17_vqk_utilities_section_page_rze.dart';
 import 'package:b17pdf/b17_ydu_interface_mqp/b17_nrx_foundation_pke/b17_qaz_base_page_mtr.dart';
 import 'package:b17pdf/b17_ydu_interface_mqp/b17_hcv_widgets_rqa/b17_pzr_asset_picture_view_xcu.dart';
 import 'package:b17pdf/b17_ydu_interface_mqp/b17_hcv_widgets_rqa/b17_cxm_localized_text_view_pra.dart';
@@ -41,7 +43,14 @@ class B17KpnDashboardPageYra
             Expanded(
               child: IndexedStack(
                 index: b17VqmControllerXza.b17KqmTabIndexWza,
-                children: b17VqmControllerXza.b17VqnPagesXre,
+                children: <Widget>[
+                  B17CqmDashboardSectionPageWze(
+                    b17QxnIsActiveVza:
+                        b17VqmControllerXza.b17KqmTabIndexWza ==
+                        B17XjoDashboardBottomTabTypeMyz.files.index,
+                  ),
+                  const B17VqkUtilitiesSectionPageRze(),
+                ],
               ),
             ),
             b17PqmBottomWidgetVze(b17VqmControllerXza, b17VqmContextWza),

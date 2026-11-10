@@ -18,7 +18,13 @@ import 'package:visibility_detector/visibility_detector.dart';
 
 class B17QxmDocumentsListSectionPageVza extends B17MxkBaseSectionQza {
   final B17PeeDocumentTabTyFie type;
-  const B17QxmDocumentsListSectionPageVza({super.key, required this.type});
+  final bool b17QxnSectionActiveVza;
+
+  const B17QxmDocumentsListSectionPageVza({
+    super.key,
+    required this.type,
+    required this.b17QxnSectionActiveVza,
+  });
 
   @override
   State<B17QxmDocumentsListSectionPageVza> createState() =>
@@ -32,6 +38,24 @@ class _B17VqnDocumentsListSectionStateXre
           B17QxmDocumentsListSectionPageVza
         > {
   @override
+  void initState() {
+    super.initState();
+    b17FshControllerLeaseQya.b17NqxControllerRfe.b17QxnUpdateSectionActiveVza(
+      widget.b17QxnSectionActiveVza,
+    );
+  }
+
+  @override
+  void didUpdateWidget(covariant B17QxmDocumentsListSectionPageVza oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.b17QxnSectionActiveVza != widget.b17QxnSectionActiveVza) {
+      b17FshControllerLeaseQya.b17NqxControllerRfe.b17QxnUpdateSectionActiveVza(
+        widget.b17QxnSectionActiveVza,
+      );
+    }
+  }
+
+  @override
   String get b17VdsControllerTagYre => 'b17_files_${widget.type.name}';
 
   @override
@@ -44,18 +68,23 @@ class _B17VqnDocumentsListSectionStateXre
     BuildContext b17KqmContextWza,
     B17HqmDocumentsListSectionControllerWze b17VqnControllerXre,
   ) {
-    return GetBuilder<B17HqmDocumentsListSectionControllerWze>(
-      init: b17VqnControllerXre,
-      global: false,
-      builder: (b17QxmControllerVza) {
-        return Column(
-          children: [
-            _b17DphSortWidgetAjj(b17QxmControllerVza),
-            SizedBox(height: 8.h),
-            _b17IpmContentWidgetRmp(b17QxmControllerVza),
-          ],
-        );
-      },
+    return VisibilityDetector(
+      key: ValueKey<String>('b17_documents_page_${widget.type.name}'),
+      onVisibilityChanged: (VisibilityInfo b17QxnInfoVza) => b17VqnControllerXre
+          .b17VqnUpdatePageVisibilityTza(b17QxnInfoVza.visibleFraction > 0),
+      child: GetBuilder<B17HqmDocumentsListSectionControllerWze>(
+        init: b17VqnControllerXre,
+        global: false,
+        builder: (b17QxmControllerVza) {
+          return Column(
+            children: [
+              _b17DphSortWidgetAjj(b17QxmControllerVza),
+              SizedBox(height: 8.h),
+              _b17IpmContentWidgetRmp(b17QxmControllerVza),
+            ],
+          );
+        },
+      ),
     );
   }
 
@@ -65,7 +94,7 @@ class _B17VqnDocumentsListSectionStateXre
     children: [
       Expanded(
         child: B17MfwTapGuardViewQke(
-          b17JkcOnPressedXwu: (){
+          b17JkcOnPressedXwu: () {
             b17VqncontrollerXre.test();
           },
           b17HnqChildVsa: B17CxmLocalizedTextViewPra(
@@ -215,7 +244,9 @@ class _B17VqnDocumentsListSectionStateXre
   }) {
     b17PqnControllerVze.b17HqmPrepareNativeAdSlotWza(b17KqnListIndexVze);
     return VisibilityDetector(
-      key: ValueKey('b17_fia_document_inline_ad_${b17KqnListIndexVze}_vke'),
+      key: ValueKey<String>(
+        'b17_fia_document_inline_ad_${widget.type.name}_${b17KqnListIndexVze}_vke',
+      ),
       onVisibilityChanged: (b17VqmInfoWza) =>
           b17PqnControllerVze.b17PqnUpdateNativeAdVisibilityVze(
             b17KqnListIndexVze,
