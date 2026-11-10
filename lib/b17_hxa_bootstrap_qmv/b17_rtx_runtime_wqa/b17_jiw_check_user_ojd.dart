@@ -24,7 +24,7 @@ import 'package:flutter_pdf_risk_control_plugins/callbacks/flutter_pdf_risk_cont
 import 'package:flutter_pdf_risk_control_plugins/flutter_pdf_risk_control_plugins.dart';
 import 'package:flutter_pdf_risk_control_plugins/models/flutter_pdf_risk_control_ip_config.dart';
 import 'package:flutter_pdf_risk_control_plugins/utils/flutter_pdf_risk_control_tag.dart';
-import 'package:flutter_tba_info/flutter_tba_info.dart';
+import 'package:flutter_tba_info_new/flutter_tba_info_new.dart';
 
 class B17QxnUserCheckFuncVza {
   B17QxnUserCheckFuncVza._();
@@ -48,7 +48,7 @@ class B17QxnUserCheckFuncVza {
     _hasInitializedAdjust = true;
     await b17PqnApplyReferrerConfigVze();
     b17VqnRefreshUserStateTza();
-    final String b17QxnDistinctIdVza = await FlutterTbaInfo.instance
+    final String b17QxnDistinctIdVza = await FlutterTbaInfoNew.instance
         .getDistinctId();
     FlutterCheckAf.instance.init(
       afKey: B17FjeDeviceInfoIfj.b17PqnAppsFlyerKeyVze,
@@ -57,9 +57,9 @@ class B17QxnUserCheckFuncVza {
       clockUrl: B17FjeDeviceInfoIfj.b17HqmClockEndpointWza,
       cloakWhiteKey: 'eurasia',
       cloakData: <String, dynamic>{
-        'pershing': await FlutterTbaInfo.instance.getBundleId(),
+        'pershing': await FlutterTbaInfoNew.instance.getBundleId(),
         'span': Platform.isAndroid ? 'haggle' : 'not',
-        'andersen': await FlutterTbaInfo.instance.getAppVersion(),
+        'andersen': await FlutterTbaInfoNew.instance.getAppVersion(),
         'zagging': b17QxnDistinctIdVza,
         'prophecy': DateTime.now().millisecondsSinceEpoch,
       },
@@ -140,7 +140,7 @@ class B17QxnUserCheckFuncVza {
       ipConfig: FlutterPdfRiskControlIpConfig(
         requestUrl: 'https://ip-prod.pdfutilitydocforge.com/api/cduck',
         requestData: <String, String>{
-          'abat': await FlutterTbaInfo.instance.getAndroidId(),
+          'abat': await FlutterTbaInfoNew.instance.getAndroidId(),
         },
         riskResultKey: 'bcat',
         decryptCode: 63,

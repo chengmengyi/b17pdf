@@ -8,7 +8,7 @@ import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_jdw_metri
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_pdf_ad_plugins/bean/ad_info_bean.dart';
-import 'package:flutter_tba_info/flutter_tba_info.dart';
+import 'package:flutter_tba_info_new/flutter_tba_info_new.dart';
 
 class B17DjiAnalyticsFuncWji {
   B17DjiAnalyticsFuncWji._();
@@ -46,7 +46,7 @@ class B17DjiAnalyticsFuncWji {
 
     final Map<String, dynamic> b17VqnRequestBodyTza =
         await _b17HqmCreateCommonBodyWza();
-    final Map<dynamic, dynamic> b17PqnReferrerDataVze = await FlutterTbaInfo
+    final Map<dynamic, dynamic> b17PqnReferrerDataVze = await FlutterTbaInfoNew
         .instance
         .getReferrerMap();
     b17VqnRequestBodyTza['newfound'] = <String, dynamic>{
@@ -204,37 +204,37 @@ class B17DjiAnalyticsFuncWji {
   Future<Map<String, dynamic>> _b17HqmCreateCommonBodyWza() async {
     return <String, dynamic>{
       'harlem': <String, dynamic>{
-        'pershing': await FlutterTbaInfo.instance.getBundleId(),
-        'andersen': await FlutterTbaInfo.instance.getAppVersion(),
-        'zagging': await FlutterTbaInfo.instance.getDistinctId(),
+        'pershing': await FlutterTbaInfoNew.instance.getBundleId(),
+        'andersen': await FlutterTbaInfoNew.instance.getAppVersion(),
+        'zagging': await FlutterTbaInfoNew.instance.getDistinctId(),
         "prophecy": DateTime.now().millisecondsSinceEpoch,
-        "quicken": await FlutterTbaInfo.instance.getBrand(),
-        "midrange": await FlutterTbaInfo.instance.getDeviceModel(),
-        "carnal": await FlutterTbaInfo.instance.getOsVersion(),
-        "decisive": await FlutterTbaInfo.instance.getSystemLanguage(),
-        "bondage": await FlutterTbaInfo.instance.getIdfa(),
-        "archae": await FlutterTbaInfo.instance.getIdfv(),
-        "europa": await FlutterTbaInfo.instance.getGaid(),
+        "quicken": await FlutterTbaInfoNew.instance.getBrand(),
+        "midrange": await FlutterTbaInfoNew.instance.getDeviceModel(),
+        "carnal": await FlutterTbaInfoNew.instance.getOsVersion(),
+        "decisive": await FlutterTbaInfoNew.instance.getSystemLanguage(),
+        "bondage": await FlutterTbaInfoNew.instance.getIdfa(),
+        "archae": await FlutterTbaInfoNew.instance.getIdfv(),
+        "europa": await FlutterTbaInfoNew.instance.getGaid(),
       },
       'mandamus': <String, dynamic>{
         'span': Platform.isAndroid ? "haggle" : "not",
-        "bahama": await FlutterTbaInfo.instance.getLogId(),
-        "typology": await FlutterTbaInfo.instance.getManufacturer(),
-        "defector": await FlutterTbaInfo.instance.getOperator(),
-        "ring": await FlutterTbaInfo.instance.getAndroidId(),
-        "tipple": await FlutterTbaInfo.instance.getOsCountry(),
+        "bahama": await FlutterTbaInfoNew.instance.getLogId(),
+        "typology": await FlutterTbaInfoNew.instance.getManufacturer(),
+        "defector": await FlutterTbaInfoNew.instance.getOperator(),
+        "ring": await FlutterTbaInfoNew.instance.getAndroidId(),
+        "tipple": await FlutterTbaInfoNew.instance.getOsCountry(),
       },
     };
   }
 
   Future<Map<String, String>> b17KqnCreateHeadersVxe() async {
     return <String, String>{
-      'defector': await FlutterTbaInfo.instance.getOperator(),
+      'defector': await FlutterTbaInfoNew.instance.getOperator(),
     };
   }
 
   Future<String> b17VqnCreateUrlTza() async {
-    final String s = await FlutterTbaInfo.instance.getSystemLanguage();
+    final String s = await FlutterTbaInfoNew.instance.getSystemLanguage();
     return '${B17FjeDeviceInfoIfj.b17KqmTbaEndpointWze}?decisive=$s';
   }
 
@@ -242,7 +242,7 @@ class B17DjiAnalyticsFuncWji {
     b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.quad,
       b17KqmParametersWze: {
-        "zagging": await FlutterTbaInfo.instance.getDistinctId(),
+        "zagging": await FlutterTbaInfoNew.instance.getDistinctId(),
       },
       b17VqnUserGroupTza: {"user_group": userGroup},
     );
@@ -252,14 +252,14 @@ class B17DjiAnalyticsFuncWji {
     b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.quad,
       b17KqmParametersWze: {
-        "zagging": await FlutterTbaInfo.instance.getDistinctId(),
+        "zagging": await FlutterTbaInfoNew.instance.getDistinctId(),
       },
       b17VqnUserGroupTza: {"user_bv": b12allNewUserStatePqmvzr ? 1 : 0},
     );
   }
 
   Future<void> b17QgrAddLifeTimePjg() async {
-    final Map<dynamic, dynamic> referrerMap = await FlutterTbaInfo.instance
+    final Map<dynamic, dynamic> referrerMap = await FlutterTbaInfoNew.instance
         .getReferrerMap();
     final dynamic installFirstSeconds = referrerMap["install_first_seconds"];
     final int? b17KqmInstallTimestampWze = int.tryParse('$installFirstSeconds');
@@ -281,7 +281,7 @@ class B17DjiAnalyticsFuncWji {
     b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.quad,
       b17KqmParametersWze: {
-        "zagging": await FlutterTbaInfo.instance.getDistinctId(),
+        "zagging": await FlutterTbaInfoNew.instance.getDistinctId(),
       },
       b17VqnUserGroupTza: {
         "life_time": b17VqnIsInstalledTodayTza ? "d0" : "d1",

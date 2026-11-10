@@ -1,70 +1,96 @@
 {
   "pr_new_launch": [
     {
-      "jsk": "ca-app-pub-5663304938951743/4957275175",
+      "jsk": "ca-app-pub-5944701234630258/5559785066",
       "iwk": "admob",
       "iwn": "open",
       "isk": 13800,
       "ipn": 4,
-      "grp": [0]
+      "grp": [
+        0
+      ]
     },
     {
-      "jsk": "ca-app-pub-5663304938951743/1633485137",
+      "jsk": "ca-app-pub-5944701234630258/1411435303",
       "iwk": "admob",
       "iwn": "open",
       "isk": 13800,
       "ipn": 3,
-      "grp": [0]
+      "grp": [
+        0
+      ]
     }
   ],
   "pr_launch": [
     {
-      "jsk": "ca-app-pub-5663304938951743/9388791426",
+      "jsk": "ca-app-pub-5944701234630258/8924315003",
       "iwk": "admob",
       "iwn": "open",
       "isk": 13800,
       "ipn": 3,
-      "grp":  [0]
+      "grp": [
+        0
+      ]
     }
   ],
   "pr_ban1": [
     {
-      "jsk": "ca-app-pub-5663304938951743/1968149754",
+      "jsk": "ca-app-pub-5944701234630258/1895872229",
       "iwk": "admob",
       "iwn": "nat",
       "isk": 13800,
       "ipn": 3,
-      "grp": [0]
+      "grp": [
+        0
+      ]
     }
   ],
   "pr_ban2": [
     {
-      "jsk": "ca-app-pub-5663304938951743/8341986416",
+      "jsk": "ca-app-pub-5944701234630258/2965411314",
       "iwk": "admob",
       "iwn": "nat",
       "isk": 13800,
       "ipn": 3,
-      "grp":  [0]
+      "grp": [
+        0
+      ]
     }
   ],
   "pr_user_use": [
     {
-      "jsk": "ca-app-pub-5663304938951743/3665691457",
+      "jsk": "ca-app-pub-5944701234630258/8732743312",
       "iwk": "admob",
       "iwn": "int",
       "isk": 13800,
-      "ipn": 3,
-      "grp": [0]
+      "ipn": 2,
+      "grp": [
+        0
+      ]
+    }
+  ],
+  "pr_new_int": [
+    {
+      "jsk": "ca-app-pub-5944701234630258/6089046916",
+      "iwk": "admob",
+      "iwn": "int",
+      "isk": 13800,
+      "ipn": 2,
+      "grp": [
+        0
+      ]
     }
   ],
   "pr_exit": [
     {
-      "jsk": "ca-app-pub-5663304938951743/7956290250",
+      "jsk": "ca-app-pub-5944701234630258/3132932277",
       "iwk": "admob",
-      "iwn": "open",
+      "iwn": "int",
       "isk": 13800,
       "ipn": 3,
-      "grp": [0]
+      "grp": [
+        0
+      ]
     }
   ]
 }

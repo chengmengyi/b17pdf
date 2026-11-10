@@ -19,7 +19,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_check_af_new/flutter_check_af_new.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
 import 'package:flutter_pdf_risk_control_plugins/flutter_pdf_risk_control_plugins.dart';
-import 'package:flutter_tba_info/flutter_tba_info.dart';
+import 'package:flutter_tba_info_new/flutter_tba_info_new.dart';
 
 class B17JiwAdFuncDjo implements FlutterPdfAdListener {
   static final B17JiwAdFuncDjo _b17PqmAdUtilsInstanceVzr = B17JiwAdFuncDjo._();
@@ -89,7 +89,7 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     );
     await b17KqmRefreshRemoteAdConfigVzr();
     await FlutterPdfAdPlugins.instance.initPlugins(
-      distinctId: await FlutterTbaInfo.instance.getDistinctId(),
+      distinctId: await FlutterTbaInfoNew.instance.getDistinctId(),
       fengKongLogic: () {
         return false;
       },
