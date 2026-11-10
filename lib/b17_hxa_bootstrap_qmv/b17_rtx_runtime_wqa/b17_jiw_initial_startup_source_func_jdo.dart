@@ -1,4 +1,4 @@
-import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
+import 'package:flutter_local_notification_plugins/flutter_local_notification_plugins.dart';
 
 class B17JiwInitialStartupSourceFuncJdo {
   static final B17JiwInitialStartupSourceFuncJdo _b17JiwlauncherSourceHepJdo =
@@ -22,15 +22,15 @@ class B17JiwInitialStartupSourceFuncJdo {
 
   Future<void> b17CchInitSourceQrc() async {
     await _b17CklB12allInitNotificationLaunchSourcePqmvzrRep();
-    b17QxnTimerOverlayClickEventVza = await FlutterBoomNotificationPlugins
+    b17QxnTimerOverlayClickEventVza = await FlutterLocalNotificationPlugins
         .instance
         .consumeTimerOverlayClickEvent();
   }
 
   Future<void> _b17CklB12allInitNotificationLaunchSourcePqmvzrRep() async {
-    var localNotificationAppLaunchDetails = await FlutterBoomNotificationPlugins
-        .instance
-        .getNotificationAppLaunchDetails();
+    var localNotificationAppLaunchDetails =
+        await FlutterLocalNotificationPlugins.instance
+            .getNotificationAppLaunchDetails();
     if (localNotificationAppLaunchDetails.didNotificationLaunchApp == true) {
       notificationPayload =
           localNotificationAppLaunchDetails.notificationResponse?.payload ??

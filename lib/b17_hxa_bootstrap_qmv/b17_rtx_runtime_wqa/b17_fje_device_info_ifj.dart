@@ -42,11 +42,4 @@ class B17FjeDeviceInfoIfj {
   static String b17KqmTbaEndpointWze = kDebugMode
       ? b17QxnTbaEndpointDebugVza
       : b17QxnTbaEndpointReleaseVza;
-
-
-  static const _b17DefaultNotificationConfigDebug="assets/b17_rxv_pdf_bundled_config_lrr/b17_fed_notification_config_jdi/default_config/b17_fes_default_notification_config_debug.json";
-  static const _b17DefaultNotificationConfigRelease="assets/b17_rxv_pdf_bundled_config_lrr/b17_fed_notification_config_jdi/default_config/b17_fes_default_notification_config_release.json";
-  static String b17DefaultNotificationConfig=kDebugMode?_b17DefaultNotificationConfigDebug:_b17DefaultNotificationConfigRelease;
-
-  static const String b17FiledConfig="assets/b17_rxv_pdf_bundled_config_lrr/b17_fed_notification_config_jdi/filed_config/b17_fes_filed_map_config.json";
 }

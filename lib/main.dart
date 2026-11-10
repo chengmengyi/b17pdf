@@ -61,7 +61,6 @@ Future<void> initB17UI() async {
   );
   final Locale b17QmxInitialLocaleVza =
       B17KqmLocaleFuncVza.b17RmqResolveInitialLocaleXve();
-  B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza();
   B17DjiAnalyticsFuncWji.instance.b17QxnUploadInstallVza();
   B17DjiAnalyticsFuncWji.instance.b17VqnUploadSessionTza();
   B17QxnOverlayFuncVza.instance.b17QxnInitializeOverlayVza();

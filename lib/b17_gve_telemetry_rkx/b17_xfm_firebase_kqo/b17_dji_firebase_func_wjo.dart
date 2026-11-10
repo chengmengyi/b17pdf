@@ -5,6 +5,9 @@ import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_device_
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_ad_click_delay_jdw.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_float_oho_cache_vze.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_loading_delay_djwi.dart';
+import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_app_exit_cache_wza.dart';
+import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_media_unique_config_cache_wza.dart';
+import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_notification_time_cache_wza.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jiw_ad_func_djo.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_jiw_check_user_ojd.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_fhi_signal_bean_feo.dart';
@@ -30,8 +33,8 @@ class B17KqmFirebaseFuncWze {
 
   bool _b17HqmFacebookInitializedWza = false;
 
-  int b17PqnAdCooldownSecondsVze = 30,aKcCd=180;
-  bool b17KqmKoreanPhoneNotificationWze = false;
+  int b17PqnAdCooldownSecondsVze = 30, aKcCd = 180;
+  bool b17KqmKoreanPhoneNotificationWze = false,showGuidePage=true;
   String b17AdSource = "local";
 
   Future<void> b17QxnInitializeFirebaseVza() {
@@ -67,16 +70,17 @@ class B17KqmFirebaseFuncWze {
     if (ad_click_delay > 0) {
       B17AdClickDelayJdw.b17VqnSaveTimeTza(b17PqnTimestampVze: ad_click_delay);
     }
-    // var app_exit = _b17QxnRemoteConfigVza?.getInt("app_exit") ?? 0;
-    // if (app_exit > 0) {
-    //   Apex09StorageUtils.appExit.apex09SaveData(app_exit);
-    // }
+    final int b17QxnAppExitVza =
+        _b17QxnRemoteConfigVza?.getInt('app_exit') ?? 0;
+    if (b17QxnAppExitVza > 0) {
+      B17AppExitCacheWza.b17VqnSaveTimeTza(b17QxnAppExitVza);
+    }
     var loading_delay = _b17QxnRemoteConfigVza?.getInt("loading_delay") ?? 0;
     if (loading_delay > 0) {
       B17LoadingDelayDjwi.b17VqnSaveTimeTza(b17PqnTimestampVze: loading_delay);
     }
-    var float_oho = _b17QxnRemoteConfigVza?.getInt("float_oho")??0;
-    if(float_oho>0){
+    var float_oho = _b17QxnRemoteConfigVza?.getInt("float_oho") ?? 0;
+    if (float_oho > 0) {
       B17FloatOhoCacheVze.b17VqnSaveTimeTza(b17PqnTimestampVze: float_oho);
     }
     final int b17QxnOpenCooldownVza = _b17QxnRemoteConfigVza?.getInt('new_op_cd') ?? 0;
@@ -88,6 +92,8 @@ class B17KqmFirebaseFuncWze {
         ),
       );
     }
+
+    showGuidePage = _b17QxnRemoteConfigVza?.getBool("guide_page")??true;
 
     final String b17KqmPdfAdConfigWze =
         _b17QxnRemoteConfigVza?.getString('pdf_ad_17') ?? '';
@@ -122,6 +128,22 @@ class B17KqmFirebaseFuncWze {
       );
     }
 
+    final String b17QxnPushTimeConfigVza = _b17QxnRemoteConfigVza?.getString('push_time') ?? '';
+    if (b17QxnPushTimeConfigVza.isNotEmpty) {
+      B17NotificationTimeCacheWza.b17VqnSaveConfigTza(b17QxnPushTimeConfigVza);
+      B17PqnNoticeFuncVze.instance.b17QxnInitializeNotificationsVza();
+    }
+    final int b17QxnMediaUniqueConfigVza =
+        _b17QxnRemoteConfigVza?.getInt('pr_md_unique') ?? 0;
+    if (b17QxnMediaUniqueConfigVza > 0) {
+      B17MediaUniqueConfigCacheWza.b17VqnSaveConfigTza(
+        b17QxnMediaUniqueConfigVza,
+      );
+      B17PqnNoticeFuncVze.instance.b17VqnStartMediaNotificationsIfNeededTza(
+        b17QxnForceVza: true,
+      );
+    }
+
     _b17PqnInitializeFacebookVze();
 
     final int b17KqmKoreanPushModeWze =
@@ -140,12 +162,12 @@ class B17KqmFirebaseFuncWze {
       );
     }
 
-    var cd_hot = _b17QxnRemoteConfigVza?.getInt("cd_hot")??0;
-    if(cd_hot>0){
-      B17FjeApplifeFuncIfj.instance.b17HotCd=cd_hot*1000;
+    var cd_hot = _b17QxnRemoteConfigVza?.getInt("cd_hot") ?? 0;
+    if (cd_hot > 0) {
+      B17FjeApplifeFuncIfj.instance.b17HotCd = cd_hot * 1000;
     }
-    if(cd_hot==-1){
-      B17FjeApplifeFuncIfj.instance.b17HotCd=0;
+    if (cd_hot == -1) {
+      B17FjeApplifeFuncIfj.instance.b17HotCd = 0;
     }
     _b17GetAdShowClickConfig();
   }
@@ -160,10 +182,10 @@ class B17KqmFirebaseFuncWze {
     } catch (_) {}
   }
 
-  void _b17GetAdShowClickConfig(){
-    try{
-      var ad_config = _b17QxnRemoteConfigVza?.getString("ad_config")??"";
-      if(ad_config.isNotEmpty){
+  void _b17GetAdShowClickConfig() {
+    try {
+      var ad_config = _b17QxnRemoteConfigVza?.getString("ad_config") ?? "";
+      if (ad_config.isNotEmpty) {
         var json = jsonDecode(ad_config);
         var ad_show = json["ad_show"];
         var ad_click = json["ad_click"];
@@ -172,19 +194,18 @@ class B17KqmFirebaseFuncWze {
           maxClickNum: ad_click,
         );
       }
-    }catch(_){
-
-    }
+    } catch (_) {}
   }
 
   void b17HqmApplyAdCooldownConfigWza() {
-    final int b17QxnRemoteCooldownVza = _b17QxnRemoteConfigVza?.getInt('kc_cd') ?? 0;
+    final int b17QxnRemoteCooldownVza =
+        _b17QxnRemoteConfigVza?.getInt('kc_cd') ?? 0;
     if (b17QxnRemoteCooldownVza > 0) {
       b17PqnAdCooldownSecondsVze = b17QxnRemoteCooldownVza;
     }
     final int a_kc_cd = _b17QxnRemoteConfigVza?.getInt('a_kc_cd') ?? 0;
-    if(a_kc_cd>0){
-      aKcCd=a_kc_cd;
+    if (a_kc_cd > 0) {
+      aKcCd = a_kc_cd;
     }
   }
 

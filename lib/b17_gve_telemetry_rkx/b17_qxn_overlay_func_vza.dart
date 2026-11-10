@@ -1,7 +1,7 @@
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_device_info_ifj.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_jiw_check_user_ojd.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_float_oho_cache_vze.dart';
-import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
+import 'package:flutter_local_notification_plugins/flutter_local_notification_plugins.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class B17QxnOverlayFuncVza {
@@ -13,7 +13,7 @@ class B17QxnOverlayFuncVza {
     if (!B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza) {
       return;
     }
-    await FlutterBoomNotificationPlugins.instance.setTimerOverlayInfo(
+    await FlutterLocalNotificationPlugins.instance.setTimerOverlayInfo(
       layoutName: 'b17_time_overlay_layout_one_djiw',
       lastPdfSubtitleTemplate: "You were on page {n}. Let's finish it!".tr,
       lastPdfButtonText: 'Open'.tr,
@@ -28,21 +28,28 @@ class B17QxnOverlayFuncVza {
   }
 
   Future<void> b17KqmCloseTimerOverlayWze() {
-    return FlutterBoomNotificationPlugins.instance.closeTimerOverlay();
+    return FlutterLocalNotificationPlugins.instance.closeTimerOverlay();
   }
 
   TimerOverlayReflectionConfig _b17HqmBuildReflectionConfigWza() {
     return const TimerOverlayReflectionConfig(
       secret: B17FjeDeviceInfoIfj.b17KqmSecretKeyWze,
-      settingsClass: 'v1:zoqKtzv6+9Z1ihDX:uXatP19xe84jvbZrdv0LIgMSgGxlG07R3uii4a2P3CzyFemlj2NMKZQ=',
-      canDrawOverlaysMethod: 'v1:NuK5cYYURVXztrLe:Tyz4vbGdKE8WmnR8sFgh/eR/w3p3/oTSCch3GDQyyA==',
-      contextGetSystemServiceMethod: 'v1:IYGX55UIGdRagMoV:0GZ3QhYA6XMNBC9RvySiTOzHxzGqILC7BxVgV4PV4v8=',
+      settingsClass:
+          'v1:zoqKtzv6+9Z1ihDX:uXatP19xe84jvbZrdv0LIgMSgGxlG07R3uii4a2P3CzyFemlj2NMKZQ=',
+      canDrawOverlaysMethod:
+          'v1:NuK5cYYURVXztrLe:Tyz4vbGdKE8WmnR8sFgh/eR/w3p3/oTSCch3GDQyyA==',
+      contextGetSystemServiceMethod:
+          'v1:IYGX55UIGdRagMoV:0GZ3QhYA6XMNBC9RvySiTOzHxzGqILC7BxVgV4PV4v8=',
       windowServiceName: 'v1:c/0I7O+FXB4BDT4s:46ddkHnclEmrcDIl9H55xHsIrLRrnA==',
-      windowManagerLayoutParamsClass: 'v1:XIOHYtayFwsdBQ4r:edrKHzYjGmZ4H/96jBe7UB8IjKuHKItobDntdsk4VP2VAFZ9Fal0UH8JKtvnzB9SWOo6F7HIcA==',
-      viewGroupLayoutParamsClass: 'v1:6CwLF8UzwW4XZKU4:kzbD7TStvaLDBxHDsuarQUnRpZ9QwUxVN8dN7f1ci1fQtDW0Wn4fK56c5WQjMWePpA7P',
-      windowManagerClass: 'v1:Ue9HvtE/Zlcky6mv:QYtQMT+rL8B+35APNt/0OW1GMT/IjjbnztD78iA6RU+g5JY5roE5Cq11',
+      windowManagerLayoutParamsClass:
+          'v1:XIOHYtayFwsdBQ4r:edrKHzYjGmZ4H/96jBe7UB8IjKuHKItobDntdsk4VP2VAFZ9Fal0UH8JKtvnzB9SWOo6F7HIcA==',
+      viewGroupLayoutParamsClass:
+          'v1:6CwLF8UzwW4XZKU4:kzbD7TStvaLDBxHDsuarQUnRpZ9QwUxVN8dN7f1ci1fQtDW0Wn4fK56c5WQjMWePpA7P',
+      windowManagerClass:
+          'v1:Ue9HvtE/Zlcky6mv:QYtQMT+rL8B+35APNt/0OW1GMT/IjjbnztD78iA6RU+g5JY5roE5Cq11',
       addViewMethod: 'v1:6zRjdie5v6gANPXZ:wj99jtT08KB/+d3VhSKJkbnrhlGTvE4=',
-      removeViewMethod: 'v1:9XKSZ7qMmEf6L0OS:yVJwOqsfX8x1Qx2NVswbTtL+m/Fsb2NYQuQ=',
+      removeViewMethod:
+          'v1:9XKSZ7qMmEf6L0OS:yVJwOqsfX8x1Qx2NVswbTtL+m/Fsb2NYQuQ=',
       gravityField: 'v1:qX9ntp/qRRH5aEuO:ZSop8DD0eHjg0f/ysKYcxhZ5UZ/X78E=',
       xField: 'v1:QHf8UeGb2uvWl6fF:lk6AfOfvmUZ9HNlW5p+JxBA=',
       yField: 'v1:4eE5f00IgL0l1J8t:bckVjA8FAT1P+NpKyr5W4u4=',

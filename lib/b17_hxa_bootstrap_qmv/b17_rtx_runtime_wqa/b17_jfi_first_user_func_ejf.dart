@@ -1,3 +1,4 @@
+import 'package:b17pdf/b17_gve_telemetry_rkx/b17_xfm_firebase_kqo/b17_dji_firebase_func_wjo.dart';
 import 'package:b17pdf/b17_mye_messaging_kra/b17_dji_notifications_wdo/b17_jso_notice_func_wko.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navigation_address_ifj.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_dji_navigation_ejf/b17_fje_navigation_func_ifj.dart';
@@ -6,7 +7,7 @@ import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_c
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_qxn_overlay_permission_open_date_cache_vza.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_qxm_select_locale_vza/b17_hqm_select_locale_controller_wza.dart';
 import 'package:b17pdf/b17_mye_messaging_kra/b17_rqm_notice_access_vza/b17_hqv_open_notice_controller_wze.dart';
-import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
+import 'package:flutter_local_notification_plugins/flutter_local_notification_plugins.dart';
 import 'package:get/get.dart';
 
 class B17JfiFirstUserFuncEjf {
@@ -17,7 +18,7 @@ class B17JfiFirstUserFuncEjf {
   //语言选择页没有点确定----启动app：悬浮窗->语言选择页->引导页->通知->首页
   //语言选择页点确定----启动app：悬浮窗->引导页->通知->首页
   Future<void> toPageAfterLauncher() async {
-    var checkOverlayPermission = await FlutterBoomNotificationPlugins.instance
+    var checkOverlayPermission = await FlutterLocalNotificationPlugins.instance
         .checkOverlayPermission();
     if (!checkOverlayPermission && _b17QxnCanOpenOverlayPermissionTodayVza()) {
       await B17QxnOverlayPermissionOpenDateCacheVza.b17VqnSaveDateTza(
@@ -50,7 +51,7 @@ class B17JfiFirstUserFuncEjf {
   }
 
   void toPageGuide() {
-    if (!B17QxnGuideCompletedCacheVza.b17KqmReadCompletedWze()) {
+    if (B17KqmFirebaseFuncWze.instance.showGuidePage&&!B17QxnGuideCompletedCacheVza.b17KqmReadCompletedWze()) {
       B17FjeNavigationFuncIfj.b17ZxpReplaceNamedLrt<void>(
         b17YweRouteNameQpn: B17FjeNavigationAddressIfj.b17QxnGuideRouteVza,
       );

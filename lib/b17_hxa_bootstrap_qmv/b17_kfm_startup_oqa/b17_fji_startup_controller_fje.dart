@@ -17,7 +17,7 @@ import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_dji_analy
 import 'package:b17pdf/b17_ydu_interface_mqp/b17_nrx_foundation_pke/b17_fje_base_controller_sak.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_loading_delay_djwi.dart';
 import 'package:flutter/animation.dart';
-import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
+import 'package:flutter_local_notification_plugins/flutter_local_notification_plugins.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
 import 'package:get/get.dart';
 
@@ -269,12 +269,12 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
       B17EipAdSceneUkg.pr_user_use,
     );
     B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(
-      B17EipAdSceneUkg.pr_ban1,
-    );
-    B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(
       B17EipAdSceneUkg.pr_ban2,
     );
     if (B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza) {
+      B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(
+        B17EipAdSceneUkg.pr_ban1,
+      );
       B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(
         B17EipAdSceneUkg.pr_new_int,
       );

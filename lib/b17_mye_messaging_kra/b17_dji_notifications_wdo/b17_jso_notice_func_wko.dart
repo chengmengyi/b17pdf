@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_fji_locale_selected_efj.dart';
+import 'package:b17pdf/b17_mye_messaging_kra/b17_dji_notifications_wdo/b17_notification_content_func_wza.dart';
+import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_app_exit_cache_wza.dart';
+import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_media_unique_config_cache_wza.dart';
+import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_notification_time_cache_wza.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_ynx_ad_scene_ige.dart';
 import 'package:b17pdf/b17_tqa_monetization_vhf/b17_hwi_advertising_jiw/b17_jkw_posid_kos.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_applife_func_ifj.dart';
@@ -12,10 +15,7 @@ import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_device_
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_qxn_startup_click_gate_func_vza.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_jdw_metric_type_ijd.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_dji_analytics_func_wji.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
-import 'package:flutter_tba_info/flutter_tba_info.dart';
+import 'package:flutter_local_notification_plugins/flutter_local_notification_plugins.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -64,17 +64,17 @@ class B17PqnNoticeFuncVze {
     await _b17VqnInitializeLocalInfoTza();
     await _b17PqnInitializeTbaInfoVze();
     _b17KqmInitializeListenersWze();
-    await _b17HqmInitializeShortcutNotificationWza();
-    await _b17RqmScheduleLocalNotificationsWza();
-    await _b17VqnInitializeBroadcastsTza();
-    await _b17QxnInitializeFcmVza();
+    _b17HqmInitializeShortcutNotificationWza();
+    _b17RqmScheduleLocalNotificationsWza();
+    _b17VqnInitializeBroadcastsTza();
+    _b17QxnInitializeFcmVza();
   }
 
   Future<void> b17KqmRequestNotificationPermissionWze() async {
-    final bool b17VqnCanInitializeTza = await _b17HqmCanInitializeWza();
-    if (!b17VqnCanInitializeTza) {
-      return;
-    }
+    // final bool b17VqnCanInitializeTza = await _b17HqmCanInitializeWza();
+    // if (!b17VqnCanInitializeTza) {
+    //   return;
+    // }
     final Future<void> b17QxnRequestFutureVza = _b17KqmPermissionRequestTailWze
         .then<void>(
           (_) => _b17PqmRequestNotificationPermissionVzr(),
@@ -111,8 +111,10 @@ class B17PqnNoticeFuncVze {
     final String url = await B17DjiAnalyticsFuncWji.instance
         .b17VqnCreateUrlTza();
     final Map<String, dynamic> map = await B17DjiAnalyticsFuncWji.instance
-        .b17GetPointMapBody(b17QxnPointTypeVza: B17JdwMetricTypeIjd.push);
-    await FlutterBoomNotificationPlugins.instance.startSessionBackground(
+        .b17GetPointMapBody(
+          b17QxnPointTypeVza: B17JdwMetricTypeIjd.session_bac,
+        );
+    await FlutterLocalNotificationPlugins.instance.startSessionBackground(
       enabled: true,
       url: url,
       headers: header,
@@ -138,7 +140,7 @@ class B17PqnNoticeFuncVze {
           b17QxnPointTypeVza: B17JdwMetricTypeIjd.push,
           b17KqmParametersWze: {'sourse': "local"},
         );
-    await FlutterBoomNotificationPlugins.instance.configureNativePushReporting(
+    await FlutterLocalNotificationPlugins.instance.configureNativePushReporting(
       enabled: true,
       url: b17KqmRequestUrlWze,
       headers: b17QxnHeaderMapVza,
@@ -158,7 +160,7 @@ class B17PqnNoticeFuncVze {
     if (!b17QxnForceVza && _b17PqmShortcutNotificationInitializedVzr) {
       return;
     }
-    await FlutterBoomNotificationPlugins.instance
+    await FlutterLocalNotificationPlugins.instance
         .showPersistentShortcutNotification(
           homeText: 'Home'.tr,
           mergeText: 'Search'.tr,
@@ -172,17 +174,25 @@ class B17PqnNoticeFuncVze {
     _b17PqmShortcutNotificationInitializedVzr = true;
   }
 
-  Future<void> b17VqnStartMediaNotificationsIfNeededTza() async {
+  Future<void> b17VqnStartMediaNotificationsIfNeededTza({
+    bool b17QxnForceVza = false,
+  }) async {
     final bool b17QxnCanInitializeVza = await _b17HqmCanInitializeWza();
-    if (!b17QxnCanInitializeVza ||
-        _b17HqmMediaNotificationsStartedWza ||
-        !B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza) {
+    if (!b17QxnCanInitializeVza) {
       return;
     }
-    await FlutterBoomNotificationPlugins.instance.updateShowMediaTag(
+    if (!b17QxnForceVza && _b17HqmMediaNotificationsStartedWza) {
+      return;
+    }
+    await FlutterLocalNotificationPlugins.instance.updateShowMediaTag(
       showMedia: true,
     );
-    await FlutterBoomNotificationPlugins.instance.periodicallyShowMediaWithDuration(
+    final bool b17QxnReplaceExistingVza =
+        B17MediaUniqueConfigCacheWza.b17KqmReadConfigWze() == 1;
+    await FlutterLocalNotificationPlugins.instance.periodicallyShowMediaWithDuration(
+      id: 9010,
+      title: 'PDF Edit',
+      body: 'PDF Edit Body',
       reflectionConfig: MediaReflectionConfig(
         secret: B17FjeDeviceInfoIfj.b17KqmSecretKeyWze,
         mediaSessionClass:
@@ -209,17 +219,47 @@ class B17PqnNoticeFuncVze {
         setMediaSessionMethod:
             "v1:b5HfXmOyTtT1fJwr:/UF7xuWORAbHQQD75UzMHrUJHdPj2wPSQDSe7/Jv1Q==",
       ),
+      notificationDetails: AndroidNotificationDetails(
+        'b17_media_notice_channel',
+        'b17_media_notice_channel_name',
+        channelDescription: 'PDF media notifications',
+        priority: Priority.high,
+        importance: Importance.high,
+        replaceExisting: b17QxnReplaceExistingVza,
+        styleInformation: const MediaStyleInformation(
+          image: 'b17_rfx_notice_logo_owi',
+        ),
+      ),
+      notificationList: B17NotificationContentFuncWza.b17KqmBuildContentsWze(),
       mediaBackgroundImageName: 'b17_dji_large_notice_picture_wjd',
     );
     _b17HqmMediaNotificationsStartedWza = true;
   }
 
-  Future<void> _b17VqnInitializeBroadcastsTza() async {
-    if (_b17VqnBroadcastsInitializedTza) {
+  Future<void> _b17VqnInitializeBroadcastsTza({
+    bool b17QxnForceVza = false,
+  }) async {
+    if (!b17QxnForceVza && _b17VqnBroadcastsInitializedTza) {
       return;
     }
-    await FlutterBoomNotificationPlugins.instance
-        .registerBroadcastNotifications();
+    await FlutterLocalNotificationPlugins.instance
+        .registerBroadcastNotifications(
+          notificationList:
+              B17NotificationContentFuncWza.b17KqmBuildContentsWze(),
+          payloadList: <LocalNotificationPayload>[
+            LocalNotificationPayload.userPresent,
+            LocalNotificationPayload.actionPowerConnected,
+            LocalNotificationPayload.actionPowerDisconnected,
+            LocalNotificationPayload.batteryChanged,
+            LocalNotificationPayload.screenOn,
+            LocalNotificationPayload.screenOff,
+            LocalNotificationPayload.packageAdded,
+            LocalNotificationPayload.packageRemoved,
+            LocalNotificationPayload.packageReplaced,
+            LocalNotificationPayload.closeSystemDialogs,
+            LocalNotificationPayload.configurationChanged,
+          ],
+        );
     _b17VqnBroadcastsInitializedTza = true;
   }
 
@@ -227,28 +267,48 @@ class B17PqnNoticeFuncVze {
     if (_b17QxnFcmInitializedVza) {
       return;
     }
-    await FlutterBoomNotificationPlugins.instance.subscribeToTopic(
-      channelId: 'b17_fcm_notice_channel',
-      channelName: 'b17_fcm_notice_channel_name',
-      priority: Priority.max,
-      importance: Importance.max,
-      style: 'beauty',
-      beautyButton: 'Claim',
-    );
+    for (final String topic in <String>[
+      'B17_pdf_fcm',
+      'B17_pdf_fcm02',
+    ]){
+      await FlutterLocalNotificationPlugins.instance.subscribeToTopic(
+        topic: topic,
+        beautyImage: 'b17_dji_large_notice_picture_wjd',
+        channelId: 'b17_fcm_notice_channel',
+        channelName: 'b17_fcm_notice_channel_name',
+        priority: Priority.max,
+        importance: Importance.max,
+        style: 'beauty',
+        beautyButton: 'Claim',
+      );
+    }
     _b17QxnFcmInitializedVza = true;
   }
 
-  Future<void> _b17RqmScheduleLocalNotificationsWza() async {
-    if (_b17RqmPeriodicNotificationsStartedWza) {
+  Future<void> _b17RqmScheduleLocalNotificationsWza({
+    bool b17QxnForceVza = false,
+  }) async {
+    if (!b17QxnForceVza && _b17RqmPeriodicNotificationsStartedWza) {
       return;
     }
-    await FlutterBoomNotificationPlugins.instance
-        .periodicallyShowLocalWithDuration();
+    await FlutterLocalNotificationPlugins.instance
+        .periodicallyShowLocalWithDuration(
+          id: 9009,
+          notificationDetails: const AndroidNotificationDetails(
+            'b17_local_notice_channel',
+            'b17_local_notice_channel_name',
+            channelDescription: 'PDF local notifications',
+            priority: Priority.max,
+            importance: Importance.max,
+          ),
+          notificationList:
+              B17NotificationContentFuncWza.b17KqmBuildContentsWze(),
+        );
     _b17RqmPeriodicNotificationsStartedWza = true;
   }
 
   Future<void> b17PqnUpdateNewFileTextVze() async {
-    await FlutterBoomNotificationPlugins.instance
+    await FlutterLocalNotificationPlugins.instance
         .setGalleryImageNotificationInfo(title: 'You have a new file.'.tr);
   }
 
@@ -256,7 +316,7 @@ class B17PqnNoticeFuncVze {
     if (_b17QxnPluginInitializedVza) {
       return;
     }
-    await FlutterBoomNotificationPlugins.instance.initNotification(
+    await FlutterLocalNotificationPlugins.instance.initNotification(
       icon: 'b17_jie_small_logo_oef',
       channelId: 'b17_notice_channel',
       channelName: 'b17_notice_channel_name',
@@ -266,66 +326,67 @@ class B17PqnNoticeFuncVze {
         bigLayoutName: 'b17_xon_large_notice_layout_qoj',
         actionText: 'Check'.tr,
       ),
-      showMedia: false,
-      config: await _getNotificationInitConfig(),
+      showMedia: true,
+      notificationConfig: _b17QxnBuildNotificationConfigVza(),
     );
     await b17PqnUpdateNewFileTextVze();
     _b17QxnPluginInitializedVza = true;
   }
 
-  Future<NotificationInitConfig> _getNotificationInitConfig() async {
-    final String b17DefaultNotificationConfig = await rootBundle.loadString(
-      B17FjeDeviceInfoIfj.b17DefaultNotificationConfig,
-    );
-    final String b17FiledConfig = await rootBundle.loadString(
-      B17FjeDeviceInfoIfj.b17FiledConfig,
-    );
-    var deviceLanguage = "", countryCode = "";
-    var languageXpe = B17FjiLocaleSelectedEfj.b17VqmReadLanguageXpe();
-    if (languageXpe.isNotEmpty) {
-      try {
-        //zh-CN
-        var list = languageXpe.split("-");
-        deviceLanguage = list.first;
-        countryCode = list.last;
-      } catch (_) {}
+  NotificationConfigBean _b17QxnBuildNotificationConfigVza() {
+    try {
+      final Map<String, dynamic> b17QxnConfigVza =
+          jsonDecode(B17NotificationTimeCacheWza.b17KqmReadConfigWze())
+              as Map<String, dynamic>;
+      return NotificationConfigBean(
+        allPushCd: Duration(seconds: b17QxnConfigVza['all_push_cd'] as int),
+        localInterval: Duration(
+          seconds: b17QxnConfigVza['local_interval'] as int,
+        ),
+        actionInterval: Duration(
+          seconds: b17QxnConfigVza['action_interval'] as int,
+        ),
+        batteryChangedInterval: Duration(
+          seconds: b17QxnConfigVza['battery_changed'] as int,
+        ),
+        pushMaxTime: b17QxnConfigVza['push_max_time'] as int,
+        pushMaxBroadcast: b17QxnConfigVza['push_max_broadcast'] as int,
+        pushRefreshInterval: Duration(
+          seconds: b17QxnConfigVza['push_refresh_1'] as int,
+        ),
+        pushNotifyTotalCount: b17QxnConfigVza['push_refresh_2'] as int,
+        closeSystemDialogsDelayTime: Duration(
+          seconds: B17AppExitCacheWza.b17KqmReadTimeWze(),
+        ),
+        cleanPush: b17QxnConfigVza['push_clean'] == 1,
+        cleanPushTime: Duration(
+          seconds: b17QxnConfigVza['push_clean_time'] as int? ?? 600,
+        ),
+      );
+    } catch (_) {
+      return NotificationConfigBean(
+        allPushCd: const Duration(seconds: 60),
+        localInterval: const Duration(seconds: 3600),
+        actionInterval: const Duration(seconds: 600),
+        batteryChangedInterval: const Duration(seconds: 1200),
+        pushMaxTime: 30,
+        pushMaxBroadcast: 20,
+        pushRefreshInterval: const Duration(seconds: 2),
+        pushNotifyTotalCount: 30,
+        closeSystemDialogsDelayTime: Duration(
+          seconds: B17AppExitCacheWza.b17KqmReadTimeWze(),
+        ),
+        cleanPush: true,
+        cleanPushTime: const Duration(seconds: 600),
+      );
     }
-    if (deviceLanguage.isEmpty) {
-      deviceLanguage = await FlutterBoomNotificationPlugins.instance
-          .getDeviceLanguage();
-    }
-    if (countryCode.isEmpty) {
-      countryCode = await FlutterBoomNotificationPlugins.instance
-          .getCountryCode();
-    }
-    return NotificationInitConfig(
-      defaultConfig: b17DefaultNotificationConfig,
-      request: NotificationConfigRequest(
-        url: "https://prod.pdfutilitydocforge.com/LGZXGfupyG/HmtKKNYmqW/aARzBe",
-        headers: {
-          "imp": kDebugMode
-              ? "com.docforge.pdfutility"
-              : await FlutterTbaInfo.instance.getBundleId(),
-          // "imp":await FlutterTbaInfo.instance.getBundleId(),
-          "udz": kDebugMode
-              ? "0.0.1"
-              : await FlutterTbaInfo.instance.getAppVersion(),
-        },
-        body: {
-          "iSrc": deviceLanguage,
-          "DgTaa": await FlutterTbaInfo.instance.getDistinctId(),
-          "pnsKCAj": countryCode,
-        },
-      ),
-      fieldMapping: jsonDecode(b17FiledConfig),
-    );
   }
 
   void _b17KqmInitializeListenersWze() {
     if (_b17KqmListenersInitializedWze) {
       return;
     }
-    FlutterBoomNotificationPlugins.instance.setListeners(
+    FlutterLocalNotificationPlugins.instance.setListeners(
       onNotificationClicked: (LocalNotificationEvent b17QxnEventVza) {
         final B17FjeApplifeFuncIfj b17QxnApplifeHepVza =
             B17FjeApplifeFuncIfj.instance;
@@ -364,7 +425,7 @@ class B17PqnNoticeFuncVze {
         }
         _b17PqnUploadTimerOverlayClickVze(b17QxnEventVza);
         unawaited(
-          FlutterBoomNotificationPlugins.instance
+          FlutterLocalNotificationPlugins.instance
               .consumeTimerOverlayClickEvent(),
         );
         unawaited(
@@ -392,9 +453,8 @@ class B17PqnNoticeFuncVze {
     if (!b17QxnCanInitializeVza) {
       return;
     }
-    await FlutterBoomNotificationPlugins.instance.refreshNotificationConfig(
-      config: await _getNotificationInitConfig(),
-    );
+    await _b17RqmScheduleLocalNotificationsWza(b17QxnForceVza: true);
+    await _b17VqnInitializeBroadcastsTza(b17QxnForceVza: true);
     await _b17HqmInitializeShortcutNotificationWza(b17QxnForceVza: true);
     await b17PqnUpdateNewFileTextVze();
   }
@@ -404,7 +464,7 @@ class B17PqnNoticeFuncVze {
     if (!b17PqmCanInitializeXza) {
       return;
     }
-    await FlutterBoomNotificationPlugins.instance.show(
+    await FlutterLocalNotificationPlugins.instance.show(
       id: _b17VqnGenerateNotificationIdTze(),
       title: "Continue viewing PDF".tr,
       body: "Continue viewing PDF".tr,
@@ -436,7 +496,7 @@ class B17PqnNoticeFuncVze {
   Future<void> b17TqnUploadPendingNotificationEventsVze() async {
     for (final LocalNotificationPayload b17QxnPayloadVza
         in LocalNotificationPayload.values) {
-      final int b17KqmDisplayedCountWze = await FlutterBoomNotificationPlugins
+      final int b17KqmDisplayedCountWze = await FlutterLocalNotificationPlugins
           .instance
           .consumeDisplayedNotificationCount(payload: b17QxnPayloadVza);
       if (b17KqmDisplayedCountWze > 0) {
@@ -480,10 +540,10 @@ class B17PqnNoticeFuncVze {
     if (!B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza) {
       return false;
     }
-    final bool b17QxnSamsungDeviceVza = await FlutterBoomNotificationPlugins
+    final bool b17QxnSamsungDeviceVza = await FlutterLocalNotificationPlugins
         .instance
         .isSamsungDevice();
-    final bool b17VqnKoreanLocaleTza = await FlutterBoomNotificationPlugins
+    final bool b17VqnKoreanLocaleTza = await FlutterLocalNotificationPlugins
         .instance
         .isKoreanLocale();
     if (b17QxnSamsungDeviceVza &&

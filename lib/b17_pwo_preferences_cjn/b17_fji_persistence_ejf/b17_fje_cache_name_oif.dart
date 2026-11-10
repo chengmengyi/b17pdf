@@ -9,6 +9,7 @@ class B17FjeCacheNameOif {
   static const String b17OntNotificatiIme = 'b17_ont_notice_time_ime';
   static const String b17ObfMediaUniqueConfigIri =
       'b17_obf_media_unique_config_iri';
+  static const String b17AppExit = 'b17AppExit';
   static const String b17NynReferrerConfigAbf = 'b17_nyn_referrer_config_abf';
   static const String b17QxnUploadInstallEventVza =
       'b17_qxn_upload_install_signal_vza';
