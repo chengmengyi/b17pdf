@@ -236,26 +236,18 @@ class _B17VqnGuideNativeAdStateTza extends State<_B17QxnGuideNativeAdVza>
     try {
       final Widget? b17QxnAdWidgetVza = await B17JiwAdFuncDjo
           .b17KqmAdUtilsInstanceVzr
-          .b17PqmBuildCachedNativeAdWidgetVzr(
+          .b17PqmTakeCachedNativeAdWidgetVzr(
             b17PqmAdSceneVzr: widget.b17QxnAdSceneVza,
             b17KqmAdPosIdVzr: widget.b17VqnAdPosIdTza,
+            b17PqmReloadAfterTakeVzr: true,
           );
       if (!mounted || b17QxnAdWidgetVza == null) return;
       _b17KqmRetryTimerWze?.cancel();
       _b17KqmRetryTimerWze = null;
       setState(() => _b17VqnAdWidgetTza = b17QxnAdWidgetVza);
-      unawaited(_b17RqmLoadNextAdWza());
     } finally {
       _b17HqmCheckingAdWza = false;
     }
-  }
-
-  Future<void> _b17RqmLoadNextAdWza() async {
-    try {
-      B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr.b17KqmPreloadAdBySceneWze(
-        widget.b17QxnAdSceneVza,
-      );
-    } catch (_) {}
   }
 
   @override

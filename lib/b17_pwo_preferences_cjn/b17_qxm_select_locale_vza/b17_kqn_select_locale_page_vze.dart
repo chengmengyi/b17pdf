@@ -207,9 +207,10 @@ class _B17HqmSelectLocaleNativeAdStateWza
     try {
       final Widget? b17KqnAdWidgetVxe = await B17JiwAdFuncDjo
           .b17KqmAdUtilsInstanceVzr
-          .b17PqmBuildCachedNativeAdWidgetVzr(
+          .b17PqmTakeCachedNativeAdWidgetVzr(
             b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_ban2,
             b17KqmAdPosIdVzr: B17JkwPosidKos.pr_new_lan_nat,
+            b17PqmReloadAfterTakeVzr: true,
           );
       if (!mounted || b17KqnAdWidgetVxe == null) {
         return;
@@ -219,10 +220,6 @@ class _B17HqmSelectLocaleNativeAdStateWza
       setState(() {
         _b17VqnAdWidgetTza = b17KqnAdWidgetVxe;
       });
-      unawaited(
-        B17JiwAdFuncDjo.b17KqmAdUtilsInstanceVzr
-            .b17PqmRequestFilesListNativeAdVzr(),
-      );
     } finally {
       _b17HqmCheckingAdWza = false;
     }

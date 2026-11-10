@@ -171,6 +171,22 @@ class B17JiwAdFuncDjo implements FlutterPdfAdListener {
     );
   }
 
+  Future<Widget?> b17PqmTakeCachedNativeAdWidgetVzr({
+    required B17EipAdSceneUkg b17PqmAdSceneVzr,
+    required B17JkwPosidKos b17KqmAdPosIdVzr,
+    bool b17PqmLoadIfNeededVzr = true,
+    bool b17PqmReloadAfterTakeVzr = false,
+    Duration b17PqmDisposeDelayVzr = const Duration(seconds: 2),
+  }) async {
+    return FlutterPdfAdPlugins.instance.takeCachedAdWidget<B17EipAdSceneUkg>(
+      b17PqmAdSceneVzr,
+      adPosId: b17KqmAdPosIdVzr,
+      loadIfNeeded: b17PqmLoadIfNeededVzr,
+      reloadAfterTake: b17PqmReloadAfterTakeVzr,
+      disposeDelay: b17PqmDisposeDelayVzr,
+    );
+  }
+
   Future<bool> b17PqmHasFilesListNativeAdVzr() {
     return b17XmqHasCachedSceneAdVtr(
       b17PqmAdSceneVzr: B17EipAdSceneUkg.pr_ban1,
