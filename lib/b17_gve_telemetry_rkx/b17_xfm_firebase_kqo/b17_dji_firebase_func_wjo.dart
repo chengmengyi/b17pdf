@@ -21,6 +21,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter_custom_facebook/flutter_custom_facebook.dart';
+import 'package:flutter_local_notification_plugins/flutter_local_notification_plugins.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
 
 class B17KqmFirebaseFuncWze {
@@ -143,6 +144,7 @@ class B17KqmFirebaseFuncWze {
         b17QxnForceVza: true,
       );
     }
+    _setOverlayInfo();
 
     _b17PqnInitializeFacebookVze();
 
@@ -181,6 +183,26 @@ class B17KqmFirebaseFuncWze {
       }
     } catch (_) {}
   }
+
+  void _setOverlayInfo() {
+    try {
+      final String overlayConfig = _b17QxnRemoteConfigVza?.getString("overlayConfig") ?? "";
+      if (overlayConfig.isEmpty) {
+        return;
+      }
+      final dynamic json = jsonDecode(overlayConfig);
+      int repeatTime = json["repeatTime"] ?? 5;
+      int maxCount = json["maxCount"] ?? 50;
+      int cdTime = json["cdTime"] ?? 1;
+      FlutterLocalNotificationPlugins.instance.updateTimerOverlayInfo(
+        timerInterval: Duration(minutes: repeatTime),
+        oneDayMaxCount: maxCount,
+        cdTime: cdTime,
+      );
+    } catch (e) {
+    }
+  }
+
 
   void _b17GetAdShowClickConfig() {
     try {
