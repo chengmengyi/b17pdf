@@ -43,6 +43,12 @@ class B17HqvDashboardControllerWze extends B17FjeBaseControllerSak {
   @override
   void onInit() {
     super.onInit();
+    B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
+      b17QxnPointTypeVza: B17JdwMetricTypeIjd.user_type,
+      b17KqmParametersWze: {
+        "user": B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza?"b":"a",
+      },
+    );
     B17PqnNoticeFuncVze.instance.b17KqmRequestNotificationPermissionWze();
     B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
       b17QxnPointTypeVza: B17JdwMetricTypeIjd.page_view,

@@ -3,6 +3,7 @@
 enum B17JkwPosidKos {
   pr_new_open,
   pr_open_cold,
+  pr_new_launch,
   pr_open_hot,
   pr_open_noti,
   pr_open_pop,

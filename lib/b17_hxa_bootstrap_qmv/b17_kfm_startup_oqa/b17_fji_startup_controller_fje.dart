@@ -47,7 +47,6 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
   @override
   void onInit() {
     super.onInit();
-    B17FjeApplifeFuncIfj.instance.b17KpvStartObserverNza();
     _b17VqnInBackgroundTze =
         !B17FjeApplifeFuncIfj.instance.b17PqmAppIsForegroundVzr;
     B17PqnNoticeFuncVze.instance.b17KqmRequestNotificationPermissionWze();
@@ -166,7 +165,7 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
     }
     if (_b17HqmUseNewLaunchAdWza &&
         b17QxnSceneVza == B17EipAdSceneUkg.pr_launch) {
-      return B17JkwPosidKos.pr_open_cold;
+      return B17JkwPosidKos.pr_new_launch;
     }
     return b17KqmLaunchAdPosIdWze;
   }
@@ -184,7 +183,11 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
   Future<void> _b17RqmHandleLaunchDeadlineWza() async {
     await _b17PqmWaitForCacheCheckDelayVzr();
     await _b17PqmWaitUntilForegroundVzr();
+    B17EipAdSceneUkg b17PqmFinalAdSceneVzr = b17QxnLaunchAdSceneVza;
+    B17JkwPosidKos b17KqmFinalAdPosIdVzr = b17KqmLaunchAdPosIdWze;
     if (_b17HqmUseNewLaunchAdWza) {
+      b17PqmFinalAdSceneVzr = B17EipAdSceneUkg.pr_new_launch;
+      b17KqmFinalAdPosIdVzr = B17JkwPosidKos.pr_new_open;
       if (b17VqnNewUserOpenAdCheckTimeTza >= b17VqmLaunchDurationWxe) {
         final bool b17QxnHasNewAdVza = await _b17HqmHasCachedAdWza(
           B17EipAdSceneUkg.pr_new_launch,
@@ -205,7 +208,7 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
       if (b17KqmHasFallbackAdWze) {
         await _b17VqnShowLaunchAdTza(
           B17EipAdSceneUkg.pr_launch,
-          B17JkwPosidKos.pr_open_cold,
+          B17JkwPosidKos.pr_new_launch,
         );
         return;
       }
@@ -222,6 +225,14 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
         return;
       }
     }
+    B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
+      b17QxnPointTypeVza: B17JdwMetricTypeIjd.ad_show_fail,
+      b17KqmParametersWze: {
+        "ad_context": b17PqmFinalAdSceneVzr.name,
+        "ad_pos_id": b17KqmFinalAdPosIdVzr.name,
+        "error_message": "no cache",
+      },
+    );
     await b17QxnFinishLauncherVza();
   }
 

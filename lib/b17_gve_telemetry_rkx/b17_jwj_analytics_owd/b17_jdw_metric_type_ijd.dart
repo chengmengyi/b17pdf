@@ -87,4 +87,5 @@ enum B17JdwMetricTypeIjd {
   cd_hot,
   show_hot_launcher,
   close_hot_launcher,
+  user_type,
 }

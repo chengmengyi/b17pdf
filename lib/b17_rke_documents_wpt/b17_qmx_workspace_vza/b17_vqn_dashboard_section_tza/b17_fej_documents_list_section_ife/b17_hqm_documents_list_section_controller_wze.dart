@@ -463,6 +463,9 @@ class B17HqmDocumentsListSectionControllerWze extends B17FjeBaseControllerSak {
   }
 
   Future<void> b17DgpClickDeleteFileQky() async {
+    B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
+      b17QxnPointTypeVza: B17JdwMetricTypeIjd.file_multi_action_click,
+    );
     final b17PqmPermissionTypeWza = await _b17QxmStoragePermissionVza();
     final b17VqmPermissionXza = await B17KqnAccessFuncVze.instance
         .requestPermission(b17QxmPermissionVza: b17PqmPermissionTypeWza);

@@ -1,3 +1,5 @@
+import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_dji_analytics_func_wji.dart';
+import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_jdw_metric_type_ijd.dart';
 import 'package:b17pdf/b17_rke_documents_wpt/b17_qmx_workspace_vza/b17_tqm_utilities_section_vza/b17_hpn_utilities_section_controller_xwe.dart';
 import 'package:b17pdf/b17_ncu_conversion_fsz/b17_fji_operations_ejf/b17_qxn_insert_widget_func_vza/b17_kqm_insert_widget_func_vze.dart';
 import 'package:b17pdf/b17_ncu_conversion_fsz/b17_fji_operations_ejf/b17_qxm_pictures_func_vza/b17_kqm_pictures_func_wze.dart';
@@ -179,6 +181,9 @@ class _B17MqnUtilitiesSectionStateVxa
         SizedBox(height: 12.h),
         B17MfwTapGuardViewQke(
           b17JkcOnPressedXwu: () {
+            B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
+              b17QxnPointTypeVza: B17JdwMetricTypeIjd.widget_tool_click,
+            );
             B17KqmInsertWidgetFuncVze.instance.b17EerShowAddWidgetDialogLxc();
           },
           b17HnqChildVsa: Container(

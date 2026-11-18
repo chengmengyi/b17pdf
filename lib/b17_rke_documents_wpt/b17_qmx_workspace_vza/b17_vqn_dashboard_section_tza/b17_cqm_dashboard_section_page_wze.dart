@@ -136,6 +136,9 @@ class _B17PqnDashboardSectionStateVxa
             SizedBox(width: 8.w),
             B17MfwTapGuardViewQke(
               b17JkcOnPressedXwu: () {
+                B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
+                  b17QxnPointTypeVza: B17JdwMetricTypeIjd.widget_banner_click,
+                );
                 B17KqmInsertWidgetFuncVze.instance
                     .b17EerShowAddWidgetDialogLxc();
               },

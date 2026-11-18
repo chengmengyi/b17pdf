@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_fhi_signal_bean_feo.dart';
 import 'package:b17pdf/b17_gve_telemetry_rkx/b17_fhi_signals_ejo/b17_qxm_signal_code_vza.dart';
+import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_dji_analytics_func_wji.dart';
+import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_jdw_metric_type_ijd.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_jfi_first_user_func_ejf.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_jiw_check_user_ojd.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_qxn_guide_completed_cache_vza.dart';
@@ -23,11 +25,28 @@ class B17HqmGuideControllerWza extends B17FjeBaseControllerSak {
   bool _b17VqnTriedGuideFullAdTza = false;
   bool _b17PqnFinishingGuideVze = false;
 
+  @override
+  void onInit() {
+    super.onInit();
+    B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
+      b17QxnPointTypeVza: B17JdwMetricTypeIjd.guide_page_action,
+      b17KqmParametersWze: {
+        "page": "page_1",
+      },
+    );
+  }
+
   void b17RqmOnPageChangedWza(
     int b17QxnPageIndexVza,
     BuildContext b17QxnContextVza,
   ) {
     b17KqmCurrentPageWze = b17QxnPageIndexVza;
+    B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
+      b17QxnPointTypeVza: B17JdwMetricTypeIjd.guide_page_action,
+      b17KqmParametersWze: {
+        "page": "page_${b17KqmCurrentPageWze+1}",
+      },
+    );
     if (b17QxnPageIndexVza == 1 && !_b17VqnTriedGuideFullAdTza) {
       _b17VqnTriedGuideFullAdTza = true;
       if (B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza) {

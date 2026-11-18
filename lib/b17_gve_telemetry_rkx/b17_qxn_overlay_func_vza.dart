@@ -1,3 +1,5 @@
+import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_dji_analytics_func_wji.dart';
+import 'package:b17pdf/b17_gve_telemetry_rkx/b17_jwj_analytics_owd/b17_jdw_metric_type_ijd.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_fje_device_info_ifj.dart';
 import 'package:b17pdf/b17_hxa_bootstrap_qmv/b17_rtx_runtime_wqa/b17_jiw_check_user_ojd.dart';
 import 'package:b17pdf/b17_pwo_preferences_cjn/b17_fji_persistence_ejf/b17_fef_cache_func_jei/b17_float_oho_cache_vze.dart';
@@ -8,6 +10,14 @@ class B17QxnOverlayFuncVza {
   B17QxnOverlayFuncVza._();
 
   static final B17QxnOverlayFuncVza instance = B17QxnOverlayFuncVza._();
+
+  uploadPermissionState()async{
+    var result = await FlutterLocalNotificationPlugins.instance.checkOverlayPermission();
+    B17DjiAnalyticsFuncWji.instance.b17KqnUploadPointVxe(
+      b17QxnPointTypeVza: B17JdwMetricTypeIjd.float,
+      b17KqmParametersWze: {"state":result?"on":"off"},
+    );
+  }
 
   Future<void> b17QxnInitializeOverlayVza() async {
     if (!B17QxnUserCheckFuncVza.instance.b17VqnIsEligibleUserTza) {
