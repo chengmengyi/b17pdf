@@ -514,10 +514,23 @@ class _B17VqmDocumentsNativeAdContentStateWza
   }
 
   @override
-  Widget build(BuildContext context) =>
-      _b17PqnNativeAdWidgetVze ??
-      const B17PzrAssetPictureViewXcu(
+  Widget build(BuildContext context) {
+    if(null==_b17PqnNativeAdWidgetVze){
+      return const B17PzrAssetPictureViewXcu(
         'b17_kqn_native_advert_cover_asset_vze',
         b17DtvWidthQpl: double.infinity,
       );
+    }
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.w),
+        border: Border.all(
+          width: 1.w,
+          color: Colors.black,
+        ),
+      ),
+      child: _b17PqnNativeAdWidgetVze,
+    );
+  }
 }

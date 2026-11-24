@@ -228,9 +228,22 @@ class _B17HqmSelectLocaleNativeAdStateWza
   @override
   Widget build(BuildContext b17QxnContextVza) {
     if (!_b17VqnCanShowAdTza) return const SizedBox.shrink();
-    return SizedBox(
+    if(null==_b17VqnAdWidgetTza){
+      return SizedBox(
+        width: double.infinity,
+        height: 58.h,
+      );
+    }
+    return Container(
       width: double.infinity,
       height: 58.h,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.w),
+        border: Border.all(
+          width: 1.w,
+          color: Colors.black,
+        ),
+      ),
       child: _b17VqnAdWidgetTza ?? const SizedBox.shrink(),
     );
   }

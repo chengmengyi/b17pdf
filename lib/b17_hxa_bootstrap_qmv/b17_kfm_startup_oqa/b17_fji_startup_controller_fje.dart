@@ -47,6 +47,7 @@ class B17FjiStartupControllerFje extends B17FjeBaseControllerSak
   @override
   void onInit() {
     super.onInit();
+    B17FjeApplifeFuncIfj.instance.b17PqmStartLauncherLifecycleObservationVzr();
     _b17VqnInBackgroundTze =
         !B17FjeApplifeFuncIfj.instance.b17PqmAppIsForegroundVzr;
     B17PqnNoticeFuncVze.instance.b17KqmRequestNotificationPermissionWze();
